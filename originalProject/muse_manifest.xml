@@ -1,0 +1,84 @@
+<manifest alg="2" build="2017.0.0.363" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster" exportTarget="other" domain="insurancecorp.com" resolutions="1x" timestamp="1482050800187">
+  <folder name="css">
+    <file name="site_global.css" crc="443350757"/>
+    <file name="index.css" crc="4271496638" ref="index"/>
+    <file name="iefonts_index.css" crc="348843237" ref="index"/>
+  </folder>
+  <folder name="scripts">
+    <file name="jquery-1.8.3.min.js" crc="209076791" ref="index"/>
+    <file name="museutils.js" crc="163421577" ref="index"/>
+    <file name="whatinput.js" crc="86476730" ref="index"/>
+    <file name="museconfig.js" crc="168988563" ref="index"/>
+    <file name="jquery.watch.js" crc="104486786" ref="index"/>
+    <file name="jquery.musemenu.js" crc="146495465" ref="index"/>
+    <file name="jquery.musepolyfill.bgsize.js" crc="379354253" ref="index"/>
+    <file name="webpro.js" crc="3848665353" ref="index"/>
+    <file name="musewpslideshow.js" crc="4041717617" ref="index"/>
+    <file name="jquery.museoverlay.js" crc="36492500" ref="index"/>
+    <file name="touchswipe.js" crc="404375771" ref="index"/>
+    <file name="form_check.php" crc="158155501" ref="index"/>
+    <file name="form_throttle.php" crc="3992970984" ref="index"/>
+    <file name="form_process.php" crc="4078697226" ref="index"/>
+    <file name="form-u486.php" crc="3956425603" ref="index"/>
+    <file name="jquery.scrolleffects.js" crc="4065090679" ref="index"/>
+    <file name="html5shiv.js" crc="4241844378" ref="index"/>
+    <file name="require.js" crc="244322403" ref="index"/>
+  </folder>
+  <folder name="images">
+    <file name="banner principal_.png" crc="288842205" seo="true" ref="index"/>
+    <file name="logo acero.png" crc="3762953915" seo="true" ref="index"/>
+    <file name="portada pagina copy4.jpg" crc="126137224" seo="true" ref="index"/>
+    <file name="u77-4.png" crc="3897465982" ref="index"/>
+    <file name="u79-4.png" crc="400098944" ref="index"/>
+    <file name="u2145-6.png" crc="4249556254" ref="index"/>
+    <file name="telefono.png" crc="260885193" seo="true" ref="index"/>
+    <file name="13307503_1188747747842526_6596818529852946589_n.jpg" crc="3799165311" ref="index"/>
+    <file name="14212791_1257620644288569_645782765221570330_n.jpg" crc="3784812170" ref="index"/>
+    <file name="14494626_1278488652201768_2739790640278527042_n.jpg" crc="414829430" ref="index"/>
+    <file name="10-u232-fr.jpg" crc="3930870945" ref="index"/>
+    <file name="u1946-11.png" crc="4161443452" ref="index"/>
+    <file name="1930801_224607667889750_6123365236438123311_n.jpg" crc="104141295" seo="true" ref="index"/>
+    <file name="blank.gif" crc="4208392903" ref="index"/>
+    <file name="11225722_1032877006762935_8665739996135324644_n (1)-crop-u2951.jpg" crc="4144016101" ref="index"/>
+    <file name="11990570_1055937481123554_6725762595943567617_n-crop-u2977.jpg" crc="268550048" ref="index"/>
+    <file name="12047158_1055937227790246_7456850997100146297_n-crop-u3003.jpg" crc="324150467" ref="index"/>
+    <file name="12049507_1055937404456895_142859016762463624_n-crop-u3029.jpg" crc="124413609" ref="index"/>
+    <file name="12227658_1064023830314919_825789802442567328_n-crop-u3055.jpg" crc="3818799991" ref="index"/>
+    <file name="12241285_1064023783648257_7153277115568366639_n-crop-u3081.jpg" crc="392804200" ref="index"/>
+    <file name="12294870_1073313852719250_5014601194687930398_n-crop-u3107.jpg" crc="4046980356" ref="index"/>
+    <file name="12308456_1073309002719735_546414705042215232_n-crop-u3133.jpg" crc="3789777140" ref="index"/>
+    <file name="13226697_1180300128687288_6577427478227270245_n-crop-u3159.jpg" crc="4051408191" ref="index"/>
+    <file name="13669083_1214976865219614_1777638611054545744_n-crop-u3185.jpg" crc="463601508" ref="index"/>
+    <file name="13669736_1220035254713775_5479247891182087623_n-crop-u3211.jpg" crc="3820040065" ref="index"/>
+    <file name="13775566_1220035231380444_2726644594494999310_n-crop-u3237.jpg" crc="5380339" ref="index"/>
+    <file name="13938401_1238634366187197_8903731266628202763_n-crop-u3263.jpg" crc="4129834307" ref="index"/>
+    <file name="14183729_1257620297621937_5749712467594974668_n-crop-u3289.jpg" crc="521835203" ref="index"/>
+    <file name="14199761_1257620707621896_5398974914415223072_n-crop-u3315.jpg" crc="64180926" ref="index"/>
+    <file name="14211987_1257620207621946_562901421708026081_n-crop-u3341.jpg" crc="4258784933" ref="index"/>
+    <file name="14225583_1257620324288601_1509401738491385623_n-crop-u3367.jpg" crc="430268744" ref="index"/>
+    <file name="14440611_1278488822201751_5354219637107103355_n-crop-u3393.jpg" crc="384072313" ref="index"/>
+    <file name="14441008_1278489225535044_8995446291050814148_n-crop-u3419.jpg" crc="4166526331" ref="index"/>
+    <file name="14441064_1278489002201733_4275221054559434643_n-crop-u3445.jpg" crc="4071119528" ref="index"/>
+    <file name="14657285_1296476517069648_1706983452109034529_n-crop-u3471.jpg" crc="4241506314" ref="index"/>
+    <file name="14670742_1298001256917174_6533187208426560609_n-crop-u3497.jpg" crc="4174367048" ref="index"/>
+    <file name="14708267_1298001280250505_3341141540247763785_n-crop-u3523.jpg" crc="4038852646" ref="index"/>
+    <file name="10-crop-u3617.jpg" crc="516723759" ref="index"/>
+    <file name="01-crop-u3637.jpg" crc="85058533" ref="index"/>
+    <file name="02.jpg" crc="455884699" seo="true" ref="index"/>
+    <file name="03-crop-u3677.jpg" crc="342836117" ref="index"/>
+    <file name="04-crop-u3697.jpg" crc="400826657" ref="index"/>
+    <file name="05-crop-u3717.jpg" crc="370483444" ref="index"/>
+    <file name="06-crop-u3737.jpg" crc="308742636" ref="index"/>
+    <file name="07-crop-u3757.jpg" crc="4050621421" ref="index"/>
+    <file name="08-crop-u3777.jpg" crc="475907435" ref="index"/>
+    <file name="09-crop-u3797.jpg" crc="3963348321" ref="index"/>
+    <file name="loading.gif" crc="3815509949" ref="index"/>
+    <file name="banner collage.jpg" crc="3942272712" seo="true" ref="index"/>
+    <file name="w32_87.png" crc="476715353" ref="index"/>
+    <file name="w32_20.png" crc="514591252" ref="index"/>
+    <file name="w32_99.png" crc="249296264" ref="index"/>
+    <file name="imagen pegada 256x256.png" crc="3866034501" seo="true" ref="index"/>
+    <file name="facebook.png" crc="3937578975" ref="index"/>
+  </folder>
+  <file name="index.html" crc="3855355065" seo="true" mt="1482050730761" redirect="true"/>
+</manifest>
