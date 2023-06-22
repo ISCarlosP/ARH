@@ -1,0 +1,44 @@
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(243, 244, 246);
+}
+
+header{
+    position: fixed;
+    top: 0;
+}
+
+li{
+    margin-right: 30px;
+}
+
+li a{
+    text-decoration: none;
+    color: white;
+}
+
+.my-img{
+    cursor: pointer;
+}
+
+.video-info{
+    width: 100%;
+    height: auto;
+    background-color: #393e46;
+    padding-top: 70px;
+    padding-bottom: 50px;
+}
+
+.a-us{
+    text-decoration: none;
+    color: white;
+    display: block;
+    margin-top: 30px;
+    font-size: 18px;
+}
