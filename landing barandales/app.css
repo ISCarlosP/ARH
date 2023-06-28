@@ -7,6 +7,9 @@
 
 body{
     background-color: rgb(243, 244, 246);
+    background-image: url(img/backg-3.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 .navbar-custom .navbar-toggler {
@@ -64,12 +67,22 @@ li{
 
 @media (max-width: 415px) {
 
+    body{
+        background-image: url(img/backg-3.jpg);
+        background-size: cover;
+    }
+
+    #inicio{
+        height: auto;
+    }
+
     #inicio img{
         height: 250px;
         width: 100%;
     }
     
     #servicios{
+        height: auto;
         padding-top: 0px;
     }
 
@@ -88,3 +101,11 @@ li{
         width: 100%;
     }
 }
+
+@media (max-width: 375px){
+
+     #servicios{
+        height: auto;
+        padding-top: 100px;
+    }
+} 
