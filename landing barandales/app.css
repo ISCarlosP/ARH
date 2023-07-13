@@ -5,11 +5,16 @@
     box-sizing: border-box;
 }
 
-body{
-    background-color: rgb(243, 244, 246);
-    background-image: url(img/backg-3.jpg);
+.white-background-pattern{
+    background-image: url(img/white_pattern.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
+}
+
+.dark-background-pattern{
+    background-image: url(img/black_pattern.jpg);
+    background-size: 100%;
+    background-repeat: repeat;
 }
 
 .navbar-custom .navbar-toggler {
@@ -34,7 +39,6 @@ li{
 .video-info{
     width: 100%;
     height: auto;
-    background-color: #393e46;
     padding-top: 70px;
     padding-bottom: 50px;
 }
