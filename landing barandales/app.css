@@ -22,12 +22,11 @@ li{
 }
 
 li a{
-    transition: all 1000ms !important;
+    transition: all 500ms !important;
 }
 
 li a:hover{
     background: rgba(255,255,255,.4);
-    border-radius: 5px;
 }
 
 #inicio img{
