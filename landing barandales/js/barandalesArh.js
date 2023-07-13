@@ -1,0 +1,3 @@
+toggleLoginModal = function(){
+    
+}
