@@ -8,3 +8,19 @@ toggleLoader = function(){
         document.getElementById('app').classList.remove('d-none');
     }, 2000);
 }
+
+toggleSeePassword = function (){
+    let iconSeePassword = document.getElementById('iconSeePassword');
+    let inputPassword = document.getElementById('inputPassword');
+
+    if(inputPassword.type === 'password'){
+        iconSeePassword.classList.remove('bi-eye-fill');
+        iconSeePassword.classList.add('bi-eye-slash-fill');
+        inputPassword.type = 'text';
+        return
+    }
+
+    iconSeePassword.classList.remove('bi-eye-slash-fill');
+    iconSeePassword.classList.add('bi-eye-fill');
+    inputPassword.type =  'password';
+}

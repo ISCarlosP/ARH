@@ -10,6 +10,7 @@
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -68,15 +69,15 @@
                                           space-between="30" free-mode="true" autoplay
 
                         >
-                            <swiper-slide><img src="img/img1.jpg" alt=""></swiper-slide>
-                            <swiper-slide><img src="img/img2.jpg" alt=""></swiper-slide>
-                            <swiper-slide><img src="img/img4.jpg" alt=""></swiper-slide>
-                            <swiper-slide><img src="img/img3.jpg" alt=""></swiper-slide>
-                            <swiper-slide><img src="img/img4.jpg" alt=""></swiper-slide>
-                            <swiper-slide><img src="img/img1.jpg" alt=""></swiper-slide>
-                            <swiper-slide><img src="img/img3.jpg" alt=""></swiper-slide>
-                            <swiper-slide><img src="img/img1.jpg" alt=""></swiper-slide>
-                            <swiper-slide><img src="img/img2.jpg" alt=""></swiper-slide>
+                            <swiper-slide><img class="rounded-2" src="img/img1.jpg" alt=""></swiper-slide>
+                            <swiper-slide><img class="rounded-2" src="img/img2.jpg" alt=""></swiper-slide>
+                            <swiper-slide><img class="rounded-2" src="img/img4.jpg" alt=""></swiper-slide>
+                            <swiper-slide><img class="rounded-2" src="img/img3.jpg" alt=""></swiper-slide>
+                            <swiper-slide><img class="rounded-2" src="img/img4.jpg" alt=""></swiper-slide>
+                            <swiper-slide><img class="rounded-2"src="img/img1.jpg" alt=""></swiper-slide>
+                            <swiper-slide><img class="rounded-2"src="img/img3.jpg" alt=""></swiper-slide>
+                            <swiper-slide><img class="rounded-2"src="img/img1.jpg" alt=""></swiper-slide>
+                            <swiper-slide><img class="rounded-2"src="img/img2.jpg" alt=""></swiper-slide>
                         </swiper-container>
                     </div>
                 </div>
@@ -86,13 +87,15 @@
              id="servicios">
             <div class="container p-3">
                 <div class="row">
-                    <div class="col-lg-6 d-flex flex-column p-5">
-                        <h2 class="text-white fw-bolder" style="font-size: 50px;">ARH</h2>
-                        <p class="text-white">Nos especializamos en la fabricación de barandales y pasamanos de alta calidad,
-                            utilizamos acero inoxidable y cristal templado. Nuestro catálogo incluye una amplia variedad de
-                            opciones, como barandales curvos, barandales para escaleras y barandales para balcones. Nos
-                            enorgullece ofrecer productos duraderos, elegantes y funcionales que cumplen con los más altos
-                            estándares de seguridad y diseño.</p>
+                    <div class="col-lg-6 d-flex flex-column">
+                        <div class="bg-dark bg-opacity-10 rounded-5 p-2">
+                            <h2 class="text-white fw-bolder" style="font-size: 50px;">ARH</h2>
+                            <p class="text-white">Nos especializamos en la fabricación de barandales y pasamanos de alta calidad,
+                                utilizamos acero inoxidable y cristal templado. Nuestro catálogo incluye una amplia variedad de
+                                opciones, como barandales curvos, barandales para escaleras y barandales para balcones. Nos
+                                enorgullece ofrecer productos duraderos, elegantes y funcionales que cumplen con los más altos
+                                estándares de seguridad y diseño.</p>
+                        </div>
                     </div>
                     <div class="col-lg-6">
                         <div id="video-container" class="d-flex align-items-center">
@@ -246,22 +249,36 @@
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="loginModal"
-                 tabindex="-1"
-                 aria-labelledby="loginModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Iniciar sesión</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal fade" id="loginModal"
+             tabindex="-1"
+             aria-labelledby="loginModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header py-1" style="min-height: 10px ">
+                        <span class="modal-title fs-6 fw-bold bg-gray-300" id="exampleModalLabel">INICIAR SESIÓN</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-10 col-sm-12 mx-auto">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-text" id="spanInputUser"><i class="bi bi-person-circle"></i></div>
+                                    <input id="inputUser" type="text" class="form-control" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="spanInputPassword"><i class="bi bi-key-fill"></i></span>
+                                    <input id="inputPassword" type="password" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1">
+                                    <button type="button" class="input-group-text" onclick="toggleSeePassword()"><i id="iconSeePassword" class="bi bi-eye-fill"></i></button>
+                                </div>
+                                <div>
+                                    <a href="#" class="fs-6">¿Olvidaste tu contraseña?</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+                    </div>
+                    <div class="modal-footer py-1" style="min-height: 10px">
+                        <button type="button" class="btn btn-sm btn-primary">Acceder</button>
                     </div>
                 </div>
             </div>
