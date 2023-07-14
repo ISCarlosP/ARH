@@ -25,11 +25,11 @@ li{
     margin-right: 30px;
 }
 
-li a{
+li a, button{
     transition: all 500ms !important;
 }
 
-li a:hover{
+li a:hover, button:hover{
     background: rgba(255,255,255,.4);
 }
 
