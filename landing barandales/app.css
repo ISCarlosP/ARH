@@ -17,6 +17,13 @@
     background-repeat: repeat;
 }
 
+#floatNav div a{
+    color: white;
+    text-decoration: none;
+    display: none;
+    transition: all width 1000ms ease;;
+}
+
 #navbarNav{
     z-index: 10 !important;
 }
@@ -101,53 +108,7 @@ swiper-slide img {
 
 footer{
     background: black !important;
-}
-
-/* MEDIA QUERYS */
-
-@media (max-width: 415px) {
-
-    body{
-        background-image: url(img/backg-3.jpg);
-        background-size: cover;
-    }
-
-    #inicio{
-        height: auto;
-    }
-
-    #inicio img{
-        height: 250px;
-        width: 100%;
-    }
-    
-    #servicios{
-        height: auto;
-        padding-top: 0px;
-    }
-
-    #nosotros{
-        padding-top: 30px;
-    }
-    
-    #imgUs{
-        margin-right: 10px;
-    }
-    #formNosotros input[type="text"], input[type="submit"]{
-        width: 100%;
-    }
-    
-    #formNosotros textarea{
-        width: 100%;
-    }
-}
-
-@media (max-width: 375px){
-
-     #servicios{
-        height: auto;
-        padding-top: 100px;
-    }
+    width: auto;
 }
 
 .loader {
@@ -173,6 +134,9 @@ footer{
     background: linear-gradient(90deg, transparent, var(--loader));
     animation: loader-anim1 1s linear infinite;
 }
+
+/* Keyframes */
+
 
 @keyframes loader-anim1 {
     0% {
@@ -243,3 +207,50 @@ footer{
         bottom: 100%;
     }
 }
+
+/* MEDIA QUERYS */
+
+@media (max-width: 415px) {
+
+    body{
+        background-image: url(img/backg-3.jpg);
+        background-size: cover;
+    }
+
+    #inicio{
+        height: auto;
+    }
+
+    #inicio img{
+        height: 250px;
+        width: 100%;
+    }
+    
+    #servicios{
+        height: auto;
+        padding-top: 0px;
+    }
+
+    #nosotros{
+        padding-top: 30px;
+    }
+    
+    #imgUs{
+        margin-right: 10px;
+    }
+    #formNosotros input[type="text"], input[type="submit"]{
+        width: 100%;
+    }
+    
+    #formNosotros textarea{
+        width: 100%;
+    }
+}
+
+@media (max-width: 375px){
+
+     #servicios{
+        height: auto;
+        padding-top: 100px;
+    }
+} 
