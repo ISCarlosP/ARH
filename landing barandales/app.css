@@ -21,7 +21,7 @@
     color: white;
     text-decoration: none;
     display: none;
-    transition: all width 1000ms ease;;
+    transition: all 1000ms;
 }
 
 #navbarNav{

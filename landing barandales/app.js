@@ -2,6 +2,19 @@
 
 const floatNav = document.querySelector('#floatNav')
 
+/*const elementChild = Array.from(floatNav.children)
+
+elementChild.forEach(element => {
+
+  element.addEventListener('mouseover', (event) => {
+      if(!event.target){
+        element.style.width = '50px'
+      }
+      event.target.children[1].style.display = 'block' 
+  })
+
+})*/
+
 floatNav.children[0].addEventListener('mouseover', () => {
   floatNav.children[0].children[1].style.display = 'block'
   floatNav.children[1].style.width = '50px'
