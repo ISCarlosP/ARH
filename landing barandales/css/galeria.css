@@ -1,1 +1,35 @@
 
+.box-img-galery{
+    position: relative;
+    cursor: pointer;
+}
+
+.box-img-galery img{
+    opacity: .7;
+    transition: opacity 500ms;
+}
+
+.box-img-galery img:hover{
+    opacity: 1;
+}
+
+.box-img-galery .img-desc{
+    position: absolute;
+    bottom: 0px;
+    background: rgba(255,255,255,.4);
+    width: 100%;
+    height: 15%;
+    display: none;
+    justify-content: center;
+    padding-right: 10px;
+    align-items: start;
+}
+
+.box-img-galery:hover .img-desc{
+    display: flex;
+    transition: all 2500ms;
+}
+
+.box-img-galery .img-desc .btn, i{
+    font-weight: 700;
+}
