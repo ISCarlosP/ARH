@@ -24,3 +24,12 @@ toggleSeePassword = function (){
     iconSeePassword.classList.add('bi-eye-fill');
     inputPassword.type =  'password';
 }
+
+sendLogin = function(){
+    document.getElementById('loginButtonSpinner').classList.remove('d-none');
+    document.getElementById('loginButtonText').innerText = 'Ingresando'
+
+    setTimeout(function(){
+        location.replace('/dashboard.html');
+    }, 2000)
+}

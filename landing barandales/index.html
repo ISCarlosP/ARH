@@ -296,7 +296,10 @@
                         </div>
                     </div>
                     <div class="modal-footer py-1" style="min-height: 10px">
-                        <button type="button" class="btn btn-sm btn-primary">Acceder</button>
+                        <button type="button" class="btn btn-sm btn-primary" onclick="sendLogin()">
+                            <span id="loginButtonSpinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                            <span id="loginButtonText"> Enviar</span>
+                        </button>
                     </div>
                 </div>
             </div>

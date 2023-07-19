@@ -3,34 +3,85 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap-5.3.0-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="bootstrap-5.3.0-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <title>ARH Dashboard</title></head>
 <body>
-<div id="content" class="d-flex justify-content-center" style="min-height: 35rem">
+<div id="content" class="d-flex justify-content-center">
     <div id="app" class="w-100">
-        <div class="row">
-            <div class="col-12 d-flex justify-content-start p-2 px-2 shadow">
+        <div class="row m-0 p-0">
+            <div class="col-12 d-flex justify-content-start py-2 shadow">
                 <button class="btn btn-sm fs-5 mx-2"
                         data-bs-toggle="offcanvas"
-                        href="#offcanvasExample"
-                        role="button"
-                        aria-controls="offcanvasExample">
+                        data-bs-target="#userMenu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
-                <div class="w-100 d-flex mx-4 align-items-center justify-content-end">
+                <div class="w-100 d-flex align-items-center justify-content-end">
                     <span class="fw-bold">ARH DASHBOARD</span>
+                </div>
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <div class="tab-content w-100 h-100" id="dashboardTabContent">
+                    <div class="tab-pane fade show active"
+                         id="visitDetailContent"
+                         role="tabpanel">
+                        <div class="w-100 text-center">
+                            Detalle de visitas
+                        </div>
+
+                    </div>
+                    <div class="tab-pane fade"
+                         id="mailContent"
+                         role="tabpanel">
+                        <div class="w-100 text-center">
+                            Buzon de entrada
+                        </div>
+
+                    </div>
+                    <div class="tab-pane fade"
+                         id="createUserContent"
+                         role="tabpanel">
+                        <div class="w-100 text-center">
+                            Gestionar usuarios
+                        </div>
+
+                    </div>
+                    <div class="tab-pane fade"
+                         id="editGaleryContent"
+                         role="tabpanel">
+                        <div class="w-100 text-center">
+                            Gestionar Galeria
+                        </div>
+
+                    </div>
+                    <div class="tab-pane fade"
+                         id="editProductsContent"
+                         role="tabpanel">
+                        <div class="w-100 text-center">
+                            Gestionar Productos
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="offcanvas offcanvas-start"
+             style="max-width: 17rem; background-image: url('img/dragon-scales.svg');"
+             data-bs-scroll="true"
              tabindex="-1"
-             id="offcanvasExample"
-             aria-labelledby="offcanvasExampleLabel">
+             id="userMenu"
+             data-bs-backdrop="false">
             <div class="offcanvas-header shadow">
                 <div class="row w-100">
+                    <div class="col-12 d-flex justify-content-end p-0">
+                        <button type="button" class="btn btn-sm btn-icon btn-outline-danger"
+                                data-bs-dismiss="offcanvas"
+                                aria-label="Close">
+                            <i class="fa-solid fa-arrow-left fs-6"></i>
+                        </button>
+                    </div>
                     <div class="col-12">
                         <div class="w-100 d-flex justify-content-center">
                             <i class="fa-regular fa-circle-user"
@@ -39,25 +90,48 @@
                     </div>
                     <div class="col-12">
                         <div class="w-100 text-center">
-                            <span class="fw-bold">Administrador</span>
+                            <span class="fw-bold">ADMINISTRADOR</span>
                         </div>
                     </div>
                 </div>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="offcanvas-body">
-                <div>
-                    Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
-                </div>
-                <div class="dropdown mt-3">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                        Dropdown button
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
+            <div class="offcanvas-body p-0 py-5 bg-dark bg-opacity-50">
+                <ul class="nav nav-tabs flex-column">
+                    <li class="nav-item custom_hover rounded-1">
+                        <a class="nav-link active" data-bs-toggle="tab" role="tab" aria-controls="visitDetailContent" aria-selected="true" href="#visitDetailContent" >
+                            <i class="fa-solid fa-people-group form-check-inline " id="visitDetail"></i>
+                            <label class="form-check-label  fw-bold" for="visitDetail">Detalle de visitas</label>
+                        </a>
+                    </li>
+                    <li class="nav-item custom_hover rounded-1">
+                        <a class="nav-link" data-bs-toggle="tab" role="tab" aria-controls="mailContent" aria-selected="false" href="#mailContent">
+                            <i class="fa-solid fa-envelope-circle-check form-check-inline" id="mail"></i>
+                            <label class="form-check-label fw-bold" for="mail">Buzon de entrada</label>
+                        </a>
+                    </li>
+                    <li class="nav-item custom_hover rounded-1">
+                        <a class="nav-link" data-bs-toggle="tab" role="tab" aria-controls="createUser" aria-selected="false" href="#createUserContent">
+                            <i class="fa-solid fa-user-plus form-check-inline " id="createUser"></i>
+                            <label class="form-check-label  fw-bold" for="createUser">Crear usuarios</label>
+                        </a>
+                    </li>
+                    <li class="nav-item custom_hover rounded-1">
+                        <a class="nav-link" data-bs-toggle="tab" role="tab" aria-controls="editGaleryContent" aria-selected="false" href="#editGaleryContent">
+                            <i class="fa-regular fa-images form-check-inline" id="editGalery"></i>
+                            <label class="form-check-label fw-bold" for="editGalery">Editar Galeria</label>
+                        </a>
+                    </li>
+                    <li class="nav-item custom_hover rounded-1">
+                        <a class="nav-link" data-bs-toggle="tab" role="tab" aria-controls="editProductsContent" aria-selected="false" href="#editProductsContent">
+                            <i class="fa-solid fa-bars-progress form-check-inline" id="editProducts"></i>
+                            <label class="form-check-label fw-bold" for="editProducts">Ver productos</label>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="offcanvas-bottom">
+                <div class="w-100 d-flex justify-content-center py-2">
+                    <button class="btn btn-sm btn-danger" onclick="location.replace('/')">Cerrar sesi&oacute;n</button>
                 </div>
             </div>
         </div>
