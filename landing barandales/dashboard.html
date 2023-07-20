@@ -10,10 +10,11 @@
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <title>ARH Dashboard</title></head>
 <body>
-<div id="content" class="d-flex justify-content-center">
+<div id="content" class="d-flex justify-content-center"
+     style="background-image: url('/img/subtle-prism (1).svg'); background-repeat: no-repeat; min-height: 40rem; z-index: 0">
     <div id="app" class="w-100">
         <div class="row m-0 p-0">
-            <div class="col-12 d-flex justify-content-start py-2 shadow">
+            <div class="col-12 d-flex justify-content-start py-2 shadow bg-white">
                 <button class="btn btn-sm fs-5 mx-2"
                         data-bs-toggle="offcanvas"
                         data-bs-target="#userMenu">
@@ -24,14 +25,129 @@
                 </div>
             </div>
             <div class="col-12 d-flex justify-content-center">
-                <div class="tab-content w-100 h-100" id="dashboardTabContent">
+                <div class="tab-content w-100 h-100" id="dashboardTabContent" >
                     <div class="tab-pane fade show active"
                          id="visitDetailContent"
                          role="tabpanel">
-                        <div class="w-100 text-center">
-                            Detalle de visitas
+                        <!--Visit cards-->
+                        <div class="row mx-0 my-2 p-0">
+                            <div class="col-sm-6 col-lg-3 mx-auto">
+                                <div class="card shadow">
+                                    <div class="card-body d-flex p-0 d-fle rounded" style="border: #ff5d5d solid .15rem">
+                                        <div class="row w-100">
+                                            <div class="col-2">
+                                                <div class="h-100 "
+                                                     style="max-width: 1rem; min-width: 1rem; min-height: 5rem; background-color:#ff5d5d"></div>
+                                            </div>
+                                            <div class="col-10 mb-1">
+                                                <div class="row">
+                                                    <div class="col-2 text-center d-flex align-items-center">
+                                                        <i class="fa-regular fa-eye text-secondary" style="font-size: 3.5rem"></i>
+                                                    </div>
+                                                    <div class="col-10">
+                                                        <div class="row w-100">
+                                                            <div class="col-12 text-center">
+                                                                <span class="fw-bolder fs-1 text-secondary">350</span>
+                                                            </div>
+                                                            <div class="col-12 text-center">
+                                                                <span class="fw-bold text-secondary">VISITAS HOY</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3 mx-auto">
+                                <div class="card shadow">
+                                    <div class="card-body d-flex p-0 d-fle rounded" style="border: #c27ba0 solid .15rem">
+                                        <div class="row w-100">
+                                            <div class="col-2">
+                                                <div class="h-100 "
+                                                     style="max-width: 1rem; min-width: 1rem; min-height: 5rem; background-color:#c27ba0"></div>
+                                            </div>
+                                            <div class="col-10 mb-1">
+                                                <div class="row">
+                                                    <div class="col-2 text-center d-flex align-items-center">
+                                                        <i class="fa-solid fa-calendar-days text-secondary" style="font-size: 3.5rem"></i>
+                                                    </div>
+                                                    <div class="col-10">
+                                                        <div class="row w-100">
+                                                            <div class="col-12 text-center">
+                                                                <span class="fw-bolder fs-1 text-secondary">1,450</span>
+                                                            </div>
+                                                            <div class="col-12 text-center">
+                                                                <span class="fw-bold text-secondary">ESTA SEMANA</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3 mx-auto">
+                                <div class="card shadow">
+                                    <div class="card-body d-flex p-0 d-fle rounded" style="border: #9acd32 solid .15rem">
+                                        <div class="row w-100">
+                                            <div class="col-2">
+                                                <div class="h-100 "
+                                                     style="max-width: 1rem; min-width: 1rem; min-height: 5rem; background-color:#9acd32"></div>
+                                            </div>
+                                            <div class="col-10 mb-1">
+                                                <div class="row">
+                                                    <div class="col-2 text-center d-flex align-items-center">
+                                                        <i class="fa-regular fa-hourglass-half text-secondary" style="font-size: 3.5rem"></i>
+                                                    </div>
+                                                    <div class="col-10">
+                                                        <div class="row w-100">
+                                                            <div class="col-12 text-center">
+                                                                <span class="fw-bolder fs-1 text-secondary">43,100</span>
+                                                            </div>
+                                                            <div class="col-12 text-center">
+                                                                <span class="fw-bold text-secondary">30 D&Iacute;AS</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3 mx-auto">
+                                <div class="card shadow">
+                                    <div class="card-body d-flex p-0 d-fle rounded" style="border: #6fa8dc solid .15rem">
+                                        <div class="row w-100">
+                                            <div class="col-2">
+                                                <div class="h-100 "
+                                                     style="max-width: 1rem; min-width: 1rem; min-height: 5rem; background-color:#6fa8dc"></div>
+                                            </div>
+                                            <div class="col-10 mb-1">
+                                                <div class="row">
+                                                    <div class="col-2 text-center d-flex align-items-center">
+                                                        <i class="fa-regular fa-eye text-secondary" style="font-size: 3.5rem"></i>
+                                                    </div>
+                                                    <div class="col-10">
+                                                        <div class="row w-100">
+                                                            <div class="col-12 text-center">
+                                                                <span class="fw-bolder fs-1 text-secondary">350</span>
+                                                            </div>
+                                                            <div class="col-12 text-center">
+                                                                <span class="fw-bold text-secondary">VISITAS HOY</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
                     </div>
                     <div class="tab-pane fade"
                          id="mailContent"
