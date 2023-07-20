@@ -9,7 +9,7 @@
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <title>ARH Dashboard</title></head>
-<body>
+<body onload="initAllCharts()">
 <div id="content" class="d-flex justify-content-center"
      style="background-image: url('/img/subtle-prism (1).svg'); background-repeat: no-repeat; min-height: 40rem; z-index: 0">
     <div id="app" class="w-100">
@@ -148,6 +148,36 @@
                                 </div>
                             </div>
                         </div>
+                        <!--Today visit Chart-->
+                        <div class="row my-3">
+                            <div class="col-12">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <div id="todayVisitChart"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Weekly visits Chart-->
+                        <div class="row my-3">
+                            <div class="col-12">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <div id="weeklyVisitsChart"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Month visits chart-->
+                        <div class="row my-3">
+                            <div class="col-12">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <div id="monthVisitChart"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="tab-pane fade"
                          id="mailContent"
@@ -155,7 +185,6 @@
                         <div class="w-100 text-center">
                             Buzon de entrada
                         </div>
-
                     </div>
                     <div class="tab-pane fade"
                          id="createUserContent"
@@ -259,5 +288,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
         integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="js/dashboard.js"></script>
 </body>
 </html>
