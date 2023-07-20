@@ -149,7 +149,7 @@
                             </div>
                         </div>
                         <!--Today visit Chart-->
-                        <div class="row my-3">
+                        <div id="rowTodayVisit" class="row my-3 d-none">
                             <div class="col-12">
                                 <div class="card shadow">
                                     <div class="card-body">
@@ -159,7 +159,7 @@
                             </div>
                         </div>
                         <!--Weekly visits Chart-->
-                        <div class="row my-3">
+                        <div id="rowWeekVisit" class="row my-3 d-none">
                             <div class="col-12">
                                 <div class="card shadow">
                                     <div class="card-body">
@@ -169,7 +169,7 @@
                             </div>
                         </div>
                         <!--Month visits chart-->
-                        <div class="row my-3">
+                        <div id="rowMonthVisit" class="row my-3 d-none">
                             <div class="col-12">
                                 <div class="card shadow">
                                     <div class="card-body">
@@ -178,12 +178,25 @@
                                 </div>
                             </div>
                         </div>
+                        <div id="loadingVisitData" class="row my-5">
+                            <div class="col-3 mx-auto d-flex justify-content-center">
+                                <div class="fs-2 text-secondary">Cargando
+                                    <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="tab-pane fade"
                          id="mailContent"
                          role="tabpanel">
                         <div class="w-100 text-center">
-                            Buzon de entrada
+                            <div class="row my-3">
+                                <div class="col-lg-4">
+                                    <div class="card shadow">
+                                        <div class="card-body"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="tab-pane fade"

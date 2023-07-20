@@ -33,6 +33,7 @@ initDayVisitChart = function(){
     };
 
     var chart = new ApexCharts(document.querySelector("#todayVisitChart"), options);
+    document.getElementById('rowTodayVisit').classList.remove('d-none');
     chart.render();
 }
 
@@ -71,6 +72,7 @@ initWeeklyVisitChart = function(){
     };
 
     var chart = new ApexCharts(document.querySelector("#weeklyVisitsChart"), options);
+    document.getElementById('rowTodayVisit').classList.remove('d-none');
     chart.render();
 }
 
@@ -142,6 +144,7 @@ initMonthVisitChart = function(){
     };
 
     var chart = new ApexCharts(document.querySelector("#monthVisitChart"), options);
+    document.getElementById('rowMonthVisit').classList.remove('d-none');
     chart.render();
 }
 
@@ -158,5 +161,6 @@ initAllCharts = function(){
 
     });
 
+    document.getElementById('loadingVisitData').classList.add('d-none');
 
 }
