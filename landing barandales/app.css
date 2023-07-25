@@ -24,6 +24,10 @@
     z-index: 2; 
 }
 
+#floatNav{
+    top: 70px;
+}
+
 #floatNav div a{
     color: white;
     text-decoration: none;
@@ -98,7 +102,6 @@ swiper-container {
 swiper-slide {
     text-align: center;
     font-size: 18px;
-    background: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -222,6 +225,10 @@ footer{
     body{
         background-image: url(img/backg-3.jpg);
         background-size: cover;
+    }
+
+    #floatNav{
+        top: 520px;
     }
 
     #inicio{
