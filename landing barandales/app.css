@@ -17,6 +17,13 @@
     background-repeat: repeat;
 }
 
+
+.menu-fixed {
+    position: sticky !important;
+    top: 0;   
+    z-index: 2; 
+}
+
 #floatNav div a{
     color: white;
     text-decoration: none;

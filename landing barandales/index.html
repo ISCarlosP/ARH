@@ -27,52 +27,50 @@
         <span></span>
     </div>
     <div id="app" class="w-100 d-none white-background-pattern">
-        <nav class="navbar navbar-expand-lg position-fixed w-100" style="background: rgba(0,0,0,.9); z-index: 1;">
+        <div class="w-100">
+            <img src="img/banner_principal.png" alt="" style="width: 100%;">
+        </div>
+        <nav class="navbar navbar-expand-lg w-100 menu-fixed d-flex" style="background: rgb(0,0,0);">
             <div class="row w-100 m-0">
-                <div class="col-lg-6 m-0 ps-4 d-flex justify-content-between">
-                    <a class="navbar-brand text-white" href="#"><strong>LOGO</strong></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon" style="color: aliceblue; font-size: 24px;"><i class="fas fa-bars"></i></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active m-0">
-                            <a class="nav-link text-white ps-3 pe-4" href="#inicio">Inicio</a>
-                        </li>
-                        <li class="nav-item m-0">
-                            <a class="nav-link text-white ps-3 pe-4" href="#servicios">Servicios</a>
-                        </li>
-                        <li class="nav-item m-0">
-                            <a class="nav-link text-white ps-3 pe-4" href="#nosotros">Nosotros</a>
-                        </li>
-                        <li class="nav-item m-0">
-                            <a class="nav-link text-white ps-3 pe-4" href="#contacto">Contacto</a>
-                        </li>
-                        <li class="nav-item">
-                            <button class="nav-link text-white ps-3 pe-4" onclick="toggleLoginModal()">Iniciar Sesión</button>
-                        </li>
-                    </ul>
+                <div class="col-lg-12 d-flex justify-content-center">
+                    <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active m-0">
+                                <a class="nav-link text-white ps-3 pe-4" href="#inicio">Inicio</a>
+                            </li>
+                            <li class="nav-item m-0">
+                                <a class="nav-link text-white ps-3 pe-4" href="#servicios">Servicios</a>
+                            </li>
+                            <li class="nav-item m-0">
+                                <a class="nav-link text-white ps-3 pe-4" href="#nosotros">Nosotros</a>
+                            </li>
+                            <li class="nav-item m-0">
+                                <a class="nav-link text-white ps-3 pe-4" href="#contacto">Contacto</a>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link text-white ps-3 pe-4" onclick="toggleLoginModal()">Iniciar Sesión</button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>
-        <div class="d-flex flex-column justify-content-evenly mt-3" id="floatNav" style="position: fixed; top: 70px;">
+        <div class="d-flex flex-column justify-content-evenly mt-3" id="floatNav" style="position: fixed; top: 70px; z-index: 5;">
             <div class="mt-1 p-2 d-flex align-items-center justify-content-center rounded-2 " style="background: #2AB824;">
                 <i class="fab fa-whatsapp text-white fs-3"></i>
-                <a href="" class="ps-2">Whatsapp</a>
+                <a href="#" class="ps-2">Whatsapp</a>
             </div>
             <div class="mt-1 p-2 d-flex align-items-center justify-content-center rounded-2" style="background: #1F65C4;">
                 <i class="fab fa-facebook-f text-white fs-3"></i>
-                <a href="" class="ps-2">Facebook</a>
+                <a href="#" class="ps-2">Facebook</a>
             </div>
             <div class="mt-1 p-2 d-flex align-items-center justify-content-center rounded-2" style="background: #EC3315;">
                 <i class="fab fa-youtube text-white fs-3"></i>
-                <a href="" class="ps-2">Youtube</a>
+                <a href="#" class="ps-2">Youtube</a>
             </div>
             <div class="mt-1 p-2 d-flex align-items-center justify-content-center rounded-2" style="background: #8736C7;">
                 <i class="fa-solid fa-phone text-white fs-3"></i>
-                <a href="" class="ps-2">55 0834 5632</a>
+                <a href="#" class="ps-2">55 0834 5632</a>
             </div>
          </div>
         <div class="w-100 m-0" style="height: 100vh; " id="inicio">
@@ -308,10 +306,10 @@
         </div>
         <footer class="pb-3 pt-3 dark-background-pattern d-flex flex-column align-items-center justify-content-center">
             <div class="row w-100">
-                <div class="col-lg-6">
-                    <h2 class="text-white m-0 ps-4">LOGO</h2>
+                <div class="col-lg-12 d-flex justify-content-center align-items-center">
+                    <h2 class="text-white m-0 ">LOGO</h2>
                 </div>
-                <div class="col-lg-6 d-flex justify-content-end align-items-center">
+                <div class="col-lg-12 d-flex justify-content-center align-items-center">
                     <strong class="text-white pe-4">Todos los derechos reservados &copy; 2023 </strong>
                 </div>
             </div>
