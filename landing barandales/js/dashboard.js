@@ -1,41 +1,41 @@
-// initDayVisitChart = function(){
-//     var options = {
-//         series: [{
-//             name: "Visitas",
-//             data: [10, 41, 35, 51, 49, 62, 69, 91, 148, 145, 125, 35, 1, 54, 41, 65, 87, 12, 15, 14, 18, 22, 35, 24]
-//         }],
-//         chart: {
-//             height: 350,
-//             type: 'line',
-//             zoom: {
-//                 enabled: false
-//             }
-//         },
-//         dataLabels: {
-//             enabled: false
-//         },
-//         stroke: {
-//             curve: 'straight'
-//         },
-//         title: {
-//             text: 'REPORTE DE VISITAS DIARIAS 19/07/2023',
-//             align: 'left'
-//         },
-//         grid: {
-//             row: {
-//                 colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-//                 opacity: 0.5
-//             },
-//         },
-//         xaxis: {
-//             categories: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00','23:00'],
-//         }
-//     };
-//
-//     var chart = new ApexCharts(document.querySelector("#todayVisitChart"), options);
-//     document.getElementById('rowTodayVisit').classList.remove('d-none');
-//     chart.render();
-// }
+initDayVisitChart = function(){
+    var options = {
+        series: [{
+            name: "Visitas",
+            data: [10, 41, 35, 51, 49, 62, 69, 91, 148, 145, 125, 35, 1, 54, 41, 65, 87, 12, 15, 14, 18, 22, 35, 24]
+        }],
+        chart: {
+            height: 350,
+            type: 'line',
+            zoom: {
+                enabled: false
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            curve: 'straight'
+        },
+        title: {
+            text: 'REPORTE DE VISITAS DIARIAS 19/07/2023',
+            align: 'left'
+        },
+        grid: {
+            row: {
+                colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+                opacity: 0.5
+            },
+        },
+        xaxis: {
+            categories: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00','23:00'],
+        }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#todayVisitChart"), options);
+    document.getElementById('rowTodayVisit').classList.remove('d-none');
+    chart.render();
+}
 
 initWeeklyVisitChart = function(){
     var options = {
@@ -72,7 +72,7 @@ initWeeklyVisitChart = function(){
     };
 
     var chart = new ApexCharts(document.querySelector("#weeklyVisitsChart"), options);
-    document.getElementById('rowWeekVisit').classList.remove('d-none');
+    document.getElementById('rowTodayVisit').classList.remove('d-none');
     chart.render();
 }
 
@@ -150,7 +150,7 @@ initMonthVisitChart = function(){
 
 initAllCharts = function(){
 
-    let allMethods = [ initWeeklyVisitChart, initMonthVisitChart]
+    let allMethods = [initDayVisitChart, initWeeklyVisitChart, initMonthVisitChart]
 
     allMethods.forEach(function(currentMethod, i){
         try{
@@ -158,7 +158,9 @@ initAllCharts = function(){
         }catch{
             console.log('An exeption has been detected in allMethods, index' + i  );
         }
+
     });
 
     document.getElementById('loadingVisitData').classList.add('d-none');
+
 }

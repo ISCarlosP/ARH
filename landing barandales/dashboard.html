@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap-5.3.0-dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/dashboard.css">
@@ -9,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link rel="icon" type="image/png" href="img/arh_icon_final.png">
     <title>ARH Dashboard</title></head>
 <body onload="initAllCharts()">
 <div id="content" class="d-flex justify-content-center"
@@ -151,15 +149,15 @@
                             </div>
                         </div>
                         <!--Today visit Chart-->
-                        <!--                        <div id="rowTodayVisit" class="row my-3 d-none">-->
-                        <!--                            <div class="col-12">-->
-                        <!--                                <div class="card shadow">-->
-                        <!--                                    <div class="card-body">-->
-                        <!--                                        <div id="todayVisitChart"></div>-->
-                        <!--                                    </div>-->
-                        <!--                                </div>-->
-                        <!--                            </div>-->
-                        <!--                        </div>-->
+                        <div id="rowTodayVisit" class="row my-3 d-none">
+                            <div class="col-12">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <div id="todayVisitChart"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!--Weekly visits Chart-->
                         <div id="rowWeekVisit" class="row my-3 d-none">
                             <div class="col-12">
@@ -720,55 +718,9 @@
                          id="createUserContent"
                          role="tabpanel">
                         <div class="w-100 text-center">
-                            <div class="d-flex justify-content-end my-3">
-                                <button class="btn btn-sm btn-success">Agregar</button>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-8 col-sm-12 col-md-12 mx-auto card shadow p-0">
-                                    <div class="card-header fw-bolder">
-                                        Gesti&oacute;n de usuarios
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="table-responsive w-100">
-                                            <table class="table table-striped">
-                                                <thead>
-                                                <tr>
-                                                    <th scope="col">#</th>
-                                                    <th scope="col">Nombre completo</th>
-                                                    <th scope="col">Rol</th>
-                                                    <th scope="col">Opciones</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Carlos Pérez Nuñez</td>
-                                                    <td>Administrador</td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Carlos Pérez Nuñez</td>
-                                                    <td>Administrador</td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">3</th>
-                                                    <td>Carlos Pérez Nuñez</td>
-                                                    <td>Administrador</td>
-                                                    <td class="row">
-                                                        <div class="col-4"><button></button></div>
-                                                        <div class="col-4"><button></button></div>
-                                                        <div class="col-4"><button></button></div>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            Gestionar usuarios
                         </div>
+
                     </div>
                     <div class="tab-pane fade"
                          id="editGaleryContent"
@@ -810,11 +762,8 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <div class="w-100 fw-bold text-center fs-6">
-                            <span >Raymundo Nuñez</span>
-                        </div>
                         <div class="w-100 text-center">
-                            <span class="fw-bolder fs-5 text-muted">ADMINISTRADOR</span>
+                            <span class="fw-bold">ADMINISTRADOR</span>
                         </div>
                     </div>
                 </div>
@@ -836,7 +785,7 @@
                     <li class="nav-item custom_hover rounded-1">
                         <a class="nav-link" data-bs-toggle="tab" role="tab" aria-controls="createUser" aria-selected="false" href="#createUserContent">
                             <i class="fa-solid fa-user-plus form-check-inline " id="createUser"></i>
-                            <label class="form-check-label  fw-bold" for="createUser">Gestionar usuarios</label>
+                            <label class="form-check-label  fw-bold" for="createUser">Crear usuarios</label>
                         </a>
                     </li>
                     <li class="nav-item custom_hover rounded-1">
