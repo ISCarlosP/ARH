@@ -162,3 +162,7 @@ initAllCharts = function(){
 
     document.getElementById('loadingVisitData').classList.add('d-none');
 }
+
+openCreateUsers = function(){
+    $('#createUserModal').modal('show');
+}
