@@ -741,8 +741,8 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr v-for="user in users">
-                                                    <th scope="row">1</th>
+                                                <tr v-for="(user, i) in users">
+                                                    <th scope="row" v-text="i + 1"></th>
                                                     <td v-text="user.name + ' ' + user.lastName + ' ' + user.lastName1"></td>
                                                     <td v-text="user.rol"></td>
                                                     <td class="d-flex justify-content-center">
