@@ -20,6 +20,7 @@ floatNav.children[0].addEventListener('mouseover', () => {
   floatNav.children[1].style.width = '50px'
   floatNav.children[2].style.width = '50px'
   floatNav.children[3].style.width = '50px'
+
 })
 
 floatNav.children[0].addEventListener('mouseout', () => {

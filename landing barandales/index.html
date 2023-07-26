@@ -164,8 +164,8 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex align-items-center justify-content-center bg-transparent"
-             style="width: 100%; height: auto; padding-bottom: 60px;"
+        <div class="d-flex align-items-center justify-content-center"
+             style="width: 100%; height: auto; padding-bottom: 60px;  background: rgba(20, 12, 12, 0.3) !important; backdrop-filter: blur(7px);"
              id="nosotros">
             <div class="container text-white">
                 <h2 class="text-center mb-5" style="font-family: Arial;">¿Porque Nosotros?</h2>
@@ -249,19 +249,24 @@
              id="contacto">
             <div class="w-75 h-75">
                 <div class="row">
+                    <h2 class="text-center mt-5 mb-5 text-white fw-bolder" style="font-family: Arial;">Contactanos</h2>
                     <div class="col-lg-7 col-sm-12">
-                        <h2 class="fw-bolder pb-3 text-white pt-4">Contactanos</h2>
-                        <form action="" id="formNosotros">
-                            <input type="text" name="" id="name" class="form-control mb-4" placeholder="Nombre">
-                            <input type="text" name="" id="email" class="form-control mb-4" placeholder="Correo Electronico">
-                            <input type="text" name="" id="phoneNumber" class="form-control mb-4" placeholder="Telefono">
-                            <div class="form-floating mb-4">
-                        <textarea class="form-control" placeholder="Deja un comentario" id="floatingTextarea"
-                                  style="height: 120px;"></textarea>
-                                <label for="floatingTextarea">Comments</label>
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="fw-bolder pb-3 text-white pt-4">Contactanos</h2>
+                                <form action="" id="formNosotros">
+                                    <input type="text" name="" id="name" class="form-control mb-4" placeholder="Nombre">
+                                    <input type="text" name="" id="email" class="form-control mb-4" placeholder="Correo Electronico">
+                                    <input type="text" name="" id="phoneNumber" class="form-control mb-4" placeholder="Telefono">
+                                    <div class="form-floating mb-4">
+                                <textarea class="form-control" placeholder="Deja un comentario" id="floatingTextarea"
+                                        style="height: 120px;"></textarea>
+                                        <label for="floatingTextarea">Comments</label>
+                                    </div>
+                                    <input type="submit" value="Enviar" class="btn" style="background-color: #112B3C; color: white;">
+                                </form>
                             </div>
-                            <input type="submit" value="Enviar" class="btn" style="background-color: #112B3C; color: white;">
-                        </form>
+                        </div>
                     </div>
                     <div class="col-lg-5 col-sm-12 mt-4">
                         <div class="bg-white p-3 rounded-5">

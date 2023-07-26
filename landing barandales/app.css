@@ -247,6 +247,7 @@ footer{
 
     #nosotros{
         padding-top: 30px;
+        background: rgba(255,255,255,.3) !important;
     }
     
     #imgUs{
