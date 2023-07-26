@@ -12,9 +12,9 @@
     <link rel="icon" type="image/png" href="img/arh_icon_final.png">
     <title>ARH Dashboard</title></head>
 <body onload="initAllCharts()">
-<div id="content" class="d-flex justify-content-center"
+<div id="app" class="d-flex justify-content-center"
      style="background-image: url('/img/subtle-prism (1).svg'); background-repeat: no-repeat; min-height: 40rem; z-index: 0">
-    <div id="app" class="w-100">
+    <div id="" class="w-100">
         <div class="row m-0 p-0">
             <div class="col-12 d-flex justify-content-start py-2 shadow bg-white">
                 <button class="btn btn-sm fs-5 mx-2"
@@ -868,7 +868,7 @@
     </div>
     <div class="modal fade"
          id="createUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <span class="fw-bolder">CREAR USUARIOS</span>
@@ -876,30 +876,91 @@
                 </div>
                 <div class="modal-body">
                     <div class="row w-100">
-                        <div class="col-lg-6 col-sm-12">
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
-                                <input type="text" class="form-control" placeholder="Nombre" aria-label="Username" aria-describedby="basic-addon1">
-                            </div>
+                        <div class="col-lg-4 col-sm-12 my-2 mx-auto">
+                            <small class="fw-bolder">Nombre completo</small>
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="Nombre completo"
+                                   aria-label="Username"
+                                   aria-describedby="basic-addon1"
+                                   v-model="createUser.userName">
                         </div>
-                        <div class="col-lg-6 col-sm-12">
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon2"><i class="fa-solid fa-user"></i></span>
-                                <input type="text" class="form-control" placeholder="Apellido(s)" aria-label="Username" aria-describedby="basic-addon1">
-                            </div>
+                        <div class="col-lg-4 col-sm-12 my-2 mx-auto">
+                            <small class="fw-bolder">Apellido paterno</small>
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="Apellido Paterno"
+                                   aria-label="lastName1"
+                                   aria-describedby="basic-addon1"
+                                   v-model="createUser.userLastName">
                         </div>
-                        <div class="col-lg-6 col-sm-12">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Selecciona un rol</option>
+                        <div class="col-lg-4 col-sm-12 my-2 mx-auto">
+                            <small class="fw-bolder">Apellido materno</small>
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="Apellido materno"
+                                   aria-label="lastName2"
+                                   aria-describedby="basic-addon1"
+                                   v-model="createUser.userLastName1">
+                        </div>
+                        <div class="col-lg-4 col-sm-12 my-2 mx-auto">
+                            <small class="fw-bolder">Nombre de usuario</small>
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="Nombre de usuario"
+                                   aria-label="userName"
+                                   aria-describedby="basic-addon1"
+                                   disabled
+                                   v-model="createUserCodeName">
+                        </div>
+                        <div class="col-lg-4 col-sm-12 my-2 mx-auto">
+                            <small class="fw-bolder">Rol</small>
+                            <select class="form-select"
+                                    aria-label="Default select example"
+                                    v-model="createUser.userRol">
+                                <option value="0" selected>Selecciona un rol</option>
                                 <option value="1">Administrador lvl 1</option>
                                 <option value="2">Administrador lvl 2</option>
                                 <option value="3">Administrador lvl3</option>
                             </select>
                         </div>
-                        <div class="col-lg-6 col-sm-12">
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon3"><i class="fa-solid fa-user"></i></span>
-                                <input type="date" class="form-control" placeholder="dd/mm/aaaa" aria-label="Username" aria-describedby="basic-addon1">
+                        <div class="col-lg-4 col-sm-12 my-2 mx-auto">
+                            <small class="fw-bolder">Fecha de nacimiento</small>
+                            <input type="date"
+                                   class="form-control"
+                                   placeholder="dd/mm/aaaa"
+                                   aria-label="Username"
+                                   aria-describedby="basic-addon1"
+                                   v-model="createUser.userBirthDate">
+                        </div>
+                        <div class="col-lg-4 col-sm-12 my-2 mx-auto">
+                            <small class="fw-bolder">Ingresar contraseña</small>
+                            <div class="input-group">
+                                <input type="password"
+                                       class="form-control"
+                                       placeholder="Contraseña"
+                                       aria-label="password"
+                                       aria-describedby="basic-addon1"
+                                       v-model="createUser.userPassword">
+                                <button class="btn btn-outline-secondary"
+                                        type="button"
+                                        id="button-addon1"><i class="fa-solid fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-12 my-2 mx-auto">
+                            <small class="fw-bolder">Confirmar contraseña</small>
+                            <div class="input-group">
+                                <input id="confirmPassword"
+                                       type="password"
+                                       class="form-control"
+                                       placeholder="Confirmar"
+                                       aria-label="confirmPassword"
+                                       aria-describedby="basic-addon1"
+                                       v-model="createUser.userConfirmPassword">
+                                <button class="btn btn-outline-secondary"
+                                        type="button"
+                                        id="button">
+                                    <i class="(document.getElementById('confirmPassword').type === 'password')? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"></i></button>
                             </div>
                         </div>
                     </div>
@@ -920,5 +981,51 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="js/dashboard.js"></script>
+<script type="module">
+    import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+    createApp({
+        data() {
+            return {
+                users : [],
+                currentUser:{
+                    userName: '',
+                    userLastName: '',
+                    userLastName1: '',
+                    userCodeName: '',
+                    userPassword: '',
+                    userConfirmPassword: '',
+                    userBirthDate: '',
+                },
+                createUser:{
+                    userName: '',
+                    userLastName: '',
+                    userLastName1: '',
+                    userPassword: '',
+                    userRol: '0',
+                    userConfirmPassword: '',
+                    userBirthDate: '',
+                }
+            }
+        },
+        methods:{
+            seePassword: function(id){
+                let passwordInput = document.getElementById(id)
+                if(passwordInput.type === 'text'){
+                    passwordInput.type = 'password';
+                    return
+                }
+                passwordInput.type = 'text'
+            },
+        },
+        watch:{
+        },
+        computed:{
+            createUserCodeName: function(){
+                return (this.createUser.userName === '' && this.createUser.userLastName === '')? '' : ((this.createUser.userName + '.' + this.createUser.userLastName).toLowerCase());
+            }
+        }
+
+    }).mount('#app')
+</script>
 </body>
 </html>
