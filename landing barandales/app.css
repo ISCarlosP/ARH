@@ -132,6 +132,10 @@ footer{
     width: auto;
 }
 
+footer > div > div > img{
+    width: 170px;
+}
+
 .loader {
     --loader: rgb(49, 180, 255);
     --loader-size: 30px;
@@ -277,6 +281,17 @@ footer{
     
     #formNosotros textarea{
         width: 100%;
+    }
+
+    footer > div > .img-div{
+        display: flex;
+        justify-content: center !important;
+        padding: 0px !important;
+    }
+
+    footer > div > div > img{
+        width: 150px;
+        margin-bottom: 10px;
     }
 }
 
