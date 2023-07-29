@@ -33,7 +33,7 @@
                          role="tabpanel">
                         <!--Visit cards-->
                         <div class="row mx-0 my-2 p-0">
-                            <div class="col-sm-6 col-lg-3 mx-auto">
+                            <div class="col-sm-6 col-lg-3 my-2 mx-auto">
                                 <div class="card shadow">
                                     <div class="card-body d-flex p-0 d-fle rounded"
                                          style="border: #ff5d5d solid .15rem">
@@ -64,7 +64,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-lg-3 mx-auto">
+                            <div class="col-sm-6 col-lg-3 my-2 mx-auto">
                                 <div class="card shadow">
                                     <div class="card-body d-flex p-0 d-fle rounded"
                                          style="border: #c27ba0 solid .15rem">
@@ -95,7 +95,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-lg-3 mx-auto">
+                            <div class="col-sm-6 col-lg-3 my-2 mx-auto">
                                 <div class="card shadow">
                                     <div class="card-body d-flex p-0 d-fle rounded"
                                          style="border: #9acd32 solid .15rem">
@@ -126,7 +126,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-lg-3 mx-auto">
+                            <div class="col-sm-6 col-lg-3 my-2 mx-auto">
                                 <div class="card shadow">
                                     <div class="card-body d-flex p-0 d-fle rounded"
                                          style="border: #6fa8dc solid .15rem">
@@ -201,15 +201,16 @@
                          role="tabpanel">
                         <div class="w-100 text-center">
                             <div class="row my-3">
-                                <div class="col-lg-3 my-2 mx-auto">
+                                <div class="col-lg-3 my-2 mx-auto"
+                                     v-for="message in 5">
                                     <div class="card shadow">
                                         <div class="card-header">
                                             <span class="fw-bold fs-4">Mensaje: #10135</span>
                                         </div>
                                         <div class="card-body">
                                             <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
+                                                <div class="w-100">
+                                                    <div class="d-flex justify-content-center align-items-center">
                                                         <span class="fw-bolder text-secondary">NOMBRE:</span>
                                                     </div>
                                                     <div>
@@ -227,7 +228,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="d-flex justify-content-lg-center">
+                                            <div class="d-flex justify-content-center">
                                                 <div>
                                                     <div>
                                                         <span class="fw-bolder text-secondary">DIRECCION:</span>
@@ -237,7 +238,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="d-flex justify-content-lg-center">
+                                            <div class="d-flex justify-content-center">
                                                 <div>
                                                     <div>
                                                         <span class="fw-bolder text-secondary">Tel:</span>
@@ -247,484 +248,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="d-flex justify-content-lg-center mt-3">
-                                                <button class="btn btn-sm btn-success fw-bold">Marcar como visto
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 my-2 mx-auto">
-                                    <div class="card shadow">
-                                        <div class="card-header">
-                                            <span class="fw-bold fs-4">Mensaje: #10135</span>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">NOMBRE:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Carlos P&eacute;rez N.</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">MENSAJE:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Quisiera saber si pueden realizar una instalacion en mi direccion</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">DIRECCION:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Calle Canarios, Mz #13 Lt 5, Fraccionamiento Zumpango, Zumpango, Estado de Mexico</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">Tel:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">7298617391</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center mt-3">
-                                                <button class="btn btn-sm btn-success fw-bold">Marcar como visto
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 my-2 mx-auto">
-                                    <div class="card shadow">
-                                        <div class="card-header">
-                                            <span class="fw-bold fs-4">Mensaje: #10135</span>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">NOMBRE:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Carlos P&eacute;rez N.</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">MENSAJE:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Quisiera saber si pueden realizar una instalacion en mi direccion</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">DIRECCION:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Calle Canarios, Mz #13 Lt 5, Fraccionamiento Zumpango, Zumpango, Estado de Mexico</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">Tel:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">7298617391</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center mt-3">
-                                                <button class="btn btn-sm btn-success fw-bold">Marcar como visto
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 my-2 mx-auto">
-                                    <div class="card shadow">
-                                        <div class="card-header">
-                                            <span class="fw-bold fs-4">Mensaje: #10135</span>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">NOMBRE:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Carlos P&eacute;rez N.</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">MENSAJE:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Quisiera saber si pueden realizar una instalacion en mi direccion</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">DIRECCION:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Calle Canarios, Mz #13 Lt 5, Fraccionamiento Zumpango, Zumpango, Estado de Mexico</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">Tel:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">7298617391</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center mt-3">
-                                                <button class="btn btn-sm btn-success fw-bold">Marcar como visto
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 my-2 mx-auto">
-                                    <div class="card shadow">
-                                        <div class="card-header">
-                                            <span class="fw-bold fs-4">Mensaje: #10135</span>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">NOMBRE:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Carlos P&eacute;rez N.</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">MENSAJE:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Quisiera saber si pueden realizar una instalacion en mi direccion</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">DIRECCION:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Calle Canarios, Mz #13 Lt 5, Fraccionamiento Zumpango, Zumpango, Estado de Mexico</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">Tel:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">7298617391</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center mt-3">
-                                                <button class="btn btn-sm btn-success fw-bold">Marcar como visto
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 my-2 mx-auto">
-                                    <div class="card shadow">
-                                        <div class="card-header">
-                                            <span class="fw-bold fs-4">Mensaje: #10135</span>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">NOMBRE:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Carlos P&eacute;rez N.</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">MENSAJE:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Quisiera saber si pueden realizar una instalacion en mi direccion</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">DIRECCION:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Calle Canarios, Mz #13 Lt 5, Fraccionamiento Zumpango, Zumpango, Estado de Mexico</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">Tel:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">7298617391</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center mt-3">
-                                                <button class="btn btn-sm btn-success fw-bold">Marcar como visto
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 my-2 mx-auto">
-                                    <div class="card shadow">
-                                        <div class="card-header">
-                                            <span class="fw-bold fs-4">Mensaje: #10135</span>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">NOMBRE:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Carlos P&eacute;rez N.</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">MENSAJE:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Quisiera saber si pueden realizar una instalacion en mi direccion</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">DIRECCION:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Calle Canarios, Mz #13 Lt 5, Fraccionamiento Zumpango, Zumpango, Estado de Mexico</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">Tel:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">7298617391</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center mt-3">
-                                                <button class="btn btn-sm btn-success fw-bold">Marcar como visto
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 my-2 mx-auto">
-                                    <div class="card shadow">
-                                        <div class="card-header">
-                                            <span class="fw-bold fs-4">Mensaje: #10135</span>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">NOMBRE:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Carlos P&eacute;rez N.</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">MENSAJE:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Quisiera saber si pueden realizar una instalacion en mi direccion</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">DIRECCION:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Calle Canarios, Mz #13 Lt 5, Fraccionamiento Zumpango, Zumpango, Estado de Mexico</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">Tel:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">7298617391</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center mt-3">
-                                                <button class="btn btn-sm btn-success fw-bold">Marcar como visto
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 my-2 mx-auto">
-                                    <div class="card shadow">
-                                        <div class="card-header">
-                                            <span class="fw-bold fs-4">Mensaje: #10135</span>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">NOMBRE:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Carlos P&eacute;rez N.</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">MENSAJE:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Quisiera saber si pueden realizar una instalacion en mi direccion</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">DIRECCION:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Calle Canarios, Mz #13 Lt 5, Fraccionamiento Zumpango, Zumpango, Estado de Mexico</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">Tel:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">7298617391</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center mt-3">
-                                                <button class="btn btn-sm btn-success fw-bold">Marcar como visto
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 my-2 mx-auto">
-                                    <div class="card shadow">
-                                        <div class="card-header">
-                                            <span class="fw-bold fs-4">Mensaje: #10135</span>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">NOMBRE:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Carlos P&eacute;rez N.</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">MENSAJE:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Quisiera saber si pueden realizar una instalacion en mi direccion</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">DIRECCION:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">Calle Canarios, Mz #13 Lt 5, Fraccionamiento Zumpango, Zumpango, Estado de Mexico</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div>
-                                                    <div>
-                                                        <span class="fw-bolder text-secondary">Tel:</span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">7298617391</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-lg-center mt-3">
+                                            <div class="d-flex justify-content-center mt-3 w-100">
                                                 <button class="btn btn-sm btn-success fw-bold">Marcar como visto
                                                 </button>
                                             </div>
@@ -743,7 +267,7 @@
                                         onclick="openCreateUsers()">Agregar usuarios
                                 </button>
                             </div>
-                            <div class="row">
+                            <div class="row px-2">
                                 <div class="col-lg-8 col-sm-12 col-md-12 mx-auto card shadow p-0">
                                     <div class="card-header fw-bolder">
                                         Gesti&oacute;n de usuarios
@@ -788,7 +312,7 @@
                                 <div class="text-center">
                                     <span class="fw-bolder fs-3 my-1">BANNER PRINCIPAL</span>
                                     <div class="row">
-                                        <div class="col-8 mx-auto">
+                                        <div class="col-lg-8 col-sm-12 mx-auto">
                                             <div class="d-flex justify-content-center my-2 w-100 shadow">
                                                 <img alt="Banner principal" src="img/banner_principal.png" class="rounded img-fluid">
                                             </div>
@@ -821,8 +345,8 @@
                                     <div class="row">
                                         <div class="col-lg-3 col-sm-5 mx-auto my-2">
                                             <div class="card">
-                                                <div class="d-flex justify-content-center">
-                                                    <img alt="category" src="">
+                                                <div class="d-flex justify-content-center p-2">
+                                                    <img alt="category"  style="width: 100%; height: 400px;" src="img/barandales-de-acero/img-1.jpeg" class="rounded">
                                                 </div>
                                                 <div class="my-1 d-flex justify-content-center">
                                                     <div class="px-1">
@@ -841,15 +365,17 @@
                                                         </button>
                                                     </div>
                                                 </div>
-                                                <div class="my-2 text-center bg-dark rounded-3 p-1">
-                                                    <span class="fw-bolder text-white">BARANDALES DE ACERO INOXIDABLE</span>
+                                                <div class="my-2 text-center px-2">
+                                                    <div class="bg-dark rounded-3">
+                                                        <span class="fw-bolder text-white text-center d-flex justify-content-center align-items-center" style="min-height: 3.0rem">BARANDALES DE ACERO INOXIDABLE</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-sm-5 mx-auto my-2">
                                             <div class="card">
-                                                <div class="d-flex justify-content-center">
-                                                    <img alt="category" src="">
+                                                <div class="d-flex justify-content-center p-2">
+                                                    <img alt="category"  style="width: 100%; height: 400px;" src="img/cristal-templado/img-1.jpeg" class="rounded">
                                                 </div>
                                                 <div class="my-1 d-flex justify-content-center">
                                                     <div class="px-1">
@@ -868,15 +394,17 @@
                                                         </button>
                                                     </div>
                                                 </div>
-                                                <div class="my-2 text-center bg-dark rounded-3 p-1">
-                                                    <span class="fw-bolder text-white">BARANDALES CON CRISTAL TEMPLADO</span>
+                                                <div class="my-2 text-center px-2">
+                                                    <div class="bg-dark rounded-3" style="min-height: 3.0rem">
+                                                        <span class="fw-bolder text-white text-center d-flex justify-content-center align-items-center" style="min-height: 3.0rem">BARANDALES CON CRISTAL TEMPLADO</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-sm-5 mx-auto my-2">
                                             <div class="card">
-                                                <div class="d-flex justify-content-center">
-                                                    <img alt="category" src="">
+                                                <div class="d-flex justify-content-center p-2">
+                                                    <img alt="category"  style="width: 100%; height: 400px;" src="img/tapas-cisternas/img-1.jpeg" class="rounded">
                                                 </div>
                                                 <div class="my-1 d-flex justify-content-center">
                                                     <div class="px-1">
@@ -895,15 +423,17 @@
                                                         </button>
                                                     </div>
                                                 </div>
-                                                <div class="my-2 text-center bg-dark rounded-3 p-1">
-                                                    <span class="fw-bolder text-white">TAPAS PARA CISTERNA</span>
+                                                <div class="my-2 text-center px-2">
+                                                    <div class="bg-dark rounded-3">
+                                                        <span class="fw-bolder text-white text-center d-flex justify-content-center align-items-center" style="min-height: 3.0rem">TAPAS PARA CISTERNAS</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-sm-5 mx-auto my-2">
                                             <div class="card">
-                                                <div class="d-flex justify-content-center">
-                                                    <img alt="category" src="">
+                                                <div class="d-flex justify-content-center p-2">
+                                                    <img alt="category"  style="width: 100%; height: 400px;" src="img/canceles-para-baños/img-1.jpeg" class="rounded">
                                                 </div>
                                                 <div class="my-1 d-flex justify-content-center">
                                                     <div class="px-1">
@@ -922,15 +452,17 @@
                                                         </button>
                                                     </div>
                                                 </div>
-                                                <div class="my-2 text-center bg-dark rounded-3 p-1">
-                                                    <span class="fw-bolder text-white">CANCELES PARA BAÑO</span>
+                                                <div class="my-2 text-center px-2">
+                                                    <div class="bg-dark rounded-3">
+                                                        <span class="fw-bolder text-white text-center d-flex justify-content-center align-items-center" style="min-height: 3.0rem">CANCELES PARA BAÑO</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-sm-5 mx-auto my-2">
                                             <div class="card">
-                                                <div class="d-flex justify-content-center">
-                                                    <img alt="category" src="">
+                                                <div class="d-flex justify-content-center p-2">
+                                                    <img alt="category"  style="width: 100%; height: 400px;" src="img/baradales-curvos/img-1.jpeg" class="rounded">
                                                 </div>
                                                 <div class="my-1 d-flex justify-content-center">
                                                     <div class="px-1">
@@ -949,15 +481,17 @@
                                                         </button>
                                                     </div>
                                                 </div>
-                                                <div class="my-2 text-center bg-dark rounded-3 p-1">
-                                                    <span class="fw-bolder text-white">BARANDALES CURVOS</span>
+                                                <div class="my-2 text-center px-2">
+                                                    <div class="bg-dark rounded-3">
+                                                        <span class="fw-bolder text-white text-center d-flex justify-content-center align-items-center" style="min-height: 3.0rem">BARANDALES CURVOS</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-sm-5 mx-auto my-2">
                                             <div class="card">
-                                                <div class="d-flex justify-content-center">
-                                                    <img alt="category" src="">
+                                                <div class="d-flex justify-content-center p-2">
+                                                    <img alt="category"  style="width: 100%; height: 400px;" src="img/pasamanos/img-1.jpeg" class="rounded">
                                                 </div>
                                                 <div class="my-1 d-flex justify-content-center">
                                                     <div class="px-1">
@@ -976,8 +510,10 @@
                                                         </button>
                                                     </div>
                                                 </div>
-                                                <div class="my-2 text-center bg-dark rounded-3 p-1">
-                                                    <span class="fw-bolder text-white">PASA MANOS DE ACERO INOXIDABLE</span>
+                                                <div class="my-2 text-center px-2">
+                                                    <div class="bg-dark rounded-3">
+                                                        <span class="fw-bolder text-white text-center d-flex justify-content-center align-items-center" style="min-height: 3.0rem">PASA MANOS DE ACERO INOXIDABLE</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -985,7 +521,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="tab-pane fade"
                          id="editProductsContent"
