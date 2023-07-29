@@ -24,6 +24,10 @@
     z-index: 2; 
 }
 
+#title-h1{
+    font-size: 60px;
+}
+
 #floatNav{
     top: 70px;
 }
@@ -49,6 +53,13 @@ li a, button{
 
 li a:hover, button:hover{
     background: rgba(255,255,255,.4);
+}
+
+#inicio{
+    background-image: url(img/portada-img.jpg); 
+    background-attachment: fixed; 
+    background-repeat: no-repeat; 
+    background-size: 100%;
 }
 
 #inicio img{
@@ -222,13 +233,21 @@ footer{
 
 @media (max-width: 415px) {
 
-    body{
-        background-image: url(img/backg-3.jpg);
-        background-size: cover;
+    .dark-background-pattern{
+        background-image: red;
+    }
+
+    #inicio{
+        background-image:none;
+    }
+
+    #title-h1{
+        font-size: 45px;
+        text-align: center;
     }
 
     #floatNav{
-        top: 520px;
+        top: 560px;
     }
 
     #inicio{
