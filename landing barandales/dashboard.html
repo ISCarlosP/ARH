@@ -741,12 +741,26 @@
                     <span class=" fw-bold"
                           v-text="currentProductType.toUpperCase()"></span>
                 </div>
-                <div class="modal-body d-flex px-2">
+                <div class="modal-body px-2">
+                    <div class="d-flex justify-content-center w-100 my-2">
+                        <label class="btn btn-sm btn-success btn-icon fw-bolder" type="button">
+                            <i class="fa-solid fa-plus text-white"></i>
+                            <input type="file" id="miInput" style="display: none;">
+                        </label>
+                    </div>
                     <div class="w-100 px-2 d-flex" style="overflow-x: auto">
                         <template v-if="currentProductType !== ''">
                             <div v-for="product in productGallery[currentProductType]" class="mx-2 my-2">
-                                <img alt="Imagen " :src="product.source"
-                                     style="max-height: 10rem; max-width: 10rem; height: 10rem " class="rounded">
+                                <div class="w-100 d-flex justify-content-center">
+                                    <img alt="Imagen " :src="product.source"
+                                         style="max-height: 10rem; max-width: 10rem; height: 10rem " class="rounded shadow">
+                                </div>
+                                <div class="d-flex justify-content-center my-2">
+                                    <button class="mx-1 btn btn-sm btn-icon btn-danger"><i class="fa-solid fa-trash-can text-white"></i></button>
+                                    <button class="mx-1 btn btn-sm btn-icon btn-warning"><i class="fa-solid fa-pen-to-square text-white"></i></button>
+                                    <button class="mx-1 btn btn-sm btn-icon btn-primary"><i class="fa-solid fa-eye text-white"></i></button>
+                                    <button class="mx-1 btn btn-sm btn-icon btn-success"> <i class="fa-solid fa-floppy-disk text-white"></i></button>
+                                </div>
                             </div>
                         </template>
                     </div>
@@ -811,11 +825,11 @@
                 currentProductType: '',
                 productGallery:{
                     'barandales-curvos':[
-                        {source: '/img/barandales-curvos/img-1.jpeg'},
-                        {source: '/img/barandales-curvos/img-2.jpeg'},
-                        {source: '/img/barandales-curvos/img-3.jpeg'},
-                        {source: '/img/barandales-curvos/img-4.jpeg'},
-                        {source: '/img/barandales-curvos/img-5.jpeg'},
+                        {source: '/img/baradales-curvos/img-1.jpeg'},
+                        {source: '/img/baradales-curvos/img-2.jpeg'},
+                        {source: '/img/baradales-curvos/img-3.jpeg'},
+                        {source: '/img/baradales-curvos/img-4.jpeg'},
+                        {source: '/img/baradales-curvos/img-5.jpeg'},
                     ],
                     'barandales-de-acero':[
                         {source: '/img/barandales-de-acero/img-1.jpeg'},
@@ -844,7 +858,6 @@
                         {source: '/img/pasamanos/img-1.jpeg'},
                         {source: '/img/pasamanos/img-2.jpeg'},
                         {source: '/img/pasamanos/img-3.jpeg'},
-                        {source: '/img/pasamanos/img-4.jpeg'},
                     ],
                     'tapas-cisternas':[
                         {source: '/img/tapas-cisternas/img-1.jpeg'},
