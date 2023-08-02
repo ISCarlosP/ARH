@@ -239,8 +239,8 @@ footer > div > div > img{
 
     .dark-background-pattern{
         background-image: url(img/Hexagon.svg);
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
+        background-size: 100%;
+        background-repeat: repeat;
     }
 
     #inicio{
