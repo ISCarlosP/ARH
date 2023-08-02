@@ -725,7 +725,14 @@
         </div>
     </div>
     <div class="modal-face" id="createUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-title"></span>
+                </div>
+                <div class="modal-body"></div>
+            </div>
+        </div>
     </div>
 </div>
 <footer></footer>
@@ -780,7 +787,8 @@
                     userRol: '0',
                     userConfirmPassword: '',
                     userBirthDate: '',
-                }
+                },
+                currentProductType: '',
             }
         },
         methods: {
@@ -825,6 +833,9 @@
 
                 this.cleanCreateForm();
             },
+            openEditProductGallery: function (product) {
+                this.currentProductType = 
+            }
         },
         watch: {},
         computed: {
