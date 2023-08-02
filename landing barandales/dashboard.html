@@ -366,8 +366,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="my-2 text-center px-2">
-                                                    <div class="bg-dark rounded-3">
-                                                        <span class="fw-bolder text-white text-center d-flex justify-content-center align-items-center" style="min-height: 3.0rem">BARANDALES DE ACERO INOXIDABLE</span>
+                                                    <div type="button"
+                                                         class="bg-dark rounded-3"
+                                                         v-on:click="openEditProductGallery('barandales-de-acero')">
+                                                        <span class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"
+                                                              style="min-height: 3.0rem">BARANDALES DE ACERO INOXIDABLE</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -395,7 +398,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="my-2 text-center px-2">
-                                                    <div class="bg-dark rounded-3" style="min-height: 3.0rem">
+                                                    <div type="button" class="bg-dark rounded-3" style="min-height: 3.0rem" v-on:click="openEditProductGallery('cristal-templado')">
                                                         <span class="fw-bolder text-white text-center d-flex justify-content-center align-items-center" style="min-height: 3.0rem">BARANDALES CON CRISTAL TEMPLADO</span>
                                                     </div>
                                                 </div>
@@ -424,8 +427,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="my-2 text-center px-2">
-                                                    <div class="bg-dark rounded-3">
-                                                        <span class="fw-bolder text-white text-center d-flex justify-content-center align-items-center" style="min-height: 3.0rem">TAPAS PARA CISTERNAS</span>
+                                                    <div type="button" class="bg-dark rounded-3" v-on:click="openEditProductGallery('tapas-cisternas')">
+                                                        <span class="fw-bolder text-white text-center d-flex justify-content-center align-items-center" style="min-height: 3.0rem"
+                                                        >TAPAS PARA CISTERNAS</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -453,7 +457,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="my-2 text-center px-2">
-                                                    <div class="bg-dark rounded-3">
+                                                    <div type="button" class="bg-dark rounded-3" v-on:click="openEditProductGallery('canceles-para-baños')">
                                                         <span class="fw-bolder text-white text-center d-flex justify-content-center align-items-center" style="min-height: 3.0rem">CANCELES PARA BAÑO</span>
                                                     </div>
                                                 </div>
@@ -482,7 +486,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="my-2 text-center px-2">
-                                                    <div class="bg-dark rounded-3">
+                                                    <div type="button" class="bg-dark rounded-3"
+                                                         v-on:click="openEditProductGallery('barandales-curvos')">
                                                         <span class="fw-bolder text-white text-center d-flex justify-content-center align-items-center" style="min-height: 3.0rem">BARANDALES CURVOS</span>
                                                     </div>
                                                 </div>
@@ -511,7 +516,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="my-2 text-center px-2">
-                                                    <div class="bg-dark rounded-3">
+                                                    <div type="button" class="bg-dark rounded-3"
+                                                         v-on:click="openEditProductGallery('pasamanos')">
                                                         <span class="fw-bolder text-white text-center d-flex justify-content-center align-items-center" style="min-height: 3.0rem">PASA MANOS DE ACERO INOXIDABLE</span>
                                                     </div>
                                                 </div>
@@ -724,13 +730,27 @@
             </div>
         </div>
     </div>
-    <div class="modal-face" id="createUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade"
+         id="productModalGallery"
+         tabindex="-1"
+         aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <span class="modal-title"></span>
+                    <span class=" fw-bold"
+                          v-text="currentProductType.toUpperCase()"></span>
                 </div>
-                <div class="modal-body"></div>
+                <div class="modal-body d-flex px-2">
+                    <div class="w-100 px-2 d-flex" style="overflow-x: auto">
+                        <template v-if="currentProductType !== ''">
+                            <div v-for="product in productGallery[currentProductType]" class="mx-2 my-2">
+                                <img alt="Imagen " :src="product.source"
+                                     style="max-height: 10rem; max-width: 10rem; height: 10rem " class="rounded">
+                            </div>
+                        </template>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -789,6 +809,50 @@
                     userBirthDate: '',
                 },
                 currentProductType: '',
+                productGallery:{
+                    'barandales-curvos':[
+                        {source: '/img/barandales-curvos/img-1.jpeg'},
+                        {source: '/img/barandales-curvos/img-2.jpeg'},
+                        {source: '/img/barandales-curvos/img-3.jpeg'},
+                        {source: '/img/barandales-curvos/img-4.jpeg'},
+                        {source: '/img/barandales-curvos/img-5.jpeg'},
+                    ],
+                    'barandales-de-acero':[
+                        {source: '/img/barandales-de-acero/img-1.jpeg'},
+                        {source: '/img/barandales-de-acero/img-2.jpeg'},
+                        {source: '/img/barandales-de-acero/img-3.jpeg'},
+                        {source: '/img/barandales-de-acero/img-4.jpeg'},
+                        {source: '/img/barandales-de-acero/img-5.jpeg'},
+                    ],
+                    'canceles-para-baños':[
+                        {source: '/img/canceles-para-baños/img-1.jpeg'},
+                        {source: '/img/canceles-para-baños/img-2.jpeg'},
+                        {source: '/img/canceles-para-baños/img-3.jpeg'},
+                        {source: '/img/canceles-para-baños/img-4.jpeg'},
+                        {source: '/img/canceles-para-baños/img-5.jpeg'},
+                        {source: '/img/canceles-para-baños/img-6.jpeg'},
+                        {source: '/img/canceles-para-baños/img-7.jpeg'},
+                        {source: '/img/canceles-para-baños/img-8.jpeg'},
+                    ],
+                    'cristal-templado':[
+                        {source: '/img/cristal-templado/img-1.jpeg'},
+                        {source: '/img/cristal-templado/img-2.jpeg'},
+                        {source: '/img/cristal-templado/img-3.jpeg'},
+                        {source: '/img/cristal-templado/img-4.jpeg'},
+                    ],
+                    'pasamanos':[
+                        {source: '/img/pasamanos/img-1.jpeg'},
+                        {source: '/img/pasamanos/img-2.jpeg'},
+                        {source: '/img/pasamanos/img-3.jpeg'},
+                        {source: '/img/pasamanos/img-4.jpeg'},
+                    ],
+                    'tapas-cisternas':[
+                        {source: '/img/tapas-cisternas/img-1.jpeg'},
+                        {source: '/img/tapas-cisternas/img-2.jpeg'},
+                        {source: '/img/tapas-cisternas/img-3.jpeg'},
+                        {source: '/img/tapas-cisternas/img-4.jpeg'},
+                    ],
+                }
             }
         },
         methods: {
@@ -834,7 +898,8 @@
                 this.cleanCreateForm();
             },
             openEditProductGallery: function (product) {
-                this.currentProductType = 
+                this.currentProductType = product;
+                $('#productModalGallery').modal('show');
             }
         },
         watch: {},
