@@ -18,8 +18,8 @@ class Products_images extends Model
         'product_id',
     ];
 
-//    Relations
-    public function products(){
-        return $this->belongsTo(Producto::class, 'product_');
+    //    Relations
+    public function product(){
+        return $this->hasMany(Products::class, 'product_id');
     }
 }
