@@ -80,207 +80,18 @@
                 <a href="tel:5565081247" target="_blank" class="ps-2">55 0834 5632</a>
             </div>
         </div>
-        <div class="w-100 m-0" style="height: 100vh;" id="inicio">
-            <div class="d-flex flex-column align-items-center justify-content-center" style="padding-top: 20px; height: 100%;">
-                <div class="w-75 d-flex justify-content-center flex-column">
-                    <h1 style="font-family: Arial, Helvetica, sans-serif, serif; font-weight: 600; margin-top: 0px; text-shadow: 3px 3px 3px black;" class="text-center text-white" id="title-h1">
-                        BARANDALES DE ACERO INOXIDABLE</h1>
-                    <strong class="bg-primary text-white p-5 pt-1 pb-1" style="display: inline-block;margin: 0px auto;">ESPECIALISTAS EN ACERO</strong>
-                    <p class="pt-3 fs-4 text-center text-white fw-bolder" style="text-shadow: 3px 3px 3px black;">Nos dedicamos a la fabricación de barandales y pasamanos de acero inoxidable, y/o con cristal templado, barandales curvos, barandales de  escalera y para balcones.</p>
-                </div>
-                <div class="bg-transparent mt-4 w-100" style="height: 250px; overflow: hidden;">
-                    <div class="container" style="height: 100%;">
-                        <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" slides-per-view="3"
-                                          space-between="30" free-mode="true" autoplay
-
-                        >
-                            <swiper-slide><img class="rounded-2" src="img/img1.jpg" alt=""></swiper-slide>
-                            <swiper-slide><img class="rounded-2" src="img/img2.jpg" alt=""></swiper-slide>
-                            <swiper-slide><img class="rounded-2" src="img/img4.jpg" alt=""></swiper-slide>
-                            <swiper-slide><img class="rounded-2" src="img/img3.jpg" alt=""></swiper-slide>
-                            <swiper-slide><img class="rounded-2" src="img/img4.jpg" alt=""></swiper-slide>
-                            <swiper-slide><img class="rounded-2" src="img/img1.jpg" alt=""></swiper-slide>
-                            <swiper-slide><img class="rounded-2" src="img/img3.jpg" alt=""></swiper-slide>
-                            <swiper-slide><img class="rounded-2" src="img/img1.jpg" alt=""></swiper-slide>
-                            <swiper-slide><img class="rounded-2" src="img/img2.jpg" alt=""></swiper-slide>
-                        </swiper-container>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="video-info d-flex align-items-center justify-content-center bg-transparent"
-             id="servicios">
-            <div class="container p-3">
-                <div class="row">
-                    <div class="col-lg-6 d-flex flex-column">
-                        <div class="bg-dark bg-opacity-10 rounded-5 p-2">
-                            <h2 class="text-white fw-bolder" style="font-size: 50px;">ARH</h2>
-                            <p class="text-white">Nos especializamos en la fabricación de barandales y pasamanos de alta calidad,
-                                utilizamos acero inoxidable y cristal templado. Nuestro catálogo incluye una amplia variedad de
-                                opciones, como barandales curvos, barandales para escaleras y barandales para balcones. Nos
-                                enorgullece ofrecer productos duraderos, elegantes y funcionales que cumplen con los más altos
-                                estándares de seguridad y diseño.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div id="video-container" class="d-flex align-items-center rounded">
-                            <iframe src="https://www.youtube.com/embed/8BsvbWl69Lw" class="rounded" width="560" height="350" frameborder="0"
-                                    allowfullscreen></iframe>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="container mt-5">
-                    <h2 style="font-size: 40px; text-align: center; margin-top: 70px; margin-bottom: 40px; color: aliceblue; font-family: Arial, Helvetica, sans-serif;">
-                        Productos
-                    </h2>
-                    <div class="row">
-                        <div class="col-lg-4 mt-4 h-auto">
-                            <div class="d-flex flex-column align-items-center justify-content-start rounded-2 h-100"
-                                 style="background-color: rgb(243, 244, 246);">
-                                <img src="img/canceles-para-baños/img-4.jpeg" alt="" style="width: 100%; height: 400px;" class="rounded-2 m-0">
-                                <div class="w-100 h-100 d-flex flex-column justify-content-between align-items-center">
-                                    <h4 class="fs-3 p-3 pb-1 text-center">Canceles para baño</h4>
-                                    <a href="galery.html" class="w-75 btn btn-primary mb-4">Ver catalogo</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mt-4 h-auto">
-                            <div class="d-flex flex-column align-items-center justify-content-start rounded-2 h-100"
-                                 style="background-color: rgb(243, 244, 246);">
-                                <img src="img/barandales-de-acero/img-1.jpeg" alt="" style="width: 100%; height: 400px;" class="rounded-2">
-                                <div class="w-100 h-100 d-flex flex-column justify-content-between align-items-center">
-                                    <h4 class="fs-3 p-3 pb-1 text-center">Barandales de acero inoxidable</h4>
-                                    <a href="galery2.html" class="w-75 btn btn-primary mb-4">Ver catalogo</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mt-4 h-auto">
-                            <div class="d-flex flex-column align-items-center justify-content-start rounded-2 h-100"
-                                 style="background-color: rgb(243, 244, 246);">
-                                <img src="img/cristal-templado/img-1.jpeg" alt="" style="width: 100%; height: 400px;" class="rounded-2">
-                                <div class="w-100 h-100 d-flex flex-column justify-content-between align-items-center">
-                                    <h4 class="fs-3 p-3 pb-1 text-center">Barandales de acero con cristal templado</h4>
-                                    <a href="galery3.html" class="w-75 btn btn-primary mb-4">Ver catalogo</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mt-4 h-auto">
-                            <div class="d-flex flex-column align-items-center justify-content-start rounded-2 h-100"
-                                 style="background-color: rgb(243, 244, 246);">
-                                <img src="img/tapas-cisternas/img-1.jpeg" alt="" style="width: 100%; height: 400px;" class="rounded-2">
-                                <div class="w-100 h-100 d-flex flex-column justify-content-between align-items-center">
-                                    <h4 class="fs-3 p-3 pb-1 text-center">Tapas para cisterna</h4>
-                                    <a href="galery4.html" class="w-75 btn btn-primary mb-4">Ver catalogo</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mt-4 h-auto">
-                            <div class="d-flex flex-column align-items-center justify-content-start rounded-2 h-100"
-                                 style="background-color: rgb(243, 244, 246);">
-                                <img src="img/baradales-curvos/img-1.jpeg" alt="" style="width: 100%; height: 400px;" class="rounded-2">
-                                <div class="w-100 h-100 d-flex flex-column justify-content-between align-items-center">
-                                    <h4 class="fs-3 p-3 pb-1 text-center">Barandales curvos</h4>
-                                    <a href="galery5.html" class="w-75 btn btn-primary mb-4">Ver catalogo</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mt-4 h-auto">
-                            <div class="d-flex flex-column align-items-center justify-content-start rounded-2 h-100"
-                                 style="background-color: rgb(243, 244, 246);">
-                                <img src="img/pasamanos/img-1.jpeg" alt="" style="width: 100%; height: 400px;" class="rounded-2">
-                                <div class="w-100 h-100 d-flex flex-column justify-content-between align-items-center">
-                                    <h4 class="fs-3 p-3 pb-1 text-center">Pasamanos de acero inoxidable</h4>
-                                    <a href="galery6.html" class="w-75 btn btn-primary mb-4">Ver catalogo</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="d-flex align-items-center justify-content-center p-0"
-             style="width: 100%; height: auto; padding-bottom: 60px;"
-             id="nosotros">
-            <div class="text-white container">
-                <h2 class="text-center mb-5" style="font-family: Arial;">¿Porque Nosotros?</h2>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="d-flex pb-2">
-                            <div class="d-flex align-items-center justify-content-center" id="imgUs">
-                                <img src="img/objetivo.png" alt="" style="width: 60px; height: 60px;">
-                            </div>
-                            <div class="" style="font-family: Arial;">
-                                <h3>Mision</h3>
-                                <p>Ser una empresa que brinde calidad total y soluciones inmediatas de acuerdo a las necesidades
-                                    de nuestros clientes al mejor costo y de manera eficiente.</p>
-                            </div>
-                        </div>
-                        <div class="d-flex pb-2">
-                            <div class="d-flex align-items-center justify-content-center" id="imgUs">
-                                <img src="img/vision.png" alt="" style="width: 60px; height: 60px;">
-                            </div>
-                            <div class="" style="font-family: Arial;">
-                                <h3>Vision</h3>
-                                <p>Ser una compañía altamente competitiva en la fabricación de barandales que satisfaga y supere
-                                    la expectativa de nuestros clientes desarrollando nuevas alternativas para un mejor
-                                    servicio</p>
-                            </div>
-                        </div>
-                        <!-- <div class="d-flex pb-2">
-                            <div class="d-flex align-items-center justify-content-center" id="imgUs">
-                                <img src="img/nosotros.png" alt="" style="width: 60px; height: 60px;">
-                            </div>
-                            <div class="" style="font-family: Arial;">
-                                <h3>Nosotros</h3>
-                                <p>Fabricamos barandales a precios muy económicos. No utilizamos tornillos ni remaches para las
-                                    uniones, en su lugar soldamos con proceso TIG desbastamos y pulimos los bordes para obtener
-                                    un acabado satinado.</p>
-                            </div>
-                        </div> -->
-                    </div>
-                    <div class="col-lg-6">
-                        <p class="text-center fw-bolder">Como trabajamos?</p>
-                        <div class="container">
-                            <div class="mt-3">
-                                <div
-                                    style="background-color: #181823; width: 40px; height: 40px; border-radius: 50%; display: inline-block;"
-                                    class="text-white text-center fs-4">
-                                    1
-                                </div>
-                                <strong class="fs-5">Cuentanos tu idea.</strong>
-                            </div>
-                            <div class="mt-3">
-                                <div
-                                    style="background-color: #181823; width: 40px; height: 40px; border-radius: 50%; display: inline-block;"
-                                    class="text-white text-center fs-4">
-                                    2
-                                </div>
-                                <strong class="fs-5">En breve haremos tu cotizacion.</strong>
-                            </div>
-                            <div class="mt-3">
-                                <div
-                                    style="background-color: #181823; width: 40px; height: 40px; border-radius: 50%; display: inline-block;"
-                                    class="text-white text-center fs-4">
-                                    3
-                                </div>
-                                <strong class="fs-5">Fabricacion de tu producto.</strong>
-                            </div>
-                            <div class="mt-3">
-                                <div
-                                    style="background-color: #181823; width: 40px; height: 40px; border-radius: 50%; display: inline-block;"
-                                    class="text-white text-center fs-4">
-                                    4
-                                </div>
-                                <strong class="fs-5">Entrega de tu producto.</strong>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
+        <!-- Pagina de Inicio-->
+            <inicio-component></inicio-component>
+        <!-- Pagina de Inicio end -->
+        <!-- Pagina Servicios -->
+            <services-component></services-component>
+        <!-- Pagina Servicios end -->
+        <!-- Pagina About Us -->
+            <aboutus-component></aboutus-component>
+        <!-- Pagina About Us end-->
         <!-- Pagina de contacto Component-->
-        <contact-component></contact-component>
+            <contact-component></contact-component>
         <!-- Pagiga de contacto Component end -->
         <div class="modal fade" id="loginModal"
              tabindex="-1"
@@ -345,6 +156,9 @@
         <script type="module">
             import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
             import ContactComponent from "/js/components/ContactComponent.js"
+            import AboutusComponent from "/js/components/AboutusComponent.js"
+            import ServicesComponent from "/js/components/ServicesComponent.js"
+            import InicioComponent from "/js/components/InicioComponent.js"
           
             const app = createApp({
               data() {
@@ -354,8 +168,11 @@
               }
             })
 
-            app.mount('contact-component', ContactComponent)
-            app.mount('#app')
+            app.component('aboutus-component', AboutusComponent);
+            app.component('contact-component', ContactComponent);
+            app.component('services-component', ServicesComponent);
+            app.component('inicio-component', InicioComponent);
+            app.mount('#app');
           </script>
     </div>
 </div>
