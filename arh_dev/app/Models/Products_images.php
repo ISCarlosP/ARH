@@ -20,6 +20,6 @@ class Products_images extends Model
 
 //    Relations
     public function products(){
-        
+        return 
     }
 }
