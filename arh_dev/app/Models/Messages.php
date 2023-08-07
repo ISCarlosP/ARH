@@ -24,6 +24,6 @@ class Messages extends Model
 //    Relations
 
     public function messageStatus(){
-        return $this->belongsTo('Messages', 'Message_status');
+        return $this->belongsTo('message_statuses', 'message_status');
     }
 }
