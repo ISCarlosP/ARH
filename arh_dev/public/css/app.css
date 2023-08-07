@@ -1,0 +1,328 @@
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.dark-background-pattern{
+    background-image: url("../img/bg_dark_ultra-height.svg");
+    background-size: 100%;
+    background-repeat: repeat;
+}
+
+.menu-fixed {
+    position: sticky !important;
+    top: 0;   
+    z-index: 2; 
+}
+
+#title-h1{
+    font-size: 60px;
+}
+
+#floatNav{
+    top: 70px;
+}
+
+#floatNav div a{
+    color: white;
+    text-decoration: none;
+    display: none;
+    transition: all 1000ms;
+}
+
+#floatNav div a:hover{
+    transition: all 1000ms;
+}
+
+#navbarNav{
+    z-index: 10 !important;
+}
+
+li{
+    margin-right: 30px;
+}
+
+li a, button{
+    transition: all 500ms !important;
+}
+
+li a:hover, button:hover{
+    background: rgba(255,255,255,.4);
+}
+
+#inicio{
+    background-image: url("../img/portada-img.jpg"); 
+    background-attachment: fixed; 
+    background-repeat: no-repeat; 
+    background-size: 100%;
+}
+
+#inicio img{
+    height: 250px;
+    width: 250px;
+}
+
+.my-img{
+    cursor: pointer;
+}
+
+.video-info{
+    width: 100%;
+    height: auto;
+    padding-top: 70px;
+    padding-bottom: 50px;
+}
+
+#nosotros{
+    padding-top: 80px;
+}
+
+#imgUs{
+    margin-right: 50px;
+}
+
+#formNosotros input[type="text"], input[type="submit"]{
+    width: 75%;
+}
+
+#formNosotros textarea{
+    width: 75%;
+}
+
+.a-us{
+    text-decoration: none;
+    color: white;
+    display: block;
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+/*Estilos para mi Swiper*/
+
+swiper-container {
+    width: 100%;
+    height: 100%;
+    z-index: 0 !important;
+}
+
+swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px !important;
+}
+
+swiper-slide img {
+    display: block;
+    width: 350px !important;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+footer{
+    background: black !important;
+    width: auto;
+}
+
+footer > div > div > img{
+    width: 170px;
+}
+
+.loader {
+    --loader: rgb(49, 180, 255);
+    --loader-size: 30px;
+    position: relative;
+    width: 100px;
+    height: 40px;
+    overflow: hidden;
+    transition: .5s;
+    letter-spacing: 2px
+}
+
+.loader span {
+    position: absolute;
+}
+
+.loader span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: var(--loader-size);
+    background: linear-gradient(90deg, transparent, var(--loader));
+    animation: loader-anim1 1s linear infinite;
+}
+
+/* Keyframes */
+
+
+@keyframes loader-anim1 {
+    0% {
+        left: -100%;
+    }
+
+    50%,100% {
+        left: 100%;
+    }
+}
+
+.loader  span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: var(--loader-size);
+    height: 100%;
+    background: linear-gradient(180deg, transparent, var(--loader));
+    animation: loader-anim2 1s linear infinite;
+    animation-delay: .25s
+}
+
+@keyframes loader-anim2 {
+    0% {
+        top: -100%;
+    }
+
+    50%,100% {
+        top: 100%;
+    }
+}
+
+.loader span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: var(--loader-size);
+    background: linear-gradient(270deg, transparent, var(--loader));
+    animation: loader-anim3 1s linear infinite;
+    animation-delay: .5s
+}
+
+@keyframes loader-anim3 {
+    0% {
+        right: -100%;
+    }
+
+    50%,100% {
+        right: 100%;
+    }
+}
+
+.loader span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: var(--loader-size);
+    height: 100%;
+    background: linear-gradient(360deg, transparent, var(--loader));
+    animation: loader-anim4 1s linear infinite;
+    animation-delay: .75s
+}
+
+@keyframes loader-anim4 {
+    0% {
+        bottom: -100%;
+    }
+
+    50%,100% {
+        bottom: 100%;
+    }
+}
+
+/* MEDIA QUERYS */
+
+@media (max-width: 415px) {
+
+    .dark-background-pattern{
+        background-image: url(img/bg_dark_ultra-height.svg);
+        background-size: 100%;
+        background-repeat: repeat;
+    }
+
+    #inicio{
+        background-image:none;
+    }
+
+    #title-h1{
+        font-size: 45px;
+        text-align: center;
+    }
+
+    #floatNav{
+        top: 260px;
+    }
+
+    #inicio{
+        height: auto;
+    }
+
+    #inicio img{
+        height: 250px;
+        width: 100%;
+    }
+    
+    #servicios{
+        height: auto;
+        padding-top: 0px;
+    }
+
+    #nosotros{
+        padding-top: 30px;
+    }
+    
+    #imgUs{
+        margin-right: 10px;
+    }
+    #formNosotros input[type="text"], input[type="submit"]{
+        width: 100%;
+    }
+    
+    #formNosotros textarea{
+        width: 100%;
+    }
+
+    /*Estilos para mi Swiper*/
+
+    swiper-container {
+        width: 100%;
+        height: 100%;
+        z-index: 0 !important;
+    }
+
+    swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 200px !important;
+        padding: 0px !important;
+    }
+
+    swiper-slide img {
+        display: block;
+        width: 100% !important;
+        height: 100%;
+        object-fit: cover;
+    }
+
+        footer > div > .img-div{
+            display: flex;
+            justify-content: center !important;
+            padding: 0px !important;
+        }
+
+        footer > div > div > img{
+            width: 150px;
+            margin-bottom: 10px;
+        }
+    }
+
+@media (max-width: 375px){
+
+     #servicios{
+        height: auto;
+        padding-top: 100px;
+    }
+} 

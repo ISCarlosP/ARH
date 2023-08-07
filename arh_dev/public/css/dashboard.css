@@ -1,0 +1,29 @@
+
+.custom_hover:hover{
+    background-color: white;
+    color: black;
+}
+
+.custom_hover:hover .form-check-label{
+    color:black !important;
+}
+
+.custom_hover:focus .form-check-label{
+    color:black !important;
+}
+
+.custom_hover:hover .form-check-inline{
+    color:black !important;
+}
+
+.custom_hover:focus .form-check-inline{
+    color:black !important;
+}
+
+.nav-link{
+    color: white !important; /* Color del texto de las pestañas no activas */
+}
+
+.nav-link.active{
+    color: black !important; /* Color del texto de las pestañas no activas */
+}

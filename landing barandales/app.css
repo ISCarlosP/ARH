@@ -39,6 +39,10 @@
     transition: all 1000ms;
 }
 
+#floatNav div a:hover{
+    transition: all 1000ms;
+}
+
 #navbarNav{
     z-index: 10 !important;
 }

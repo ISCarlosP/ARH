@@ -15,6 +15,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body onload="toggleLoader()">
 <div id="content"
@@ -79,7 +81,7 @@
             </div>
         </div>
         <div class="w-100 m-0" style="height: 100vh;" id="inicio">
-            <div class="d-flex flex-column align-items-center justify-content-center" style="padding-top: 20px; backdrop-filter: blur(6px); height: 100%;">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="padding-top: 20px; height: 100%;">
                 <div class="w-75 d-flex justify-content-center flex-column">
                     <h1 style="font-family: Arial, Helvetica, sans-serif, serif; font-weight: 600; margin-top: 0px; text-shadow: 3px 3px 3px black;" class="text-center text-white" id="title-h1">
                         BARANDALES DE ACERO INOXIDABLE</h1>
@@ -357,7 +359,7 @@
                 </div>
             </div>
         </footer>
-        <script src="app.js"></script>
+        <script src="{{asset('js/app.js')}}"></script>
         <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
@@ -369,7 +371,7 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
         <script src="bootstrap-5.3.0-dist/js/bootstrap.bundle.js"></script>
-        <script src="js/barandalesArh.js"></script>
+        <script src="{{asset('js/barandalesArh.js')}}"></script>
     </div>
 </div>
 </body>
