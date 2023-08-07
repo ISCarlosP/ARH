@@ -156,7 +156,7 @@ initAllCharts = function(){
         try{
             currentMethod()
         }catch{
-            console.log('An exeption has been detected in allMethods, index' + i  );
+            console.log('An exception has been detected in allMethods, index' + i  );
         }
     });
 
