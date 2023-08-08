@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\GalleryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,4 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',  [\App\Http\Controllers\LandingPage::class, 'index']);
+Route::get('/', HomeController::class);
+
+Route::get('/galeria/{product_name}', [GalleryController::class, 'show']);
