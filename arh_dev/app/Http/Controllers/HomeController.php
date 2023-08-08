@@ -14,7 +14,7 @@ class HomeController extends Controller
 
         $products = json_encode($products);
 
-        return view('landing_page', [$products]);
+        return view('landing_page', compact($products));
     }
 }
 
