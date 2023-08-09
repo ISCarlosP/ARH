@@ -12,7 +12,6 @@ class Site_visits extends Model
     protected $table = 'site_visits';
     protected $primaryKey = 'site_visit_id';
     protected $fillable = [
-        'site_visit_id',
         'site_visit_token',
         'site_visit_created_at',
         'site_visit_updated_at'
