@@ -41,8 +41,6 @@ class SiteVisitsController extends Controller
 
                 Site_visits::create([
                     'site_visit_token' => $token,
-                    'site_visit_created_at' => $timeStamp,
-                    'site_visit_updated_at' => $timeStamp
                 ]);
             }catch(CustomException $error ){
                 echo $error;
