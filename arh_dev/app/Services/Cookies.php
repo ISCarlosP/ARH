@@ -7,10 +7,11 @@ use Illuminate\Http\Request;
 class Cookies
 {
     public function validateCookieExist(Request $request){
+        $cookiesArray = $request->cookies->all();
         return $request->cookie('visit_token');
     }
 
     public function createCookie($cookieInfo){
-        Cookie::make($cookieInfo['cookie_type'],$cookieInfo['token'], 10);
+        return Cookie::make($cookieInfo['cookie_type'],$cookieInfo['token'], 1);
     }
 }

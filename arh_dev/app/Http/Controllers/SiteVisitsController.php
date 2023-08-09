@@ -34,7 +34,7 @@ class SiteVisitsController extends Controller
                 $date = Carbon::now();
                 $timeStamp = $date->timestamp;
 
-                $cookies->createCookie([
+                $cookie = $cookies->createCookie([
                     'cookie_type' => 'visit_token',
                     'token' => $token,
                 ]);
@@ -42,6 +42,8 @@ class SiteVisitsController extends Controller
                 Site_visits::create([
                     'site_visit_token' => $token,
                 ]);
+
+                return $cookie;
             }catch(CustomException $error ){
                 echo $error;
             }
