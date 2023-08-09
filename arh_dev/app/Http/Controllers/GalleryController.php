@@ -17,6 +17,6 @@ class GalleryController extends Controller{
             ->get()
             ->toArray();
 
-        return json_encode($productImages);
+        return json_encode(compact('productImages'));
     }
 }
