@@ -11,6 +11,6 @@ class Cookies
     }
 
     public function createCookie($cookieInfo){
-        Cookie::make($cookieInfo['cookie_type'],$cookieInfo['token'], 1);
+        Cookie::make($cookieInfo['cookie_type'],$cookieInfo['token'], 10);
     }
 }

@@ -17,7 +17,6 @@ class Messages extends Model
         'message_user_phone',
         'message_user_phone',
         'message_user_mail',
-        'message_creates_at',
         'message_status_id',
     ];
 

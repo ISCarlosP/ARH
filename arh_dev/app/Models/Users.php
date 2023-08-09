@@ -18,7 +18,5 @@ class Users extends Model
         'user_birth_date',
         'user_screen_name',
         'user_password',
-        'user_created_at',
-        'user_updated_at'
     ];
 }
