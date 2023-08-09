@@ -85,7 +85,7 @@
             <inicio-component></inicio-component>
         <!-- Pagina de Inicio end -->
         <!-- Pagina Servicios -->
-            <services-component></services-component>
+            <services-component :products="products"></services-component>
         <!-- Pagina Servicios end -->
         <!-- Pagina About Us -->
             <aboutus-component></aboutus-component>
@@ -163,9 +163,12 @@
             const app = createApp({
               data() {
                 return {
-                  message: 'Hello Vue!'
+                  products: {!! $products !!},
                 }
-              }
+              },
+              methods: {
+                
+              },
             })
 
             app.component('aboutus-component', AboutusComponent);
