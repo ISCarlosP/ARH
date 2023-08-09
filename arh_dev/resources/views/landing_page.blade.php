@@ -17,6 +17,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <style>
+        .message_error{
+            border: 1px solid red;
+        }
+    </style>
+
 </head>
 <body onload="toggleLoader()">
 <div id="content"
@@ -80,7 +87,7 @@
                 <a href="tel:5565081247" target="_blank" class="ps-2">55 0834 5632</a>
             </div>
         </div>
-        
+
         <!-- Pagina de Inicio-->
             <inicio-component></inicio-component>
         <!-- Pagina de Inicio end -->
@@ -152,14 +159,15 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
         <script src="bootstrap-5.3.0-dist/js/bootstrap.bundle.js"></script>
         <script src="{{asset('js/barandalesArh.js')}}"></script>
-
+        <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
         <script type="module">
             import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
             import ContactComponent from "/js/components/ContactComponent.js"
             import AboutusComponent from "/js/components/AboutusComponent.js"
             import ServicesComponent from "/js/components/ServicesComponent.js"
             import InicioComponent from "/js/components/InicioComponent.js"
-          
+
+
             const app = createApp({
               data() {
                 return {
@@ -167,7 +175,7 @@
                 }
               },
               methods: {
-                
+
               },
             })
 

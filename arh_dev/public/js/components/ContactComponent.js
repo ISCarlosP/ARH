@@ -1,4 +1,5 @@
 
+
 const ContactComponent = {
 
     template: `
@@ -9,20 +10,18 @@ const ContactComponent = {
                 <div class="row">
                     <h2 class="text-center mt-5 mb-5 text-white fw-bolder" style="font-family: Arial;">Contactanos</h2>
                     <div class="col-lg-7 col-sm-12">
-                        <div class="">
+                        <div class="w-75">
                             <div class="card-body">
                                 <h2 class="fw-bolder pb-3 text-white pt-4">Contactanos</h2>
-                                <form action="" id="formNosotros">
-                                    <input type="text" name="" id="name" class="form-control mb-4" placeholder="Nombre">
-                                    <input type="text" name="" id="email" class="form-control mb-4" placeholder="Correo Electronico">
-                                    <input type="text" name="" id="phoneNumber" class="form-control mb-4" placeholder="Telefono">
+                                    <input type="text" name="" id="name" class="form-control mb-4" placeholder="Nombre" v-model="sendMessage.name">
+                                    <input type="text" name="" id="email" class="form-control mb-4" placeholder="Correo Electronico" v-model="sendMessage.email">
+                                    <input type="text" name="" id="phoneNumber" class="form-control mb-4" placeholder="Telefono" v-model="sendMessage.phone">
                                     <div class="form-floating mb-4">
-                                <textarea class="form-control" placeholder="Deja un comentario" id="floatingTextarea"
-                                          style="height: 120px;"></textarea>
+                                    <textarea class="form-control" placeholder="Deja un comentario" id="floatingTextarea"
+                                          style="height: 120px;" v-model="sendMessage.message"></textarea>
                                         <label for="floatingTextarea">Comments</label>
                                     </div>
-                                    <input type="submit" value="Enviar" class="btn" style="background-color: #112B3C; color: white;">
-                                </form>
+                                    <button class="btn btn-primary w-100" v-on:click="sendData">Enviar</button>
                             </div>
                         </div>
                     </div>
@@ -39,11 +38,23 @@ const ContactComponent = {
     `,
     data(){
         return{
-
+            sendMessage: {
+                name: '',
+                email: '',
+                phone: '',
+                message: ''
+            }
         }
     },
     methods: {
-        
+        sendData: function(){
+            const { name, email, phone, message} = this.sendMessage
+            if(name.length === 0 || email.length === 0 || phone.length === 0 || message.length === 0){
+                
+                return alert('Ningun campo debe ir vacio')
+            }
+
+        }
     },
 }
 
