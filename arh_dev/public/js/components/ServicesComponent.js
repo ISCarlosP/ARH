@@ -42,7 +42,7 @@ const ServicesComponent = {
                                 </div>
                                 <div class="w-100 h-100 d-flex flex-column justify-content-between align-items-center">
                                     <h4 class="fs-3 p-3 pb-1 text-center">{{ product.product_name }}</h4>
-                                    <a :href="product.product_name" class="w-75 btn btn-primary mb-4">Ver catalogo</a>
+                                    <a :href="'/gallery/' + product.product_name" class="w-75 btn btn-primary mb-4">Ver catalogo</a>
                                 </div>
                             </div>
                         </div>
