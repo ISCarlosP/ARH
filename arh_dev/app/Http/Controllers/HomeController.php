@@ -19,7 +19,6 @@ class HomeController extends Controller
 
         $products = json_encode($products);
 
-
         $routes = [
             'send_message' => route('message.validate.request'),
         ];
