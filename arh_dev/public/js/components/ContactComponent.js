@@ -1,7 +1,12 @@
 
 
 const ContactComponent = {
-
+    props: {
+      routes: {
+          type: Object,
+          required: true
+      }
+    },
     template: `
     <div class="d-flex align-items-center justify-content-center pb-5 bg-transparent"
              style="width: 100%; height: auto;"
@@ -65,7 +70,11 @@ const ContactComponent = {
                 return
             }
 
-            axios.post()
+            axios.post(this.routes.send_message, {name, email, number, message })
+                .then(response => {
+                    console.log(err)
+                })
+                .catch(err => console.log(err))
         }
     },
 }

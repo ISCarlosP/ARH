@@ -92,7 +92,7 @@
             <aboutus-component></aboutus-component>
         <!-- Pagina About Us end-->
         <!-- Pagina de contacto Component-->
-            <contact-component></contact-component>
+            <contact-component :routes="routes"></contact-component>
         <!-- Pagiga de contacto Component end -->
         <div class="modal fade" id="loginModal"
              tabindex="-1"
