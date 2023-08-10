@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\MessagesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,3 +18,6 @@ use App\Http\Controllers\GalleryController;
 Route::get('/', HomeController::class);
 
 Route::get('/galeria/{product_name}', [GalleryController::class, 'show']);
+
+Route::get('/messages/validate', [MessageController::class, 'validateMessageRequest'])
+    ->name('message.validate.request');

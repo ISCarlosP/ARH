@@ -23,7 +23,11 @@ class HomeController extends Controller
             return response(view('landing_page',compact('products') ))->cookie($myCookie);
         }
 
-        return view('landing_page', compact('products'));
+        $routes = [
+            'send_message' => route('message.validate.request'),
+        ];
+
+        return view('landing_page', compact('products', 'routes'));
     }
 }
 

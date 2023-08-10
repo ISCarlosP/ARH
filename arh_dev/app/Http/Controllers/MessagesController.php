@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\messages;
 use App\Http\Requests\StoremessagesRequest;
 use App\Http\Requests\UpdatemessagesRequest;
+use Illuminate\Http\Request;
 
 class MessagesController extends Controller
 {
@@ -62,5 +63,9 @@ class MessagesController extends Controller
     public function destroy(messages $messages)
     {
         //
+    }
+
+    public function validateMessageRequest(Request $request){
+
     }
 }
