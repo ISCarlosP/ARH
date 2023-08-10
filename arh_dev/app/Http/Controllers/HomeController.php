@@ -19,16 +19,17 @@ class HomeController extends Controller
 
         $products = json_encode($products);
 
-        if ($myCookie != null){
-            return response(view('landing_page',compact('products') ))->cookie($myCookie);
-        }
 
         $routes = [
             'send_message' => route('message.validate.request'),
         ];
 
         $routes = json_encode($routes);
-        
+
+        if ($myCookie != null){
+            return response(view('landing_page',compact('products', 'routes') ))->cookie($myCookie);
+        }
+
         return view('landing_page', compact('products', 'routes'));
     }
 }
