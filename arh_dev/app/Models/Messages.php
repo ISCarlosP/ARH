@@ -11,10 +11,8 @@ class Messages extends Model
 
     protected $table = 'messages';
     protected $fillable = [
-        'message_id',
         'message_text',
         'message_user_name',
-        'message_user_phone',
         'message_user_phone',
         'message_user_mail',
         'message_status_id',

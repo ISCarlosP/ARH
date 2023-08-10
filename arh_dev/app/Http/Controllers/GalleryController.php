@@ -9,7 +9,11 @@ use App\Models\Products_images;
 class GalleryController extends Controller{
 
     public function show($product_name){
-        $productId = Products::where('product_name', $product_name)
+        $productName = explode('_', $product_name);
+        $productName = implode(' ', $productName);
+
+
+        $productId = Products::where('product_name', $productName)
             ->first()
             ->value('product_id');
 
