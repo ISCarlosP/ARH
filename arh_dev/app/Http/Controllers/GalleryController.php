@@ -19,6 +19,6 @@ class GalleryController extends Controller{
 
         $productImages = json_encode($productImages);
 
-        return view('gallery', compact('productImages'));
+        return view('gallery.show', compact('productImages'));
     }
 }
