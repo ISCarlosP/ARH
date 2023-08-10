@@ -8,6 +8,6 @@
     <title>Galery</title>
 </head>
 <body>
-
+    <h1>Galerias</h1>
 </body>
 </html>
