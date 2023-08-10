@@ -19,5 +19,5 @@ Route::get('/', HomeController::class);
 
 Route::get('/galeria/{product_name}', [GalleryController::class, 'show']);
 
-Route::get('/messages/validate', [MessageController::class, 'validateMessageRequest'])
+Route::post('/messages/validate', [MessagesController::class, 'validateMessageRequest'])
     ->name('message.validate.request');

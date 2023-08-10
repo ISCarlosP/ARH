@@ -66,6 +66,6 @@ class MessagesController extends Controller
     }
 
     public function validateMessageRequest(Request $request){
-
+       return 'Hola como estas';
     }
 }
