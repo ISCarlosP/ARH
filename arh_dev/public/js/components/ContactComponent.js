@@ -62,6 +62,14 @@ const ContactComponent = {
             const errorMsg = document.getElementById('error-msg')
             const { name, email, phone, message} = this.sendMessage
 
+            if(phone.length !== 10){
+                return
+            }
+
+            if(message.length < 20){
+                return
+            }
+
             if(name.length === 0 || email.length === 0 || phone.length === 0 || message.length === 0){
                 errorMsg.classList.remove('d-none')
                 setTimeout(() => {
@@ -70,7 +78,7 @@ const ContactComponent = {
                 return
             }
 
-            axios.post(this.routes.send_message, {name, email, number, message })
+            axios.post(this.routes.send_message, {name, email, phone, message })
                 .then(response => {
                     console.log(err)
                 })
