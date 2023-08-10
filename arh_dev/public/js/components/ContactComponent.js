@@ -18,16 +18,19 @@ const ContactComponent = {
                         <div class="w-75">
                             <div class="card-body">
                                 <h2 class="fw-bolder pb-3 text-white pt-4">Contactanos</h2>
-                                    <div class="rounded bg-danger p-3 mb-3 d-flex justify-content-center d-none" id="error-msg">
-                                        <strong class="text-white">Por favor llene todos los campos</strong>
+                                    <div class="rounded bg-danger p-3 mb-3 d-flex flex-column justify-content-center d-none" id="error-msg">
+                                        <strong class="text-white">º Debe llenar todos los campos del formulario</strong>
+                                        <strong class="text-white">º Ingrese un correo valido</strong>
+                                        <strong class="text-white">º El numero debe tener 10 digitos</strong>
+                                        <strong class="text-white">º Debe ingresar un comentario con mas de 20 caracteres</strong>
                                     </div>
                                     <input type="text" name="" id="name" class="form-control mb-4" placeholder="Nombre" v-model="sendMessage.name">
                                     <input type="text" name="" id="email" class="form-control mb-4" placeholder="Correo Electronico" v-model="sendMessage.email">
                                     <input type="text" name="" id="phoneNumber" class="form-control mb-4" placeholder="Telefono" v-model="sendMessage.phone" maxlength="10" @input="filterNonNumeric">
                                     <div class="form-floating mb-4">
-                                    <textarea class="form-control" placeholder="Deja un comentario" id="floatingTextarea"
+                                    <textarea class="form-control" id="floatingTextarea"
                                           style="height: 120px;" v-model="sendMessage.message"></textarea>
-                                        <label for="floatingTextarea">Comments</label>
+                                        <label for="floatingTextarea">Deje un comentario</label>
                                     </div>
                                     <button class="btn btn-primary w-100" v-on:click="sendData">Enviar</button>
                             </div>
@@ -58,29 +61,42 @@ const ContactComponent = {
         filterNonNumeric() {
             this.sendMessage.phone = this.sendMessage.phone.replace(/[^0-9]/g, '');
         },
-        sendData: function(){
+        //Funcion para mostrar el mensaje de error
+        showTimeOut: function(){
             const errorMsg = document.getElementById('error-msg')
+            errorMsg.classList.remove('d-none')
+            setTimeout(() => {
+                errorMsg.classList.add('d-none')
+            },10000)
+        },
+        sendData: function(){
             const { name, email, phone, message} = this.sendMessage
 
+            // Validación del correo electrónico utilizando una expresión regular
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;
+            if (!emailRegex.test(email)) {
+                this.showTimeOut();
+                return;
+            }
+            // evalua que el telefono contenga los 10 digitos
             if(phone.length !== 10){
+                this.showTimeOut()
                 return
             }
-
+            // evalua que el comentario tenga mas de 20 caracteres
             if(message.length < 20){
+                this.showTimeOut()
                 return
             }
-
+            //Evalua que todos los campos esten llenos
             if(name.length === 0 || email.length === 0 || phone.length === 0 || message.length === 0){
-                errorMsg.classList.remove('d-none')
-                setTimeout(() => {
-                    errorMsg.classList.add('d-none')
-                },3000)
+                this.showTimeOut()
                 return
             }
 
-            axios.post(this.routes.send_message, {name, email, phone, message })
+            axios.post(this.routes.send_message, { name, email, phone, message })
                 .then(response => {
-                    console.log(err)
+                    console.log(response)
                 })
                 .catch(err => console.log(err))
         }
