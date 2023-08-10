@@ -27,6 +27,8 @@ class HomeController extends Controller
             'send_message' => route('message.validate.request'),
         ];
 
+        $routes = json_encode($routes);
+        
         return view('landing_page', compact('products', 'routes'));
     }
 }
