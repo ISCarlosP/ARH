@@ -37,7 +37,9 @@ const ServicesComponent = {
                         <div class="col-lg-4 mt-4 h-auto" v-for="product in products">
                             <div class="d-flex flex-column align-items-center justify-content-start rounded-2 h-100"
                                     style="background-color: rgb(243, 244, 246);">
-                                <img :src="product.product_main_image" style="width: 100%; height: 400px;" class="rounded-2 m-0">
+                                <div style="width: 100%; height: 400px;">
+                                    <img :src="product.product_main_image" style="width: 100%; height: 400px; object-fit: cover;" class="rounded-2 m-0">
+                                </div>
                                 <div class="w-100 h-100 d-flex flex-column justify-content-between align-items-center">
                                     <h4 class="fs-3 p-3 pb-1 text-center">{{ product.product_name }}</h4>
                                     <a :href="product.product_name" class="w-75 btn btn-primary mb-4">Ver catalogo</a>
