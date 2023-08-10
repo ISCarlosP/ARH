@@ -18,12 +18,6 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
-    <style>
-        .message_error{
-            border: 1px solid red;
-        }
-    </style>
-
 </head>
 <body onload="toggleLoader()">
 <div id="content"
@@ -171,7 +165,8 @@
             const app = createApp({
               data() {
                 return {
-                  products: {!! $products !!},
+                    products: {!! $products !!},
+                    routes: {!! $routes !!}
                 }
               },
               methods: {

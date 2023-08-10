@@ -13,9 +13,12 @@ const ContactComponent = {
                         <div class="w-75">
                             <div class="card-body">
                                 <h2 class="fw-bolder pb-3 text-white pt-4">Contactanos</h2>
+                                    <div class="rounded bg-danger p-3 mb-3 d-flex justify-content-center d-none" id="error-msg">
+                                        <strong class="text-white">Por favor llene todos los campos</strong>
+                                    </div>
                                     <input type="text" name="" id="name" class="form-control mb-4" placeholder="Nombre" v-model="sendMessage.name">
                                     <input type="text" name="" id="email" class="form-control mb-4" placeholder="Correo Electronico" v-model="sendMessage.email">
-                                    <input type="text" name="" id="phoneNumber" class="form-control mb-4" placeholder="Telefono" v-model="sendMessage.phone">
+                                    <input type="text" name="" id="phoneNumber" class="form-control mb-4" placeholder="Telefono" v-model="sendMessage.phone" maxlength="10" @input="filterNonNumeric">
                                     <div class="form-floating mb-4">
                                     <textarea class="form-control" placeholder="Deja un comentario" id="floatingTextarea"
                                           style="height: 120px;" v-model="sendMessage.message"></textarea>
@@ -47,13 +50,22 @@ const ContactComponent = {
         }
     },
     methods: {
+        filterNonNumeric() {
+            this.sendMessage.phone = this.sendMessage.phone.replace(/[^0-9]/g, '');
+        },
         sendData: function(){
+            const errorMsg = document.getElementById('error-msg')
             const { name, email, phone, message} = this.sendMessage
+
             if(name.length === 0 || email.length === 0 || phone.length === 0 || message.length === 0){
-                
-                return alert('Ningun campo debe ir vacio')
+                errorMsg.classList.remove('d-none')
+                setTimeout(() => {
+                    errorMsg.classList.add('d-none')
+                },3000)
+                return
             }
 
+            axios.post()
         }
     },
 }
