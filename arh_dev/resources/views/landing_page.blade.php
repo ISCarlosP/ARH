@@ -108,11 +108,11 @@
                             <div class="col-lg-10 col-sm-12 mx-auto">
                                 <div class="input-group mb-3">
                                     <div class="input-group-text" id="spanInputUser"><i class="bi bi-person-circle"></i></div>
-                                    <input id="inputUser" type="text" class="form-control" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1">
+                                    <input id="inputUser" v-model="user.username" type="text" class="form-control" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1">
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="spanInputPassword"><i class="bi bi-key-fill"></i></span>
-                                    <input id="inputPassword" type="password" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1">
+                                    <input id="inputPassword" v-model="user.password" type="password" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1">
                                     <button type="button" class="input-group-text" onclick="toggleSeePassword()"><i id="iconSeePassword" class="bi bi-eye-fill"></i></button>
                                 </div>
                                 <div>
@@ -122,9 +122,9 @@
                         </div>
                     </div>
                     <div class="modal-footer py-1" style="min-height: 10px">
-                        <button type="button" class="btn btn-sm btn-primary" onclick="sendLogin()">
+                        <button type="button" class="btn btn-sm btn-primary" v-on:click="logInSession">
                             <span id="loginButtonSpinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
-                            <span id="loginButtonText"> Enviar</span>
+                            <span id="loginButtonText">Enviar</span>
                         </button>
                     </div>
                 </div>
@@ -161,16 +161,28 @@
             import ServicesComponent from "/js/components/ServicesComponent.js"
             import InicioComponent from "/js/components/InicioComponent.js"
 
-
             const app = createApp({
               data() {
                 return {
                     products: {!! $products !!},
-                    routes: {!! $routes !!}
+                    routes: {!! $routes !!},
+                    user: {
+                        username: '',
+                        password: ''
+                    }
                 }
               },
               methods: {
-
+                  logInSession: function(){
+                      const { username, password } = this.user
+                      axios.post('url', { username, password })
+                          .then(response => {
+                              console.log(response)
+                          })
+                          .catch(err => {
+                              console.log(err)
+                          })
+                  }
               },
             })
 
