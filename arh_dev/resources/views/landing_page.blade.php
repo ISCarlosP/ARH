@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="img/arh_icon_final.png">
     <title>Brandales ARH</title>
-    <link rel="stylesheet" href="app.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="bootstrap-5.3.0-dist/css/bootstrap.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
@@ -140,59 +138,59 @@
                 </div>
             </div>
         </footer>
-        <script src="{{asset('js/app.js')}}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-                crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
-                integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow=="
-                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-        <script src="bootstrap-5.3.0-dist/js/bootstrap.bundle.js"></script>
-        <script src="{{asset('js/barandalesArh.js')}}"></script>
-        <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-        <script type="module">
-            import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
-            import ContactComponent from "/js/components/ContactComponent.js"
-            import AboutusComponent from "/js/components/AboutusComponent.js"
-            import ServicesComponent from "/js/components/ServicesComponent.js"
-            import InicioComponent from "/js/components/InicioComponent.js"
-
-            const app = createApp({
-              data() {
-                return {
-                    products: {!! $products !!},
-                    routes: {!! $routes !!},
-                    user: {
-                        username: '',
-                        password: ''
-                    }
-                }
-              },
-              methods: {
-                  logInSession: function(){
-                      const { username, password } = this.user
-                      axios.post('url', { username, password })
-                          .then(response => {
-                              console.log(response)
-                          })
-                          .catch(err => {
-                              console.log(err)
-                          })
-                  }
-              },
-            })
-
-            app.component('aboutus-component', AboutusComponent);
-            app.component('contact-component', ContactComponent);
-            app.component('services-component', ServicesComponent);
-            app.component('inicio-component', InicioComponent);
-            app.mount('#app');
-          </script>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
+        integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="{{asset('js/barandalesArh.js')}}"></script>
+<script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+<script src="{{ asset('js/app.js') }}"></script>
+<script type="module">
+    import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+    import ContactComponent from "/js/components/ContactComponent.js"
+    import AboutusComponent from "/js/components/AboutusComponent.js"
+    import ServicesComponent from "/js/components/ServicesComponent.js"
+    import InicioComponent from "/js/components/InicioComponent.js"
+
+    const app = createApp({
+        data() {
+            return {
+                products: {!! $products !!},
+                routes: {!! $routes !!},
+                user: {
+                    username: '',
+                    password: ''
+                }
+            }
+        },
+        methods: {
+            logInSession: function(){
+                console.log(this.routes.authenticate)
+                const { username, password } = this.user
+                axios.post(this.routes.authenticate , { username, password })
+                    .then(response => {
+                        console.log(response)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+            }
+        },
+    })
+
+    app.component('aboutus-component', AboutusComponent);
+    app.component('contact-component', ContactComponent);
+    app.component('services-component', ServicesComponent);
+    app.component('inicio-component', InicioComponent);
+    app.mount('#app');
+</script>
 </body>
 </html>

@@ -1,7 +1,6 @@
 
 
 const floatNav = document.querySelector('#floatNav')
-
 /*const elementChild = Array.from(floatNav.children)
 
 elementChild.forEach(element => {
@@ -10,7 +9,7 @@ elementChild.forEach(element => {
       if(!event.target){
         element.style.width = '50px'
       }
-      event.target.children[1].style.display = 'block' 
+      event.target.children[1].style.display = 'block'
   })
 
 })*/
@@ -76,18 +75,18 @@ const swiper = new Swiper('.swiper', {
     // Optional parameters
     direction: 'vertical',
     loop: true,
-  
+
     // If we need pagination
     pagination: {
       el: '.swiper-pagination',
     },
-  
+
     // Navigation arrows
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
-  
+
     // And if we need scrollbar
     scrollbar: {
       el: '.swiper-scrollbar',

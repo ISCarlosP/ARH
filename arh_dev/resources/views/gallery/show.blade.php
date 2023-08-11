@@ -8,6 +8,30 @@
     <title>Galery</title>
 </head>
 <body>
-    <h1>Galerias</h1>
+    <div id="app">
+        <h1>galeria</h1>
+        <template v-for="image in productImages">
+            <div>
+                <img :src="image.product_image_url">
+            </div>
+        </template>
+    </div>
+
+
+    <script type="module">
+        import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+        const app = createApp({
+            data() {
+                return {
+                   productImages: {!! $productImages !!}
+                }
+            },
+            methods: {
+
+            },
+        })
+
+        app.mount('#app');
+    </script>
 </body>
 </html>
