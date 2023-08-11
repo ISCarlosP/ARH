@@ -12,11 +12,13 @@ class GalleryController extends Controller{
         $productName = explode('_', $product_name);
         $productName = implode(' ', $productName);
 
-        $productId = Products::where('product_name', $productName)
-            ->first()
-            ->value('product_id');
+        $productId = Products::query()
+            ->select('product_id')
+            ->where('product_name', $productName)
+            ->first();
 
-        $productImages = Products_images::where('product_id', $productId)
+        $productImages = Products_images:: query()
+            ->where('product_id', $productId->product_id)
             ->get()
             ->toArray();
 
