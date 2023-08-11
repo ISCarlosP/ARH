@@ -12,7 +12,6 @@ class GalleryController extends Controller{
         $productName = explode('_', $product_name);
         $productName = implode(' ', $productName);
 
-
         $productId = Products::where('product_name', $productName)
             ->first()
             ->value('product_id');

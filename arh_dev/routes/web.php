@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,3 +22,6 @@ Route::get('/galeria/{product_name}', [GalleryController::class, 'show']);
 
 Route::post('/messages/validate', [MessagesController::class, 'validateMessageRequest'])
     ->name('message.validate.request');
+
+Route::post('/login/authenticate', [LoginController::class, 'authenticate'])
+    ->name('login.authenticate');

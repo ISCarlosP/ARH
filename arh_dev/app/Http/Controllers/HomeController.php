@@ -21,6 +21,7 @@ class HomeController extends Controller
 
         $routes = [
             'send_message' => route('message.validate.request'),
+            'authenticate' => route('login.authenticate')
         ];
 
         $routes = json_encode($routes);
