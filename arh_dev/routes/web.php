@@ -17,18 +17,22 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/', HomeController::class)
-    ->name('home');
+    Route::get('/', HomeController::class)
+        ->name('home');
 
-Route::get('/galeria/{product_name}', [GalleryController::class, 'show']);
+    Route::get('/galeria/{product_name}', [GalleryController::class, 'show']);
 
-Route::post('/messages/validate', [MessagesController::class, 'validateMessageRequest'])
-    ->name('message.validate.request');
+    Route::post('/messages/validate', [MessagesController::class, 'validateMessageRequest'])
+        ->name('message.validate.request');
 
-Route::post('/login/authenticate', [LoginController::class, 'authenticate'])
-    ->name('login.authenticate');
+Route::controller(LoginController::class)->group(function() {
+    Route::get('/register', 'register')->name('register');
+    Route::post('/store', 'store')->name('store');
+    Route::get('/login', 'login')->name('login');
+    Route::post('/login/authenticate', 'authenticate')
+        ->name('login.authenticate');
+    Route::get('/dashboard', 'dashboard')->name('dashboard');
+    Route::post('/logout', 'logout')->name('logout');
+});
 
-    Route::get('/dashboard', [DashboardController::class, 'index'])
-        ->name('dashboard')
-        ->middleware('auth');
 

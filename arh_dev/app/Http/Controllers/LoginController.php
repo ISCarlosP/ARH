@@ -1,34 +1,128 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Users;
-use App\Http\Controllers\DashboardController;
-use Illuminate\Testing\Fluent\Concerns\Has;
 
-
-class LoginController extends Controller{
-
-    public function authenticate (Request $request): RedirectResponse
+class LoginController extends Controller
+{
+    /**
+     * Instantiate a new LoginRegisterController instance.
+     */
+    public function __construct()
     {
-        $credentials = $request->only('username', 'password');
+        $this->middleware('guest')->except([
+            'logout', 'dashboard'
+        ]);
+    }
 
-        $loginCredentials = [
-            'user_screen_name' => $credentials['username'],
-            'user_password' => $credentials['password']
-        ];
+    /**
+     * Display a registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function register()
+    {
+        return view('auth.register');
+    }
 
-        if (Auth::attempt($loginCredentials)) {
+    /**
+     * Store a new user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:250',
+            'email' => 'required|email|max:250|unique:users',
+            'password' => 'required|min:8|confirmed'
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ]);
+
+        $credentials = $request->only('email', 'password');
+        Auth::attempt($credentials);
+        $request->session()->regenerate();
+        return redirect()->route('dashboard')
+            ->withSuccess('You have successfully registered & logged in!');
+    }
+
+    /**
+     * Display a login form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function login()
+    {
+        return view('auth.login');
+    }
+
+    /**
+     * Authenticate the user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->validate([
+            'user_screen_name' => 'required|user_screen_name',
+            'password' => 'required'
+        ]);
+
+        if(Auth::attempt($credentials))
+        {
             $request->session()->regenerate();
-            return redirect('/dashboard');
+            return redirect()->route('dashboard')
+                ->withSuccess('You have successfully logged in!');
         }
 
-        return redirect('/')->with('error', 'Credenciales incorrectas');
+        return back()->withErrors([
+            'email' => 'Your provided credentials do not match in our records.',
+        ])->onlyInput('email');
 
+    }
+
+    /**
+     * Display a dashboard to authenticated users.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function dashboard()
+    {
+        if(Auth::check()){
+            return view('dashboard');
+        }
+
+        return redirect()->route('login')
+            ->withErrors([
+                'email' => 'Please login to access the dashboard.',
+            ])->onlyInput('email');
+    }
+
+    /**
+     * Log out the user from application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('login')
+            ->withSuccess('You have logged out successfully!');;
     }
 
 }

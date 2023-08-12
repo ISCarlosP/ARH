@@ -14,6 +14,6 @@ class DashboardController extends Controller
 
         $user = json_encode($hello);
 
-        return view('users/dashboard', compact($user));
+        return view('users/dashboard');
     }
 }
