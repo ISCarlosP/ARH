@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Users;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -71,26 +73,19 @@ class LoginController extends Controller
      * Authenticate the user.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function authenticate(Request $request)
+    public function authenticate(Request $request): \Illuminate\Http\RedirectResponse
     {
-        $credentials = $request->validate([
-            'user_screen_name' => 'required|user_screen_name',
-            'password' => 'required'
+
+        $request->validate([
+            'inputUser' => 'required',
+            'inputPassword' => 'required'
         ]);
 
-        if(Auth::attempt($credentials))
-        {
-            $request->session()->regenerate();
-            return redirect()->route('dashboard')
-                ->withSuccess('You have successfully logged in!');
+        if(Auth::attempt(['user_screen_name' => $request->inputUser, 'user_password' => $request->inputPassword])){
+            return redirect()->route('dashboard');
         }
-
-        return back()->withErrors([
-            'email' => 'Your provided credentials do not match in our records.',
-        ])->onlyInput('email');
-
     }
 
     /**
@@ -98,13 +93,17 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function dashboard()
+    public function dashboard(Request $request)
     {
+        $session = Session::all();
+        Auth::logout();
+
+        $user = Auth::user();
         if(Auth::check()){
             return view('dashboard');
         }
 
-        return redirect()->route('login')
+        return redirect()->route('home')
             ->withErrors([
                 'email' => 'Please login to access the dashboard.',
             ])->onlyInput('email');
@@ -122,7 +121,7 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('login')
-            ->withSuccess('You have logged out successfully!');;
+            ->withSuccess('You have logged out successfully!');
     }
 
 }

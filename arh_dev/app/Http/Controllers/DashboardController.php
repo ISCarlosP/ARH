@@ -2,18 +2,132 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Messages;
+use App\Models\Site_visits;
+use App\Models\Users;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Services\SessionServices;
+use App\Services\Cookies;
+use Illuminate\Support\Facades\Cookie;
 
 class DashboardController extends Controller
 {
+    public function show(Request $request){
+        $sessionService = new SessionServices();
 
-    public function index(Request $request){
+        if(!$sessionService->existSession($request)){
+            return redirect()->route('home');
+        }
 
-        $hello = Auth::user();
+        $cookie = $sessionService->updateSessionTime();
+        $user = $sessionService->getLoggedUser();
 
-        $user = json_encode($hello);
+        $cardsData = $this->getCardsValues();
+        $chartsData = $this->getChartsData();
+        $messages = $this->getMessages();
 
-        return view('users/dashboard');
+        $userData = json_encode($user);
+        $cardsData = json_encode($cardsData);
+        $chartsData = json_encode($chartsData);
+        $messages = json_encode($messages);
+
+        return view('users.dashboard', compact('userData', 'cardsData', 'chartsData', 'messages'))->withCookie($cookie);
+    }
+    public function getCardsValues(){
+        $todayVisits = Site_visits::query()
+            ->whereBetween('created_at',[Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])
+            ->count();
+
+        $weekVisits = Site_visits::query()
+            ->whereBetween('created_at',[Carbon::now()->subDays(8), Carbon::now()->endOfDay()])
+            ->count();
+
+        $monthVisits = Site_visits::query()
+            ->whereBetween('created_at',[Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])
+            ->count();
+
+        $activeUsers = Users::query()
+            ->where('status', 1)
+            ->count();
+
+        return [
+            'today_visits' => [
+                'name' => 'VISITAS HOY',
+                'icon_class' => 'fa-regular fa-eye text-secondary',
+                'hex' => '#ff5d5d',
+                'value' => $todayVisits
+            ],
+            'week_visits' => [
+                'name' => 'ESTA SEMANA',
+                'icon_class' => 'fa-solid fa-calendar-days text-secondary',
+                'hex' => '#c27ba0',
+                'value' => $weekVisits
+            ],
+            'month_visits' => [
+                'name' => '30 DÍAS',
+                'icon_class' => 'fa-regular fa-hourglass-half text-secondary',
+                'hex' => '#9acd32',
+                'value' => $monthVisits
+            ],
+            'active_users' => [
+                'name' => 'USUARIOS ACTIVOS',
+                'icon_class' => 'fa-solid fa-user text-secondary',
+                'hex' => '#6fa8dc',
+                'value' => $activeUsers
+            ],
+        ];
+
+    }
+    public function getChartsData(){
+        $count = 0;
+        $weekVisitsDetail = [
+            'days' => [],
+            'data' => []
+        ];
+
+        $monthVisitsDetail = [
+            'days' => [],
+            'data' => []
+        ];
+
+        while($count < 7){
+            $start = Carbon::now()->setTimezone('America/Belize')->startOfDay()->subDays($count);
+            $end = Carbon::now()->setTimezone('America/Belize')->endOfDay()->subDays($count);
+
+            $visitsCount = Site_visits::query()
+                ->whereBetween('created_at', [$start, $end])
+                ->count();
+
+            $weekVisitsDetail['days'][] = strtoupper(Carbon::now()->setTimezone('America/Belize')->subDays($count)->locale('es')->isoFormat('ddd'));
+            $weekVisitsDetail['data'][] = $visitsCount;
+            $count++;
+        }
+
+        $count = 0;
+
+        while($count < 30){
+            $start = Carbon::now()->setTimezone('America/Belize')->startOfDay()->subDays($count);
+            $end = Carbon::now()->setTimezone('America/Belize')->endOfDay()->subDays($count);
+
+            $visitsCount = Site_visits::query()
+                ->whereBetween('created_at', [$start, $end])
+                ->count();
+
+            $monthVisitsDetail['days'][] = strtoupper(Carbon::now()->setTimezone('America/Belize')->subDays($count)->locale('es')->isoFormat('D/M/Y'));
+            $monthVisitsDetail['data'][] = $visitsCount;
+            $count++;
+        }
+
+        return ['monthVisitsDetail' => array_reverse($monthVisitsDetail), 'weekVisitsDetail' => array_reverse($weekVisitsDetail)];
+    }
+    public function getMessages(){
+
+        $messages = Messages::query()
+            ->where('message_status_id', 1)
+            ->get()
+            ->toArray();
+
+        return($messages);
     }
 }

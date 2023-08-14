@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es-MX">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 </head>
 <body onload="toggleLoader()">
 <div id="content"
@@ -81,16 +83,16 @@
         </div>
 
         <!-- Pagina de Inicio-->
-            <inicio-component></inicio-component>
+        <inicio-component></inicio-component>
         <!-- Pagina de Inicio end -->
         <!-- Pagina Servicios -->
-            <services-component :products="products"></services-component>
+        <services-component :products="products"></services-component>
         <!-- Pagina Servicios end -->
         <!-- Pagina About Us -->
-            <aboutus-component></aboutus-component>
+        <aboutus-component></aboutus-component>
         <!-- Pagina About Us end-->
         <!-- Pagina de contacto Component-->
-            <contact-component :routes="routes"></contact-component>
+        <contact-component :routes="routes"></contact-component>
         <!-- Pagiga de contacto Component end -->
         <div class="modal fade" id="loginModal"
              tabindex="-1"
@@ -106,11 +108,23 @@
                             <div class="col-lg-10 col-sm-12 mx-auto">
                                 <div class="input-group mb-3">
                                     <div class="input-group-text" id="spanInputUser"><i class="bi bi-person-circle"></i></div>
-                                    <input id="inputUser" v-model="user.username" type="text" class="form-control" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1">
+                                    <input id="inputUser"
+                                           name="inputUser"
+                                           v-model="user.email"
+                                           type="text" class="form-control"
+                                           placeholder="Usuario"
+                                           aria-label="Username"
+                                           aria-describedby="basic-addon1">
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="spanInputPassword"><i class="bi bi-key-fill"></i></span>
-                                    <input id="inputPassword" v-model="user.password" type="password" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1">
+                                    <input id="inputPassword"
+                                           name="inputPassword"
+                                            v-model="user.password"
+                                           type="password"
+                                           class="form-control" placeholder="Contraseña"
+                                           aria-label="Username"
+                                           aria-describedby="basic-addon1">
                                     <button type="button" class="input-group-text" onclick="toggleSeePassword()"><i id="iconSeePassword" class="bi bi-eye-fill"></i></button>
                                 </div>
                                 <div>
@@ -120,7 +134,7 @@
                         </div>
                     </div>
                     <div class="modal-footer py-1" style="min-height: 10px">
-                        <button type="button" class="btn btn-sm btn-primary" v-on:click="logInSession">
+                        <button type="submit" class="btn btn-sm btn-primary" v-on:click="logInSession()">
                             <span id="loginButtonSpinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                             <span id="loginButtonText">Enviar</span>
                         </button>
@@ -141,6 +155,7 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
@@ -166,18 +181,24 @@
                 products: {!! $products !!},
                 routes: {!! $routes !!},
                 user: {
-                    username: '',
+                    email: '',
                     password: ''
-                }
+                },
             }
         },
         methods: {
             logInSession: function(){
-                console.log(this.routes.authenticate)
-                const { username, password } = this.user
-                axios.post(this.routes.authenticate , { username, password })
+                const { email, password } = this.user
+                axios.post(this.routes.authenticate , { email, password })
                     .then(response => {
-                        console.log(response)
+                        if(response.data === 'sesion_iniciada'){
+                            location.replace(window.location.origin + '/dashboard');
+                            return
+                        }
+                        response.data.exception.forEach(function(error){
+                            toastr.warning(error);
+                        })
+                        console.warn('Usuario o contraseña incorrectos');
                     })
                     .catch(err => {
                         console.log(err)

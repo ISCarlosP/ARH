@@ -843,6 +843,10 @@ class Builder implements BuilderContract
         });
     }
 
+    public function toArray()
+    {
+    }
+
     /**
      * Add a generic "order by" clause if the query doesn't already have one.
      *

@@ -37,6 +37,7 @@ class SiteVisitsController extends Controller
                 $cookie = $cookies->createCookie([
                     'cookie_type' => 'visit_token',
                     'token' => $token,
+                    'time' => 20
                 ]);
 
                 Site_visits::create([

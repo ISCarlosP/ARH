@@ -10,8 +10,12 @@ class Cookies
         $cookiesArray = $request->cookies->all();
         return $request->cookie('visit_token');
     }
-
     public function createCookie($cookieInfo){
-        return Cookie::make($cookieInfo['cookie_type'],$cookieInfo['token'], 1);
+        return Cookie::make($cookieInfo['cookie_type'],$cookieInfo['token'], $cookieInfo['time']?? 20);
+    }
+    public function getTokenByCookie(){
+        $currentCookie = Cookie::get('session_token');
+
+        return $currentCookie;
     }
 }
