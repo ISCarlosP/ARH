@@ -2,6 +2,7 @@
 .box-img-galery{
     position: relative;
     cursor: pointer;
+    height: auto;
 }
 
 .box-img-galery img{
@@ -58,3 +59,39 @@
     border: none;
 }
 
+.imgTotal{
+    background: rgba(255,255,255,.4);
+    padding: 2px 8px;
+    border-radius: 20px;
+}
+
+.img-content{
+    display: flex;
+    width: auto;
+}
+
+.backBtn{
+    background: transparent;
+    margin-right: 20px;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 40px;
+}
+
+.backBtn:hover{
+    color: #9BABB8;
+}
+
+.nextBtn{
+    background: transparent;
+    margin-left: 20px;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 40px;
+}
+
+.nextBtn:hover{
+    color: #9BABB8;
+}

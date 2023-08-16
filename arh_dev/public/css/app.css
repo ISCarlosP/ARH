@@ -13,8 +13,9 @@
 
 .menu-fixed {
     position: sticky !important;
-    top: 0;   
-    z-index: 2; 
+    top: 0;
+    z-index: 2;
+    background: #0d6efd !important;
 }
 
 #title-h1{
@@ -53,9 +54,9 @@ li a:hover, button:hover{
 }
 
 #inicio{
-    background-image: url("../img/portada-img.jpg"); 
-    background-attachment: fixed; 
-    background-repeat: no-repeat; 
+    background-image: url("../img/portada-img.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     background-size: 100%;
 }
 
@@ -261,7 +262,7 @@ footer > div > div > img{
         height: 250px;
         width: 100%;
     }
-    
+
     #servicios{
         height: auto;
         padding-top: 0px;
@@ -270,14 +271,14 @@ footer > div > div > img{
     #nosotros{
         padding-top: 30px;
     }
-    
+
     #imgUs{
         margin-right: 10px;
     }
     #formNosotros input[type="text"], input[type="submit"]{
         width: 100%;
     }
-    
+
     #formNosotros textarea{
         width: 100%;
     }
@@ -325,4 +326,4 @@ footer > div > div > img{
         height: auto;
         padding-top: 100px;
     }
-} 
+}
