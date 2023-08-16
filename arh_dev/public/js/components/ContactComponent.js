@@ -2,10 +2,10 @@
 
 const ContactComponent = {
     props: {
-      routes: {
-          type: Object,
-          required: true
-      }
+        routes: {
+            type: Object,
+            required: true
+        }
     },
     template: `
     <div class="d-flex align-items-center justify-content-center pb-5 bg-transparent"
@@ -32,7 +32,8 @@ const ContactComponent = {
                                           style="height: 120px;" v-model="sendMessage.message"></textarea>
                                         <label for="floatingTextarea">Deje un comentario</label>
                                     </div>
-                                    <button class="btn btn-primary w-100" v-on:click="sendData">Enviar</button>
+                                    <button class="btn btn-primary w-100" v-on:click="sendData">Enviar
+                                    <span id="formSpinner" class="spinner-border spinner-border-sm d-none" ></span></button>
                             </div>
                         </div>
                     </div>
@@ -63,6 +64,7 @@ const ContactComponent = {
         },
         //Funcion para mostrar el mensaje de error
         showTimeOut: function(){
+            document.getElementById('formSpinner').classList.add('d-none');
             const errorMsg = document.getElementById('error-msg')
             errorMsg.classList.remove('d-none')
             setTimeout(() => {
@@ -70,6 +72,7 @@ const ContactComponent = {
             },10000)
         },
         sendData: function(){
+            document.getElementById('formSpinner').classList.remove('d-none');
             const { name, email, phone, message} = this.sendMessage
 
             // Validación del correo electrónico utilizando una expresión regular
@@ -96,10 +99,22 @@ const ContactComponent = {
 
             axios.post(this.routes.send_message, { name, email, phone, message })
                 .then(response => {
-                    console.log(response)
-                })
-                .catch(err => console.log(err))
-        }
+                    document.getElementById('formSpinner').classList.add('d-none');
+                    toastr.success(response.data.message);
+                    this.cleanFormValues();
+                }).catch(function(error){
+                document.getElementById('formSpinner').classList.remove('d-none');
+                toastr.error(error);
+            })
+        },
+        cleanFormValues: function(){
+            this.sendMessage = {
+                name: '',
+                email: '',
+                phone: '',
+                message: ''
+            }
+        },
     },
 }
 

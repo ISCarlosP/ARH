@@ -8,6 +8,7 @@ use App\Models\Products;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use App\Services\SessionServices;
+use Illuminate\Database\Eloquent\Model;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,10 @@ class HomeController extends Controller
 
         $products = Products::all()
             ->toArray();
+
+        usort($products, function ($a, $b){
+           return $a['product_screen_order'] - $b['product_screen_order'];
+        });
 
         $products = json_encode($products);
 
