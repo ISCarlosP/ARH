@@ -10,13 +10,16 @@
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="icon" type="image/png" href="img/arh_icon_final.png">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <title>ARH Dashboard</title></head>
 <body>
 <div id="app" class="d-flex justify-content-center"
      style="background-image: url('/img/subtle-prism (1).svg'); background-repeat: no-repeat; min-height: 63rem; z-index: 0">
     <div id="" class="w-100">
         <div class="row m-0 p-0">
-            <div class="col-12 d-flex justify-content-start py-2 shadow bg-white">
+            <div class="col-12 d-flex justify-content-start py-2 shadow bg-white sticky-top">
                 <button class="btn btn-sm fs-5 mx-2"
                         data-bs-toggle="offcanvas"
                         data-bs-target="#userMenu">
@@ -103,7 +106,7 @@
                                      v-for="message in messages">
                                     <div class="card shadow">
                                         <div class="card-header">
-                                            <span class="fw-bold fs-4" v-text="'Mensaje: ' + message.message_id"></span>
+                                            <span class="fw-bold fs-4" v-text="'Mensaje: #' + message.message_id"></span>
                                         </div>
                                         <div class="card-body">
                                             <div class="d-flex justify-content-lg-center">
@@ -147,7 +150,8 @@
                                                 </div>
                                             </div>
                                             <div class="d-flex justify-content-center mt-3 w-100">
-                                                <button class="btn btn-sm btn-success fw-bold">Marcar como visto
+                                                <button class="btn btn-sm btn-success fw-bold" v-on:click="checkCurrentMessage(message.message_id)">Marcar como visto
+                                                    <span :id="'checkMessageLoading' + message.message_id" class="spinner-border spinner-border-sm d-none mx-1" role="status" aria-hidden="true"></span>
                                                 </button>
                                             </div>
                                         </div>
@@ -670,11 +674,13 @@
 <footer></footer>
 <script src="bootstrap-5.3.0-dist/js/bootstrap.bundle.js"></script>
 <script src="bootstrap-5.3.0-dist/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
         integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
 <script src="js/dashboard.js"></script>
 <script type="module">
     import {createApp} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
@@ -724,7 +730,8 @@
                 user:{!! $userData !!},
                 cardsData: {!! $cardsData !!},
                 chartsData:{!! $chartsData !!},
-                messages: {!! $messages !!}
+                messages: {!! $messages !!},
+                urls: {!! $urls !!}
             }
         },
         methods: {
@@ -865,6 +872,23 @@
             openCreateUsers : function(){
                 $('#createUserModal').modal('show');
             },
+            checkCurrentMessage: function(messageId){
+                document.getElementById('checkMessageLoading' + messageId).classList.remove('d-none');
+
+                axios.post(this.urls.checkMessage, {messageId : messageId}).then(function (response){
+                    if(!response.data.response){
+                        document.getElementById('checkMessageLoading'+ messageId).classList.add('d-none');
+                        toastr.error('Hubo un error al enviar tu solicitud');
+                        return
+                    }
+                    document.getElementById('checkMessageLoading' + messageId).classList.add('d-none');
+                    toastr.success(response.data.message);
+                    this.messages = response.data.values;
+                }.bind(this)).catch(function(error){
+                    toastr.error('Hubo un error al enviar tu solicitud'+ messageId);
+                    document.getElementById('checkMessageLoading' + messageId).classList.add('d-none');
+                });
+            }
         },
         watch: {},
         computed: {

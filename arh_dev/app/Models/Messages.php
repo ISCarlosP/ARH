@@ -10,6 +10,7 @@ class Messages extends Model
     use HasFactory;
 
     protected $table = 'messages';
+    protected $primaryKey = 'message_id';
     protected $fillable = [
         'message_text',
         'message_user_name',

@@ -120,7 +120,7 @@
                                     <span class="input-group-text" id="spanInputPassword"><i class="bi bi-key-fill"></i></span>
                                     <input id="inputPassword"
                                            name="inputPassword"
-                                            v-model="user.password"
+                                           v-model="user.password"
                                            type="password"
                                            class="form-control" placeholder="Contraseña"
                                            aria-label="Username"
@@ -134,9 +134,10 @@
                         </div>
                     </div>
                     <div class="modal-footer py-1" style="min-height: 10px">
-                        <button type="submit" class="btn btn-sm btn-primary" v-on:click="logInSession()">
-                            <span id="loginButtonSpinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
-                            <span id="loginButtonText">Enviar</span>
+                        <button type="submit" class="btn btn-sm btn-primary"
+                                v-on:click="logInSession()">
+                            <span id="loginButtonText"> Ingresar</span>
+                            <span id="loginButtonSpinner" class="spinner-border spinner-border-sm d-none mx-1" role="status" aria-hidden="true"></span>
                         </button>
                     </div>
                 </div>
@@ -189,12 +190,14 @@
         methods: {
             logInSession: function(){
                 const { email, password } = this.user
+                document.getElementById('loginButtonSpinner').classList.remove('d-none');
                 axios.post(this.routes.authenticate , { email, password })
                     .then(response => {
                         if(response.data === 'sesion_iniciada'){
                             location.replace(window.location.origin + '/dashboard');
                             return
                         }
+                        document.getElementById('loginButtonSpinner').classList.add('d-none');
                         response.data.exception.forEach(function(error){
                             toastr.warning(error);
                         })
@@ -202,10 +205,11 @@
                     })
                     .catch(err => {
                         console.log(err)
+                        document.getElementById('loginButtonSpinner').classList.add('d-none');
                     })
             }
         },
-    })
+    });
 
     app.component('aboutus-component', AboutusComponent);
     app.component('contact-component', ContactComponent);

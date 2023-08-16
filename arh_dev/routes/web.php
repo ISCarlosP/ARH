@@ -34,6 +34,9 @@ Route::post('/auth/create', [AuthController::class, 'create'])
 Route::get('/dashboard', [DashboardController::class, 'show'])
     ->name('dashboard');
 
+Route::post('/check/message', [DashboardController::class, 'checkMessage'])
+    ->name('check.message');
+
 Route::get('/clear/cookies', function(Request $request){
     $cookieName = 'session_token'; // Reemplaza con el nombre de la cookie que deseas eliminar
 

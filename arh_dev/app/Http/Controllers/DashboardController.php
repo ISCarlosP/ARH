@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Messages;
 use App\Models\Site_visits;
 use App\Models\Users;
+use App\Services\Utilities;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Services\SessionServices;
@@ -26,13 +27,15 @@ class DashboardController extends Controller
         $cardsData = $this->getCardsValues();
         $chartsData = $this->getChartsData();
         $messages = $this->getMessages();
+        $urls = $this->getUrlsToSend();
 
         $userData = json_encode($user);
         $cardsData = json_encode($cardsData);
         $chartsData = json_encode($chartsData);
         $messages = json_encode($messages);
+        $urls = json_encode($urls);
 
-        return view('users.dashboard', compact('userData', 'cardsData', 'chartsData', 'messages'))->withCookie($cookie);
+        return view('users.dashboard', compact('userData', 'cardsData', 'chartsData', 'messages', 'urls'))->withCookie($cookie);
     }
     public function getCardsValues(){
         $todayVisits = Site_visits::query()
@@ -129,5 +132,27 @@ class DashboardController extends Controller
             ->toArray();
 
         return($messages);
+    }
+    public function checkMessage(Request $request){
+        $utilities = new Utilities();
+        $response = $utilities->createResponse();
+
+        $message = Messages::query()
+            ->where('message_id', $request->messageId)
+            ->first();
+
+        $message->message_status_id = 2;
+        $message->save();
+
+        $response['values'] = $this->getMessages();
+
+        return $response;
+    }
+    public function getUrlsToSend(){
+        $urls = [
+            'checkMessage' => route('check.message'),
+        ];
+
+        return $urls;
     }
 }
