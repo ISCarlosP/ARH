@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Messages;
 use App\Models\Site_visits;
+use App\Models\User;
 use App\Models\Users;
 use App\Services\Utilities;
 use Carbon\Carbon;
@@ -28,14 +29,16 @@ class DashboardController extends Controller
         $chartsData = $this->getChartsData();
         $messages = $this->getMessages();
         $urls = $this->getUrlsToSend();
+        $users = $this->getActiveUsers();
 
         $userData = json_encode($user);
         $cardsData = json_encode($cardsData);
         $chartsData = json_encode($chartsData);
         $messages = json_encode($messages);
         $urls = json_encode($urls);
+        $users = json_encode($users);
 
-        return view('users.dashboard', compact('userData', 'cardsData', 'chartsData', 'messages', 'urls'))->withCookie($cookie);
+        return view('users.dashboard', compact('userData', 'cardsData', 'chartsData', 'messages', 'urls', 'users'))->withCookie($cookie);
     }
     public function getCardsValues(){
         $todayVisits = Site_visits::query()
@@ -154,5 +157,25 @@ class DashboardController extends Controller
         ];
 
         return $urls;
+    }
+    public function getActiveUsers(){
+        $allUsers = User::query()
+            ->select('id','first_name', 'last_name', 'user_birth_date', 'email', 'created_at')
+            ->where('status', 1)
+            ->get()
+            ->toArray();
+        $users = [];
+
+        foreach ($allUsers as $user ){
+            $users[] = [
+                'first_name' => $user['first_name'],
+                'last_name' => $user['last_name'],
+                'birth_date' => Carbon::parse($user['user_birth_date'])->format('Y-m-d'),
+                'created_at' => Carbon::parse($user['created_at'])->format('Y-m-d h:i:s a'),
+                'email' => $user['email'],
+            ];
+        }
+
+        return $users;
     }
 }

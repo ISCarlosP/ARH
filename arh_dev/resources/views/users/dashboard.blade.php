@@ -104,7 +104,7 @@
                             <div class="row my-3">
                                 <div class="col-lg-3 my-2 mx-auto"
                                      v-for="message in messages">
-                                    <div class="card shadow">
+                                    <div class="card shadow h-100">
                                         <div class="card-header">
                                             <span class="fw-bold fs-4" v-text="'Mensaje: #' + message.message_id"></span>
                                         </div>
@@ -166,7 +166,7 @@
                         <div class="w-100 text-center">
                             <div class="d-flex justify-content-end my-3">
                                 <button class="btn btn-sm btn-success"
-                                        onclick="openCreateUsers()">Agregar usuarios
+                                        v-on:click="openCreateUsers()">Agregar usuarios
                                 </button>
                             </div>
                             <div class="row px-2">
@@ -181,15 +181,19 @@
                                                 <tr>
                                                     <th scope="col">#</th>
                                                     <th scope="col">Nombre completo</th>
-                                                    <th scope="col">Rol</th>
+                                                    <th scope="col">Usuario</th>
+                                                    <th scope="col">Fecha de cumpleaños</th>
+                                                    <th scope="col">Fecha de creación</th>
                                                     <th scope="col">Opciones</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 <tr v-for="(user, i) in users">
                                                     <th scope="row" v-text="i + 1"></th>
-                                                    <td v-text="user.name + ' ' + user.lastName + ' ' + user.lastName1"></td>
-                                                    <td v-text="user.rol"></td>
+                                                    <td v-text="user.first_name + ' ' + user.last_name"></td>
+                                                    <td v-text="user.email"></td>
+                                                    <td v-text="user.birth_date"></td>
+                                                    <td v-text="user.created_at"></td>
                                                     <td class="d-flex justify-content-center">
                                                         <button class="btn btn-sm btn-icon btn-warning mx-2"><i
                                                                 class="fa-solid fa-pen-to-square"></i></button>
@@ -688,26 +692,6 @@
     createApp({
         data() {
             return {
-                users: [
-                    {
-                        name: 'Carlos',
-                        lastName: 'Perez',
-                        lastName1: 'Nuñez',
-                        codeName: 'carlos.perez',
-                        password: '123456789',
-                        birthDate: '1997/12/01',
-                        rol: '1'
-                    },
-                    {
-                        name: 'Esteban',
-                        lastName: 'Hernandez',
-                        lastName1: 'Suarez',
-                        codeName: 'esteban.hernandez',
-                        password: '123456789',
-                        birthDate: '2000/10/15',
-                        rol: '3'
-                    },
-                ],
                 currentUser: {
                     userName: '',
                     userLastName: '',
@@ -731,7 +715,8 @@
                 cardsData: {!! $cardsData !!},
                 chartsData:{!! $chartsData !!},
                 messages: {!! $messages !!},
-                urls: {!! $urls !!}
+                urls: {!! $urls !!},
+                users: {!! $users !!},
             }
         },
         methods: {
