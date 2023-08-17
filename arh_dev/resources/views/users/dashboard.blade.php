@@ -653,7 +653,7 @@
                     <button type="button"
                             class="btn btn-success"
                             v-on:click="saveUser()">Guardar
-                        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                        <span id="saveUserSpinner" class="spinner-border spinner-border-sm d-none"></span>
                     </button>
                 </div>
             </div>
@@ -776,17 +776,21 @@
             },
             saveUser: function () {
                 this.createUser['createUserCodeName'] = this.createUserCodeName;
+                document.getElementById('saveUserSpinner').classList.remove('d-none');
 
                 axios.post(this.urls.createUser, this.createUser ).then(function(response){
                     if(!response.data.response){
                         response.data.exceptions.forEach(function(error){
                             toastr.error(error);
                         });
+                        document.getElementById('saveUserSpinner').classList.add('d-none');
                         return
                     }
+                    document.getElementById('saveUserSpinner').classList.add('d-none');
                     toastr.success(response.data.message);
                     this.users = response.data.values;
                     this.users = response.data.values;
+
                     this.createUser = {
                         userName: '',
                         userLastName: '',
@@ -794,8 +798,10 @@
                         userPassword: '',
                         userConfirmPassword: '',
                         userBirthDate: '',
-                    };
-                }).catch(function(error){
+                    }
+
+                }.bind(this)).catch(function(error){
+                    document.getElementById('saveUserSpinner').classList.add('d-none');
                     toastr.error(error);
                 })
             },
