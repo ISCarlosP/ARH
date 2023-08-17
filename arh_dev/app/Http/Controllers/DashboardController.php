@@ -155,6 +155,7 @@ class DashboardController extends Controller
         $urls = [
             'checkMessage' => route('check.message'),
             'loggout' => route('session.loggout'),
+            'createUser' => route('users.create')
         ];
 
         return $urls;
