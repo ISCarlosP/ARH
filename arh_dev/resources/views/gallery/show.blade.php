@@ -43,11 +43,13 @@
             </div>
             <div class="fullScreen d-none d-flex flex-column justify-content-center align-items-center">
                 <button v-on:click="myCloseButton" class="closeButton"><i class="fas fa-times-circle"></i></button>
-                <div class="d-flex align-items-center">
-                    <button style="height: 50px;" class="backBtn" v-on:click="backImg"><i class="fas fa-arrow-circle-left"></i></button>
-                    <div class="img-content" style="width: 470px; height: 520px;">
+                <div class="d-flex flex-column align-items-center content-images-galery">
+                    <div class="img-content">
                     </div>
-                    <button style="height: 50px;" class="nextBtn" v-on:click="nextImg"><i class="fas fa-arrow-circle-right"></i></button>
+                    <div class="w-50 d-flex justify-content-between">
+                        <button style="height: 50px;" class="backBtn" v-on:click="backImg"><i class="fas fa-arrow-circle-left"></i></button>
+                        <button style="height: 50px;" class="nextBtn" v-on:click="nextImg"><i class="fas fa-arrow-circle-right"></i></button>
+                    </div>
                 </div>
             </div>
         </div>

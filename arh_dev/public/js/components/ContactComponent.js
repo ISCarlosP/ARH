@@ -21,7 +21,7 @@ const ContactComponent = {
                                     <div class="rounded bg-danger p-3 mb-3 d-flex flex-column justify-content-center d-none" id="error-msg">
                                         <strong class="text-white">º Debe llenar todos los campos del formulario</strong>
                                         <strong class="text-white">º Ingrese un correo valido</strong>
-                                        <strong class="text-white">º El numero debe tener 10 digitos</strong>
+                                        <strong class="text-white">º El telefono debe tener 10 digitos</strong>
                                         <strong class="text-white">º Debe ingresar un comentario con mas de 20 caracteres</strong>
                                     </div>
                                     <input type="text" name="" id="name" class="form-control mb-4" placeholder="Nombre" v-model="sendMessage.name">

@@ -72,6 +72,8 @@
 .img-content{
     display: flex;
     width: auto;
+    width: 470px;
+    height: 520px;
 }
 
 .backBtn{
@@ -105,6 +107,13 @@
 }
 
 @media (max-width: 415px){
+
+    .img-content{
+        display: flex;
+        width: 100%;
+        height: auto;
+    }
+
     #galery_info{
         text-align: start;
     }
