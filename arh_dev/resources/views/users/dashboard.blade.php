@@ -10,7 +10,8 @@
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="icon" type="image/png" href="img/arh_icon_final.png">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <title>ARH Dashboard</title></head>
@@ -56,10 +57,12 @@
                                                     <div class="col-10">
                                                         <div class="row w-100">
                                                             <div class="col-12 text-center">
-                                                                <span class="fw-bolder fs-1 text-secondary" v-text="card.value"></span>
+                                                                <span class="fw-bolder fs-1 text-secondary"
+                                                                      v-text="card.value"></span>
                                                             </div>
                                                             <div class="col-12 text-center">
-                                                                <span class="fw-bold text-secondary" v-text="card.name"></span>
+                                                                <span class="fw-bold text-secondary"
+                                                                      v-text="card.name"></span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -106,7 +109,8 @@
                                      v-for="message in messages">
                                     <div class="card shadow h-100">
                                         <div class="card-header">
-                                            <span class="fw-bold fs-4" v-text="'Mensaje: #' + message.message_id"></span>
+                                            <span class="fw-bold fs-4"
+                                                  v-text="'Mensaje: #' + message.message_id"></span>
                                         </div>
                                         <div class="card-body">
                                             <div class="d-flex justify-content-lg-center">
@@ -145,14 +149,19 @@
                                                         <span class="fw-bolder text-secondary">Tel:</span>
                                                     </div>
                                                     <div>
-                                                        <span class="fw-bold" v-text="message.message_user_phone"></span>
+                                                        <span class="fw-bold"
+                                                              v-text="message.message_user_phone"></span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="card-footer">
-                                            <button class="btn btn-sm btn-success fw-bold" v-on:click="checkCurrentMessage(message.message_id)">Marcar como visto
-                                                <span :id="'checkMessageLoading' + message.message_id" class="spinner-border spinner-border-sm d-none mx-1" role="status" aria-hidden="true"></span>
+                                            <button class="btn btn-sm btn-success fw-bold"
+                                                    v-on:click="checkCurrentMessage(message.message_id)">Marcar como
+                                                visto
+                                                <span :id="'checkMessageLoading' + message.message_id"
+                                                      class="spinner-border spinner-border-sm d-none mx-1" role="status"
+                                                      aria-hidden="true"></span>
                                             </button>
                                         </div>
                                     </div>
@@ -220,7 +229,8 @@
                                     <div class="row">
                                         <div class="col-lg-8 col-sm-12 mx-auto">
                                             <div class="d-flex justify-content-center my-2 w-100 shadow">
-                                                <img alt="Banner principal" src="img/banner_principal.png" class="rounded img-fluid">
+                                                <img alt="Banner principal" src="img/banner_principal.png"
+                                                     class="rounded img-fluid">
                                             </div>
                                         </div>
                                     </div>
@@ -252,7 +262,8 @@
                                         <div class="col-lg-3 col-sm-5 mx-auto my-2">
                                             <div class="card">
                                                 <div class="d-flex justify-content-center p-2">
-                                                    <img alt="category"  style="width: 100%; height: 400px;" src="img/barandales-de-acero/img-1.jpeg" class="rounded">
+                                                    <img alt="category" style="width: 100%; height: 400px;"
+                                                         src="img/barandales-de-acero/img-1.jpeg" class="rounded">
                                                 </div>
                                                 <div class="my-1 d-flex justify-content-center">
                                                     <div class="px-1">
@@ -275,8 +286,9 @@
                                                     <div type="button"
                                                          class="bg-dark rounded-3"
                                                          v-on:click="openEditProductGallery('barandales-de-acero')">
-                                                        <span class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"
-                                                              style="min-height: 3.0rem">BARANDALES DE ACERO INOXIDABLE</span>
+                                                        <span
+                                                            class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"
+                                                            style="min-height: 3.0rem">BARANDALES DE ACERO INOXIDABLE</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -284,7 +296,8 @@
                                         <div class="col-lg-3 col-sm-5 mx-auto my-2">
                                             <div class="card">
                                                 <div class="d-flex justify-content-center p-2">
-                                                    <img alt="category"  style="width: 100%; height: 400px;" src="img/cristal-templado/img-1.jpeg" class="rounded">
+                                                    <img alt="category" style="width: 100%; height: 400px;"
+                                                         src="img/cristal-templado/img-1.jpeg" class="rounded">
                                                 </div>
                                                 <div class="my-1 d-flex justify-content-center">
                                                     <div class="px-1">
@@ -304,8 +317,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="my-2 text-center px-2">
-                                                    <div type="button" class="bg-dark rounded-3" style="min-height: 3.0rem" v-on:click="openEditProductGallery('cristal-templado')">
-                                                        <span class="fw-bolder text-white text-center d-flex justify-content-center align-items-center" style="min-height: 3.0rem">BARANDALES CON CRISTAL TEMPLADO</span>
+                                                    <div type="button" class="bg-dark rounded-3"
+                                                         style="min-height: 3.0rem"
+                                                         v-on:click="openEditProductGallery('cristal-templado')">
+                                                        <span
+                                                            class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"
+                                                            style="min-height: 3.0rem">BARANDALES CON CRISTAL TEMPLADO</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -313,7 +330,8 @@
                                         <div class="col-lg-3 col-sm-5 mx-auto my-2">
                                             <div class="card">
                                                 <div class="d-flex justify-content-center p-2">
-                                                    <img alt="category"  style="width: 100%; height: 400px;" src="img/tapas-cisternas/img-1.jpeg" class="rounded">
+                                                    <img alt="category" style="width: 100%; height: 400px;"
+                                                         src="img/tapas-cisternas/img-1.jpeg" class="rounded">
                                                 </div>
                                                 <div class="my-1 d-flex justify-content-center">
                                                     <div class="px-1">
@@ -333,8 +351,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="my-2 text-center px-2">
-                                                    <div type="button" class="bg-dark rounded-3" v-on:click="openEditProductGallery('tapas-cisternas')">
-                                                        <span class="fw-bolder text-white text-center d-flex justify-content-center align-items-center" style="min-height: 3.0rem"
+                                                    <div type="button" class="bg-dark rounded-3"
+                                                         v-on:click="openEditProductGallery('tapas-cisternas')">
+                                                        <span
+                                                            class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"
+                                                            style="min-height: 3.0rem"
                                                         >TAPAS PARA CISTERNAS</span>
                                                     </div>
                                                 </div>
@@ -343,7 +364,8 @@
                                         <div class="col-lg-3 col-sm-5 mx-auto my-2">
                                             <div class="card">
                                                 <div class="d-flex justify-content-center p-2">
-                                                    <img alt="category"  style="width: 100%; height: 400px;" src="img/canceles-para-baños/img-1.jpeg" class="rounded">
+                                                    <img alt="category" style="width: 100%; height: 400px;"
+                                                         src="img/canceles-para-baños/img-1.jpeg" class="rounded">
                                                 </div>
                                                 <div class="my-1 d-flex justify-content-center">
                                                     <div class="px-1">
@@ -363,8 +385,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="my-2 text-center px-2">
-                                                    <div type="button" class="bg-dark rounded-3" v-on:click="openEditProductGallery('canceles-para-baños')">
-                                                        <span class="fw-bolder text-white text-center d-flex justify-content-center align-items-center" style="min-height: 3.0rem">CANCELES PARA BAÑO</span>
+                                                    <div type="button" class="bg-dark rounded-3"
+                                                         v-on:click="openEditProductGallery('canceles-para-baños')">
+                                                        <span
+                                                            class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"
+                                                            style="min-height: 3.0rem">CANCELES PARA BAÑO</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -372,7 +397,8 @@
                                         <div class="col-lg-3 col-sm-5 mx-auto my-2">
                                             <div class="card">
                                                 <div class="d-flex justify-content-center p-2">
-                                                    <img alt="category"  style="width: 100%; height: 400px;" src="img/baradales-curvos/img-1.jpeg" class="rounded">
+                                                    <img alt="category" style="width: 100%; height: 400px;"
+                                                         src="img/baradales-curvos/img-1.jpeg" class="rounded">
                                                 </div>
                                                 <div class="my-1 d-flex justify-content-center">
                                                     <div class="px-1">
@@ -394,7 +420,9 @@
                                                 <div class="my-2 text-center px-2">
                                                     <div type="button" class="bg-dark rounded-3"
                                                          v-on:click="openEditProductGallery('barandales-curvos')">
-                                                        <span class="fw-bolder text-white text-center d-flex justify-content-center align-items-center" style="min-height: 3.0rem">BARANDALES CURVOS</span>
+                                                        <span
+                                                            class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"
+                                                            style="min-height: 3.0rem">BARANDALES CURVOS</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -402,7 +430,8 @@
                                         <div class="col-lg-3 col-sm-5 mx-auto my-2">
                                             <div class="card">
                                                 <div class="d-flex justify-content-center p-2">
-                                                    <img alt="category"  style="width: 100%; height: 400px;" src="img/pasamanos/img-1.jpeg" class="rounded">
+                                                    <img alt="category" style="width: 100%; height: 400px;"
+                                                         src="img/pasamanos/img-1.jpeg" class="rounded">
                                                 </div>
                                                 <div class="my-1 d-flex justify-content-center">
                                                     <div class="px-1">
@@ -424,7 +453,9 @@
                                                 <div class="my-2 text-center px-2">
                                                     <div type="button" class="bg-dark rounded-3"
                                                          v-on:click="openEditProductGallery('pasamanos')">
-                                                        <span class="fw-bolder text-white text-center d-flex justify-content-center align-items-center" style="min-height: 3.0rem">PASA MANOS DE ACERO INOXIDABLE</span>
+                                                        <span
+                                                            class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"
+                                                            style="min-height: 3.0rem">PASA MANOS DE ACERO INOXIDABLE</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -516,7 +547,11 @@
             </div>
             <div class="offcanvas-bottom">
                 <div class="w-100 d-flex justify-content-center py-2">
-                    <button class="btn btn-sm btn-danger" onclick="location.replace('/')">Cerrar sesi&oacute;n</button>
+                    <button class="btn btn-sm btn-danger"
+                            v-on:click="loggout()">Cerrar sesi&oacute;n
+                        <span id="loggoutSpinner"
+                              class="spinner-border spinner-border-sm d-none"></span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -659,13 +694,18 @@
                             <div v-for="product in productGallery[currentProductType]" class="mx-2 my-2">
                                 <div class="w-100 d-flex justify-content-center">
                                     <img alt="Imagen " :src="product.source"
-                                         style="max-height: 10rem; max-width: 10rem; height: 10rem " class="rounded shadow">
+                                         style="max-height: 10rem; max-width: 10rem; height: 10rem "
+                                         class="rounded shadow">
                                 </div>
                                 <div class="d-flex justify-content-center my-2">
-                                    <button class="mx-1 btn btn-sm btn-icon btn-danger"><i class="fa-solid fa-trash-can text-white"></i></button>
-                                    <button class="mx-1 btn btn-sm btn-icon btn-warning"><i class="fa-solid fa-pen-to-square text-white"></i></button>
-                                    <button class="mx-1 btn btn-sm btn-icon btn-primary"><i class="fa-solid fa-eye text-white"></i></button>
-                                    <button class="mx-1 btn btn-sm btn-icon btn-success"> <i class="fa-solid fa-floppy-disk text-white"></i></button>
+                                    <button class="mx-1 btn btn-sm btn-icon btn-danger"><i
+                                            class="fa-solid fa-trash-can text-white"></i></button>
+                                    <button class="mx-1 btn btn-sm btn-icon btn-warning"><i
+                                            class="fa-solid fa-pen-to-square text-white"></i></button>
+                                    <button class="mx-1 btn btn-sm btn-icon btn-primary"><i
+                                            class="fa-solid fa-eye text-white"></i></button>
+                                    <button class="mx-1 btn btn-sm btn-icon btn-success"><i
+                                            class="fa-solid fa-floppy-disk text-white"></i></button>
                                 </div>
                             </div>
                         </template>
@@ -711,9 +751,9 @@
                     userBirthDate: '',
                 },
                 currentProductType: '',
-                user:{!! $userData !!},
+                user: {!! $userData !!},
                 cardsData: {!! $cardsData !!},
-                chartsData:{!! $chartsData !!},
+                chartsData: {!! $chartsData !!},
                 messages: {!! $messages !!},
                 urls: {!! $urls !!},
                 users: {!! $users !!},
@@ -765,7 +805,7 @@
                 this.currentProductType = product;
                 $('#productModalGallery').modal('show');
             },
-            initWeeklyVisitChart : function(){
+            initWeeklyVisitChart: function () {
                 var options = {
                     series: [{
                         name: "Visitas",
@@ -803,7 +843,7 @@
                 document.getElementById('rowWeekVisit').classList.remove('d-none');
                 chart.render();
             },
-            initMonthVisitChart : function(){
+            initMonthVisitChart: function () {
                 var options = {
                     series: [{
                         name: "Visitas",
@@ -841,39 +881,53 @@
                 document.getElementById('rowMonthVisit').classList.remove('d-none');
                 chart.render();
             },
-            initAllCharts : function(){
-                let allMethods = [ this.initWeeklyVisitChart, this.initMonthVisitChart]
+            initAllCharts: function () {
+                let allMethods = [this.initWeeklyVisitChart, this.initMonthVisitChart]
 
-                allMethods.forEach(function(currentMethod, i){
-                    try{
+                allMethods.forEach(function (currentMethod, i) {
+                    try {
                         currentMethod()
-                    }catch{
-                        console.log('An exception has been detected in allMethods, index' + i  );
+                    } catch {
+                        console.log('An exception has been detected in allMethods, index' + i);
                     }
                 });
 
                 document.getElementById('loadingVisitData').classList.add('d-none');
             },
-            openCreateUsers : function(){
+            openCreateUsers: function () {
                 $('#createUserModal').modal('show');
             },
-            checkCurrentMessage: function(messageId){
+            checkCurrentMessage: function (messageId) {
                 document.getElementById('checkMessageLoading' + messageId).classList.remove('d-none');
 
-                axios.post(this.urls.checkMessage, {messageId : messageId}).then(function (response){
-                    if(!response.data.response){
-                        document.getElementById('checkMessageLoading'+ messageId).classList.add('d-none');
+                axios.post(this.urls.checkMessage, {messageId: messageId}).then(function (response) {
+                    if (!response.data.response) {
+                        document.getElementById('checkMessageLoading' + messageId).classList.add('d-none');
                         toastr.error('Hubo un error al enviar tu solicitud');
                         return
                     }
                     document.getElementById('checkMessageLoading' + messageId).classList.add('d-none');
                     toastr.success(response.data.message);
                     this.messages = response.data.values;
-                }.bind(this)).catch(function(error){
-                    toastr.error('Hubo un error al enviar tu solicitud'+ messageId);
+                }.bind(this)).catch(function (error) {
+                    toastr.error('Hubo un error al enviar tu solicitud' + messageId);
                     document.getElementById('checkMessageLoading' + messageId).classList.add('d-none');
                 });
-            }
+            },
+            loggout: function(){
+                document.getElementById('loggoutSpinner').classList.remove('d-none');
+                axios.get(this.urls.loggout).then(function(response){
+                    if(response.request.statusText === 'OK'){
+                        location.reload();
+                        return
+                    }
+                    toastr.error('Hubo un error, reintenta');
+                    document.getElementById('loggoutSpinner').classList.add('d-none');
+                }.bind(this)).catch(function(error){
+                    document.getElementById('loggoutSpinner').classList.add('d-none');
+                    toastr.error('Hubo un error, reintenta');
+                });
+            },
         },
         watch: {},
         computed: {
@@ -887,10 +941,9 @@
                 return ((this.createUser.userPassword !== this.createUser.userConfirmPassword) ? ' border-danger' : ' border-success');
             },
         },
-        mounted(){
+        mounted() {
             this.initAllCharts();
         }
-
     }).mount('#app')
 </script>
 </body>

@@ -154,6 +154,7 @@ class DashboardController extends Controller
     public function getUrlsToSend(){
         $urls = [
             'checkMessage' => route('check.message'),
+            'loggout' => route('session.loggout'),
         ];
 
         return $urls;

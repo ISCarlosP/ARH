@@ -37,12 +37,10 @@ Route::get('/dashboard', [DashboardController::class, 'show'])
 Route::post('/check/message', [DashboardController::class, 'checkMessage'])
     ->name('check.message');
 
-Route::get('/clear/cookies', function(Request $request){
-    $cookieName = 'session_token'; // Reemplaza con el nombre de la cookie que deseas eliminar
-
-    $cookie1 = Cookie::forget($cookieName);
-
+Route::get('/loggout', function(Request $request){
+    $cookie1 = Cookie::forget('session_token');
     return response('Cookie eliminada')->withCookie($cookie1);
-});
+})
+    ->name('session.loggout');
 
 
