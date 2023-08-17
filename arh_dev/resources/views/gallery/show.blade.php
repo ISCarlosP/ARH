@@ -27,7 +27,8 @@
                 <a href="/" class="btn btn-sm btn-primary mt-5 w-25">volver al inicio</a>
                 <button class="btn btn-sm mt-3 show-galery" v-on:click="hideInfo">Ver Galeria</button>
             </div>
-            <div class="col-lg-7 p-5" style="height: 100vh;" id="galery_images">
+            <div class="col-lg-7 p-5 pt-4" style="height: 100vh;" id="galery_images">
+                <a href="/" class="btn btn-sm btn-primary mt-5 w-25">volver al inicio</a>
                 <div class="row" style="overflow:auto; height: 100%;" id="gallery">
                         <template v-for="(image) in productImages">
                             <div class="col-lg-4 m-0 p-2 box-img-galery">
