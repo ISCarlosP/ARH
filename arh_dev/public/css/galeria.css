@@ -48,6 +48,10 @@
     height: 100%;
 }
 
+#galery_info .show-galery{
+    display: none;
+}
+
 .closeButton{
     position: absolute;
     top: 10px;
@@ -94,4 +98,26 @@
 
 .nextBtn:hover{
     color: #9BABB8;
+}
+
+@media (max-width: 415px){
+    #galery_info{
+        text-align: start;
+    }
+
+    #galery_info a{
+        width: 100% !important;
+        padding: 10px;
+    }
+
+    #galery_info .show-galery{
+        display: block;
+        background: white;
+        padding: 10px;
+        color: black;
+    }
+
+    #galery_images{
+        display: none;
+    }
 }

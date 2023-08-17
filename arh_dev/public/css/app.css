@@ -236,9 +236,9 @@ footer > div > div > img{
 @media (max-width: 415px) {
 
     .dark-background-pattern{
-        background-image: url(img/bg_dark_ultra-height.svg);
-        background-size: 100%;
-        background-repeat: repeat;
+        /*background-image: url(img/bg_dark_ultra-height.svg);*/
+        /*background-size: 100%;*/
+        /*background-repeat: repeat;*/
     }
 
     #inicio{
@@ -270,6 +270,10 @@ footer > div > div > img{
 
     #nosotros{
         padding-top: 30px;
+    }
+
+    #form-contact{
+        width: 100% !important;
     }
 
     #imgUs{

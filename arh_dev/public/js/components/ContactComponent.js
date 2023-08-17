@@ -15,7 +15,7 @@ const ContactComponent = {
                 <div class="row">
                     <h2 class="text-center mt-5 mb-5 text-white fw-bolder" style="font-family: Arial;">Contactanos</h2>
                     <div class="col-lg-7 col-sm-12">
-                        <div class="w-75">
+                        <div class="w-75" id="form-contact">
                             <div class="card-body">
                                 <h2 class="fw-bolder pb-3 text-white pt-4">Contactanos</h2>
                                     <div class="rounded bg-danger p-3 mb-3 d-flex flex-column justify-content-center d-none" id="error-msg">

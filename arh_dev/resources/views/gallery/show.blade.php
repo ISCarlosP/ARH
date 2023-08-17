@@ -18,15 +18,16 @@
 </head>
 <body>
     <div id="app">
-        <div class="row w-100">
-            <div class="col-lg-5 d-flex flex-column justify-content-center p-5" style="background: rgba(0,0,0,.8); height: 100vh;">
+        <div class="row w-100 m-0">
+            <div class="col-lg-5 d-flex flex-column justify-content-center p-5" style="background: rgba(0,0,0,.8); height: 100vh;" id="galery_info">
                 <h2 class="fs-1 fw-bolder mb-5 text-white text-center" style="font-family: Arial;">GALERIA</h2>
                 <h2 class="fw-bolder text-white">ENCUENTRA EL DISEÑO DE TUS SUEÑOS</h2>
                 <strong class="mt-3" style="color: gray;">Explora nuestro catalogo.</strong>
                 <span class="mt-2" style="color: white;">Tu satisfacción es nuestra prioridad, y nuestro equipo de expertos estará encantado de asesorarte en cada paso del camino, asegurándose de que encuentres el diseño que se adapte perfectamente a tu estilo.</span>
-                <a href="index.html" class="btn btn-sm btn-primary mt-5 w-25">volver al inicio</a>
+                <a href="/" class="btn btn-sm btn-primary mt-5 w-25">volver al inicio</a>
+                <button class="btn btn-sm mt-3 show-galery" v-on:click="hideInfo">Ver Galeria</button>
             </div>
-            <div class="col-lg-7 p-5" style="height: 100vh;">
+            <div class="col-lg-7 p-5" style="height: 100vh;" id="galery_images">
                 <div class="row" style="overflow:auto; height: 100%;" id="gallery">
                         <template v-for="(image) in productImages">
                             <div class="col-lg-4 m-0 p-2 box-img-galery">
@@ -108,6 +109,12 @@
                 backImg: function(){
                     this.currentImg = (this.currentImg - 1 + this.productImages.length) % this.productImages.length;
                     this.updateFullScreenImage();
+                },
+                hideInfo: function(){
+                    const galeryInfo = document.querySelector('#galery_info')
+                    const galeryImages = document.querySelector('#galery_images')
+                    galeryInfo.classList.add('d-none')
+                    galeryImages.style.display = 'block'
                 }
             },
         })

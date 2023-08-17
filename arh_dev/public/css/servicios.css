@@ -1,0 +1,9 @@
+
+@media (max-width: 415px){
+    #servicios_info{
+        background: rgba(0,0,0,.8) !important;
+    }
+    #service_info p{
+        color: black;
+    }
+}

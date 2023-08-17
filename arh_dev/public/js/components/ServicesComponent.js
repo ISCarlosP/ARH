@@ -11,8 +11,8 @@ const ServicesComponent = {
         id="servicios">
             <div class="container p-3">
                 <div class="row">
-                    <div class="col-lg-6 d-flex flex-column">
-                        <div class="bg-dark bg-opacity-10 rounded-5 p-2">
+                    <div class="col-lg-6 d-flex flex-column mb-5">
+                        <div class="bg-dark bg-opacity-10 rounded-5 p-2" id="servicios_info">
                             <h2 class="text-white fw-bolder" style="font-size: 50px;">ARH</h2>
                             <p class="text-white">Nos especializamos en la fabricación de barandales y pasamanos de alta calidad,
                                 utilizamos acero inoxidable y cristal templado. Nuestro catálogo incluye una amplia variedad de
@@ -58,12 +58,10 @@ const ServicesComponent = {
     },
     methods: {
         getRoute: function(data){
-
             let myRoute = data.split(' ')
             let joinRoute = myRoute.join('_')
 
             this.route = joinRoute
-
         }
     }
 }

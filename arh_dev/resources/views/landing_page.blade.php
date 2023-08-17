@@ -18,6 +18,9 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <!-- Estilos para componentes -->
+    <link rel="stylesheet" href="{{asset('css/servicios.css')}}"/>
 </head>
 <body onload="toggleLoader()">
 <div id="content"
@@ -94,7 +97,7 @@
                 </div>
                 <div class="bg-transparent mt-4 w-100" style="height: 250px; overflow: hidden;">
                     <div class="container" style="height: 100%;">
-                        <swiper-container class="swiper" pagination="true" pagination-clickable="true" slides-per-view="3"
+                        <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" slides-per-view="3"
                                           space-between="30" free-mode="true" autoplay
 
                         >
@@ -110,6 +113,7 @@
                         </swiper-container>
                     </div>
                 </div>
+                <!-- Slider main container -->
             </div>
         </div>
         <!-- Pagina de Inicio end -->
@@ -183,7 +187,6 @@
         </footer>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
@@ -203,6 +206,7 @@
     import AboutusComponent from "/js/components/AboutusComponent.js"
     import ServicesComponent from "/js/components/ServicesComponent.js"
     import InicioComponent from "/js/components/InicioComponent.js"
+    import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs'
 
     const app = createApp({
         data() {
@@ -237,6 +241,29 @@
                     })
             }
         },
+        mounted(){
+            new Swiper('.mySwiper', {
+                // Optional parameters
+                direction: 'vertical',
+                loop: true,
+
+                // If we need pagination
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+
+                // Navigation arrows
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+
+                // And if we need scrollbar
+                scrollbar: {
+                    el: '.swiper-scrollbar',
+                },
+            });
+        }
     });
 
     app.component('aboutus-component', AboutusComponent);

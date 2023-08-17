@@ -12,7 +12,7 @@ const IncioComponent = {
                 </div>
                 <div class="bg-transparent mt-4 w-100" style="height: 250px; overflow: hidden;">
                     <div class="container" style="height: 100%;">
-                        <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" slides-per-view="3"
+                        <swiper-container class="swiper" pagination="true" pagination-clickable="true" slides-per-view="3"
                                           space-between="30" free-mode="true" autoplay
 
                         >
