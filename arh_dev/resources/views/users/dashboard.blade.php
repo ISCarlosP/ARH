@@ -604,17 +604,6 @@
                                    v-model="createUserCodeName">
                         </div>
                         <div class="col-lg-4 col-sm-12 my-2 mx-auto">
-                            <small class="fw-bolder">Rol</small>
-                            <select class="form-select"
-                                    aria-label="Default select example"
-                                    v-model="createUser.userRol">
-                                <option value="0" selected>Selecciona un rol</option>
-                                <option value="1">Administrador lvl 1</option>
-                                <option value="2">Administrador lvl 2</option>
-                                <option value="3">Administrador lvl3</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-4 col-sm-12 my-2 mx-auto">
                             <small class="fw-bolder">Fecha de nacimiento</small>
                             <input
                                 type="date"
@@ -663,9 +652,8 @@
                 <div class="modal-footer">
                     <button type="button"
                             class="btn btn-success"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"
                             v-on:click="saveUser()">Guardar
+                        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
                     </button>
                 </div>
             </div>
@@ -746,7 +734,6 @@
                     userLastName: '',
                     userLastName1: '',
                     userPassword: '',
-                    userRol: '0',
                     userConfirmPassword: '',
                     userBirthDate: '',
                 },
@@ -783,23 +770,34 @@
                     userLastName: '',
                     userLastName1: '',
                     userPassword: '',
-                    userRol: '0',
                     userConfirmPassword: '',
                     userBirthDate: '',
                 }
             },
             saveUser: function () {
-                this.users.push({
-                    name: this.createUser.userName,
-                    lastName: this.createUser.userLastName,
-                    lastName1: this.createUser.userLastName1,
-                    codeName: this.createUser.userCodeName,
-                    rol: this.createUser.userRol,
-                    password: this.createUser.userPassword,
-                    birthDate: this.createUser.userBirthDate
-                })
+                this.createUser['createUserCodeName'] = this.createUserCodeName;
 
-                this.cleanCreateForm();
+                axios.post(this.urls.createUser, this.createUser ).then(function(response){
+                    if(!response.data.response){
+                        response.data.exceptions.forEach(function(error){
+                            toastr.error(error);
+                        });
+                        return
+                    }
+                    toastr.success(response.data.message);
+                    this.users = response.data.values;
+                    this.users = response.data.values;
+                    this.createUser = {
+                        userName: '',
+                        userLastName: '',
+                        userLastName1: '',
+                        userPassword: '',
+                        userConfirmPassword: '',
+                        userBirthDate: '',
+                    };
+                }).catch(function(error){
+                    toastr.error(error);
+                })
             },
             openEditProductGallery: function (product) {
                 this.currentProductType = product;

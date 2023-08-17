@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Controllers\UsersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,5 +43,8 @@ Route::get('/loggout', function(Request $request){
     return response('Cookie eliminada')->withCookie($cookie1);
 })
     ->name('session.loggout');
+
+Route::post('/users/create', [UsersController::class, 'create'])
+    ->name('users.create');
 
 
