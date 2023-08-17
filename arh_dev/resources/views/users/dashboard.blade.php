@@ -149,11 +149,11 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="d-flex justify-content-center mt-3 w-100">
-                                                <button class="btn btn-sm btn-success fw-bold" v-on:click="checkCurrentMessage(message.message_id)">Marcar como visto
-                                                    <span :id="'checkMessageLoading' + message.message_id" class="spinner-border spinner-border-sm d-none mx-1" role="status" aria-hidden="true"></span>
-                                                </button>
-                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-sm btn-success fw-bold" v-on:click="checkCurrentMessage(message.message_id)">Marcar como visto
+                                                <span :id="'checkMessageLoading' + message.message_id" class="spinner-border spinner-border-sm d-none mx-1" role="status" aria-hidden="true"></span>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
