@@ -37,32 +37,31 @@
         <div class="w-100">
             <img src="img/banner_principal.png" alt="" style="width: 100%;">
         </div>
-        <nav class="navbar navbar-expand-lg w-100 menu-fixed d-flex justify-content-end" style="background: rgb(0,0,0);">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon" style="color: aliceblue; font-size: 24px;"><i class="fas fa-bars"></i></span>
-            </button>
+        <nav class="w-100 menu-fixed p-2" style="background: rgb(0,0,0);">
             <!-- <div class="row w-100 m-0">
                 <div class="col-lg-12 d-flex justify-content-center"> -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto" style="margin: auto;">
-                    <li class="nav-item active m-0">
-                        <a class="nav-link text-white ps-3 pe-4" href="#inicio">Inicio</a>
+            <div id="navbarNav">
+                <ul class="w-100 p-0 ul_ham_menu" style="margin: auto;">
+                    <li class="">
+                        <a href="#inicio">Inicio</a>
                     </li>
-                    <li class="nav-item m-0">
-                        <a class="nav-link text-white ps-3 pe-4" href="#servicios">Servicios</a>
+                    <li class="">
+                        <a class="" href="#servicios">Servicios</a>
                     </li>
-                    <li class="nav-item m-0">
-                        <a class="nav-link text-white ps-3 pe-4" href="#nosotros">Nosotros</a>
+                    <li class="">
+                        <a class="" href="#nosotros">Nosotros</a>
                     </li>
-                    <li class="nav-item m-0">
-                        <a class="nav-link text-white ps-3 pe-4" href="#contacto">Contacto</a>
+                    <li class="">
+                        <a class="" href="#contacto">Contacto</a>
                     </li>
-                    <li class="nav-item">
-                        <button class="nav-link text-white ps-3 pe-4" onclick="toggleLoginModal()">Iniciar Sesión</button>
+                    <li class="">
+                        <button class="nav-link text-white" onclick="toggleLoginModal()">Iniciar Sesión</button>
                     </li>
                 </ul>
             </div>
+            <button class="menu_hamburguer" v-on:click="showMenu">
+                <i class="fas fa-bars"></i>
+            </button>
             <!-- </div>
         </div> -->
         </nav>
@@ -272,6 +271,16 @@
                 })
 
             },
+            showMenu: function (){
+                const showMenu = document.querySelector('.ul_ham_menu')
+                const toggleMenu = showMenu.style.display === 'flex'
+                if(toggleMenu){
+                    showMenu.style.display = 'none'
+                    return
+                }
+                showMenu.style.display = 'flex'
+
+            }
         },
         mounted(){
            setTimeout(() => {
