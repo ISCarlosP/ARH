@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\users;
+use App\Services\SessionServices;
 use App\Services\Utilities;
 use Carbon\Carbon;
 use Hamcrest\Util;
@@ -75,12 +76,30 @@ class UsersController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(users $users)
-    {
-        //
+    public function destroy(Request $request){
+        $utilitiesProvider = new Utilities();
+        $dashboard = new DashboardController();
+        $sessionProvider = new SessionServices();
+        $logged = $sessionProvider->getLoggedUser();
+        $response = $utilitiesProvider->createResponse();
+
+        if($logged['id'] === $request->userId){
+            $response['response'] = false;
+            $response['message'] = 'No puedes eliminar tu propio usuario';
+
+            return $response;
+        }
+
+        $user = Users::where('id', $request->userId)
+            ->first();
+
+        $user->status = 2;
+        $user->save();
+
+        $allUsers = $dashboard->getActiveUsers();
+        $response['values'] = $allUsers;
+
+        return $response;
     }
 
     public function validateCreateUser($request){
@@ -128,7 +147,7 @@ class UsersController extends Controller
     }
     public function validateRepitedUserName($userName){
         return Users::where('email', $userName)
-        ->where('status', 1)
+            ->where('status', 1)
             ->exists();
     }
 }

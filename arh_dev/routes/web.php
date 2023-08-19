@@ -47,4 +47,7 @@ Route::get('/loggout', function(Request $request){
 Route::post('/users/create', [UsersController::class, 'create'])
     ->name('users.create');
 
+Route::post('/users/destroy', [UsersController::class, 'destroy'])
+    ->name('users.destroy');
+
 

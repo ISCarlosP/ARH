@@ -197,8 +197,8 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr v-for="(user, i) in users">
-                                                    <th scope="row" v-text="i + 1"></th>
+                                                <tr v-for="(user, index) in users">
+                                                    <th scope="row" v-text="index + 1"></th>
                                                     <td v-text="user.first_name + ' ' + user.last_name"></td>
                                                     <td v-text="user.email"></td>
                                                     <td v-text="user.birth_date"></td>
@@ -207,8 +207,9 @@
                                                         <button class="btn btn-sm btn-icon btn-warning mx-2"><i
                                                                 class="fa-solid fa-pen-to-square"></i></button>
                                                         <button class="btn btn-sm btn-icon btn-danger mx2"
-                                                                v-on:click="deleteUser(i)"><i
-                                                                class="fa-solid fa-trash"></i></button>
+                                                                v-on:click="destroyUser(user.id, index)">
+                                                            <i :id="'deleteUserIconSpinner' + index" class="fa-solid fa-trash"></i>
+                                                            <span :id="'deleteUserSpinner' + index" class="spinner-border spinner-border-sm d-none" aria-hidden="true"></span></button>
                                                     </td>
                                                 </tr>
                                                 </tbody>
@@ -761,9 +762,6 @@
                 passwordIcon.classList.add('fa-eye-slash');
                 passwordIcon.classList.remove('fa-eye');
             },
-            deleteUser: function (index) {
-                this.users.splice(index, 1);
-            },
             cleanCreateForm: function () {
                 this.createUser = {
                     userName: '',
@@ -932,11 +930,37 @@
                     toastr.error('Hubo un error, reintenta');
                 });
             },
+            destroyUser: function(userId, index){
+                this.showHideSpinner('deleteUserSpinner' + index, 'show');
+                this.showHideSpinner('deleteUserIconSpinner' + index, 'hide');
+
+                axios.post(this.urls.deleteUser, {userId: userId}).then(function(response){
+                    this.showHideSpinner('deleteUserSpinner' + index, 'hide');
+                    this.showHideSpinner('deleteUserIconSpinner' + index, 'show');
+                    if(!response.data.response){
+                        toastr.error(response.data.message);
+                        return;
+                    }
+                    toastr.success(response.data.message);
+                    this.users = response.data.values;
+                }.bind(this)).catch(function(error){
+                    toastr.error(error.message);
+                    this.showHideSpinner('deleteUserSpinner' + index, 'hide');
+                    this.showHideSpinner('deleteUserIconSpinner' + index, 'show');
+                }.bind(this));
+            },
+            showHideSpinner: function(elementId, type){
+                if(type === 'show'){
+                    document.getElementById(elementId).classList.remove('d-none');
+                    return;
+                }
+                document.getElementById(elementId).classList.add('d-none');
+            },
         },
         watch: {},
         computed: {
             createUserCodeName: function () {
-                return (this.createUser.userName === '' && this.createUser.userLastName === '') ? '' : ((this.createUser.userName + '.' + this.createUser.userLastName).toLowerCase());
+                return (this.createUser.userName === '' && this.createUser.userLastName === '') ? '' : ((this.createUser.userName.split(' ')[0] + '.' + this.createUser.userLastName.split(' ')).toLowerCase());
             },
             reactiveBorder: function () {
                 if (this.createUser.userPassword === '' && this.createUser.userConfirmPassword === '') {
