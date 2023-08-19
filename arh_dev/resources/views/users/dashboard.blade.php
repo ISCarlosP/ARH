@@ -204,7 +204,7 @@
                                                     <td v-text="user.birth_date"></td>
                                                     <td v-text="user.created_at"></td>
                                                     <td class="d-flex justify-content-center">
-                                                        <button class="btn btn-sm btn-icon btn-warning mx-2"><i
+                                                        <button class="btn btn-sm btn-icon btn-warning mx-2" v-on:click="getCurrentEditUser(user, index)"><i
                                                                 class="fa-solid fa-pen-to-square"></i></button>
                                                         <button class="btn btn-sm btn-icon btn-danger mx2"
                                                                 v-on:click="destroyUser(user.id, index)">
@@ -558,6 +558,109 @@
         </div>
     </div>
     <div class="modal fade"
+         id="editUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="fw-bolder">EDITAR USUARIO</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row w-100">
+                        <div class="col-lg-4 col-sm-12 my-2 mx-auto">
+                            <small class="fw-bolder">Nombre completo</small>
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="Nombre completo"
+                                   aria-label="Username"
+                                   aria-describedby="basic-addon1"
+                                   v-model="editUser.userName">
+                        </div>
+                        <div class="col-lg-4 col-sm-12 my-2 mx-auto">
+                            <small class="fw-bolder">Apellido paterno</small>
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="Apellido Paterno"
+                                   aria-label="lastName1"
+                                   aria-describedby="basic-addon1"
+                                   v-model="editUser.userLastName">
+                        </div>
+                        <div class="col-lg-4 col-sm-12 my-2 mx-auto">
+                            <small class="fw-bolder">Apellido materno</small>
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="Apellido materno"
+                                   aria-label="lastName2"
+                                   aria-describedby="basic-addon1"
+                                   v-model="editUser.userLastName1">
+                        </div>
+                        <div class="col-lg-4 col-sm-12 my-2 mx-auto">
+                            <small class="fw-bolder">Nombre de usuario</small>
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="Nombre de usuario"
+                                   aria-label="userName"
+                                   aria-describedby="basic-addon1"
+                                   disabled
+                                   v-model="editUserCodeName">
+                        </div>
+                        <div class="col-lg-4 col-sm-12 my-2 mx-auto">
+                            <small class="fw-bolder">Fecha de nacimiento</small>
+                            <input
+                                type="date"
+                                class="form-control"
+                                placeholder="dd/mm/aaaa"
+                                aria-label="Username"
+                                aria-describedby="basic-addon1"
+                                v-model="editUser.userBirthDate">
+                        </div>
+                        <div class="col-lg-4 col-sm-12 my-2 mx-auto">
+                            <small class="fw-bolder">Editar contraseña</small>
+                            <div class="input-group">
+                                <input id="passwordEdit"
+                                       type="password"
+                                       v-bind:class="'form-control border' + reactiveBorderEdit"
+                                       placeholder="Contraseña"
+                                       aria-label="password"
+                                       aria-describedby="basic-addon1"
+                                       v-model="editUser.userPassword">
+                                <button class="btn btn-outline-secondary"
+                                        type="button"
+                                        id="button-addon1"
+                                        v-on:click="seePassword('passwordEdit')">
+                                    <i id="passwordIcon" class="fa-solid fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-12 my-2 mx-auto">
+                            <small class="fw-bolder">Confirmar contraseña</small>
+                            <div class="input-group">
+                                <input id="confirmPasswordEdit"
+                                       type="password"
+                                       v-bind:class="'form-control border' + reactiveBorderEdit"
+                                       placeholder="Confirmar"
+                                       aria-label="confirmPassword"
+                                       aria-describedby="basic-addon1"
+                                       v-model="editUser.userConfirmPassword">
+                                <button class="btn btn-outline-secondary"
+                                        type="button"
+                                        id="button"
+                                        v-on:click="seePassword('confirmPasswordEdit')">
+                                    <i id="confirmPasswordIcon" class="fa-solid fa-eye"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button"
+                            class="btn btn-success"
+                            v-on:click="validateSendEditUser()">Guardar
+                        <span id="saveEditUserSpinner" class="spinner-border spinner-border-sm d-none"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade"
          id="createUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
@@ -721,15 +824,6 @@
     createApp({
         data() {
             return {
-                currentUser: {
-                    userName: '',
-                    userLastName: '',
-                    userLastName1: '',
-                    userCodeName: '',
-                    userPassword: '',
-                    userConfirmPassword: '',
-                    userBirthDate: '',
-                },
                 createUser: {
                     userName: '',
                     userLastName: '',
@@ -745,6 +839,14 @@
                 messages: {!! $messages !!},
                 urls: {!! $urls !!},
                 users: {!! $users !!},
+                editUser: {
+                    userName: '',
+                    userLastName: '',
+                    userLastName1: '',
+                    userPassword: '',
+                    userConfirmPassword: '',
+                    userBirthDate: '',
+                },
             }
         },
         methods: {
@@ -956,17 +1058,104 @@
                 }
                 document.getElementById(elementId).classList.add('d-none');
             },
+            getCurrentEditUser: function(user){
+                this.editUser = {};
+                this.editUser = {
+                    'userId' : user.id,
+                    'userName' : user.first_name,
+                    'userLastName' : user.last_name.split(' ')[0],
+                    'userLastName1' : user.last_name.split(' ')[1],
+                    'userPassword': '',
+                    'userConfirmPassword' : '',
+                    'userBirthDate' : user.birth_date,
+                };
+
+                $('#editUserModal').modal('show');
+            },
+            sendEditUser: function(){
+                let editUser = {...this.editUser}
+                editUser['email'] = this.editUserCodeName;
+                this.showHideSpinner('saveEditUserSpinner', 'show');
+                axios.post(this.urls.updateUser, editUser).then(function(response){
+                    this.showHideSpinner('saveEditUserSpinner', 'hide');
+                    if(!response.data.response){
+                        toastr.error(response.data.message);
+                        return
+                    }
+                    this.showHideSpinner('saveEditUserSpinner', 'hide');
+                    toastr.success(response.data.message);
+                    this.users = response.data.values;
+                    $('#editUserModal').modal('hide');
+
+                }.bind(this)).catch(function(error){
+                    this.showHideSpinner('saveEditUserSpinner', 'hide');
+                    toastr.error(error.message);
+                });
+            },
+            validateSendEditUser: function(){
+                let valid = true;
+
+                if(this.editUser.userName === ''){
+                    toastr.error('Debes ingresar un nombre valido');
+                    valid = false;
+                }
+
+                if(this.editUser.userLastName === ''){
+                    toastr.error('Debes ingresar un apellido paterno valido');
+                    valid = false;
+                }
+
+                if(this.editUser.userLastName1 === ''){
+                    toastr.error('Debes ingresar un apellido materno valido');
+                    valid = false;
+                }
+
+                if(this.editUser.userBirthDate === ''){
+                    toastr.error('Debes ingresar una fecha de cumpleaños');
+                    valid = false;
+                }
+
+                if(this.editUser.userPassword !== '' && this.editUser.userConfirmPassword === ''){
+                    toastr.error('No has confirmado tu contraseña nueva');
+                    valid = false;
+                }
+
+                if(this.editUser.userConfirmPassword !== '' && this.editUser.userPassword === ''){
+                    toastr.error('No ingresaste una contraseña nueva, solo la confirmacioón');
+                    valid = false;
+                }
+
+                if((this.editUser.userConfirmPassword !== '' && this.editUser.userPassword !== '') && (this.editUser.userConfirmPassword !== this.editUser.userPassword )){
+                    toastr.error('Las contraseñas ingresadas no coinciden');
+                    valid = false;
+                }
+
+                if(!valid){
+                    return
+                }
+
+                this.sendEditUser();
+            },
         },
         watch: {},
         computed: {
             createUserCodeName: function () {
                 return (this.createUser.userName === '' && this.createUser.userLastName === '') ? '' : ((this.createUser.userName.split(' ')[0] + '.' + this.createUser.userLastName.split(' ')).toLowerCase());
             },
+            editUserCodeName: function () {
+                return (this.editUser.userName === '' && this.editUser.userLastName === '') ? '' : ((this.editUser.userName.split(' ')[0] + '.' + this.editUser.userLastName.split(' ')).toLowerCase());
+            },
             reactiveBorder: function () {
                 if (this.createUser.userPassword === '' && this.createUser.userConfirmPassword === '') {
                     return ''
                 }
                 return ((this.createUser.userPassword !== this.createUser.userConfirmPassword) ? ' border-danger' : ' border-success');
+            },
+            reactiveBorderEdit: function () {
+                if (this.editUser.userPassword === '' && this.editUser.userConfirmPassword === '') {
+                    return ''
+                }
+                return ((this.editUser.userPassword !== this.editUser.userConfirmPassword) ? ' border-danger' : ' border-success');
             },
         },
         mounted() {

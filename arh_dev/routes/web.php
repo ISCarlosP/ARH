@@ -50,4 +50,7 @@ Route::post('/users/create', [UsersController::class, 'create'])
 Route::post('/users/destroy', [UsersController::class, 'destroy'])
     ->name('users.destroy');
 
+Route::post('/users/update', [UsersController::class, 'update'])
+    ->name('users.update');
+
 

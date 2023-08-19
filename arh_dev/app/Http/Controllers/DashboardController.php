@@ -157,6 +157,7 @@ class DashboardController extends Controller
             'loggout' => route('session.loggout'),
             'createUser' => route('users.create'),
             'deleteUser' => route('users.destroy'),
+            'updateUser' => route('users.update')
         ];
 
         return $urls;
