@@ -28,27 +28,34 @@ const IncioComponent = {
 <!--                        </swiper-container>-->
 <!--                    </div>-->
 <!--                </div>-->
-<!--                    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" style="width: 90%">-->
-<!--                      <div class="carousel-inner">-->
-<!--                        <div class="carousel-item active d-flex justify-content-between">-->
-<!--                          <img class="rounded-2 d-block" src="img/img1.jpg" alt="img" style="width: 22%">-->
-<!--                          <img class="rounded-2 d-block" src="img/img2.jpg" alt="img" style="width: 22%;">-->
-<!--                          <img class="rounded-2 d-block" src="img/img4.jpg" alt="img" style="width: 22%;">-->
-<!--                          <img class="rounded-2 d-block" src="img/img3.jpg" alt="img" style="width: 22%;">-->
-<!--                        </div>-->
-<!--                        <div class="carousel-item">-->
-<!--                          <img src="..." class="d-block w-100" alt="...">-->
-<!--                        </div>-->
-<!--                      </div>-->
-<!--                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">-->
-<!--                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-<!--                        <span class="visually-hidden">Previous</span>-->
-<!--                      </button>-->
-<!--                      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">-->
-<!--                        <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-<!--                        <span class="visually-hidden">Next</span>-->
-<!--                      </button>-->
-<!--                    </div>-->
+                    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" style="width: 90%">
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                           <div class="d-flex justify-content-between">
+                               <img class="rounded-2 d-block" src="img/img1.jpg" alt="img" style="width: 22%">
+                                <img class="rounded-2 d-block" src="img/img2.jpg" alt="img" style="width: 22%;">
+                                <img class="rounded-2 d-block" src="img/img4.jpg" alt="img" style="width: 22%;">
+                                <img class="rounded-2 d-block" src="img/img3.jpg" alt="img" style="width: 22%;">
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                          <div class="d-flex justify-content-between">
+                               <img class="rounded-2 d-block" src="img/img-1.jpeg" alt="img" style="width: 22%">
+                                <img class="rounded-2 d-block" src="img/img-2.jpeg" alt="img" style="width: 22%;">
+                                <img class="rounded-2 d-block" src="img/img-4.jpeg" alt="img" style="width: 22%;">
+                                <img class="rounded-2 d-block" src="img/img-3.jpeg" alt="img" style="width: 22%;">
+                            </div>
+                        </div>
+                      </div>
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                      </button>
+                    </div>
             </div>
         </div>
     `,
