@@ -86,36 +86,7 @@
         </div>
 
         <!-- Pagina de Inicio-->
-{{--        <inicio-component></inicio-component>--}}
-        <div class="w-100 m-0" style="height: 100vh;" id="inicio">
-            <div class="d-flex flex-column align-items-center justify-content-center" style="padding-top: 20px; height: 100%;">
-                <div class="w-75 d-flex justify-content-center flex-column">
-                    <h1 style="font-family: Arial, Helvetica, sans-serif, serif; font-weight: 600; margin-top: 0px; text-shadow: 3px 3px 3px black;" class="text-center text-white" id="title-h1">
-                        BARANDALES DE ACERO INOXIDABLE</h1>
-                    <strong class="bg-primary text-white p-5 pt-1 pb-1" style="display: inline-block; margin: 0px auto;">ESPECIALISTAS EN ACERO</strong>
-                    <p class="pt-3 fs-4 text-center text-white fw-bolder" style="text-shadow: 3px 3px 3px black;">Nos dedicamos a la fabricación de barandales y pasamanos de acero inoxidable, y/o con cristal templado, barandales curvos, barandales de  escalera y para balcones.</p>
-                </div>
-                <div class="bg-transparent mt-4 w-100" style="height: 250px; overflow: hidden;">
-                    <div class="container" style="height: 100%;">
-                        <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" slides-per-view="3"
-                                          space-between="30" free-mode="true" autoplay
-
-                        >
-                            <swiper-slide><img class="rounded-2" src="img/img1.jpg" alt=""></swiper-slide>
-                            <swiper-slide><img class="rounded-2" src="img/img2.jpg" alt=""></swiper-slide>
-                            <swiper-slide><img class="rounded-2" src="img/img4.jpg" alt=""></swiper-slide>
-                            <swiper-slide><img class="rounded-2" src="img/img3.jpg" alt=""></swiper-slide>
-                            <swiper-slide><img class="rounded-2" src="img/img4.jpg" alt=""></swiper-slide>
-                            <swiper-slide><img class="rounded-2" src="img/img1.jpg" alt=""></swiper-slide>
-                            <swiper-slide><img class="rounded-2" src="img/img3.jpg" alt=""></swiper-slide>
-                            <swiper-slide><img class="rounded-2" src="img/img1.jpg" alt=""></swiper-slide>
-                            <swiper-slide><img class="rounded-2" src="img/img2.jpg" alt=""></swiper-slide>
-                        </swiper-container>
-                    </div>
-                </div>
-                <!-- Slider main container -->
-            </div>
-        </div>
+        <inicio-component></inicio-component>
         <!-- Pagina de Inicio end -->
         <!-- Pagina Servicios -->
         <services-component :products="products"></services-component>
@@ -239,30 +210,73 @@
                         console.log(err)
                         document.getElementById('loginButtonSpinner').classList.add('d-none');
                     })
-            }
+            },
+            socialMedia: function (){
+                const floatNav = document.querySelector('#floatNav')
+
+                floatNav.children[0].addEventListener('mouseover', () => {
+                    floatNav.children[0].children[1].style.display = 'block'
+                    floatNav.children[1].style.width = '50px'
+                    floatNav.children[2].style.width = '50px'
+                    floatNav.children[3].style.width = '50px'
+
+                })
+
+                floatNav.children[0].addEventListener('mouseout', () => {
+                    floatNav.children[0].children[1].style.display = 'none'
+                    floatNav.children[1].style.width = 'auto'
+                    floatNav.children[2].style.width = 'auto'
+                    floatNav.children[3].style.width = 'auto'
+                })
+
+                floatNav.children[1].addEventListener('mouseover', () => {
+                    floatNav.children[0].style.width = '50px'
+                    floatNav.children[1].children[1].style.display = 'block'
+                    floatNav.children[2].style.width = '50px'
+                    floatNav.children[3].style.width = '50px'
+                })
+
+                floatNav.children[1].addEventListener('mouseout', () => {
+                    floatNav.children[0].style.width = 'auto'
+                    floatNav.children[1].children[1].style.display = 'none'
+                    floatNav.children[2].style.width = 'auto'
+                    floatNav.children[3].style.width = 'auto'
+                })
+
+                floatNav.children[2].addEventListener('mouseover', () => {
+                    floatNav.children[0].style.width = '50px'
+                    floatNav.children[1].style.width = '50px'
+                    floatNav.children[2].children[1].style.display = 'block'
+                    floatNav.children[3].style.width = '50px'
+                })
+
+                floatNav.children[2].addEventListener('mouseout', () => {
+                    floatNav.children[0].style.width = 'auto'
+                    floatNav.children[1].style.width = 'auto'
+                    floatNav.children[2].children[1].style.display = 'none'
+                    floatNav.children[3].style.width = 'auto'
+                })
+
+                floatNav.children[3].addEventListener('mouseover', () => {
+                    floatNav.children[0].style.width = '50px'
+                    floatNav.children[1].style.width = '50px'
+                    floatNav.children[2].style.width = '50px'
+                    floatNav.children[3].children[1].style.display = 'block'
+                })
+
+                floatNav.children[3].addEventListener('mouseout', () => {
+                    floatNav.children[0].style.width = 'auto'
+                    floatNav.children[1].style.width = 'auto'
+                    floatNav.children[2].style.width = 'auto'
+                    floatNav.children[3].children[1].style.display = 'none'
+                })
+
+            },
         },
         mounted(){
-            new Swiper('.mySwiper', {
-                // Optional parameters
-                direction: 'vertical',
-                loop: true,
-
-                // If we need pagination
-                pagination: {
-                    el: '.swiper-pagination',
-                },
-
-                // Navigation arrows
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-
-                // And if we need scrollbar
-                scrollbar: {
-                    el: '.swiper-scrollbar',
-                },
-            });
+           setTimeout(() => {
+               this.socialMedia()
+           },500)
         }
     });
 
