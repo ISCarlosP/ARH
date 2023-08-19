@@ -155,7 +155,8 @@ class DashboardController extends Controller
         $urls = [
             'checkMessage' => route('check.message'),
             'loggout' => route('session.loggout'),
-            'createUser' => route('users.create')
+            'createUser' => route('users.create'),
+            'deleteUser' => route('users.destroy'),
         ];
 
         return $urls;
@@ -170,6 +171,7 @@ class DashboardController extends Controller
 
         foreach ($allUsers as $user ){
             $users[] = [
+                'id' => $user['id'],
                 'first_name' => $user['first_name'],
                 'last_name' => $user['last_name'],
                 'birth_date' => Carbon::parse($user['user_birth_date'])->format('Y-m-d'),
