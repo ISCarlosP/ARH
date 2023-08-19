@@ -71,9 +71,42 @@ class UsersController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateusersRequest $request, users $users)
-    {
-        //
+    public function update(Request $request){
+        $utilitiesProvider = new Utilities();
+        $response = $utilitiesProvider->createResponse();
+        $dashboard = new DashboardController();
+
+        if($this->validateRepitedUserName($request->email)){
+
+            $userWithEmail = Users::where('email', $request->email)
+                ->first();
+
+            if($userWithEmail->id !== $request->userId){
+
+                $response['response'] = false;
+                $response['message'] = 'El nombre de usuario que se generó automaticamente ya esta en el sistema';
+                return $response;
+            }
+        }
+
+        $editUser = Users::where('id', $request->userId)
+            ->first();
+
+        $editUser->first_name = $request->userName;
+        $editUser->email = $request->email;
+        $editUser->last_name = $request->userLastName . ' ' . $request->userLastName1;
+        $editUser->user_birth_date = Carbon::parse($request->userBirthDate);
+
+        if($request->userPassword !== '' &&  $request->userPassword !== null){
+            $editUser->password = Hash::make($request->userPassword);
+        }
+
+        $editUser->save();
+
+        $response['message'] = 'Modificaste el usuario exitosamente';
+        $response['values'] = $dashboard->getActiveUsers();
+
+        return $response;
     }
 
     public function destroy(Request $request){
