@@ -265,7 +265,6 @@ footer > div > div > img{
         list-style: none;
         display: none;
         flex-direction: column;
-        height: auto;
     }
 
     #inicio{
@@ -323,15 +322,6 @@ footer > div > div > img{
             width: 150px;
             margin-bottom: 10px;
         }
-}
-
-@keyframes showMenu {
-    0%{
-        height: 0px;
-    }
-    100%{
-        height: 100%;
-    }
 }
 
 @media (max-width: 375px){
