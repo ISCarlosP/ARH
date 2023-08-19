@@ -1090,7 +1090,7 @@
                 }.bind(this)).catch(function(error){
                     this.showHideSpinner('saveEditUserSpinner', 'hide');
                     toastr.error(error.message);
-                });
+                }.bind(this));
             },
             validateSendEditUser: function(){
                 let valid = true;
