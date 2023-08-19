@@ -207,9 +207,9 @@
                                                         <button class="btn btn-sm btn-icon btn-warning mx-2"><i
                                                                 class="fa-solid fa-pen-to-square"></i></button>
                                                         <button class="btn btn-sm btn-icon btn-danger mx2"
-                                                                v-on:click="destroyUser(user.id, index)"><i
-                                                                class="fa-solid fa-trash"></i>
-                                                            <span :id="'deleteUserSpinner' + i" class="spinner-border spinner-border-sm d-none" aria-hidden="true"></span></button>
+                                                                v-on:click="destroyUser(user.id, index)">
+                                                            <i :id="'deleteUserIconSpinner' + index" class="fa-solid fa-trash"></i>
+                                                            <span :id="'deleteUserSpinner' + index" class="spinner-border spinner-border-sm d-none" aria-hidden="true"></span></button>
                                                     </td>
                                                 </tr>
                                                 </tbody>
@@ -932,8 +932,11 @@
             },
             destroyUser: function(userId, index){
                 this.showHideSpinner('deleteUserSpinner' + index, 'show');
-                axios.post(this.urls.destroyUser).then(function(response){
-                    this.showHideSpinner('deleteUserSpinner' + index, 'hide')
+                this.showHideSpinner('deleteUserIconSpinner' + index, 'hide');
+
+                axios.post(this.urls.deleteUser, {userId: userId}).then(function(response){
+                    this.showHideSpinner('deleteUserSpinner' + index, 'hide');
+                    this.showHideSpinner('deleteUserIconSpinner' + index, 'show');
                     if(!response.data.response){
                         toastr.error(response.data.message);
                         return;
@@ -941,8 +944,9 @@
                     toastr.success(response.data.message);
                     this.users = response.data.values;
                 }.bind(this)).catch(function(error){
-                    toastr.error(error);
+                    toastr.error(error.message);
                     this.showHideSpinner('deleteUserSpinner' + index, 'hide');
+                    this.showHideSpinner('deleteUserIconSpinner' + index, 'show');
                 }.bind(this));
             },
             showHideSpinner: function(elementId, type){
