@@ -53,4 +53,7 @@ Route::post('/users/destroy', [UsersController::class, 'destroy'])
 Route::post('/users/update', [UsersController::class, 'update'])
     ->name('users.update');
 
+Route::post('/banner/update', [DashboardController::class, 'updateBannerImage'])
+    ->name('banner.update');
+
 

@@ -230,7 +230,9 @@
                                     <div class="row">
                                         <div class="col-lg-8 col-sm-12 mx-auto">
                                             <div class="d-flex justify-content-center my-2 w-100 shadow">
-                                                <img alt="Banner principal" src="img/banner_principal.png"
+                                                <img id="bannerPrincipal"
+                                                     alt="Banner principal"
+                                                     :src="bannerInfo.url"
                                                      class="rounded img-fluid">
                                             </div>
                                         </div>
@@ -238,18 +240,35 @@
                                     <div class="row">
                                         <div class="col-4 mx-auto d-flex justify-content-center">
                                             <div class="px-1">
-                                                <button class="btn btn-sm btn-icon bg-warning">
+                                                <label class="btn btn-sm btn-warning btn-icon fw-bolder" type="button">
                                                     <i class="fa-solid fa-pen-to-square"></i>
-                                                </button>
+                                                    <input
+                                                        id="inputBanner"
+                                                        type="file"
+                                                        style="display: none;"
+                                                        v-on:change="getBannerUpdatedData()">
+                                                </label>
                                             </div>
                                             <div class="px-1">
-                                                <button class="btn btn-sm btn-icon bg-primary">
+                                                <a id="seeCurrentBanner"
+                                                   type="button"
+                                                   cursor="pointer"
+                                                   class="btn btn-sm btn-icon bg-primary"
+                                                   :href="bannerInfo.url"
+                                                   target="_blank">
                                                     <i class="fa-solid fa-eye"></i>
+                                                </a>
+                                            </div>
+                                            <div id="saveBannerButton" class="px-1 d-none">
+                                                <button class="btn btn-sm btn-icon bg-success"
+                                                        v-on:click="saveEditBanner()">
+                                                    <i class="fa-solid fa-floppy-disk"></i>
                                                 </button>
                                             </div>
-                                            <div class="px-1">
-                                                <button class="btn btn-sm btn-icon bg-success">
-                                                    <i class="fa-solid fa-floppy-disk"></i>
+                                            <div id="deleteBannerChanges" class="px-1 d-none">
+                                                <button class="btn btn-sm btn-icon bg-danger"
+                                                        v-on:click="cancelBannerChanges()">
+                                                    <i class="fa-solid fa-xmark text-white"></i>
                                                 </button>
                                             </div>
                                         </div>
@@ -260,11 +279,13 @@
                                 <div class="text-center w-100">
                                     <span class="fw-bolder fs-3 my-1">CATEGORIAS PRINCIPALES</span>
                                     <div class="row">
-                                        <div class="col-lg-3 col-sm-5 mx-auto my-2">
+                                        <div v-for="product in productsInfo"
+                                             class="col-lg-3 col-sm-5 mx-auto my-2">
                                             <div class="card">
                                                 <div class="d-flex justify-content-center p-2">
                                                     <img alt="category" style="width: 100%; height: 400px;"
-                                                         src="img/barandales-de-acero/img-1.jpeg" class="rounded">
+                                                         :src="product.product_main_image"
+                                                         class="rounded">
                                                 </div>
                                                 <div class="my-1 d-flex justify-content-center">
                                                     <div class="px-1">
@@ -273,9 +294,12 @@
                                                         </button>
                                                     </div>
                                                     <div class="px-1">
-                                                        <button class="btn btn-sm btn-icon bg-primary">
+                                                        <a type="button"
+                                                           class="btn btn-sm btn-icon bg-primary"
+                                                           :href="product.product_main_image"
+                                                           target="_blank">
                                                             <i class="fa-solid fa-eye"></i>
-                                                        </button>
+                                                        </a>
                                                     </div>
                                                     <div class="px-1">
                                                         <button class="btn btn-sm btn-icon bg-success">
@@ -289,178 +313,179 @@
                                                          v-on:click="openEditProductGallery('barandales-de-acero')">
                                                         <span
                                                             class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"
-                                                            style="min-height: 3.0rem">BARANDALES DE ACERO INOXIDABLE</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-5 mx-auto my-2">
-                                            <div class="card">
-                                                <div class="d-flex justify-content-center p-2">
-                                                    <img alt="category" style="width: 100%; height: 400px;"
-                                                         src="img/cristal-templado/img-1.jpeg" class="rounded">
-                                                </div>
-                                                <div class="my-1 d-flex justify-content-center">
-                                                    <div class="px-1">
-                                                        <button class="btn btn-sm btn-icon bg-warning">
-                                                            <i class="fa-solid fa-pen-to-square"></i>
-                                                        </button>
-                                                    </div>
-                                                    <div class="px-1">
-                                                        <button class="btn btn-sm btn-icon bg-primary">
-                                                            <i class="fa-solid fa-eye"></i>
-                                                        </button>
-                                                    </div>
-                                                    <div class="px-1">
-                                                        <button class="btn btn-sm btn-icon bg-success">
-                                                            <i class="fa-solid fa-floppy-disk"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div class="my-2 text-center px-2">
-                                                    <div type="button" class="bg-dark rounded-3"
-                                                         style="min-height: 3.0rem"
-                                                         v-on:click="openEditProductGallery('cristal-templado')">
-                                                        <span
-                                                            class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"
-                                                            style="min-height: 3.0rem">BARANDALES CON CRISTAL TEMPLADO</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-5 mx-auto my-2">
-                                            <div class="card">
-                                                <div class="d-flex justify-content-center p-2">
-                                                    <img alt="category" style="width: 100%; height: 400px;"
-                                                         src="img/tapas-cisternas/img-1.jpeg" class="rounded">
-                                                </div>
-                                                <div class="my-1 d-flex justify-content-center">
-                                                    <div class="px-1">
-                                                        <button class="btn btn-sm btn-icon bg-warning">
-                                                            <i class="fa-solid fa-pen-to-square"></i>
-                                                        </button>
-                                                    </div>
-                                                    <div class="px-1">
-                                                        <button class="btn btn-sm btn-icon bg-primary">
-                                                            <i class="fa-solid fa-eye"></i>
-                                                        </button>
-                                                    </div>
-                                                    <div class="px-1">
-                                                        <button class="btn btn-sm btn-icon bg-success">
-                                                            <i class="fa-solid fa-floppy-disk"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div class="my-2 text-center px-2">
-                                                    <div type="button" class="bg-dark rounded-3"
-                                                         v-on:click="openEditProductGallery('tapas-cisternas')">
-                                                        <span
-                                                            class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"
                                                             style="min-height: 3.0rem"
-                                                        >TAPAS PARA CISTERNAS</span>
+                                                            v-text="(product.product_name).toUpperCase()"></span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 col-sm-5 mx-auto my-2">
-                                            <div class="card">
-                                                <div class="d-flex justify-content-center p-2">
-                                                    <img alt="category" style="width: 100%; height: 400px;"
-                                                         src="img/canceles-para-baños/img-1.jpeg" class="rounded">
-                                                </div>
-                                                <div class="my-1 d-flex justify-content-center">
-                                                    <div class="px-1">
-                                                        <button class="btn btn-sm btn-icon bg-warning">
-                                                            <i class="fa-solid fa-pen-to-square"></i>
-                                                        </button>
-                                                    </div>
-                                                    <div class="px-1">
-                                                        <button class="btn btn-sm btn-icon bg-primary">
-                                                            <i class="fa-solid fa-eye"></i>
-                                                        </button>
-                                                    </div>
-                                                    <div class="px-1">
-                                                        <button class="btn btn-sm btn-icon bg-success">
-                                                            <i class="fa-solid fa-floppy-disk"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div class="my-2 text-center px-2">
-                                                    <div type="button" class="bg-dark rounded-3"
-                                                         v-on:click="openEditProductGallery('canceles-para-baños')">
-                                                        <span
-                                                            class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"
-                                                            style="min-height: 3.0rem">CANCELES PARA BAÑO</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-5 mx-auto my-2">
-                                            <div class="card">
-                                                <div class="d-flex justify-content-center p-2">
-                                                    <img alt="category" style="width: 100%; height: 400px;"
-                                                         src="img/baradales-curvos/img-1.jpeg" class="rounded">
-                                                </div>
-                                                <div class="my-1 d-flex justify-content-center">
-                                                    <div class="px-1">
-                                                        <button class="btn btn-sm btn-icon bg-warning">
-                                                            <i class="fa-solid fa-pen-to-square"></i>
-                                                        </button>
-                                                    </div>
-                                                    <div class="px-1">
-                                                        <button class="btn btn-sm btn-icon bg-primary">
-                                                            <i class="fa-solid fa-eye"></i>
-                                                        </button>
-                                                    </div>
-                                                    <div class="px-1">
-                                                        <button class="btn btn-sm btn-icon bg-success">
-                                                            <i class="fa-solid fa-floppy-disk"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div class="my-2 text-center px-2">
-                                                    <div type="button" class="bg-dark rounded-3"
-                                                         v-on:click="openEditProductGallery('barandales-curvos')">
-                                                        <span
-                                                            class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"
-                                                            style="min-height: 3.0rem">BARANDALES CURVOS</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-5 mx-auto my-2">
-                                            <div class="card">
-                                                <div class="d-flex justify-content-center p-2">
-                                                    <img alt="category" style="width: 100%; height: 400px;"
-                                                         src="img/pasamanos/img-1.jpeg" class="rounded">
-                                                </div>
-                                                <div class="my-1 d-flex justify-content-center">
-                                                    <div class="px-1">
-                                                        <button class="btn btn-sm btn-icon bg-warning">
-                                                            <i class="fa-solid fa-pen-to-square"></i>
-                                                        </button>
-                                                    </div>
-                                                    <div class="px-1">
-                                                        <button class="btn btn-sm btn-icon bg-primary">
-                                                            <i class="fa-solid fa-eye"></i>
-                                                        </button>
-                                                    </div>
-                                                    <div class="px-1">
-                                                        <button class="btn btn-sm btn-icon bg-success">
-                                                            <i class="fa-solid fa-floppy-disk"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div class="my-2 text-center px-2">
-                                                    <div type="button" class="bg-dark rounded-3"
-                                                         v-on:click="openEditProductGallery('pasamanos')">
-                                                        <span
-                                                            class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"
-                                                            style="min-height: 3.0rem">PASA MANOS DE ACERO INOXIDABLE</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        {{--                                        <div class="col-lg-3 col-sm-5 mx-auto my-2">--}}
+                                        {{--                                            <div class="card">--}}
+                                        {{--                                                <div class="d-flex justify-content-center p-2">--}}
+                                        {{--                                                    <img alt="category" style="width: 100%; height: 400px;"--}}
+                                        {{--                                                         src="img/cristal-templado/img-1.jpeg" class="rounded">--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                                <div class="my-1 d-flex justify-content-center">--}}
+                                        {{--                                                    <div class="px-1">--}}
+                                        {{--                                                        <button class="btn btn-sm btn-icon bg-warning">--}}
+                                        {{--                                                            <i class="fa-solid fa-pen-to-square"></i>--}}
+                                        {{--                                                        </button>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                    <div class="px-1">--}}
+                                        {{--                                                        <button class="btn btn-sm btn-icon bg-primary">--}}
+                                        {{--                                                            <i class="fa-solid fa-eye"></i>--}}
+                                        {{--                                                        </button>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                    <div class="px-1">--}}
+                                        {{--                                                        <button class="btn btn-sm btn-icon bg-success">--}}
+                                        {{--                                                            <i class="fa-solid fa-floppy-disk"></i>--}}
+                                        {{--                                                        </button>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                                <div class="my-2 text-center px-2">--}}
+                                        {{--                                                    <div type="button" class="bg-dark rounded-3"--}}
+                                        {{--                                                         style="min-height: 3.0rem"--}}
+                                        {{--                                                         v-on:click="openEditProductGallery('cristal-templado')">--}}
+                                        {{--                                                        <span--}}
+                                        {{--                                                            class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"--}}
+                                        {{--                                                            style="min-height: 3.0rem">BARANDALES CON CRISTAL TEMPLADO</span>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                            </div>--}}
+                                        {{--                                        </div>--}}
+                                        {{--                                        <div class="col-lg-3 col-sm-5 mx-auto my-2">--}}
+                                        {{--                                            <div class="card">--}}
+                                        {{--                                                <div class="d-flex justify-content-center p-2">--}}
+                                        {{--                                                    <img alt="category" style="width: 100%; height: 400px;"--}}
+                                        {{--                                                         src="img/tapas-cisternas/img-1.jpeg" class="rounded">--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                                <div class="my-1 d-flex justify-content-center">--}}
+                                        {{--                                                    <div class="px-1">--}}
+                                        {{--                                                        <button class="btn btn-sm btn-icon bg-warning">--}}
+                                        {{--                                                            <i class="fa-solid fa-pen-to-square"></i>--}}
+                                        {{--                                                        </button>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                    <div class="px-1">--}}
+                                        {{--                                                        <button class="btn btn-sm btn-icon bg-primary">--}}
+                                        {{--                                                            <i class="fa-solid fa-eye"></i>--}}
+                                        {{--                                                        </button>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                    <div class="px-1">--}}
+                                        {{--                                                        <button class="btn btn-sm btn-icon bg-success">--}}
+                                        {{--                                                            <i class="fa-solid fa-floppy-disk"></i>--}}
+                                        {{--                                                        </button>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                                <div class="my-2 text-center px-2">--}}
+                                        {{--                                                    <div type="button" class="bg-dark rounded-3"--}}
+                                        {{--                                                         v-on:click="openEditProductGallery('tapas-cisternas')">--}}
+                                        {{--                                                        <span--}}
+                                        {{--                                                            class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"--}}
+                                        {{--                                                            style="min-height: 3.0rem"--}}
+                                        {{--                                                        >TAPAS PARA CISTERNAS</span>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                            </div>--}}
+                                        {{--                                        </div>--}}
+                                        {{--                                        <div class="col-lg-3 col-sm-5 mx-auto my-2">--}}
+                                        {{--                                            <div class="card">--}}
+                                        {{--                                                <div class="d-flex justify-content-center p-2">--}}
+                                        {{--                                                    <img alt="category" style="width: 100%; height: 400px;"--}}
+                                        {{--                                                         src="img/canceles-para-baños/img-1.jpeg" class="rounded">--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                                <div class="my-1 d-flex justify-content-center">--}}
+                                        {{--                                                    <div class="px-1">--}}
+                                        {{--                                                        <button class="btn btn-sm btn-icon bg-warning">--}}
+                                        {{--                                                            <i class="fa-solid fa-pen-to-square"></i>--}}
+                                        {{--                                                        </button>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                    <div class="px-1">--}}
+                                        {{--                                                        <button class="btn btn-sm btn-icon bg-primary">--}}
+                                        {{--                                                            <i class="fa-solid fa-eye"></i>--}}
+                                        {{--                                                        </button>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                    <div class="px-1">--}}
+                                        {{--                                                        <button class="btn btn-sm btn-icon bg-success">--}}
+                                        {{--                                                            <i class="fa-solid fa-floppy-disk"></i>--}}
+                                        {{--                                                        </button>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                                <div class="my-2 text-center px-2">--}}
+                                        {{--                                                    <div type="button" class="bg-dark rounded-3"--}}
+                                        {{--                                                         v-on:click="openEditProductGallery('canceles-para-baños')">--}}
+                                        {{--                                                        <span--}}
+                                        {{--                                                            class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"--}}
+                                        {{--                                                            style="min-height: 3.0rem">CANCELES PARA BAÑO</span>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                            </div>--}}
+                                        {{--                                        </div>--}}
+                                        {{--                                        <div class="col-lg-3 col-sm-5 mx-auto my-2">--}}
+                                        {{--                                            <div class="card">--}}
+                                        {{--                                                <div class="d-flex justify-content-center p-2">--}}
+                                        {{--                                                    <img alt="category" style="width: 100%; height: 400px;"--}}
+                                        {{--                                                         src="img/baradales-curvos/img-1.jpeg" class="rounded">--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                                <div class="my-1 d-flex justify-content-center">--}}
+                                        {{--                                                    <div class="px-1">--}}
+                                        {{--                                                        <button class="btn btn-sm btn-icon bg-warning">--}}
+                                        {{--                                                            <i class="fa-solid fa-pen-to-square"></i>--}}
+                                        {{--                                                        </button>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                    <div class="px-1">--}}
+                                        {{--                                                        <button class="btn btn-sm btn-icon bg-primary">--}}
+                                        {{--                                                            <i class="fa-solid fa-eye"></i>--}}
+                                        {{--                                                        </button>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                    <div class="px-1">--}}
+                                        {{--                                                        <button class="btn btn-sm btn-icon bg-success">--}}
+                                        {{--                                                            <i class="fa-solid fa-floppy-disk"></i>--}}
+                                        {{--                                                        </button>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                                <div class="my-2 text-center px-2">--}}
+                                        {{--                                                    <div type="button" class="bg-dark rounded-3"--}}
+                                        {{--                                                         v-on:click="openEditProductGallery('barandales-curvos')">--}}
+                                        {{--                                                        <span--}}
+                                        {{--                                                            class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"--}}
+                                        {{--                                                            style="min-height: 3.0rem">BARANDALES CURVOS</span>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                            </div>--}}
+                                        {{--                                        </div>--}}
+                                        {{--                                        <div class="col-lg-3 col-sm-5 mx-auto my-2">--}}
+                                        {{--                                            <div class="card">--}}
+                                        {{--                                                <div class="d-flex justify-content-center p-2">--}}
+                                        {{--                                                    <img alt="category" style="width: 100%; height: 400px;"--}}
+                                        {{--                                                         src="img/pasamanos/img-1.jpeg" class="rounded">--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                                <div class="my-1 d-flex justify-content-center">--}}
+                                        {{--                                                    <div class="px-1">--}}
+                                        {{--                                                        <button class="btn btn-sm btn-icon bg-warning">--}}
+                                        {{--                                                            <i class="fa-solid fa-pen-to-square"></i>--}}
+                                        {{--                                                        </button>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                    <div class="px-1">--}}
+                                        {{--                                                        <button class="btn btn-sm btn-icon bg-primary">--}}
+                                        {{--                                                            <i class="fa-solid fa-eye"></i>--}}
+                                        {{--                                                        </button>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                    <div class="px-1">--}}
+                                        {{--                                                        <button class="btn btn-sm btn-icon bg-success">--}}
+                                        {{--                                                            <i class="fa-solid fa-floppy-disk"></i>--}}
+                                        {{--                                                        </button>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                                <div class="my-2 text-center px-2">--}}
+                                        {{--                                                    <div type="button" class="bg-dark rounded-3"--}}
+                                        {{--                                                         v-on:click="openEditProductGallery('pasamanos')">--}}
+                                        {{--                                                        <span--}}
+                                        {{--                                                            class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"--}}
+                                        {{--                                                            style="min-height: 3.0rem">PASA MANOS DE ACERO INOXIDABLE</span>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                            </div>--}}
+                                        {{--                                        </div>--}}
                                     </div>
                                 </div>
                             </div>
@@ -848,6 +873,8 @@
                     userBirthDate: '',
                 },
                 productsInfo: {!! $productsInfo !!},
+                bannerInfo: {!! $banner !!},
+                originalBannerUrl: '',
             }
         },
         methods: {
@@ -1137,6 +1164,45 @@
 
                 this.sendEditUser();
             },
+            getBannerUpdatedData: function(){
+                const file = document.getElementById('inputBanner').files[0]?? null;
+
+                if(!file){
+                    document.getElementById('saveBannerButton').classList.add('d-none');
+                    document.getElementById('deleteBannerChanges').classList.add('d-none');
+                    document.getElementById('bannerPrincipal').src = this.originalBannerUrl;
+                    document.getElementById('seeCurrentBanner').href = this.originalBannerUrl;
+                    return
+                }
+
+                document.getElementById('bannerPrincipal').src =  URL.createObjectURL(file);
+                document.getElementById('seeCurrentBanner').href = URL.createObjectURL(file);
+                document.getElementById('saveBannerButton').classList.remove('d-none');
+                document.getElementById('deleteBannerChanges').classList.remove('d-none');
+            },
+            getOriginalUrl: function(){
+                this.originalBannerUrl = this.bannerInfo.url
+            },
+            cancelBannerChanges: function (){
+                document.getElementById('inputBanner').value = '';
+                this.getBannerUpdatedData();
+            },
+            saveEditBanner: function(){
+                let formData = new FormData;
+                formData.append('banner', document.getElementById('inputBanner').files[0]);
+
+                axios.post(this.urls.bannerUpdate,formData).then(function(response){
+                    if(!response.data.response){
+                        toastr.error(response.data.message);
+                        return
+                    }
+
+                    toastr.success(response.data.message);
+
+                }.bind(this)).catch(function(error){
+                    toastr.error(error.message);
+                }.bind(this));
+            },
         },
         watch: {},
         computed: {
@@ -1161,6 +1227,7 @@
         },
         mounted() {
             this.initAllCharts();
+            this.getOriginalUrl();
         }
     }).mount('#app')
 </script>

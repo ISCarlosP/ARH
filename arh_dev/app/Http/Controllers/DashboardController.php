@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use App\Services\SessionServices;
 use App\Services\Cookies;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Storage;
+use Mockery\Exception;
 
 class DashboardController extends Controller
 {
@@ -31,6 +33,7 @@ class DashboardController extends Controller
         $messages = $this->getMessages();
         $urls = $this->getUrlsToSend();
         $users = $this->getActiveUsers();
+        $banner = $this->getBannerInfo();
         $productsInfo = $productsController->getProducts();
 
         $userData = json_encode($user);
@@ -40,8 +43,18 @@ class DashboardController extends Controller
         $urls = json_encode($urls);
         $users = json_encode($users);
         $productsInfo = json_encode($productsInfo);
+        $banner = json_encode($banner);
 
-        return view('users.dashboard', compact('userData', 'cardsData', 'chartsData', 'messages', 'urls', 'users', 'productsInfo'))->withCookie($cookie);
+        return view('users.dashboard',
+            compact('userData',
+                'cardsData',
+                'chartsData',
+                'messages',
+                'urls',
+                'users',
+                'productsInfo',
+                'banner'))
+            ->withCookie($cookie);
     }
     public function getCardsValues(){
         $todayVisits = Site_visits::query()
@@ -161,7 +174,8 @@ class DashboardController extends Controller
             'loggout' => route('session.loggout'),
             'createUser' => route('users.create'),
             'deleteUser' => route('users.destroy'),
-            'updateUser' => route('users.update')
+            'updateUser' => route('users.update'),
+            'bannerUpdate' => route('banner.update'),
         ];
 
         return $urls;
@@ -186,5 +200,42 @@ class DashboardController extends Controller
         }
 
         return $users;
+    }
+    private function getBannerInfo(){
+        return [
+            'name' => 'banner_principal',
+            'url' => '/img/gallery/banner_principal/banner_principal.png'
+        ];
+    }
+    public function updateBannerImage(Request $request){
+        $utiliesProvider = new Utilities();
+        $response = $utiliesProvider->createResponse();
+        $response['message'] = 'Se actualizó tu imagen correctamente';
+        $isDeleted = $this->deleteBannerImage();
+
+        if(!$isDeleted){
+            $response['response'] = false;
+            $response['message'] = 'Hubo un problema al actualizar el banner, reintenta';
+
+            return $response;
+        }
+
+        $path = Storage::putFileAs(
+            'public', $request->file('banner')
+        );
+
+        return $response;
+    }
+    private function deleteBannerImage(){
+        $response = true;
+        try {
+            $url = Storage::url('banner_principal.png');
+            if(Storage::exists('gallery/banner_principal/banner_principal.png')){
+                Storage::delete('gallery/banner_principal/banner_principal.png');
+            }
+        }catch (Exception $exception){
+            $response = false;
+        }
+        return $response;
     }
 }
