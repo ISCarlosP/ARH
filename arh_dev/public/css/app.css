@@ -278,6 +278,12 @@ footer > div > div > img{
         }
     }
 
+    #navbarNav ul li a{
+        color: white;
+        text-decoration: none;
+        padding:5px 45%;
+    }
+
     .menu-fixed{
         justify-content: space-between !important;
         padding-left: 0px !important;
@@ -288,7 +294,7 @@ footer > div > div > img{
         position: relative;
         & .menu_hamburguer_box{
             width: 100% !important;
-            height: 25px;
+            height: 20px;
             display: flex;
             justify-content: end;
         }
