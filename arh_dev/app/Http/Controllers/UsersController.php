@@ -79,6 +79,7 @@ class UsersController extends Controller
         if($this->validateRepitedUserName($request->email)){
 
             $userWithEmail = Users::where('email', $request->email)
+                ->where('status', 1)
                 ->first();
 
             if($userWithEmail->id !== $request->userId){

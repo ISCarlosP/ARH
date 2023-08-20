@@ -32,6 +32,7 @@ class AuthServices
     public function getUserToAuth($credentials){
         $user =  Users::query()
             ->where('email', $credentials['email'])
+            ->where('status', 1)
             ->first()?? null;
         return $user;
     }
