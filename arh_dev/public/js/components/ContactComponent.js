@@ -30,7 +30,7 @@ const ContactComponent = {
                                     <div class="form-floating mb-4">
                                     <textarea class="form-control" id="floatingTextarea"
                                           style="height: 120px;" v-model="sendMessage.message"></textarea>
-                                        <label for="floatingTextarea">Deje un comentario</label>
+                                        <label for="floatingTextarea" style="z-index: 0">Deje un comentario</label>
                                     </div>
                                     <button class="btn btn-primary w-100" v-on:click="sendData">Enviar
                                     <span id="formSpinner" class="spinner-border spinner-border-sm d-none" ></span></button>

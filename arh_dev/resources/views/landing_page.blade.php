@@ -174,6 +174,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script src="{{asset('js/barandalesArh.js')}}"></script>
 <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.5/mobile-detect.min.js"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 <script type="module">
     import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'

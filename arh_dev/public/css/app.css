@@ -15,6 +15,17 @@
     z-index: 6;
 }
 
+.info-box{
+    font-family: Arial, Helvetica, sans-serif, serif;
+    font-weight: 600;
+    margin-top: 0px;
+    text-shadow: 3px 3px 3px black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
 .menu-fixed {
     position: sticky !important;
     top: 0;
@@ -23,10 +34,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-#title-h1{
-    font-size: 60px;
 }
 
 #floatNav{
@@ -259,7 +266,15 @@ footer > div > div > img{
         height: 150px !important;
         border-radius: 5px;
         & .img-carousel img{
-            max-width: 48% !important;
+            width: 32% !important;
+        }
+    }
+
+    #content-inicio-info{
+        justify-content: center !important;
+        & div{
+            width: 100% !important;
+            align-items: center !important;
         }
     }
 
@@ -300,7 +315,7 @@ footer > div > div > img{
     }
 
     #inicio{
-        background-image:none;
+        background-image: none;
     }
 
     #title-h1{
