@@ -11,11 +11,15 @@
     background-repeat: repeat;
 }
 
+.banner-img{
+    z-index: 6;
+}
+
 .menu-fixed {
     position: sticky !important;
     top: 0;
     z-index: 2;
-    background: #0d6efd !important;
+    background: #0d6efd;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -250,21 +254,49 @@ footer > div > div > img{
         /*background-repeat: repeat;*/
     }
 
+    .carousel-item{
+        overflow: hidden !important;
+        height: 150px !important;
+        border-radius: 5px;
+        & .img-carousel img{
+            max-width: 48% !important;
+        }
+    }
+
     .menu-fixed{
         justify-content: space-between !important;
         padding-left: 0px !important;
-        display: flex;
-        align-items: start;
+        width: 100%;
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+        position: relative;
+        & .menu_hamburguer_box{
+            width: 100% !important;
+            height: 25px;
+            display: flex;
+            justify-content: end;
+        }
+        & #navbarNav{
+            width: 100%;
+            position: absolute;
+            background: #0d6efd;
+            top: 50px;
+            transform: translateX(-100%);
+            transition: transform 300ms;
+            &  ul{
+                list-style: none;
+                flex-direction: column;
+            }
+        }
+    }
+
+    #floatNav{
+        top: 280px !important;
     }
 
     .menu_hamburguer{
         display: block;
-    }
-
-    #navbarNav ul{
-        list-style: none;
-        display: none;
-        flex-direction: column;
     }
 
     #inicio{
