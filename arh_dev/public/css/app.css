@@ -278,12 +278,6 @@ footer > div > div > img{
         }
     }
 
-    #navbarNav ul li a{
-        color: white;
-        text-decoration: none;
-        padding:5px 45%;
-    }
-
     .menu-fixed{
         justify-content: space-between !important;
         padding-left: 0px !important;
@@ -308,6 +302,21 @@ footer > div > div > img{
             &  ul{
                 list-style: none;
                 flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                & li{
+                    display: flex;
+                    justify-content: center;
+                    & a{
+                        color: white;
+                        text-decoration: none;
+                        padding:5px 150px;
+                    }
+                    & button{
+                        padding: 5px 130px;
+                        margin-bottom: 5px;
+                    }
+                }
             }
         }
     }

@@ -50,19 +50,19 @@
             </div>
             <div id="navbarNav">
                 <ul class="w-100 p-0 ul_ham_menu" style="margin: auto;">
-                    <li class="">
+                    <li class="m-0">
                         <a href="#inicio">Inicio</a>
                     </li>
-                    <li class="">
+                    <li class="m-0">
                         <a class="" href="#servicios">Servicios</a>
                     </li>
-                    <li class="">
+                    <li class="m-0">
                         <a class="" href="#nosotros">Nosotros</a>
                     </li>
-                    <li class="">
+                    <li class="m-0">
                         <a class="" href="#contacto">Contacto</a>
                     </li>
-                    <li class="">
+                    <li class=" m-0">
                         <button class="nav-link text-white" onclick="toggleLoginModal()">Iniciar Sesión</button>
                     </li>
                 </ul>
