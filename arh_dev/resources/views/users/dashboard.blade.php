@@ -847,6 +847,7 @@
                     userConfirmPassword: '',
                     userBirthDate: '',
                 },
+                productsInfo: {!! $productsInfo !!},
             }
         },
         methods: {

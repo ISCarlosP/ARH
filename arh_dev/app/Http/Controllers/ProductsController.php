@@ -5,62 +5,31 @@ namespace App\Http\Controllers;
 use App\Models\products;
 use App\Http\Requests\StoreproductsRequest;
 use App\Http\Requests\UpdateproductsRequest;
+use App\Models\Products_images;
 
 class ProductsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
+    public function getProducts (){
+        $products = Products::all()
+            ->toArray();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+        usort($products, function ($a, $b){
+            return $a['product_screen_order'] - $b['product_screen_order'];
+        });
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreproductsRequest $request)
-    {
-        //
-    }
+        $productsResponse = [];
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(products $products)
-    {
-        //
-    }
+        foreach($products as $product){
+            $images = Products_images::query()
+                ->where('product_id', $product['product_id'])
+                ->get()
+                ->toArray();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(products $products)
-    {
-        //
-    }
+            $product['images'] = $images;
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateproductsRequest $request, products $products)
-    {
-        //
-    }
+            $productsResponse[] = $product;
+        }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(products $products)
-    {
-        //
+        return $productsResponse;
     }
 }

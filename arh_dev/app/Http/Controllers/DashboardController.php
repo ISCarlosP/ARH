@@ -17,6 +17,7 @@ class DashboardController extends Controller
 {
     public function show(Request $request){
         $sessionService = new SessionServices();
+        $productsController = new ProductsController();
 
         if(!$sessionService->existSession($request)){
             return redirect()->route('home');
@@ -30,6 +31,7 @@ class DashboardController extends Controller
         $messages = $this->getMessages();
         $urls = $this->getUrlsToSend();
         $users = $this->getActiveUsers();
+        $productsInfo = $productsController->getProducts();
 
         $userData = json_encode($user);
         $cardsData = json_encode($cardsData);
@@ -37,8 +39,9 @@ class DashboardController extends Controller
         $messages = json_encode($messages);
         $urls = json_encode($urls);
         $users = json_encode($users);
+        $productsInfo = json_encode($productsInfo);
 
-        return view('users.dashboard', compact('userData', 'cardsData', 'chartsData', 'messages', 'urls', 'users'))->withCookie($cookie);
+        return view('users.dashboard', compact('userData', 'cardsData', 'chartsData', 'messages', 'urls', 'users', 'productsInfo'))->withCookie($cookie);
     }
     public function getCardsValues(){
         $todayVisits = Site_visits::query()
@@ -148,6 +151,7 @@ class DashboardController extends Controller
         $message->save();
 
         $response['values'] = $this->getMessages();
+        $response['message'] = 'El mensaje se revisó correctamente';
 
         return $response;
     }
