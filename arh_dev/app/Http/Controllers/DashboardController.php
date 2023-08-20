@@ -220,19 +220,18 @@ class DashboardController extends Controller
             return $response;
         }
 
-        $path = Storage::putFileAs(
-            'public', $request->file('banner')
-        );
+        $request->file('banner')->move(public_path('img\gallery\banner_principal'), 'banner_principal.png');
 
         return $response;
     }
     private function deleteBannerImage(){
         $response = true;
         try {
-            $url = Storage::url('banner_principal.png');
-            if(Storage::exists('gallery/banner_principal/banner_principal.png')){
-                Storage::delete('gallery/banner_principal/banner_principal.png');
+            $url = public_path('img').'\gallery\banner_principal\banner_principal.png';
+            if (file_exists($url)) {
+                unlink($url);
             }
+
         }catch (Exception $exception){
             $response = false;
         }
