@@ -34,12 +34,20 @@
         <span></span>
     </div>
     <div id="app" class="w-100 d-none dark-background-pattern">
-        <div class="w-100">
+        <div class="w-100 banner-img">
             <img src="img/banner_principal.png" alt="" style="width: 100%;">
         </div>
-        <nav class="w-100 menu-fixed p-2" style="background: rgb(0,0,0);">
+        <nav class="menu-fixed p-2">
             <!-- <div class="row w-100 m-0">
                 <div class="col-lg-12 d-flex justify-content-center"> -->
+            <div class="menu_hamburguer_box">
+                <button class="menu_hamburguer" v-on:click="showMenu" v-if="showMenuButton">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <button class="menu_hamburguer" v-on:click="hideMenu" v-if="hideMenuButton">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
             <div id="navbarNav">
                 <ul class="w-100 p-0 ul_ham_menu" style="margin: auto;">
                     <li class="">
@@ -59,9 +67,6 @@
                     </li>
                 </ul>
             </div>
-            <button class="menu_hamburguer" v-on:click="showMenu">
-                <i class="fas fa-bars"></i>
-            </button>
             <!-- </div>
         </div> -->
         </nav>
@@ -187,6 +192,8 @@
                     email: '',
                     password: ''
                 },
+                showMenuButton: true,
+                hideMenuButton: false
             }
         },
         methods: {
@@ -272,14 +279,16 @@
 
             },
             showMenu: function (){
-                const showMenu = document.querySelector('.ul_ham_menu')
-                const toggleMenu = showMenu.style.display === 'flex'
-                if(toggleMenu){
-                    showMenu.style.display = 'none'
-                    return
-                }
-                showMenu.style.display = 'flex'
-
+                let showMenu = document.querySelector('#navbarNav')
+                showMenu.style.transform = 'translateX(0%)'
+                this.showMenuButton = false
+                this.hideMenuButton = true
+            },
+            hideMenu: function (){
+                let showMenu = document.querySelector('#navbarNav')
+                showMenu.style.transform = 'translateX(-100%)'
+                this.showMenuButton = true
+                this.hideMenuButton = false
             }
         },
         mounted(){

@@ -13,7 +13,7 @@ const IncioComponent = {
                     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" style="width: 90%">
                       <div class="carousel-inner">
                         <div class="carousel-item active">
-                           <div class="d-flex justify-content-between">
+                           <div class="d-flex justify-content-between img-carousel">
                                <img class="rounded-2 d-block" src="img/img1.jpg" alt="img" style="width: 22%">
                                 <img class="rounded-2 d-block" src="img/img2.jpg" alt="img" style="width: 22%;">
                                 <img class="rounded-2 d-block" src="img/img4.jpg" alt="img" style="width: 22%;">
@@ -21,7 +21,7 @@ const IncioComponent = {
                             </div>
                         </div>
                         <div class="carousel-item">
-                          <div class="d-flex justify-content-between">
+                          <div class="d-flex justify-content-between img-carousel">
                                <img class="rounded-2 d-block" src="img/img-1.jpeg" alt="img" style="width: 22%">
                                 <img class="rounded-2 d-block" src="img/img-2.jpeg" alt="img" style="width: 22%;">
                                 <img class="rounded-2 d-block" src="img/img-4.jpeg" alt="img" style="width: 22%;">
