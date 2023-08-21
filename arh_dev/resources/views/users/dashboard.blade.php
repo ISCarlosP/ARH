@@ -287,7 +287,7 @@
                             <div class="d-flex justify-content-center my-2">
                                 <div class="text-center w-100">
                                     <span class="fw-bolder fs-3 my-1">CATEGORIAS PRINCIPALES</span>
-                                    <div class="row">
+                                    <div class="row" v-if="productsInfo.length > 0">
                                         <div v-for="product in productsInfo"
                                              class="col-lg-3 col-sm-5 mx-auto my-2">
                                             <div class="card">
@@ -323,7 +323,10 @@
                                                          class="px-1 d-none">
                                                         <button v-on:click="saveProductImage(product.product_id)"
                                                                 class="btn btn-sm btn-icon bg-success">
-                                                            <i class="fa-solid fa-floppy-disk"></i>
+                                                            <i :id="'saveProductIcon' + product.product_id"  class="fa-solid fa-floppy-disk"></i>
+                                                            <span :id="'saveProductSpinner' + product.product_id"
+                                                                  class="spinner-border spinner-border-sm d-none mx-1" role="status"
+                                                                  aria-hidden="true"></span>
                                                         </button>
                                                     </div>
                                                     <div :id="'productCancelChangesDiv' + product.product_id"
@@ -337,7 +340,7 @@
                                                 <div class="my-2 text-center px-2">
                                                     <div type="button"
                                                          class="bg-dark rounded-3"
-                                                         v-on:click="openEditProductGallery('barandales-de-acero')">
+                                                         v-on:click="openEditProductGallery(product)">
                                                         <span
                                                                 class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"
                                                                 style="min-height: 3.0rem"
@@ -657,7 +660,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <span class=" fw-bold"
-                          v-text="currentProductType.toUpperCase()"></span>
+                          v-text="(currentProductType !== '')? currentProductType.product_name.toUpperCase() : ''"></span>
                 </div>
                 <div class="modal-body px-2">
                     <div class="d-flex justify-content-center w-100 my-2">
@@ -668,9 +671,10 @@
                     </div>
                     <div class="w-100 px-2 d-flex" style="overflow-x: auto">
                         <template v-if="currentProductType !== ''">
-                            <div v-for="product in productGallery[currentProductType]" class="mx-2 my-2">
+                            <div v-for="galleryItem in productsInfo[productsInfo.indexOf(currentProductType)].images"
+                                 class="mx-2 my-2">
                                 <div class="w-100 d-flex justify-content-center">
-                                    <img alt="Imagen " :src="product.source"
+                                    <img alt="Imagen " :src="galleryItem.product_image_url"
                                          style="max-height: 10rem; max-width: 10rem; height: 10rem "
                                          class="rounded shadow">
                                 </div>
@@ -1080,7 +1084,6 @@
                 const file = document.getElementById('productInput' + productId).files[0] ?? null;
 
                 if (!file) {
-                    debugger
                     document.getElementById('saveProductDiv' + productId).classList.add('d-none');
                     document.getElementById('productCancelChangesDiv' + productId).classList.add('d-none');
                     document.getElementById('productImageSource' + productId).src = this.getProductOriginalUrl(productId);
@@ -1095,11 +1098,15 @@
             },
             saveProductImage: function (productId) {
                 let formData = new FormData;
-                debugger
                 formData.append('productImage', document.getElementById('productInput' + productId).files[0]);
                 formData.append('productId', productId);
+                this.showHideSpinner('saveProductSpinner' + productId, 'show');
+                this.showHideSpinner('saveProductIcon' + productId, 'hide');
 
                 axios.post(this.urls.updateProduct, formData).then(function (response) {
+                    this.showHideSpinner('saveProductSpinner' + productId, 'hide');
+                    this.showHideSpinner('saveProductIcon' + productId, 'show');
+
                     if (!response.data.response) {
                         toastr.error(response.data.message);
                         return;
@@ -1108,10 +1115,12 @@
 
                     setTimeout(function(){
                         location.reload();
-                    }, 3000)
+                    }, 1500)
 
                 }.bind(this)).catch(function (error) {
                     toastr.error(error.message)
+                    this.showHideSpinner('saveProductSpinner' + productId, 'show');
+                    this.showHideSpinner('saveProductIcon' + productId, 'hide');
                 }.bind(this))
             },
             getProductOriginalUrl: function (productId) {
