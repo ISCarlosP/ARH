@@ -290,11 +290,17 @@
                                                 </div>
                                                 <div class="my-1 d-flex justify-content-center">
                                                     <div class="px-1">
-                                                        <button class="btn btn-sm btn-icon bg-warning">
-                                                            <i class="fa-solid fa-pen-to-square"></i>
-                                                        </button>
+                                                        <label class="btn btn-sm btn-success btn-icon fw-bolder"
+                                                               type="button">
+                                                            <i class="fa-solid fa-plus text-white"></i>
+                                                            <input type="file"
+                                                                   :id="'productInput' + product.id"
+                                                                   style="display: none;"
+                                                                   v-on:change="getProductUpdatedData(product.id)">
+                                                        </label>
                                                     </div>
-                                                    <div class="px-1">
+                                                    <div :id="'seeProductDiv' + product.id"
+                                                         class="px-1">
                                                         <a type="button"
                                                            class="btn btn-sm btn-icon bg-primary"
                                                            :href="product.product_main_image"
@@ -302,7 +308,12 @@
                                                             <i class="fa-solid fa-eye"></i>
                                                         </a>
                                                     </div>
-                                                    <div class="px-1">
+                                                    <div :id="'saveProductDiv' + product.id" class="px-1">
+                                                        <button class="btn btn-sm btn-icon bg-success">
+                                                            <i class="fa-solid fa-floppy-disk"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div :id="'saveProductDiv' + product.id" class="px-1">
                                                         <button class="btn btn-sm btn-icon bg-success">
                                                             <i class="fa-solid fa-floppy-disk"></i>
                                                         </button>
@@ -1049,6 +1060,22 @@
                 document.getElementById('seeCurrentBanner').disabled = (type === 'disable');
                 document.getElementById('cancelBannerChangesButton').disabled = (type === 'disable');
                 document.getElementById('saveBannerButtonOriginal').disabled = (type === 'disable');
+            },
+            getProductUpdatedData: function(productId){
+                const file = document.getElementById('productInput' + productId).files[0]?? null;
+
+                if(!file){
+                    document.getElementById('saveBannerButton').classList.add('d-none');
+                    document.getElementById('deleteBannerChanges').classList.add('d-none');
+                    document.getElementById('bannerPrincipal').src = this.originalBannerUrl;
+                    document.getElementById('seeCurrentBanner').href = this.originalBannerUrl;
+                    return
+                }
+
+                document.getElementById('bannerPrincipal').src =  URL.createObjectURL(file);
+                document.getElementById('seeCurrentBanner').href = URL.createObjectURL(file);
+                document.getElementById('saveBannerButton').classList.remove('d-none');
+                document.getElementById('deleteBannerChanges').classList.remove('d-none');
             },
             editProductImage: function(){
 

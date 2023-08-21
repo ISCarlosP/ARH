@@ -56,4 +56,7 @@ Route::post('/users/update', [UsersController::class, 'update'])
 Route::post('/banner/update', [DashboardController::class, 'updateBannerImage'])
     ->name('banner.update');
 
+Route::post('/product/update', [DashboardController::class, 'updateProductImage'])
+    ->name('product.update');
+
 

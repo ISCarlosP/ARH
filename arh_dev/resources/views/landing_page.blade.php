@@ -35,7 +35,7 @@
     </div>
     <div id="app" class="w-100 d-none dark-background-pattern">
         <div class="w-100 banner-img">
-            <img src="img/banner_principal.png" alt="" style="width: 100%;">
+            <img src="img/gallery/banner_principal/banner_principal.png" alt="" style="width: 100%;">
         </div>
         <nav class="menu-fixed p-2">
             <!-- <div class="row w-100 m-0">

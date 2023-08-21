@@ -176,6 +176,7 @@ class DashboardController extends Controller
             'deleteUser' => route('users.destroy'),
             'updateUser' => route('users.update'),
             'bannerUpdate' => route('banner.update'),
+            'updateProduct' => route('product.update'),
         ];
 
         return $urls;
