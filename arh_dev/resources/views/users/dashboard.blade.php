@@ -204,12 +204,16 @@
                                                     <td v-text="user.birth_date"></td>
                                                     <td v-text="user.created_at"></td>
                                                     <td class="d-flex justify-content-center">
-                                                        <button class="btn btn-sm btn-icon btn-warning mx-2" v-on:click="getCurrentEditUser(user, index)"><i
-                                                                class="fa-solid fa-pen-to-square"></i></button>
+                                                        <button class="btn btn-sm btn-icon btn-warning mx-2"
+                                                                v-on:click="getCurrentEditUser(user, index)"><i
+                                                                    class="fa-solid fa-pen-to-square"></i></button>
                                                         <button class="btn btn-sm btn-icon btn-danger mx2"
                                                                 v-on:click="destroyUser(user.id, index)">
-                                                            <i :id="'deleteUserIconSpinner' + index" class="fa-solid fa-trash"></i>
-                                                            <span :id="'deleteUserSpinner' + index" class="spinner-border spinner-border-sm d-none" aria-hidden="true"></span></button>
+                                                            <i :id="'deleteUserIconSpinner' + index"
+                                                               class="fa-solid fa-trash"></i>
+                                                            <span :id="'deleteUserSpinner' + index"
+                                                                  class="spinner-border spinner-border-sm d-none"
+                                                                  aria-hidden="true"></span></button>
                                                     </td>
                                                 </tr>
                                                 </tbody>
@@ -239,14 +243,14 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-4 mx-auto d-flex justify-content-center">
-                                            <div class="px-1" >
+                                            <div class="px-1">
                                                 <label class="btn btn-sm btn-warning btn-icon fw-bolder" type="button">
                                                     <i class="fa-solid fa-pen-to-square"></i>
                                                     <input
-                                                        id="inputBanner"
-                                                        type="file"
-                                                        style="display: none;"
-                                                        v-on:change="getBannerUpdatedData()">
+                                                            id="inputBanner"
+                                                            type="file"
+                                                            style="display: none;"
+                                                            v-on:change="getBannerUpdatedData()">
                                                 </label>
                                             </div>
                                             <div class="px-1">
@@ -260,14 +264,18 @@
                                                 </a>
                                             </div>
                                             <div id="saveBannerButton" class="px-1 d-none">
-                                                <button id="saveBannerButtonOriginal" class="btn btn-sm btn-icon bg-success"
+                                                <button id="saveBannerButtonOriginal"
+                                                        class="btn btn-sm btn-icon bg-success"
                                                         v-on:click="saveEditBanner()">
                                                     <i id="saveBannerButtonIcon" class="fa-solid fa-floppy-disk"></i>
-                                                    <span id="saveBannerSpinner" class="spinner-border spinner-border-sm  d-none" aria-hidden="true"></span>
+                                                    <span id="saveBannerSpinner"
+                                                          class="spinner-border spinner-border-sm  d-none"
+                                                          aria-hidden="true"></span>
                                                 </button>
                                             </div>
                                             <div id="deleteBannerChanges" class="px-1 d-none">
-                                                <button id="cancelBannerChangesButton" class="btn btn-sm btn-icon bg-danger"
+                                                <button id="cancelBannerChangesButton"
+                                                        class="btn btn-sm btn-icon bg-danger"
                                                         v-on:click="cancelBannerChanges()">
                                                     <i class="fa-solid fa-xmark text-white"></i>
                                                 </button>
@@ -284,38 +292,45 @@
                                              class="col-lg-3 col-sm-5 mx-auto my-2">
                                             <div class="card">
                                                 <div class="d-flex justify-content-center p-2">
-                                                    <img alt="category" style="width: 100%; height: 400px;"
+                                                    <img :id="'productImageSource' + product.product_id"
+                                                         alt="category"
+                                                         style="width: 100%; height: 400px;"
                                                          :src="product.product_main_image"
                                                          class="rounded">
                                                 </div>
                                                 <div class="my-1 d-flex justify-content-center">
                                                     <div class="px-1">
-                                                        <label class="btn btn-sm btn-success btn-icon fw-bolder"
+                                                        <label class="btn btn-sm btn-warning btn-icon fw-bolder"
                                                                type="button">
-                                                            <i class="fa-solid fa-plus text-white"></i>
+                                                            <i class="fa-solid fa-pen-to-square text-dark"></i>
                                                             <input type="file"
-                                                                   :id="'productInput' + product.id"
+                                                                   :id="'productInput' + product.product_id"
                                                                    style="display: none;"
-                                                                   v-on:change="getProductUpdatedData(product.id)">
+                                                                   v-on:change="getProductUpdatedData(product.product_id)">
                                                         </label>
                                                     </div>
-                                                    <div :id="'seeProductDiv' + product.id"
+                                                    <div :id="'seeProductDiv' + product.product_id"
                                                          class="px-1">
                                                         <a type="button"
+                                                           :id="'seeCurrentProduct' + product.product_id"
                                                            class="btn btn-sm btn-icon bg-primary"
                                                            :href="product.product_main_image"
                                                            target="_blank">
                                                             <i class="fa-solid fa-eye"></i>
                                                         </a>
                                                     </div>
-                                                    <div :id="'saveProductDiv' + product.id" class="px-1">
-                                                        <button class="btn btn-sm btn-icon bg-success">
+                                                    <div :id="'saveProductDiv' + product.product_id"
+                                                         class="px-1 d-none">
+                                                        <button v-on:click="saveProductImage(product.product_id)"
+                                                                class="btn btn-sm btn-icon bg-success">
                                                             <i class="fa-solid fa-floppy-disk"></i>
                                                         </button>
                                                     </div>
-                                                    <div :id="'saveProductDiv' + product.id" class="px-1">
-                                                        <button class="btn btn-sm btn-icon bg-success">
-                                                            <i class="fa-solid fa-floppy-disk"></i>
+                                                    <div :id="'productCancelChangesDiv' + product.product_id"
+                                                         class="px-1 d-none">
+                                                        <button class="btn btn-sm btn-icon bg-danger"
+                                                                v-on:click="cancelProductChanges(product.product_id)">
+                                                            <i class="fa-solid fa-xmark text-white"></i>
                                                         </button>
                                                     </div>
                                                 </div>
@@ -324,9 +339,9 @@
                                                          class="bg-dark rounded-3"
                                                          v-on:click="openEditProductGallery('barandales-de-acero')">
                                                         <span
-                                                            class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"
-                                                            style="min-height: 3.0rem"
-                                                            v-text="(product.product_name).toUpperCase()"></span>
+                                                                class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"
+                                                                style="min-height: 3.0rem"
+                                                                v-text="(product.product_name).toUpperCase()"></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -477,12 +492,12 @@
                         <div class="col-lg-4 col-sm-12 my-2 mx-auto">
                             <small class="fw-bolder">Fecha de nacimiento</small>
                             <input
-                                type="date"
-                                class="form-control"
-                                placeholder="dd/mm/aaaa"
-                                aria-label="Username"
-                                aria-describedby="basic-addon1"
-                                v-model="editUser.userBirthDate">
+                                    type="date"
+                                    class="form-control"
+                                    placeholder="dd/mm/aaaa"
+                                    aria-label="Username"
+                                    aria-describedby="basic-addon1"
+                                    v-model="editUser.userBirthDate">
                         </div>
                         <div class="col-lg-4 col-sm-12 my-2 mx-auto">
                             <small class="fw-bolder">Editar contraseña</small>
@@ -580,12 +595,12 @@
                         <div class="col-lg-4 col-sm-12 my-2 mx-auto">
                             <small class="fw-bolder">Fecha de nacimiento</small>
                             <input
-                                type="date"
-                                class="form-control"
-                                placeholder="dd/mm/aaaa"
-                                aria-label="Username"
-                                aria-describedby="basic-addon1"
-                                v-model="createUser.userBirthDate">
+                                    type="date"
+                                    class="form-control"
+                                    placeholder="dd/mm/aaaa"
+                                    aria-label="Username"
+                                    aria-describedby="basic-addon1"
+                                    v-model="createUser.userBirthDate">
                         </div>
                         <div class="col-lg-4 col-sm-12 my-2 mx-auto">
                             <small class="fw-bolder">Ingresar contraseña</small>
@@ -661,13 +676,13 @@
                                 </div>
                                 <div class="d-flex justify-content-center my-2">
                                     <button class="mx-1 btn btn-sm btn-icon btn-danger"><i
-                                            class="fa-solid fa-trash-can text-white"></i></button>
+                                                class="fa-solid fa-trash-can text-white"></i></button>
                                     <button class="mx-1 btn btn-sm btn-icon btn-warning"><i
-                                            class="fa-solid fa-pen-to-square text-white"></i></button>
+                                                class="fa-solid fa-pen-to-square text-white"></i></button>
                                     <button class="mx-1 btn btn-sm btn-icon btn-primary"><i
-                                            class="fa-solid fa-eye text-white"></i></button>
+                                                class="fa-solid fa-eye text-white"></i></button>
                                     <button class="mx-1 btn btn-sm btn-icon btn-success"><i
-                                            class="fa-solid fa-floppy-disk text-white"></i></button>
+                                                class="fa-solid fa-floppy-disk text-white"></i></button>
                                 </div>
                             </div>
                         </template>
@@ -751,9 +766,9 @@
                 this.createUser['createUserCodeName'] = this.createUserCodeName;
                 document.getElementById('saveUserSpinner').classList.remove('d-none');
 
-                axios.post(this.urls.createUser, this.createUser ).then(function(response){
-                    if(!response.data.response){
-                        response.data.exceptions.forEach(function(error){
+                axios.post(this.urls.createUser, this.createUser).then(function (response) {
+                    if (!response.data.response) {
+                        response.data.exceptions.forEach(function (error) {
                             toastr.error(error);
                         });
                         document.getElementById('saveUserSpinner').classList.add('d-none');
@@ -773,7 +788,7 @@
                         userBirthDate: '',
                     }
 
-                }.bind(this)).catch(function(error){
+                }.bind(this)).catch(function (error) {
                     document.getElementById('saveUserSpinner').classList.add('d-none');
                     toastr.error(error);
                 })
@@ -891,67 +906,67 @@
                     document.getElementById('checkMessageLoading' + messageId).classList.add('d-none');
                 });
             },
-            loggout: function(){
+            loggout: function () {
                 document.getElementById('loggoutSpinner').classList.remove('d-none');
-                axios.get(this.urls.loggout).then(function(response){
-                    if(response.request.statusText === 'OK'){
+                axios.get(this.urls.loggout).then(function (response) {
+                    if (response.request.statusText === 'OK') {
                         location.reload();
                         return
                     }
                     toastr.error('Hubo un error, reintenta');
                     document.getElementById('loggoutSpinner').classList.add('d-none');
-                }.bind(this)).catch(function(error){
+                }.bind(this)).catch(function (error) {
                     document.getElementById('loggoutSpinner').classList.add('d-none');
                     toastr.error('Hubo un error, reintenta');
                 });
             },
-            destroyUser: function(userId, index){
+            destroyUser: function (userId, index) {
                 this.showHideSpinner('deleteUserSpinner' + index, 'show');
                 this.showHideSpinner('deleteUserIconSpinner' + index, 'hide');
 
-                axios.post(this.urls.deleteUser, {userId: userId}).then(function(response){
+                axios.post(this.urls.deleteUser, {userId: userId}).then(function (response) {
                     this.showHideSpinner('deleteUserSpinner' + index, 'hide');
                     this.showHideSpinner('deleteUserIconSpinner' + index, 'show');
-                    if(!response.data.response){
+                    if (!response.data.response) {
                         toastr.error(response.data.message);
                         return;
                     }
                     toastr.success(response.data.message);
                     this.users = response.data.values;
-                }.bind(this)).catch(function(error){
+                }.bind(this)).catch(function (error) {
                     toastr.error(error.message);
                     this.showHideSpinner('deleteUserSpinner' + index, 'hide');
                     this.showHideSpinner('deleteUserIconSpinner' + index, 'show');
                 }.bind(this));
             },
-            showHideSpinner: function(elementId, type){
-                if(type === 'show'){
+            showHideSpinner: function (elementId, type) {
+                if (type === 'show') {
                     document.getElementById(elementId).classList.remove('d-none');
                     return;
                 }
                 document.getElementById(elementId).classList.add('d-none');
             },
-            getCurrentEditUser: function(user){
+            getCurrentEditUser: function (user) {
                 this.editUser = {};
                 this.editUser = {
-                    'userId' : user.id,
-                    'userName' : user.first_name,
-                    'userLastName' : user.last_name.split(' ')[0],
-                    'userLastName1' : user.last_name.split(' ')[1],
+                    'userId': user.id,
+                    'userName': user.first_name,
+                    'userLastName': user.last_name.split(' ')[0],
+                    'userLastName1': user.last_name.split(' ')[1],
                     'userPassword': '',
-                    'userConfirmPassword' : '',
-                    'userBirthDate' : user.birth_date,
+                    'userConfirmPassword': '',
+                    'userBirthDate': user.birth_date,
                 };
 
                 $('#editUserModal').modal('show');
             },
-            sendEditUser: function(){
+            sendEditUser: function () {
                 let editUser = {...this.editUser}
                 editUser['email'] = this.editUserCodeName;
                 this.showHideSpinner('saveEditUserSpinner', 'show');
-                axios.post(this.urls.updateUser, editUser).then(function(response){
+                axios.post(this.urls.updateUser, editUser).then(function (response) {
                     this.showHideSpinner('saveEditUserSpinner', 'hide');
-                    if(!response.data.response){
+                    if (!response.data.response) {
                         toastr.error(response.data.message);
                         return
                     }
@@ -960,59 +975,59 @@
                     this.users = response.data.values;
                     $('#editUserModal').modal('hide');
 
-                }.bind(this)).catch(function(error){
+                }.bind(this)).catch(function (error) {
                     this.showHideSpinner('saveEditUserSpinner', 'hide');
                     toastr.error(error.message);
                 }.bind(this));
             },
-            validateSendEditUser: function(){
+            validateSendEditUser: function () {
                 let valid = true;
 
-                if(this.editUser.userName === ''){
+                if (this.editUser.userName === '') {
                     toastr.error('Debes ingresar un nombre valido');
                     valid = false;
                 }
 
-                if(this.editUser.userLastName === ''){
+                if (this.editUser.userLastName === '') {
                     toastr.error('Debes ingresar un apellido paterno valido');
                     valid = false;
                 }
 
-                if(this.editUser.userLastName1 === ''){
+                if (this.editUser.userLastName1 === '') {
                     toastr.error('Debes ingresar un apellido materno valido');
                     valid = false;
                 }
 
-                if(this.editUser.userBirthDate === ''){
+                if (this.editUser.userBirthDate === '') {
                     toastr.error('Debes ingresar una fecha de cumpleaños');
                     valid = false;
                 }
 
-                if(this.editUser.userPassword !== '' && this.editUser.userConfirmPassword === ''){
+                if (this.editUser.userPassword !== '' && this.editUser.userConfirmPassword === '') {
                     toastr.error('No has confirmado tu contraseña nueva');
                     valid = false;
                 }
 
-                if(this.editUser.userConfirmPassword !== '' && this.editUser.userPassword === ''){
+                if (this.editUser.userConfirmPassword !== '' && this.editUser.userPassword === '') {
                     toastr.error('No ingresaste una contraseña nueva, solo la confirmacioón');
                     valid = false;
                 }
 
-                if((this.editUser.userConfirmPassword !== '' && this.editUser.userPassword !== '') && (this.editUser.userConfirmPassword !== this.editUser.userPassword )){
+                if ((this.editUser.userConfirmPassword !== '' && this.editUser.userPassword !== '') && (this.editUser.userConfirmPassword !== this.editUser.userPassword)) {
                     toastr.error('Las contraseñas ingresadas no coinciden');
                     valid = false;
                 }
 
-                if(!valid){
+                if (!valid) {
                     return
                 }
 
                 this.sendEditUser();
             },
-            getBannerUpdatedData: function(){
-                const file = document.getElementById('inputBanner').files[0]?? null;
+            getBannerUpdatedData: function () {
+                const file = document.getElementById('inputBanner').files[0] ?? null;
 
-                if(!file){
+                if (!file) {
                     document.getElementById('saveBannerButton').classList.add('d-none');
                     document.getElementById('deleteBannerChanges').classList.add('d-none');
                     document.getElementById('bannerPrincipal').src = this.originalBannerUrl;
@@ -1020,65 +1035,92 @@
                     return
                 }
 
-                document.getElementById('bannerPrincipal').src =  URL.createObjectURL(file);
+                document.getElementById('bannerPrincipal').src = URL.createObjectURL(file);
                 document.getElementById('seeCurrentBanner').href = URL.createObjectURL(file);
                 document.getElementById('saveBannerButton').classList.remove('d-none');
                 document.getElementById('deleteBannerChanges').classList.remove('d-none');
             },
-            getOriginalUrl: function(){
+            getOriginalUrl: function () {
                 this.originalBannerUrl = this.bannerInfo.url
             },
-            cancelBannerChanges: function (){
+            cancelBannerChanges: function () {
                 document.getElementById('inputBanner').value = '';
                 this.getBannerUpdatedData();
             },
-            saveEditBanner: function(){
+            saveEditBanner: function () {
                 let formData = new FormData;
                 formData.append('banner', document.getElementById('inputBanner').files[0]);
                 this.disableBannerButtons('disable');
                 this.showHideSpinner('saveBannerSpinner', 'show');
                 this.showHideSpinner('saveBannerButtonIcon', 'hide');
 
-                axios.post(this.urls.bannerUpdate,formData).then(function(response){
-                    if(!response.data.response){
+                axios.post(this.urls.bannerUpdate, formData).then(function (response) {
+                    if (!response.data.response) {
                         toastr.error(response.data.message);
                         return
                     }
 
                     toastr.success(response.data.message);
 
-                    setTimeout(function(){
+                    setTimeout(function () {
                         location.reload();
                     }, 3000)
 
-                }.bind(this)).catch(function(error){
+                }.bind(this)).catch(function (error) {
                     toastr.error(error.message);
                 }.bind(this));
             },
-            disableBannerButtons: function(type){
+            disableBannerButtons: function (type) {
                 document.getElementById('saveBannerButton').disabled = (type === 'disable');
                 document.getElementById('seeCurrentBanner').disabled = (type === 'disable');
                 document.getElementById('cancelBannerChangesButton').disabled = (type === 'disable');
                 document.getElementById('saveBannerButtonOriginal').disabled = (type === 'disable');
             },
-            getProductUpdatedData: function(productId){
-                const file = document.getElementById('productInput' + productId).files[0]?? null;
+            getProductUpdatedData: function (productId) {
+                const file = document.getElementById('productInput' + productId).files[0] ?? null;
 
-                if(!file){
-                    document.getElementById('saveBannerButton').classList.add('d-none');
-                    document.getElementById('deleteBannerChanges').classList.add('d-none');
-                    document.getElementById('bannerPrincipal').src = this.originalBannerUrl;
-                    document.getElementById('seeCurrentBanner').href = this.originalBannerUrl;
+                if (!file) {
+                    debugger
+                    document.getElementById('saveProductDiv' + productId).classList.add('d-none');
+                    document.getElementById('productCancelChangesDiv' + productId).classList.add('d-none');
+                    document.getElementById('productImageSource' + productId).src = this.getProductOriginalUrl(productId);
+                    document.getElementById('seeCurrentProduct' + productId).href = this.getProductOriginalUrl(productId);
                     return
                 }
 
-                document.getElementById('bannerPrincipal').src =  URL.createObjectURL(file);
-                document.getElementById('seeCurrentBanner').href = URL.createObjectURL(file);
-                document.getElementById('saveBannerButton').classList.remove('d-none');
-                document.getElementById('deleteBannerChanges').classList.remove('d-none');
+                document.getElementById('productImageSource' + productId).src = URL.createObjectURL(file);
+                document.getElementById('seeCurrentProduct' + productId).href = URL.createObjectURL(file);
+                document.getElementById('saveProductDiv' + productId).classList.remove('d-none');
+                document.getElementById('productCancelChangesDiv' + productId).classList.remove('d-none');
             },
-            editProductImage: function(){
+            saveProductImage: function (productId) {
+                let formData = new FormData;
+                debugger
+                formData.append('productImage', document.getElementById('productInput' + productId).files[0]);
+                formData.append('productId', productId);
 
+                axios.post(this.urls.updateProduct, formData).then(function (response) {
+                    if (!response.data.response) {
+                        toastr.error(response.data.message);
+                        return;
+                    }
+                    toastr.success(response.data.message);
+
+                    setTimeout(function(){
+                        location.reload();
+                    }, 3000)
+
+                }.bind(this)).catch(function (error) {
+                    toastr.error(error.message)
+                }.bind(this))
+            },
+            getProductOriginalUrl: function (productId) {
+                debugger
+                return 'img/products/' + productId + '.jpeg'
+            },
+            cancelProductChanges: function (productId) {
+                document.getElementById('productInput' + productId).value = '';
+                this.getProductUpdatedData(productId);
             },
         },
         watch: {},

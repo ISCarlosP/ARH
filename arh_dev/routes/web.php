@@ -6,6 +6,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -56,7 +57,7 @@ Route::post('/users/update', [UsersController::class, 'update'])
 Route::post('/banner/update', [DashboardController::class, 'updateBannerImage'])
     ->name('banner.update');
 
-Route::post('/product/update', [DashboardController::class, 'updateProductImage'])
+Route::post('/product/update', [ProductsController::class, 'updateProductImage'])
     ->name('product.update');
 
 

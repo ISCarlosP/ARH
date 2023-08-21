@@ -36,10 +36,9 @@ class ProductsController extends Controller
         return $productsResponse;
     }
     public function updateProductImage(Request $request){
-        $this->deleteProductImage($request);
         $utiliesProvider = new Utilities();
         $response = $utiliesProvider->createResponse();
-        $isDeleted = $this->deleteBannerImage();
+        $isDeleted = $this->deleteProductImage($request);
         $response['message'] = 'Se actualizó tu imagen correctamente';
 
         if(!$isDeleted){
@@ -49,7 +48,7 @@ class ProductsController extends Controller
             return $response;
         }
 
-        $request->file('banner')->move(public_path('img\products\ ' . $request->productId ), $request->productId . '.jpeg');
+        $request->file('productImage')->move(public_path('img\products\\'), $request->productId . '.jpeg');
 
         return $response;
     }
@@ -57,7 +56,7 @@ class ProductsController extends Controller
         $response = true;
 
         try{
-            $url = public_path('img\products') . '\ ' . $request->productId . '.jpeg';
+            $url = public_path('img\products') . '\\' . $request->productId . '.jpeg';
             if(file_exists($url)){
                 unlink($url);
             }
