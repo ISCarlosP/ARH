@@ -14,32 +14,12 @@ const IncioComponent = {
                         <p class="pt-3 text-justify text-white" style="text-shadow: 3px 3px 3px black; font-size: 18px;">Nos dedicamos a la fabricación de barandales y pasamanos de acero inoxidable, y/o con cristal templado, barandales curvos, barandales de  escalera y para balcones...</p>
                     </div>
                 </div>
-                    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" style="width: 90%">
-                      <div class="carousel-inner">
-                        <div class="carousel-item active">
-                           <div class="d-flex justify-content-between img-carousel">
-                               <img class="rounded-2 d-block" src="img/img1.jpg" alt="img" style="width: 22%">
-                                <img class="rounded-2 d-block" src="img/img2.jpg" alt="img" style="width: 22%;">
-                                <img class="rounded-2 d-block" src="img/img4.jpg" alt="img" style="width: 22%;">
-                                <img class="rounded-2 d-block" src="img/img3.jpg" alt="img" style="width: 22%;" v-if="userDevice.mobile() === null">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                          <div class="d-flex justify-content-between img-carousel">
-                               <img class="rounded-2 d-block" src="img/img-1.jpeg" alt="img" style="width: 22%">
-                                <img class="rounded-2 d-block" src="img/img-2.jpeg" alt="img" style="width: 22%;">
-                                <img class="rounded-2 d-block" src="img/img-4.jpeg" alt="img" style="width: 22%;">
-                                <img class="rounded-2 d-block" src="img/img-3.jpeg" alt="img" style="width: 22%;" v-if="userDevice.mobile() === null">
-                            </div>
-                        </div>
-                      </div>
-                    </div>
             </div>
         </div>
     `,
     data(){
         return{
-            userDevice: new MobileDetect(window.navigator.userAgent),
+
         }
     }
 }

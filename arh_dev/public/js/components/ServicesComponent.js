@@ -29,8 +29,28 @@ const ServicesComponent = {
 
                     </div>
                 </div>
-                <div class="container mt-5">
-                    <h2 style="font-size: 40px; text-align: center; margin-top: 70px; margin-bottom: 40px; color: aliceblue; font-family: Arial, Helvetica, sans-serif;">
+                <div id="carouselExampleAutoplaying" class="carousel slide mt-5" data-bs-ride="carousel">
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                           <div class="d-flex justify-content-between img-carousel" style="height: 300px;">
+                               <img class="rounded-2 d-block" src="img/img1.jpg" alt="img" style="width: 22%">
+                                <img class="rounded-2 d-block" src="img/img2.jpg" alt="img" style="width: 22%;">
+                                <img class="rounded-2 d-block" src="img/img4.jpg" alt="img" style="width: 22%;">
+                                <img class="rounded-2 d-block" src="img/img3.jpg" alt="img" style="width: 22%;" v-if="userDevice.mobile() === null">
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                          <div class="d-flex justify-content-between img-carousel" style="height: 300px;">
+                               <img class="rounded-2 d-block" src="img/img-1.jpeg" alt="img" style="width: 22%">
+                                <img class="rounded-2 d-block" src="img/img-2.jpeg" alt="img" style="width: 22%;">
+                                <img class="rounded-2 d-block" src="img/img-4.jpeg" alt="img" style="width: 22%;">
+                                <img class="rounded-2 d-block" src="img/img-3.jpeg" alt="img" style="width: 22%;" v-if="userDevice.mobile() === null">
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                <div class="container mt-5 services-container">
+                    <h2 style="font-size: 40px; text-align: center; margin-bottom: 40px; color: aliceblue; font-family: Arial, Helvetica, sans-serif;">
                         Productos
                     </h2>
                     <div class="row">
@@ -53,7 +73,8 @@ const ServicesComponent = {
     `,
     data(){
         return{
-            route: ''
+            route: '',
+            userDevice: new MobileDetect(window.navigator.userAgent),
         }
     },
     methods: {
