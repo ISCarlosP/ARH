@@ -1047,7 +1047,7 @@
                 document.getElementById('seeCurrentBanner').href = URL.createObjectURL(file);
                 document.getElementById('saveBannerButton').classList.remove('d-none');
                 document.getElementById('deleteBannerChanges').classList.remove('d-none');
-                this.getCanvas(URL.createObjectURL(file), URL.createObjectURL(file))
+                this.getCanvas(URL.createObjectURL(file), window.location.origin + '/img/waterMark/watermark.jpeg')
             },
             getOriginalUrl: function () {
                 this.originalBannerUrl = this.bannerInfo.url
