@@ -1047,7 +1047,7 @@
                 document.getElementById('seeCurrentBanner').href = URL.createObjectURL(file);
                 document.getElementById('saveBannerButton').classList.remove('d-none');
                 document.getElementById('deleteBannerChanges').classList.remove('d-none');
-                this.getCanvas(URL.createObjectURL(file), 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png')
+                this.getCanvas(URL.createObjectURL(file), URL.createObjectURL(file))
             },
             getOriginalUrl: function () {
                 this.originalBannerUrl = this.bannerInfo.url
@@ -1067,7 +1067,7 @@
 
                 myCanvas.toBlob(blob => {
                     sendFile = new File([blob], 'imagen.png', {type: 'image/png'})
-                }, 'image.png')
+                })
 
                 formData.append('banner', sendFile);
                 axios.post(this.urls.bannerUpdate, formData).then(function (response) {
