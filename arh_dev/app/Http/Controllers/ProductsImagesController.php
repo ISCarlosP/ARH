@@ -36,9 +36,10 @@ class ProductsImagesController extends Controller
         return $response;
     }
 
-    public function delete(Request $request)
-    {
+    public function delete(Request $request){
         $utilitiesProvider = new Utilities();
+        $response = $utilitiesProvider->createResponse();
+
         $toDelete = Products_images::query()
             ->where('product_images_id', $request->imageId)
             ->first();
@@ -49,6 +50,9 @@ class ProductsImagesController extends Controller
         if(file_exists($url)){
             unlink($url);
         }
+        $response['message'] = 'Tu imagen se eliminó correctamente';
+
+        return $response;
 
     }
 

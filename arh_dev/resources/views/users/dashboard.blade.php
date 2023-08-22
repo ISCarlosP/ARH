@@ -1067,24 +1067,23 @@
 
                 myCanvas.toBlob(blob => {
                     sendFile = new File([blob], 'imagen.png', {type: 'image/png'})
+                    formData.append('banner', sendFile);
+                    axios.post(this.urls.bannerUpdate,formData).then(function (response) {
+                        if (!response.data.response) {
+                            toastr.error(response.data.message);
+                            return
+                        }
+
+                        toastr.success(response.data.message);
+
+                        setTimeout(function () {
+                            location.reload();
+                        }, 3000)
+
+                    }.bind(this)).catch(function (error) {
+                        toastr.error(error.message);
+                    }.bind(this));
                 })
-
-                formData.append('banner', sendFile);
-                axios.post(this.urls.bannerUpdate, JSON.parse(formData)).then(function (response) {
-                    if (!response.data.response) {
-                        toastr.error(response.data.message);
-                        return
-                    }
-
-                    toastr.success(response.data.message);
-
-                    setTimeout(function () {
-                        location.reload();
-                    }, 3000)
-
-                }.bind(this)).catch(function (error) {
-                    toastr.error(error.message);
-                }.bind(this));
             },
             disableBannerButtons: function (type) {
                 document.getElementById('saveBannerButton').disabled = (type === 'disable');
