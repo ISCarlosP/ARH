@@ -1070,7 +1070,7 @@
                 })
 
                 formData.append('banner', sendFile);
-                axios.post(this.urls.bannerUpdate, formData).then(function (response) {
+                axios.post(this.urls.bannerUpdate, JSON.parse(formData)).then(function (response) {
                     if (!response.data.response) {
                         toastr.error(response.data.message);
                         return
