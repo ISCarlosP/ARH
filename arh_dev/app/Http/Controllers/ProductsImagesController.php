@@ -38,7 +38,7 @@ class ProductsImagesController extends Controller
 
     public function delete(Request $request)
     {
-        $utilitiesProvider 
+        $utilitiesProvider = new Utilities();
         $toDelete = Products_images::query()
             ->where('product_images_id', $request->imageId)
             ->first();
