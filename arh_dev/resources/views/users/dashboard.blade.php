@@ -1131,6 +1131,40 @@
                 document.getElementById('productInput' + productId).value = '';
                 this.getProductUpdatedData(productId);
             },
+            getCanvas: function(){
+                const myImg = new Image()
+                const myImg2 = new Image()
+                let pexelImg = 'https://images.pexels.com/photos/17852294/pexels-photo-17852294/free-photo-of-ciudad-paisaje-hombre-gente.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load'
+                let img2 = 'https://images.wikidexcdn.net/mwuploads/wikidex/thumb/5/56/latest/20200307023245/Charmander.png/100px-Charmander.png'
+                myImg.src = pexelImg
+                myImg2.src = img2
+                const mainContainer = document.getElementById('main_container')
+                const getMyCanvas = document.createElement('canvas')
+
+                getMyCanvas.setAttribute('id', 'my-canvas')
+                getMyCanvas.width = 300
+                getMyCanvas.height = 450
+                mainContainer.appendChild(getMyCanvas)
+                const ctx = getMyCanvas.getContext('2d')
+
+                let hello = 'Steven Layna Gonzalez'
+                myImg.onload = () => {
+                    ctx.drawImage(myImg,0,0)
+                    ctx.fillStyle = "rgba(255, 255, 255, .4)";
+                    ctx.fillRect(0, 425, 300, 25)
+
+                    ctx.font = '24px Arial'
+                    ctx.fillStyle = 'black'
+                    ctx.fillText(hello, 20, 448)
+                }
+                myImg2.onload = () => {
+                    ctx.globalAlpha = 0.3
+                    //ctx.drawImage(myImg2,10,10, 100, 100)
+                    const miPatron = ctx.createPattern(myImg2, 'repeat');
+                    ctx.fillStyle = miPatron;
+                    ctx.fillRect(0,0,ctx.canvas.width,ctx.canvas.height);
+                }
+            }
         },
         watch: {},
         computed: {
