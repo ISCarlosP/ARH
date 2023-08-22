@@ -243,7 +243,6 @@
                                     </div>
                                     <div class="d-flex flex-column justify-content-center align-items-center" id="main_container">
                                         <div class="element">
-                                            <i class="fab fa-whatsapp text-white fs-1"></i>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -1059,11 +1058,16 @@
             },
             saveEditBanner: function () {
                 let formData = new FormData;
-                formData.append('banner', document.getElementById('inputBanner').files[0]);
                 this.disableBannerButtons('disable');
                 this.showHideSpinner('saveBannerSpinner', 'show');
                 this.showHideSpinner('saveBannerButtonIcon', 'hide');
+                const myCanvas = document.querySelector('#my-canvas')
 
+                myCanvas.toBlob(blob => {
+                    const sendFile = new File([blob], 'imagen.png', {type: 'image/png'})
+                }, 'image.png')
+
+                formData.append('banner', sendFile);
                 axios.post(this.urls.bannerUpdate, formData).then(function (response) {
                     if (!response.data.response) {
                         toastr.error(response.data.message);
@@ -1138,7 +1142,7 @@
                 this.getProductUpdatedData(productId);
             },
             getCanvas: function(img, logo){
-                debugger
+                //debugger
                 const myImg1 = new Image()
                 const myImg2 = new Image()
                 myImg1.src = img
@@ -1147,8 +1151,8 @@
                 const getMyCanvas = document.createElement('canvas')
 
                 getMyCanvas.setAttribute('id', 'my-canvas')
-                getMyCanvas.width = 400
-                getMyCanvas.height = 550
+                getMyCanvas.width = 200
+                getMyCanvas.height = 350
                 mainContainer.appendChild(getMyCanvas)
                 const ctx = getMyCanvas.getContext('2d')
 
@@ -1162,7 +1166,6 @@
                 }
                 myImg2.onload = () => {
                     ctx.globalAlpha = 0.3
-                    //ctx.drawImage(myImg2,10,10, 100, 100)
                     const miPatron = ctx.createPattern(myImg2, 'repeat');
                     ctx.fillStyle = miPatron;
                     ctx.fillRect(0,0,ctx.canvas.width,ctx.canvas.height);
