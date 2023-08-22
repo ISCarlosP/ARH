@@ -1063,8 +1063,10 @@
                 this.showHideSpinner('saveBannerButtonIcon', 'hide');
                 const myCanvas = document.querySelector('#my-canvas')
 
+                let sendFile = {}
+
                 myCanvas.toBlob(blob => {
-                    const sendFile = new File([blob], 'imagen.png', {type: 'image/png'})
+                    sendFile = new File([blob], 'imagen.png', {type: 'image/png'})
                 }, 'image.png')
 
                 formData.append('banner', sendFile);
