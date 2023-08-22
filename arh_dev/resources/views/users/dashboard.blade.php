@@ -241,6 +241,11 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="d-flex flex-column justify-content-center align-items-center" id="main_container">
+                                        <div class="element">
+                                            <i class="fab fa-whatsapp text-white fs-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-4 mx-auto d-flex justify-content-center">
                                             <div class="px-1">
@@ -1043,6 +1048,7 @@
                 document.getElementById('seeCurrentBanner').href = URL.createObjectURL(file);
                 document.getElementById('saveBannerButton').classList.remove('d-none');
                 document.getElementById('deleteBannerChanges').classList.remove('d-none');
+                this.getCanvas(URL.createObjectURL(file), 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png')
             },
             getOriginalUrl: function () {
                 this.originalBannerUrl = this.bannerInfo.url
@@ -1131,31 +1137,28 @@
                 document.getElementById('productInput' + productId).value = '';
                 this.getProductUpdatedData(productId);
             },
-            getCanvas: function(){
-                const myImg = new Image()
+            getCanvas: function(img, logo){
+                debugger
+                const myImg1 = new Image()
                 const myImg2 = new Image()
-                let pexelImg = 'https://images.pexels.com/photos/17852294/pexels-photo-17852294/free-photo-of-ciudad-paisaje-hombre-gente.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load'
-                let img2 = 'https://images.wikidexcdn.net/mwuploads/wikidex/thumb/5/56/latest/20200307023245/Charmander.png/100px-Charmander.png'
-                myImg.src = pexelImg
-                myImg2.src = img2
+                myImg1.src = img
+                myImg2.src = logo
                 const mainContainer = document.getElementById('main_container')
                 const getMyCanvas = document.createElement('canvas')
 
                 getMyCanvas.setAttribute('id', 'my-canvas')
-                getMyCanvas.width = 300
-                getMyCanvas.height = 450
+                getMyCanvas.width = 400
+                getMyCanvas.height = 550
                 mainContainer.appendChild(getMyCanvas)
                 const ctx = getMyCanvas.getContext('2d')
 
-                let hello = 'Steven Layna Gonzalez'
-                myImg.onload = () => {
-                    ctx.drawImage(myImg,0,0)
+                myImg1.onload = () => {
+                    ctx.drawImage(myImg1,0,0)
                     ctx.fillStyle = "rgba(255, 255, 255, .4)";
                     ctx.fillRect(0, 425, 300, 25)
 
                     ctx.font = '24px Arial'
                     ctx.fillStyle = 'black'
-                    ctx.fillText(hello, 20, 448)
                 }
                 myImg2.onload = () => {
                     ctx.globalAlpha = 0.3
