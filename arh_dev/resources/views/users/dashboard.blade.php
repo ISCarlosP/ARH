@@ -1047,7 +1047,7 @@
                 document.getElementById('seeCurrentBanner').href = URL.createObjectURL(file);
                 document.getElementById('saveBannerButton').classList.remove('d-none');
                 document.getElementById('deleteBannerChanges').classList.remove('d-none');
-                this.getCanvas(URL.createObjectURL(file), window.location.origin + '/img/waterMark/watermark.jpeg')
+                //this.getCanvas(URL.createObjectURL(file), window.location.origin + '/img/waterMark/watermark.jpeg')
             },
             getOriginalUrl: function () {
                 this.originalBannerUrl = this.bannerInfo.url
@@ -1061,13 +1061,9 @@
                 this.disableBannerButtons('disable');
                 this.showHideSpinner('saveBannerSpinner', 'show');
                 this.showHideSpinner('saveBannerButtonIcon', 'hide');
-                const myCanvas = document.querySelector('#my-canvas')
+                //const myCanvas = document.querySelector('#my-canvas')
 
-                let sendFile = {}
-
-                myCanvas.toBlob(blob => {
-                    sendFile = new File([blob], 'imagen.png', {type: 'image/png'})
-                    formData.append('banner', sendFile);
+                formData.append('banner', document.getElementById('inputBanner').files[0]);
                     axios.post(this.urls.bannerUpdate,formData).then(function (response) {
                         if (!response.data.response) {
                             toastr.error(response.data.message);
@@ -1083,7 +1079,6 @@
                     }.bind(this)).catch(function (error) {
                         toastr.error(error.message);
                     }.bind(this));
-                })
             },
             disableBannerButtons: function (type) {
                 document.getElementById('saveBannerButton').disabled = (type === 'disable');
@@ -1106,33 +1101,65 @@
                 document.getElementById('seeCurrentProduct' + productId).href = URL.createObjectURL(file);
                 document.getElementById('saveProductDiv' + productId).classList.remove('d-none');
                 document.getElementById('productCancelChangesDiv' + productId).classList.remove('d-none');
+                this.getCanvas(URL.createObjectURL(file), window.location.origin + '/img/waterMark/watermark.jpeg')
             },
             saveProductImage: function (productId) {
+                debugger
                 let formData = new FormData;
                 formData.append('productImage', document.getElementById('productInput' + productId).files[0]);
                 formData.append('productId', productId);
                 this.showHideSpinner('saveProductSpinner' + productId, 'show');
                 this.showHideSpinner('saveProductIcon' + productId, 'hide');
+                const myCanvas = document.querySelector('#my-canvas')
 
-                axios.post(this.urls.updateProduct, formData).then(function (response) {
-                    this.showHideSpinner('saveProductSpinner' + productId, 'hide');
-                    this.showHideSpinner('saveProductIcon' + productId, 'show');
+                let sendFile = {}
 
-                    if (!response.data.response) {
-                        toastr.error(response.data.message);
-                        return;
-                    }
-                    toastr.success(response.data.message);
+                myCanvas.toBlob(blob => {
+                    sendFile = new File([blob], 'imagen.png', {type: 'image/png'})
+                    formData.append('product', sendFile);
+                    axios.post(this.urls.updateProduct, formData).then(function (response) {
+                        this.showHideSpinner('saveProductSpinner' + productId, 'hide');
+                        this.showHideSpinner('saveProductIcon' + productId, 'show');
 
-                    setTimeout(function(){
-                        location.reload();
-                    }, 1500)
+                        if (!response.data.response) {
+                            toastr.error(response.data.message);
+                            return;
+                        }
+                        toastr.success(response.data.message);
 
-                }.bind(this)).catch(function (error) {
-                    toastr.error(error.message)
-                    this.showHideSpinner('saveProductSpinner' + productId, 'show');
-                    this.showHideSpinner('saveProductIcon' + productId, 'hide');
-                }.bind(this))
+                        setTimeout(function(){
+                            location.reload();
+                        }, 1500)
+
+                    }.bind(this)).catch(function (error) {
+                        toastr.error(error.message)
+                        this.showHideSpinner('saveProductSpinner' + productId, 'show');
+                        this.showHideSpinner('saveProductIcon' + productId, 'hide');
+                    }.bind(this))
+                })
+
+
+                //let sendFile = {}
+
+                // myCanvas.toBlob(blob => {
+                //     sendFile = new File([blob], 'imagen.png', {type: 'image/png'})
+                //     formData.append('banner', sendFile);
+                //     axios.post(this.urls.bannerUpdate,formData).then(function (response) {
+                //         if (!response.data.response) {
+                //             toastr.error(response.data.message);
+                //             return
+                //         }
+                //
+                //         toastr.success(response.data.message);
+                //
+                //         setTimeout(function () {
+                //             location.reload();
+                //         }, 3000)
+                //
+                //     }.bind(this)).catch(function (error) {
+                //         toastr.error(error.message);
+                //     }.bind(this));
+                // })
             },
             getProductOriginalUrl: function (productId) {
                 debugger
@@ -1152,8 +1179,10 @@
                 const getMyCanvas = document.createElement('canvas')
 
                 getMyCanvas.setAttribute('id', 'my-canvas')
-                getMyCanvas.width = 200
-                getMyCanvas.height = 350
+                // Establecer el ancho y alto del canvas al 100% del contenedor
+                getMyCanvas.style.width = '200px';
+                getMyCanvas.style.height = '300px';
+
                 mainContainer.appendChild(getMyCanvas)
                 const ctx = getMyCanvas.getContext('2d')
 
