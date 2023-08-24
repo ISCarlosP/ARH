@@ -670,9 +670,10 @@
                           v-text="(currentProductType !== '')? currentProductType.product_name.toUpperCase() : ''"></span>
                 </div>
                 <div class="modal-body px-2">
-                    <div class="d-flex justify-content-center w-100 my-2">
-                        <label class="btn btn-sm btn-success btn-icon fw-bolder" type="button">
-                            <i class="fa-solid fa-plus text-white"></i>
+                    <div class="d-flex justify-content-end w-100 my-2 px-3">
+                        <label class="btn btn-sm btn-success btn-icon " type="button">
+                            Agregar
+                            {{--                            <i class="fa-solid fa-plus text-white">Agregar</i>--}}
                             <input type="file" id="miInput" style="display: none;">
                         </label>
                     </div>
@@ -685,18 +686,20 @@
                                          style="max-height: 10rem; max-width: 10rem; height: 10rem "
                                          class="rounded shadow">
                                 </div>
-                                <div class="d-flex justify-content-center my-2">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                    <a class="mx-1 btn btn-sm btn-icon btn-primary"
+                                <div class="d-flex justify-content-center my-2 align-items-center">
+                                    <input class="form-check-input m-2"
+                                           type="checkbox"
+                                           :id="'check' + galleryItem.products_images_id"
+                                           v-on:change="toggleDeleteGalleryItem(galleryItem)">
+                                    <a class="mx-1 btn btn-sm btn-icon  btn-icon"
                                        :href="galleryItem.product_image_url"
                                        target="_blank"><i
-                                                class="fa-solid fa-eye text-white"></i></a>
-                                    <button class="mx-1 btn btn-sm btn-icon btn-success"><i
-                                                class="fa-solid fa-floppy-disk text-white"></i></button>
+                                                class="fa-solid fa-eye text-primary  fs-5"></i></a>
                                 </div>
                             </div>
                         </template>
                     </div>
+                    <div class="d-flex justify-content-end"></div>
                 </div>
             </div>
         </div>
@@ -745,6 +748,8 @@
                 productsInfo: {!! $productsInfo !!},
                 bannerInfo: {!! $banner !!},
                 originalBannerUrl: '',
+                galleryToDelete: [],
+                galleryToAdd: [],
             }
         },
         methods: {
@@ -1214,6 +1219,15 @@
             deleteGalleryItem: function () {
             },
             createGalleryItem: function () {
+            },
+            toggleDeleteGalleryItem: function (img) {
+                const check = document.getElementById('check' + img.products_images_id);
+                if (!document.getElementById('check' + img.products_images_id).checked) {
+                    const index = this.galleryToDelete.indexOf(img);
+                    this.galleryToDelete.splice(index, 1);
+                    return;
+                }
+                this.galleryToDelete.push(img);
             },
         },
         watch: {},
