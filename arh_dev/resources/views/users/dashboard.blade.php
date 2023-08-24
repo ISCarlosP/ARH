@@ -241,7 +241,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="d-flex flex-column justify-content-center align-items-center" id="main_container">
+                                    <div class="d-flex flex-column justify-content-center align-items-center"
+                                         id="main_container">
                                         <div class="element">
                                         </div>
                                     </div>
@@ -327,9 +328,11 @@
                                                          class="px-1 d-none">
                                                         <button v-on:click="saveProductImage(product.product_id)"
                                                                 class="btn btn-sm btn-icon bg-success">
-                                                            <i :id="'saveProductIcon' + product.product_id"  class="fa-solid fa-floppy-disk"></i>
+                                                            <i :id="'saveProductIcon' + product.product_id"
+                                                               class="fa-solid fa-floppy-disk"></i>
                                                             <span :id="'saveProductSpinner' + product.product_id"
-                                                                  class="spinner-border spinner-border-sm d-none mx-1" role="status"
+                                                                  class="spinner-border spinner-border-sm d-none mx-1"
+                                                                  role="status"
                                                                   aria-hidden="true"></span>
                                                         </button>
                                                     </div>
@@ -683,12 +686,11 @@
                                          class="rounded shadow">
                                 </div>
                                 <div class="d-flex justify-content-center my-2">
-                                    <button class="mx-1 btn btn-sm btn-icon btn-danger"><i
-                                                class="fa-solid fa-trash-can text-white"></i></button>
-                                    <button class="mx-1 btn btn-sm btn-icon btn-warning"><i
-                                                class="fa-solid fa-pen-to-square text-white"></i></button>
-                                    <button class="mx-1 btn btn-sm btn-icon btn-primary"><i
-                                                class="fa-solid fa-eye text-white"></i></button>
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                    <a class="mx-1 btn btn-sm btn-icon btn-primary"
+                                       :href="galleryItem.product_image_url"
+                                       target="_blank"><i
+                                                class="fa-solid fa-eye text-white"></i></a>
                                     <button class="mx-1 btn btn-sm btn-icon btn-success"><i
                                                 class="fa-solid fa-floppy-disk text-white"></i></button>
                                 </div>
@@ -1064,21 +1066,21 @@
                 //const myCanvas = document.querySelector('#my-canvas')
 
                 formData.append('banner', document.getElementById('inputBanner').files[0]);
-                    axios.post(this.urls.bannerUpdate,formData).then(function (response) {
-                        if (!response.data.response) {
-                            toastr.error(response.data.message);
-                            return
-                        }
+                axios.post(this.urls.bannerUpdate, formData).then(function (response) {
+                    if (!response.data.response) {
+                        toastr.error(response.data.message);
+                        return
+                    }
 
-                        toastr.success(response.data.message);
+                    toastr.success(response.data.message);
 
-                        setTimeout(function () {
-                            location.reload();
-                        }, 3000)
+                    setTimeout(function () {
+                        location.reload();
+                    }, 3000)
 
-                    }.bind(this)).catch(function (error) {
-                        toastr.error(error.message);
-                    }.bind(this));
+                }.bind(this)).catch(function (error) {
+                    toastr.error(error.message);
+                }.bind(this));
             },
             disableBannerButtons: function (type) {
                 document.getElementById('saveBannerButton').disabled = (type === 'disable');
@@ -1096,12 +1098,21 @@
                     document.getElementById('seeCurrentProduct' + productId).href = this.getProductOriginalUrl(productId);
                     return
                 }
-
+                debugger
                 document.getElementById('productImageSource' + productId).src = URL.createObjectURL(file);
                 document.getElementById('seeCurrentProduct' + productId).href = URL.createObjectURL(file);
                 document.getElementById('saveProductDiv' + productId).classList.remove('d-none');
                 document.getElementById('productCancelChangesDiv' + productId).classList.remove('d-none');
-                this.getCanvas(URL.createObjectURL(file), window.location.origin + '/img/waterMark/watermark.jpeg')
+
+                let img = new Image();
+                img.src = URL.createObjectURL(file);
+
+                img.onload = function (img) {
+                    this.getCanvas(URL.createObjectURL(file), window.location.origin + '/img/waterMark/watermark.jpeg', {
+                        'heigth': img.currentTarget.height,
+                        'width': img.currentTarget.width
+                    })
+                }.bind(this);
             },
             saveProductImage: function (productId) {
                 debugger
@@ -1127,7 +1138,7 @@
                         }
                         toastr.success(response.data.message);
 
-                        setTimeout(function(){
+                        setTimeout(function () {
                             location.reload();
                         }, 1500)
 
@@ -1169,8 +1180,8 @@
                 document.getElementById('productInput' + productId).value = '';
                 this.getProductUpdatedData(productId);
             },
-            getCanvas: function(img, logo){
-                //debugger
+            getCanvas: function (img, logo, params) {
+                debugger
                 const myImg1 = new Image()
                 const myImg2 = new Image()
                 myImg1.src = img
@@ -1179,15 +1190,14 @@
                 const getMyCanvas = document.createElement('canvas')
 
                 getMyCanvas.setAttribute('id', 'my-canvas')
-                // Establecer el ancho y alto del canvas al 100% del contenedor
-                getMyCanvas.style.width = '200px';
-                getMyCanvas.style.height = '300px';
+                getMyCanvas.style.width = params.width + 'px';
+                getMyCanvas.style.height = params.height + 'px';
 
                 mainContainer.appendChild(getMyCanvas)
                 const ctx = getMyCanvas.getContext('2d')
 
                 myImg1.onload = () => {
-                    ctx.drawImage(myImg1,0,0)
+                    ctx.drawImage(myImg1, 0, 0)
                     ctx.fillStyle = "rgba(255, 255, 255, .4)";
                     ctx.fillRect(0, 425, 300, 25)
 
@@ -1196,11 +1206,15 @@
                 }
                 myImg2.onload = () => {
                     ctx.globalAlpha = 0.3
-                    const miPatron = ctx.createPattern(myImg2, 'repeat');
-                    ctx.fillStyle = miPatron;
-                    ctx.fillRect(0,0,ctx.canvas.width,ctx.canvas.height);
+                    // const miPatron = ctx.createPattern(myImg2, 'repeat');
+                    // ctx.fillStyle = miPatron;
+                    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
                 }
-            }
+            },
+            deleteGalleryItem: function () {
+            },
+            createGalleryItem: function () {
+            },
         },
         watch: {},
         computed: {
