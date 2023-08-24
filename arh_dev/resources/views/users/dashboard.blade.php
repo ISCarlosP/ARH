@@ -681,12 +681,13 @@
                                    multiple>
                         </label>
                     </div>
+                    <div class=""
+                         v-if="galleryToAdd.length > 0">
+                        <span class="fw-bolder">IMAGENES PARA AGREGAR</span>
+                    </div>
                     <div class="w-100 px-2 d-flex" style="overflow-x: auto">
                         <template v-if="galleryToAdd.length > 0">
-                            <div class="">
-                                <span>Imagenes para agregar</span>
-                            </div>
-                            <div v-for="galleryItem in gallerToAdd"
+                            <div v-for="(galleryItem, index) in galleryToAdd"
                                  class="mx-2 my-2">
                                 <div class="w-100 d-flex justify-content-center">
                                     <img alt="Imagen"
@@ -695,17 +696,18 @@
                                          class="rounded shadow">
                                 </div>
                                 <div class="d-flex justify-content-center my-2 align-items-center">
-                                    <input class="form-check-input m-2"
-                                           type="checkbox"
-                                           :id="'check' + galleryItem.products_images_id"
-                                           v-on:change="toggleDeleteGalleryItem(galleryItem)">
+                                    <button class="btn btn-sm btn-icon" v-on:click="deleteToUpdateItem(index)"><i
+                                                class="fa-solid fa-circle-xmark text-danger fs-5"></i></button>
                                     <a class="mx-1 btn btn-sm btn-icon  btn-icon"
-                                       :href="galleryItem.product_image_url"
+                                       :href="galleryItem.url"
                                        target="_blank"><i
                                                 class="fa-solid fa-eye text-primary  fs-5"></i></a>
                                 </div>
                             </div>
                         </template>
+                    </div>
+                    <div class="">
+                        <span class="fw-bolder">IMAGENES EN SISTEMA</span>
                     </div>
                     <div class="w-100 px-2 d-flex" style="overflow-x: auto">
                         <template v-if="currentProductType !== ''">
@@ -1140,7 +1142,7 @@
                     document.getElementById('seeCurrentProduct' + productId).href = this.getProductOriginalUrl(productId);
                     return
                 }
-                debugger
+
                 document.getElementById('productImageSource' + productId).src = URL.createObjectURL(file);
                 document.getElementById('seeCurrentProduct' + productId).href = URL.createObjectURL(file);
                 document.getElementById('saveProductDiv' + productId).classList.remove('d-none');
@@ -1157,7 +1159,7 @@
                 }.bind(this);
             },
             saveProductImage: function (productId) {
-                debugger
+
                 let formData = new FormData;
                 formData.append('productId', productId);
                 this.showHideSpinner('saveProductSpinner' + productId, 'show');
@@ -1214,7 +1216,7 @@
                 // })
             },
             getProductOriginalUrl: function (productId) {
-                debugger
+
                 return 'img/products/' + productId + '.jpeg'
             },
             cancelProductChanges: function (productId) {
@@ -1222,14 +1224,14 @@
                 this.getProductUpdatedData(productId);
             },
             getCanvas: function (img, logo, params) {
-                debugger
+
                 const myImg1 = new Image()
                 const myImg2 = new Image()
                 myImg1.src = img
                 myImg2.src = logo
                 const mainContainer = document.getElementById('main_container')
                 const getMyCanvas = document.createElement('canvas')
-                //Calmate puto kkrlos
+                //Calmate put
                 getMyCanvas.setAttribute('id', 'my-canvas')
                 getMyCanvas.style.width = params.width + 'px';
                 getMyCanvas.style.height = params.height + 'px';
@@ -1262,14 +1264,19 @@
             },
             readImagesToUpdate: function () {
                 const files = document.getElementById('galleryInput').files;
+                let count = 0;
 
-                files.forEach(function (currentImage) {
+                while (count < files.length) {
                     this.galleryToAdd.push({
-                        'file': currentImage,
-                        'url': URL.createObjectURL(currentImage)
+                        'file': files[count],
+                        'url': URL.createObjectURL(files[count])
                     });
-                }.bind(this));
+                    count++
+                }
             },
+            deleteToUpdateItem: function (index) {
+                this.galleryToAdd.splice(index, 1);
+            }
         },
         watch: {},
         computed: {
