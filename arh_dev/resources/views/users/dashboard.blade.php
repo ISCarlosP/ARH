@@ -674,8 +674,38 @@
                         <label class="btn btn-sm btn-success btn-icon " type="button">
                             Agregar
                             {{--                            <i class="fa-solid fa-plus text-white">Agregar</i>--}}
-                            <input type="file" id="miInput" style="display: none;">
+                            <input type="file"
+                                   id="galleryInput"
+                                   style="display: none;"
+                                   v-on:change="readImagesToUpdate()"
+                                   multiple>
                         </label>
+                    </div>
+                    <div class="w-100 px-2 d-flex" style="overflow-x: auto">
+                        <template v-if="galleryToAdd.length > 0">
+                            <div class="">
+                                <span>Imagenes para agregar</span>
+                            </div>
+                            <div v-for="galleryItem in gallerToAdd"
+                                 class="mx-2 my-2">
+                                <div class="w-100 d-flex justify-content-center">
+                                    <img alt="Imagen"
+                                         :src="galleryItem.url"
+                                         style="max-height: 10rem; max-width: 10rem; height: 10rem "
+                                         class="rounded shadow">
+                                </div>
+                                <div class="d-flex justify-content-center my-2 align-items-center">
+                                    <input class="form-check-input m-2"
+                                           type="checkbox"
+                                           :id="'check' + galleryItem.products_images_id"
+                                           v-on:change="toggleDeleteGalleryItem(galleryItem)">
+                                    <a class="mx-1 btn btn-sm btn-icon  btn-icon"
+                                       :href="galleryItem.product_image_url"
+                                       target="_blank"><i
+                                                class="fa-solid fa-eye text-primary  fs-5"></i></a>
+                                </div>
+                            </div>
+                        </template>
                     </div>
                     <div class="w-100 px-2 d-flex" style="overflow-x: auto">
                         <template v-if="currentProductType !== ''">
@@ -699,7 +729,14 @@
                             </div>
                         </template>
                     </div>
-                    <div class="d-flex justify-content-end"></div>
+                    <div class="d-flex justify-content-end px-3 my-2">
+                        <button :class="((galleryToDelete.length > 0)? 'btn btn-sm btn-danger mx-1' : 'd-none')">
+                            Eliminar
+                        </button>
+                        <button :class="((galleryToAdd.length > 0)? 'btn btn-sm btn-success mx-1' : 'd-none' )">
+                            Guardar
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1122,7 +1159,6 @@
             saveProductImage: function (productId) {
                 debugger
                 let formData = new FormData;
-                formData.append('productImage', document.getElementById('productInput' + productId).files[0]);
                 formData.append('productId', productId);
                 this.showHideSpinner('saveProductSpinner' + productId, 'show');
                 this.showHideSpinner('saveProductIcon' + productId, 'hide');
@@ -1132,7 +1168,7 @@
 
                 myCanvas.toBlob(blob => {
                     sendFile = new File([blob], 'imagen.png', {type: 'image/png'})
-                    formData.append('product', sendFile);
+                    formData.append('productImage', sendFile);
                     axios.post(this.urls.updateProduct, formData).then(function (response) {
                         this.showHideSpinner('saveProductSpinner' + productId, 'hide');
                         this.showHideSpinner('saveProductIcon' + productId, 'show');
@@ -1193,27 +1229,22 @@
                 myImg2.src = logo
                 const mainContainer = document.getElementById('main_container')
                 const getMyCanvas = document.createElement('canvas')
-
+                //Calmate puto kkrlos
                 getMyCanvas.setAttribute('id', 'my-canvas')
                 getMyCanvas.style.width = params.width + 'px';
                 getMyCanvas.style.height = params.height + 'px';
+
 
                 mainContainer.appendChild(getMyCanvas)
                 const ctx = getMyCanvas.getContext('2d')
 
                 myImg1.onload = () => {
                     ctx.drawImage(myImg1, 0, 0)
-                    ctx.fillStyle = "rgba(255, 255, 255, .4)";
-                    ctx.fillRect(0, 425, 300, 25)
-
-                    ctx.font = '24px Arial'
-                    ctx.fillStyle = 'black'
+                    ctx.fillStyle = "rgba(255, 255, 255, .3)";
                 }
                 myImg2.onload = () => {
-                    ctx.globalAlpha = 0.3
-                    // const miPatron = ctx.createPattern(myImg2, 'repeat');
-                    // ctx.fillStyle = miPatron;
-                    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+                    ctx.globalAlpha = 1
+                    ctx.drawImage(myImg2, 0, 0, 100, 50)
                 }
             },
             deleteGalleryItem: function () {
@@ -1228,6 +1259,16 @@
                     return;
                 }
                 this.galleryToDelete.push(img);
+            },
+            readImagesToUpdate: function () {
+                const files = document.getElementById('galleryInput').files;
+
+                files.forEach(function (currentImage) {
+                    this.galleryToAdd.push({
+                        'file': currentImage,
+                        'url': URL.createObjectURL(currentImage)
+                    });
+                }.bind(this));
             },
         },
         watch: {},
