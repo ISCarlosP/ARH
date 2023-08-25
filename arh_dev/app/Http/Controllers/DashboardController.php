@@ -188,7 +188,8 @@ class DashboardController extends Controller
             'updateUser' => route('users.update'),
             'bannerUpdate' => route('banner.update'),
             'updateProduct' => route('product.update'),
-            'galleryDelete' => route('gallery.delete')
+            'galleryDelete' => route('gallery.delete'),
+            'galleryCreate' => route('gallery.create')
         ];
 
         return $urls;

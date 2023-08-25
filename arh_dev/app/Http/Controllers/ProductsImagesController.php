@@ -21,16 +21,30 @@ class ProductsImagesController extends Controller
         $utilitiesProvider = new Utilities();
         $response = $utilitiesProvider->createResponse();
 
-        $currentNumber = Products_images::query()
-            ->latest() ?? 1;
+        $count = 0;
 
-        Products_images::create([
-            'product_screen_name' => 'img-' . ($currentNumber->products_images_id + 1),
-            'product_image_url' => '/img/gallery/' . $request->productId . '/' . 'img-' . ($currentNumber->products_images_id + 1),
-            'product_id' => $request->product_id
-        ]);
+        while ($count < count($request->files)) {
+            $currentNumber = Products_images::query()
+                ->latest('products_images_id')
+                ->first();
 
-        $request->file('galleryImage')->move(public_path('img\products\\' + $request->productId . '\\'), 'img-' . ($currentNumber->products_images_id + 1) . '.jpeg');
+            $nextNumber = (($currentNumber !== null) ? $currentNumber->products_images_id + 1 : 1);
+
+            Products_images::create([
+                'product_screen_name' => 'img-' . $nextNumber,
+                'product_image_url' => '/img/gallery/' . $request->productId . '/' . 'img-' . $nextNumber . '.jpeg',
+                'product_id' => $request->productId
+            ]);
+
+            $fileName = 'image' . $count;
+            $productId = $request->productId;
+            $file = $request->file($fileName);
+            $filePath = public_path('img/gallery/' . $request->productId);
+            $file->move($filePath, 'img-' . $nextNumber . '.jpeg');
+
+
+            $count++;
+        }
 
         $response['message'] = 'Se subio tu imagen exitosamente';
 

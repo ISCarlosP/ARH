@@ -732,7 +732,8 @@
                                 :class="((galleryToDelete.length > 0)? 'btn btn-sm btn-danger mx-1' : 'd-none')">
                             Eliminar
                         </button>
-                        <button :class="((galleryToAdd.length > 0)? 'btn btn-sm btn-success mx-1' : 'd-none' )">
+                        <button v-on:click="createGalleryItems()"
+                                :class="((galleryToAdd.length > 0)? 'btn btn-sm btn-success mx-1' : 'd-none' )">
                             Guardar
                         </button>
                     </div>
@@ -1272,11 +1273,18 @@
                     toastr.error(error.message);
                 })
             },
+            createFormDataToAdd: function () {
+                let formData = new FormData;
+                let count = 0;
+                while (count < this.galleryToAdd.length) {
+                    formData.append('image' + count, document.getElementById('galleryInput').files[count]);
+                    count++
+                }
+                formData.append('productId', this.currentProductType.product_id);
+                return formData;
+            },
             createGalleryItems: function () {
-                axios.post(this.urls.galleryCreate, {
-                    'galleryToDelete': this.galleryToAdd,
-                    'productId': this.currentProductType.product_id
-                })
+                axios.post(this.urls.galleryCreate, this.createFormDataToAdd())
                     .then(function (response) {
                         if (!response.data.response) {
                             toastr.error();
