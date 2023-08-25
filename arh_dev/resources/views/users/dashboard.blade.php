@@ -1272,8 +1272,24 @@
                     toastr.error(error.message);
                 })
             },
-            createGalleryItem: function () {
+            createGalleryItems: function () {
+                axios.post(this.urls.galleryCreate, {
+                    'galleryToDelete': this.galleryToAdd,
+                    'productId': this.currentProductType.product_id
+                })
+                    .then(function (response) {
+                        if (!response.data.response) {
+                            toastr.error();
+                            return
+                        }
 
+                        toastr.success('Se han agregado tus imagenes a la galería');
+                        $('#productModalGallery').modal('hide');
+                        location.reload();
+
+                    }.bind(this)).catch(function (error) {
+                    toastr.error(error.message);
+                })
             },
             toggleDeleteGalleryItem: function (img) {
                 const check = document.getElementById('check' + img.products_images_id);

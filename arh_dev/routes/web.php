@@ -65,4 +65,7 @@ Route::post('/product/update', [ProductsController::class, 'updateProductImage']
 Route::post('/gallery/delete', [ProductsImagesController::class, 'delete'])
     ->name('gallery.delete');
 
+Route::post('/gallery/create', [ProductsImagesController::class, 'create'])
+    ->name('gallery.create');
+
 
