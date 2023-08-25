@@ -22,7 +22,7 @@ class ProductsImagesController extends Controller
         $response = $utilitiesProvider->createResponse();
 
         $currentNumber = Products_images::query()
-            ->latest();
+            ->latest() ?? 1;
 
         Products_images::create([
             'product_screen_name' => 'img-' . ($currentNumber->products_images_id + 1),
