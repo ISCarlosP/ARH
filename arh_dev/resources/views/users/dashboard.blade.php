@@ -1265,7 +1265,8 @@
                         }
 
                         toastr.success('Se han eliminado los elementos correctamente');
-                        this.productsInfo = response.values;
+                        debugger
+                        this.productsInfo = response.data.values;
                         $('#productModalGallery').modal('hide');
 
                     }.bind(this)).catch(function (error) {
