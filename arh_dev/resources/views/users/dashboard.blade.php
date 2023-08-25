@@ -707,6 +707,11 @@
                     </div>
                     <div class="w-100 px-2 d-flex" style="overflow-x: auto">
                         <template v-if="currentProductType !== ''">
+                            <div v-if="productsInfo[productsInfo.indexOf(currentProductType)].images.length === 0"
+                                 class="w-100 text-center my-5">
+                                <span
+                                    class="fw-bolder fs-5 text-muted">AÚN NO HAS AGREGADO IMAGENES A ESTA GALERÍA</span>
+                            </div>
                             <div v-for="galleryItem in productsInfo[productsInfo.indexOf(currentProductType)].images"
                                  class="mx-2 my-2">
                                 <div class="w-100 d-flex justify-content-center">
@@ -730,11 +735,13 @@
                     <div class="d-flex justify-content-end px-3 my-2">
                         <button v-on:click="deleteGalleryItems()"
                                 :class="((galleryToDelete.length > 0)? 'btn btn-sm btn-danger mx-1' : 'd-none')">
-                            Eliminar
+                            Eliminar <span id="saveDeleteGallerySpinner" class="spinner-border spinner-border-sm d-none"
+                                           aria-hidden="true"></span>
                         </button>
                         <button v-on:click="createGalleryItems()"
                                 :class="((galleryToAdd.length > 0)? 'btn btn-sm btn-success mx-1' : 'd-none' )">
-                            Guardar
+                            Guardar <span id="saveAddGallerySpinner" class="spinner-border spinner-border-sm d-none"
+                                          aria-hidden="true"></span>
                         </button>
                     </div>
                 </div>
@@ -1255,11 +1262,14 @@
                 }
             },
             deleteGalleryItems: function () {
+                this.showHideSpinner('saveDeleteGallerySpinner', 'show');
+
                 axios.post(this.urls.galleryDelete, {
                     'galleryToDelete': this.galleryToDelete,
                     'productId': this.currentProductType.product_id
                 })
                     .then(function (response) {
+                        this.showHideSpinner('saveDeleteGallerySpinner', 'hide');
                         if (!response.data.response) {
                             toastr.error();
                             return
@@ -1270,6 +1280,7 @@
                         location.reload();
 
                     }.bind(this)).catch(function (error) {
+                    this.showHideSpinner('saveDeleteGallerySpinner', 'hide');
                     toastr.error(error.message);
                 })
             },
@@ -1284,8 +1295,11 @@
                 return formData;
             },
             createGalleryItems: function () {
+                this.showHideSpinner('saveAddGallerySpinner', 'show');
                 axios.post(this.urls.galleryCreate, this.createFormDataToAdd())
                     .then(function (response) {
+                        this.showHideSpinner('saveAddGallerySpinner', 'hide');
+
                         if (!response.data.response) {
                             toastr.error();
                             return
@@ -1296,6 +1310,7 @@
                         location.reload();
 
                     }.bind(this)).catch(function (error) {
+                    this.showHideSpinner('saveAddGallerySpinner', 'hide');
                     toastr.error(error.message);
                 })
             },
