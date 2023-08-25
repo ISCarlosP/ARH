@@ -206,7 +206,7 @@
                                                     <td class="d-flex justify-content-center">
                                                         <button class="btn btn-sm btn-icon btn-warning mx-2"
                                                                 v-on:click="getCurrentEditUser(user, index)"><i
-                                                                    class="fa-solid fa-pen-to-square"></i></button>
+                                                                class="fa-solid fa-pen-to-square"></i></button>
                                                         <button class="btn btn-sm btn-icon btn-danger mx2"
                                                                 v-on:click="destroyUser(user.id, index)">
                                                             <i :id="'deleteUserIconSpinner' + index"
@@ -241,21 +241,17 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="d-flex flex-column justify-content-center align-items-center"
-                                         id="main_container">
-                                        <div class="element">
-                                        </div>
-                                    </div>
+                                    <div id="main_container" style="width: auto; height: auto;"></div>
                                     <div class="row">
                                         <div class="col-4 mx-auto d-flex justify-content-center">
                                             <div class="px-1">
                                                 <label class="btn btn-sm btn-warning btn-icon fw-bolder" type="button">
                                                     <i class="fa-solid fa-pen-to-square"></i>
                                                     <input
-                                                            id="inputBanner"
-                                                            type="file"
-                                                            style="display: none;"
-                                                            v-on:change="getBannerUpdatedData()">
+                                                        id="inputBanner"
+                                                        type="file"
+                                                        style="display: none;"
+                                                        v-on:change="getBannerUpdatedData()">
                                                 </label>
                                             </div>
                                             <div class="px-1">
@@ -349,9 +345,9 @@
                                                          class="bg-dark rounded-3"
                                                          v-on:click="openEditProductGallery(product)">
                                                         <span
-                                                                class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"
-                                                                style="min-height: 3.0rem"
-                                                                v-text="(product.product_name).toUpperCase()"></span>
+                                                            class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"
+                                                            style="min-height: 3.0rem"
+                                                            v-text="(product.product_name).toUpperCase()"></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -502,12 +498,12 @@
                         <div class="col-lg-4 col-sm-12 my-2 mx-auto">
                             <small class="fw-bolder">Fecha de nacimiento</small>
                             <input
-                                    type="date"
-                                    class="form-control"
-                                    placeholder="dd/mm/aaaa"
-                                    aria-label="Username"
-                                    aria-describedby="basic-addon1"
-                                    v-model="editUser.userBirthDate">
+                                type="date"
+                                class="form-control"
+                                placeholder="dd/mm/aaaa"
+                                aria-label="Username"
+                                aria-describedby="basic-addon1"
+                                v-model="editUser.userBirthDate">
                         </div>
                         <div class="col-lg-4 col-sm-12 my-2 mx-auto">
                             <small class="fw-bolder">Editar contraseña</small>
@@ -605,12 +601,12 @@
                         <div class="col-lg-4 col-sm-12 my-2 mx-auto">
                             <small class="fw-bolder">Fecha de nacimiento</small>
                             <input
-                                    type="date"
-                                    class="form-control"
-                                    placeholder="dd/mm/aaaa"
-                                    aria-label="Username"
-                                    aria-describedby="basic-addon1"
-                                    v-model="createUser.userBirthDate">
+                                type="date"
+                                class="form-control"
+                                placeholder="dd/mm/aaaa"
+                                aria-label="Username"
+                                aria-describedby="basic-addon1"
+                                v-model="createUser.userBirthDate">
                         </div>
                         <div class="col-lg-4 col-sm-12 my-2 mx-auto">
                             <small class="fw-bolder">Ingresar contraseña</small>
@@ -697,11 +693,11 @@
                                 </div>
                                 <div class="d-flex justify-content-center my-2 align-items-center">
                                     <button class="btn btn-sm btn-icon" v-on:click="deleteToUpdateItem(index)"><i
-                                                class="fa-solid fa-circle-xmark text-danger fs-5"></i></button>
+                                            class="fa-solid fa-circle-xmark text-danger fs-5"></i></button>
                                     <a class="mx-1 btn btn-sm btn-icon  btn-icon"
                                        :href="galleryItem.url"
                                        target="_blank"><i
-                                                class="fa-solid fa-eye text-primary  fs-5"></i></a>
+                                            class="fa-solid fa-eye text-primary  fs-5"></i></a>
                                 </div>
                             </div>
                         </template>
@@ -726,13 +722,14 @@
                                     <a class="mx-1 btn btn-sm btn-icon  btn-icon"
                                        :href="galleryItem.product_image_url"
                                        target="_blank"><i
-                                                class="fa-solid fa-eye text-primary  fs-5"></i></a>
+                                            class="fa-solid fa-eye text-primary  fs-5"></i></a>
                                 </div>
                             </div>
                         </template>
                     </div>
                     <div class="d-flex justify-content-end px-3 my-2">
-                        <button :class="((galleryToDelete.length > 0)? 'btn btn-sm btn-danger mx-1' : 'd-none')">
+                        <button v-on:click="deleteGalleryItems()"
+                                :class="((galleryToDelete.length > 0)? 'btn btn-sm btn-danger mx-1' : 'd-none')">
                             Eliminar
                         </button>
                         <button :class="((galleryToAdd.length > 0)? 'btn btn-sm btn-success mx-1' : 'd-none' )">
@@ -847,7 +844,16 @@
                     toastr.error(error);
                 })
             },
+            unCheckGalleryItems: function () {
+                this.galleryToDelete.forEach(function (currentItem) {
+                    document.getElementById('check' + currentItem.products_images_id).checked = false;
+                });
+
+                this.galleryToDelete = [];
+            },
             openEditProductGallery: function (product) {
+                this.galleryToAdd = [];
+                this.unCheckGalleryItems();
                 this.currentProductType = product;
                 $('#productModalGallery').modal('show');
             },
@@ -1223,35 +1229,51 @@
                 document.getElementById('productInput' + productId).value = '';
                 this.getProductUpdatedData(productId);
             },
-            getCanvas: function (img, logo, params) {
+            getCanvas: function (img, logo) {
 
                 const myImg1 = new Image()
                 const myImg2 = new Image()
                 myImg1.src = img
                 myImg2.src = logo
                 const mainContainer = document.getElementById('main_container')
-                const getMyCanvas = document.createElement('canvas')
-                //Calmate put
-                getMyCanvas.setAttribute('id', 'my-canvas')
-                getMyCanvas.style.width = params.width + 'px';
-                getMyCanvas.style.height = params.height + 'px';
+                const myCanvas = document.createElement('canvas')
+                myCanvas.setAttribute('id', 'myCanvas')
+                myCanvas.width = '300'
+                myCanvas.height = '300'
 
-
-                mainContainer.appendChild(getMyCanvas)
-                const ctx = getMyCanvas.getContext('2d')
+                mainContainer.appendChild(myCanvas)
+                const ctx = myCanvas.getContext('2d')
 
                 myImg1.onload = () => {
-                    ctx.drawImage(myImg1, 0, 0)
-                    ctx.fillStyle = "rgba(255, 255, 255, .3)";
+                    ctx.drawImage(myImg1, 0, 0, 300, 300)
+                    //ctx.fillStyle = "rgba(255, 255, 255, .3)";
                 }
                 myImg2.onload = () => {
-                    ctx.globalAlpha = 1
-                    ctx.drawImage(myImg2, 0, 0, 100, 50)
+                    ctx.globalAlpha = .5
+                    ctx.drawImage(myImg2, 50, 110, 200, 80)
                 }
             },
-            deleteGalleryItem: function () {
+            deleteGalleryItems: function () {
+                axios.post(this.urls.galleryDelete, {
+                    'galleryToDelete': this.galleryToDelete,
+                    'productId': this.currentProductType.product_id
+                })
+                    .then(function (response) {
+                        if (!response.data.response) {
+                            toastr.error();
+                            return
+                        }
+
+                        toastr.success('Se han eliminado los elementos correctamente');
+                        this.productsInfo = response.values;
+                        $('#productModalGallery').modal('hide');
+
+                    }.bind(this)).catch(function (error) {
+                    toastr.error(error.message);
+                })
             },
             createGalleryItem: function () {
+
             },
             toggleDeleteGalleryItem: function (img) {
                 const check = document.getElementById('check' + img.products_images_id);

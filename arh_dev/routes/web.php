@@ -7,10 +7,12 @@ use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProductsImagesController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\UsersController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,7 +41,7 @@ Route::get('/dashboard', [DashboardController::class, 'show'])
 Route::post('/check/message', [DashboardController::class, 'checkMessage'])
     ->name('check.message');
 
-Route::get('/loggout', function(Request $request){
+Route::get('/loggout', function (Request $request) {
     $cookie1 = Cookie::forget('session_token');
     return response('Cookie eliminada')->withCookie($cookie1);
 })
@@ -59,5 +61,8 @@ Route::post('/banner/update', [DashboardController::class, 'updateBannerImage'])
 
 Route::post('/product/update', [ProductsController::class, 'updateProductImage'])
     ->name('product.update');
+
+Route::post('/gallery/delete', [ProductsImagesController::class, 'delete'])
+    ->name('gallery.delete');
 
 

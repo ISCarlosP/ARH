@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\products_images;
 use App\Http\Requests\Storeproducts_imagesRequest;
 use App\Http\Requests\Updateproducts_imagesRequest;
+use App\Http\Controllers\ProductsController;
 use Illuminate\Http\Request;
 use App\Services\Utilities;
 
@@ -36,24 +37,32 @@ class ProductsImagesController extends Controller
         return $response;
     }
 
-    public function delete(Request $request){
+    public function delete(Request $request)
+    {
+        $productsProvider = new ProductsController();
         $utilitiesProvider = new Utilities();
         $response = $utilitiesProvider->createResponse();
+        $count = 0;
 
-        $toDelete = Products_images::query()
-            ->where('product_images_id', $request->imageId)
-            ->first();
+        while ($count < count($request->galleryToDelete)) {
+            $toDelete = Products_images::query()
+                ->where('products_images_id', $request->galleryToDelete[$count]['products_images_id'])
+                ->first();
 
-        $toDelete->delete();
+            $toDelete->delete();
 
-        $url = public_path('img\products') . '\\' . $request->productId . '\\' . $toDelete->product_screen_name;
-        if(file_exists($url)){
-            unlink($url);
+            $url = public_path($toDelete->product_image_url);
+
+            if (file_exists($url)) {
+                unlink($url);
+            }
+
+            $count++;
         }
+
         $response['message'] = 'Tu imagen se eliminó correctamente';
+        $response['values'] = $productsProvider->getProducts();
 
         return $response;
-
     }
-
 }

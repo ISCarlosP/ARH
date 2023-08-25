@@ -17,11 +17,12 @@ use Mockery\Exception;
 
 class DashboardController extends Controller
 {
-    public function show(Request $request){
+    public function show(Request $request)
+    {
         $sessionService = new SessionServices();
         $productsController = new ProductsController();
 
-        if(!$sessionService->existSession($request)){
+        if (!$sessionService->existSession($request)) {
             return redirect()->route('home');
         }
 
@@ -56,17 +57,19 @@ class DashboardController extends Controller
                 'banner'))
             ->withCookie($cookie);
     }
-    public function getCardsValues(){
+
+    public function getCardsValues()
+    {
         $todayVisits = Site_visits::query()
-            ->whereBetween('created_at',[Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])
+            ->whereBetween('created_at', [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])
             ->count();
 
         $weekVisits = Site_visits::query()
-            ->whereBetween('created_at',[Carbon::now()->subDays(8), Carbon::now()->endOfDay()])
+            ->whereBetween('created_at', [Carbon::now()->subDays(8), Carbon::now()->endOfDay()])
             ->count();
 
         $monthVisits = Site_visits::query()
-            ->whereBetween('created_at',[Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])
+            ->whereBetween('created_at', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])
             ->count();
 
         $activeUsers = Users::query()
@@ -101,7 +104,9 @@ class DashboardController extends Controller
         ];
 
     }
-    public function getChartsData(){
+
+    public function getChartsData()
+    {
         $count = 0;
         $weekVisitsDetail = [
             'days' => [],
@@ -113,7 +118,7 @@ class DashboardController extends Controller
             'data' => []
         ];
 
-        while($count < 7){
+        while ($count < 7) {
             $start = Carbon::now()->setTimezone('America/Belize')->startOfDay()->subDays($count);
             $end = Carbon::now()->setTimezone('America/Belize')->endOfDay()->subDays($count);
 
@@ -128,7 +133,7 @@ class DashboardController extends Controller
 
         $count = 0;
 
-        while($count < 30){
+        while ($count < 30) {
             $start = Carbon::now()->setTimezone('America/Belize')->startOfDay()->subDays($count);
             $end = Carbon::now()->setTimezone('America/Belize')->endOfDay()->subDays($count);
 
@@ -143,16 +148,20 @@ class DashboardController extends Controller
 
         return ['monthVisitsDetail' => array_reverse($monthVisitsDetail), 'weekVisitsDetail' => array_reverse($weekVisitsDetail)];
     }
-    public function getMessages(){
+
+    public function getMessages()
+    {
 
         $messages = Messages::query()
             ->where('message_status_id', 1)
             ->get()
             ->toArray();
 
-        return($messages);
+        return ($messages);
     }
-    public function checkMessage(Request $request){
+
+    public function checkMessage(Request $request)
+    {
         $utilities = new Utilities();
         $response = $utilities->createResponse();
 
@@ -168,7 +177,9 @@ class DashboardController extends Controller
 
         return $response;
     }
-    public function getUrlsToSend(){
+
+    public function getUrlsToSend()
+    {
         $urls = [
             'checkMessage' => route('check.message'),
             'loggout' => route('session.loggout'),
@@ -177,19 +188,22 @@ class DashboardController extends Controller
             'updateUser' => route('users.update'),
             'bannerUpdate' => route('banner.update'),
             'updateProduct' => route('product.update'),
+            'galleryDelete' => route('gallery.delete')
         ];
 
         return $urls;
     }
-    public function getActiveUsers(){
+
+    public function getActiveUsers()
+    {
         $allUsers = User::query()
-            ->select('id','first_name', 'last_name', 'user_birth_date', 'email', 'created_at')
+            ->select('id', 'first_name', 'last_name', 'user_birth_date', 'email', 'created_at')
             ->where('status', 1)
             ->get()
             ->toArray();
         $users = [];
 
-        foreach ($allUsers as $user ){
+        foreach ($allUsers as $user) {
             $users[] = [
                 'id' => $user['id'],
                 'first_name' => $user['first_name'],
@@ -202,19 +216,23 @@ class DashboardController extends Controller
 
         return $users;
     }
-    private function getBannerInfo(){
+
+    private function getBannerInfo()
+    {
         return [
             'name' => 'banner_principal',
             'url' => '/img/gallery/banner_principal/banner_principal.png'
         ];
     }
-    public function updateBannerImage(Request $request){
+
+    public function updateBannerImage(Request $request)
+    {
         $utiliesProvider = new Utilities();
         $response = $utiliesProvider->createResponse();
         $response['message'] = 'Se actualizó tu imagen correctamente';
         $isDeleted = $this->deleteBannerImage();
 
-        if(!$isDeleted){
+        if (!$isDeleted) {
             $response['response'] = false;
             $response['message'] = 'Hubo un problema al actualizar el banner, reintenta';
 
@@ -225,15 +243,17 @@ class DashboardController extends Controller
 
         return $response;
     }
-    private function deleteBannerImage(){
+
+    private function deleteBannerImage()
+    {
         $response = true;
         try {
-            $url = public_path('img').'\gallery\banner_principal\banner_principal.png';
+            $url = public_path('img') . '\gallery\banner_principal\banner_principal.png';
             if (file_exists($url)) {
                 unlink($url);
             }
 
-        }catch (Exception $exception){
+        } catch (Exception $exception) {
             $response = false;
         }
         return $response;
