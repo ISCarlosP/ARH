@@ -242,47 +242,6 @@
                                         </div>
                                     </div>
                                     <div id="main_container" style="width: auto; height: auto;"></div>
-                                    <div class="row">
-                                        <div class="col-4 mx-auto d-flex justify-content-center">
-                                            <div class="px-1">
-                                                <label class="btn btn-sm btn-warning btn-icon fw-bolder" type="button">
-                                                    <i class="fa-solid fa-pen-to-square"></i>
-                                                    <input
-                                                        id="inputBanner"
-                                                        type="file"
-                                                        style="display: none;"
-                                                        v-on:change="getBannerUpdatedData()">
-                                                </label>
-                                            </div>
-                                            <div class="px-1">
-                                                <a id="seeCurrentBanner"
-                                                   type="button"
-                                                   cursor="pointer"
-                                                   class="btn btn-sm btn-icon bg-primary"
-                                                   :href="bannerInfo.url"
-                                                   target="_blank">
-                                                    <i class="fa-solid fa-eye"></i>
-                                                </a>
-                                            </div>
-                                            <div id="saveBannerButton" class="px-1 d-none">
-                                                <button id="saveBannerButtonOriginal"
-                                                        class="btn btn-sm btn-icon bg-success"
-                                                        v-on:click="saveEditBanner()">
-                                                    <i id="saveBannerButtonIcon" class="fa-solid fa-floppy-disk"></i>
-                                                    <span id="saveBannerSpinner"
-                                                          class="spinner-border spinner-border-sm  d-none"
-                                                          aria-hidden="true"></span>
-                                                </button>
-                                            </div>
-                                            <div id="deleteBannerChanges" class="px-1 d-none">
-                                                <button id="cancelBannerChangesButton"
-                                                        class="btn btn-sm btn-icon bg-danger"
-                                                        v-on:click="cancelBannerChanges()">
-                                                    <i class="fa-solid fa-xmark text-white"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center my-2">
@@ -1148,6 +1107,7 @@
             },
             getProductUpdatedData: function (productId) {
                 const file = document.getElementById('productInput' + productId).files[0] ?? null;
+                this.getCanvas(URL.createObjectURL(file), window.location.origin + '/img/waterMark/watermark.jpeg')
 
                 if (!file) {
                     document.getElementById('saveProductDiv' + productId).classList.add('d-none');
@@ -1156,32 +1116,30 @@
                     document.getElementById('seeCurrentProduct' + productId).href = this.getProductOriginalUrl(productId);
                     return
                 }
-
                 document.getElementById('productImageSource' + productId).src = URL.createObjectURL(file);
                 document.getElementById('seeCurrentProduct' + productId).href = URL.createObjectURL(file);
                 document.getElementById('saveProductDiv' + productId).classList.remove('d-none');
                 document.getElementById('productCancelChangesDiv' + productId).classList.remove('d-none');
 
-                let img = new Image();
-                img.src = URL.createObjectURL(file);
-
-                img.onload = function (img) {
-                    this.getCanvas(URL.createObjectURL(file), window.location.origin + '/img/waterMark/watermark.jpeg', {
-                        'heigth': img.currentTarget.height,
-                        'width': img.currentTarget.width
-                    })
-                }.bind(this);
+                // let img = new Image();
+                // img.src = URL.createObjectURL(file);
+                //
+                // img.onload = function (img) {
+                //     , {
+                //         'heigth': img.currentTarget.height,
+                //         'width': img.currentTarget.width
+                //     })
+                // }.bind(this);
             },
             saveProductImage: function (productId) {
-
+                debugger
                 let formData = new FormData;
                 formData.append('productId', productId);
                 this.showHideSpinner('saveProductSpinner' + productId, 'show');
                 this.showHideSpinner('saveProductIcon' + productId, 'hide');
-                const myCanvas = document.querySelector('#my-canvas')
-
+                const myCanvas = document.querySelector('#myCanvas')
                 let sendFile = {}
-
+                //debugger
                 myCanvas.toBlob(blob => {
                     sendFile = new File([blob], 'imagen.png', {type: 'image/png'})
                     formData.append('productImage', sendFile);
@@ -1205,32 +1163,8 @@
                         this.showHideSpinner('saveProductIcon' + productId, 'hide');
                     }.bind(this))
                 })
-
-
-                //let sendFile = {}
-
-                // myCanvas.toBlob(blob => {
-                //     sendFile = new File([blob], 'imagen.png', {type: 'image/png'})
-                //     formData.append('banner', sendFile);
-                //     axios.post(this.urls.bannerUpdate,formData).then(function (response) {
-                //         if (!response.data.response) {
-                //             toastr.error(response.data.message);
-                //             return
-                //         }
-                //
-                //         toastr.success(response.data.message);
-                //
-                //         setTimeout(function () {
-                //             location.reload();
-                //         }, 3000)
-                //
-                //     }.bind(this)).catch(function (error) {
-                //         toastr.error(error.message);
-                //     }.bind(this));
-                // })
             },
             getProductOriginalUrl: function (productId) {
-
                 return 'img/products/' + productId + '.jpeg'
             },
             cancelProductChanges: function (productId) {
@@ -1238,7 +1172,7 @@
                 this.getProductUpdatedData(productId);
             },
             getCanvas: function (img, logo) {
-
+                //debugger
                 const myImg1 = new Image()
                 const myImg2 = new Image()
                 myImg1.src = img
