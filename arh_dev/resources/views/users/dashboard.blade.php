@@ -1216,7 +1216,7 @@
                     }.bind(this)).catch(function (error) {
                     this.showHideSpinner('saveDeleteGallerySpinner', 'hide');
                     toastr.error(error.message);
-                })
+                }.bind(this))
             },
             createFormDataToAdd: function () {
                 let formData = new FormData;
@@ -1246,7 +1246,7 @@
                     }.bind(this)).catch(function (error) {
                     this.showHideSpinner('saveAddGallerySpinner', 'hide');
                     toastr.error(error.message);
-                })
+                }.bind(this))
             },
             toggleDeleteGalleryItem: function (img) {
                 const check = document.getElementById('check' + img.products_images_id);
