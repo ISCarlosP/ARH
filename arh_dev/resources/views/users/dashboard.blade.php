@@ -1121,25 +1121,14 @@
                 document.getElementById('saveProductDiv' + productId).classList.remove('d-none');
                 document.getElementById('productCancelChangesDiv' + productId).classList.remove('d-none');
 
-                // let img = new Image();
-                // img.src = URL.createObjectURL(file);
-                //
-                // img.onload = function (img) {
-                //     , {
-                //         'heigth': img.currentTarget.height,
-                //         'width': img.currentTarget.width
-                //     })
-                // }.bind(this);
             },
             saveProductImage: function (productId) {
-                debugger
                 let formData = new FormData;
                 formData.append('productId', productId);
                 this.showHideSpinner('saveProductSpinner' + productId, 'show');
                 this.showHideSpinner('saveProductIcon' + productId, 'hide');
-                const myCanvas = document.querySelector('#myCanvas')
+                const myCanvas = document.getElementById('myCanvas')
                 let sendFile = {}
-                //debugger
                 myCanvas.toBlob(blob => {
                     sendFile = new File([blob], 'imagen.png', {type: 'image/png'})
                     formData.append('productImage', sendFile);
@@ -1171,7 +1160,7 @@
                 document.getElementById('productInput' + productId).value = '';
                 this.getProductUpdatedData(productId);
             },
-            getCanvas: function (img, logo) {
+            getCanvas: function (img, logo, canvasId = 'myCanvas') {
                 //debugger
                 const myImg1 = new Image()
                 const myImg2 = new Image()
@@ -1179,7 +1168,7 @@
                 myImg2.src = logo
                 const mainContainer = document.getElementById('main_container')
                 const myCanvas = document.createElement('canvas')
-                myCanvas.setAttribute('id', 'myCanvas')
+                myCanvas.setAttribute('id', canvasId)
                 myCanvas.width = '300'
                 myCanvas.height = '300'
 
@@ -1219,18 +1208,28 @@
                 }.bind(this))
             },
             createFormDataToAdd: function () {
-                let formData = new FormData;
-                let count = 0;
-                while (count < this.galleryToAdd.length) {
-                    formData.append('image' + count, document.getElementById('galleryInput').files[count]);
-                    count++
-                }
-                formData.append('productId', this.currentProductType.product_id);
-                return formData;
+                return new Promise((resolve, reject)=>{
+                    let formData = new FormData;
+                    formData.append('productId', this.currentProductType.product_id);
+                    let count = 0;
+                    const myCanvas = document.getElementById('canvas' + count)
+                    let realCount = parseInt(count.toString())
+                    let context = {realCount: realCount, this:this}
+                    while (count < this.galleryToAdd.length) {
+                        myCanvas.toBlob(function(blob) {
+                            formData.append('image' + context.realCount, context.this.galleryToAdd[context.realCount].file);
+                            if(context.realCount === context.this.galleryToAdd.length - 1){
+                                resolve(formData);
+                            }
+                        }.bind(context))
+                        count++
+                    }
+                });
             },
-            createGalleryItems: function () {
+            createGalleryItems: async function () {
                 this.showHideSpinner('saveAddGallerySpinner', 'show');
-                axios.post(this.urls.galleryCreate, this.createFormDataToAdd())
+                let data = await this.createFormDataToAdd()
+                axios.post(this.urls.galleryCreate, data)
                     .then(function (response) {
                         this.showHideSpinner('saveAddGallerySpinner', 'hide');
 
@@ -1258,13 +1257,17 @@
                 this.galleryToDelete.push(img);
             },
             readImagesToUpdate: function () {
+                debugger
                 const files = document.getElementById('galleryInput').files;
                 let count = 0;
 
                 while (count < files.length) {
+                    this.getCanvas(URL.createObjectURL(files[count]), window.location.origin + '/img/waterMark/watermark.jpeg', 'canvas'+count)
+                    const myCanvas = document.getElementById('canvas' + count)
                     this.galleryToAdd.push({
                         'file': files[count],
-                        'url': URL.createObjectURL(files[count])
+                        'url': URL.createObjectURL(files[count]),
+                        'canvas': myCanvas
                     });
                     count++
                 }
