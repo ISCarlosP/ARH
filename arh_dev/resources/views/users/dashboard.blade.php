@@ -1127,7 +1127,7 @@
                 formData.append('productId', productId);
                 this.showHideSpinner('saveProductSpinner' + productId, 'show');
                 this.showHideSpinner('saveProductIcon' + productId, 'hide');
-                const myCanvas = document.getElementById('myCanvas')
+                const myCanvas = document.getElementById('canvas0')
                 let sendFile = {}
                 myCanvas.toBlob(blob => {
                     sendFile = new File([blob], 'imagen.png', {type: 'image/png'})
@@ -1160,15 +1160,25 @@
                 document.getElementById('productInput' + productId).value = '';
                 this.getProductUpdatedData(productId);
             },
-            getCanvas: function (img, logo, canvasId = 'myCanvas') {
-                //debugger
+            getAvailableId: function () {
+                let available = false;
+                let count = 0
+                while (available === false) {
+                    if (!document.getElementById('canvas' + count)) {
+                        available = true;
+                        return count
+                    }
+                    count++
+                }
+            },
+            getCanvas: function (img, logo) {
                 const myImg1 = new Image()
                 const myImg2 = new Image()
                 myImg1.src = img
                 myImg2.src = logo
                 const mainContainer = document.getElementById('main_container')
                 const myCanvas = document.createElement('canvas')
-                myCanvas.setAttribute('id', canvasId)
+                myCanvas.setAttribute('id', 'canvas' + this.getAvailableId());
                 myCanvas.width = '300'
                 myCanvas.height = '300'
 
@@ -1247,13 +1257,12 @@
                 this.galleryToDelete.push(img);
             },
             readImagesToUpdate: function () {
-                debugger
                 const files = document.getElementById('galleryInput').files;
                 let count = 0;
 
                 while (count < files.length) {
-                    this.getCanvas(URL.createObjectURL(files[count]), window.location.origin + '/img/waterMark/watermark.jpeg', 'canvas' + count)
-                    const myCanvas = document.getElementById('canvas' + count)
+                    this.getCanvas(URL.createObjectURL(files[count]), window.location.origin + '/img/waterMark/watermark.jpeg', 'canvas' + count);
+                    const myCanvas = document.getElementById('canvas' + count);
                     this.galleryToAdd.push({
                         'file': files[count],
                         'url': URL.createObjectURL(files[count]),
