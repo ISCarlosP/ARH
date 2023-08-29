@@ -241,7 +241,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="main_container" style="width: auto; height: auto;"></div>
+                                    <div id="main_container" style="width: auto; height: auto; display: none;"></div>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center my-2">
@@ -1174,11 +1174,30 @@
                     count++
                 }
             },
+            // getCanvas: function (img, logo) {
+            //     const myImg1 = new Image();
+            //     const myImg2 = new Image();
+            //     myImg1.src = img;
+            //     myImg2.src = logo;
+            //     const mainContainer = document.getElementById('main_container');
+            //     const myCanvas = document.createElement('canvas');
+            //     myCanvas.setAttribute('id', 'canvas' + this.getAvailableId());
+            //     myCanvas.width = '800';
+            //     myCanvas.height = '800';
+            //
+            //     mainContainer.appendChild(myCanvas);
+            //     const ctx = myCanvas.getContext('2d');
+            //
+            //     myImg1.onload = () => {
+            //         ctx.drawImage(myImg1, 0, 0, 800, 800);
+            //     }
+            //
+            //     myImg2.onload = () => {
+            //         ctx.globalAlpha = .5;
+            //         ctx.drawImage(myImg2, 300, 360, 200, 80);
+            //     }
+            // },
             getCanvas: function (img, logo) {
-                const myImg1 = new Image();
-                const myImg2 = new Image();
-                myImg1.src = img;
-                myImg2.src = logo;
                 const mainContainer = document.getElementById('main_container');
                 const myCanvas = document.createElement('canvas');
                 myCanvas.setAttribute('id', 'canvas' + this.getAvailableId());
@@ -1188,16 +1207,20 @@
                 mainContainer.appendChild(myCanvas);
                 const ctx = myCanvas.getContext('2d');
 
+                const myImg1 = new Image();
                 myImg1.onload = () => {
                     ctx.drawImage(myImg1, 0, 0, 800, 800);
-                }
 
-
-                myImg2.onload = () => {
-                    ctx.globalAlpha = .5;
-                    ctx.drawImage(myImg2, 300, 360, 200, 80);
-                }
+                    const myImg2 = new Image();
+                    myImg2.onload = () => {
+                        ctx.globalAlpha = 0.5;
+                        ctx.drawImage(myImg2, 300, 360, 200, 80);
+                    };
+                    myImg2.src = logo;
+                };
+                myImg1.src = img;
             },
+
             deleteGalleryItems: function () {
                 this.showHideSpinner('saveDeleteGallerySpinner', 'show');
 
