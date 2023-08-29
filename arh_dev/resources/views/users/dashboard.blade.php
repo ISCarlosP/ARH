@@ -206,7 +206,7 @@
                                                     <td class="d-flex justify-content-center">
                                                         <button class="btn btn-sm btn-icon btn-warning mx-2"
                                                                 v-on:click="getCurrentEditUser(user, index)"><i
-                                                                class="fa-solid fa-pen-to-square"></i></button>
+                                                                    class="fa-solid fa-pen-to-square"></i></button>
                                                         <button class="btn btn-sm btn-icon btn-danger mx2"
                                                                 v-on:click="destroyUser(user.id, index)">
                                                             <i :id="'deleteUserIconSpinner' + index"
@@ -304,9 +304,9 @@
                                                          class="bg-dark rounded-3"
                                                          v-on:click="openEditProductGallery(product)">
                                                         <span
-                                                            class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"
-                                                            style="min-height: 3.0rem"
-                                                            v-text="(product.product_name).toUpperCase()"></span>
+                                                                class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"
+                                                                style="min-height: 3.0rem"
+                                                                v-text="(product.product_name).toUpperCase()"></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -457,12 +457,12 @@
                         <div class="col-lg-4 col-sm-12 my-2 mx-auto">
                             <small class="fw-bolder">Fecha de nacimiento</small>
                             <input
-                                type="date"
-                                class="form-control"
-                                placeholder="dd/mm/aaaa"
-                                aria-label="Username"
-                                aria-describedby="basic-addon1"
-                                v-model="editUser.userBirthDate">
+                                    type="date"
+                                    class="form-control"
+                                    placeholder="dd/mm/aaaa"
+                                    aria-label="Username"
+                                    aria-describedby="basic-addon1"
+                                    v-model="editUser.userBirthDate">
                         </div>
                         <div class="col-lg-4 col-sm-12 my-2 mx-auto">
                             <small class="fw-bolder">Editar contraseña</small>
@@ -560,12 +560,12 @@
                         <div class="col-lg-4 col-sm-12 my-2 mx-auto">
                             <small class="fw-bolder">Fecha de nacimiento</small>
                             <input
-                                type="date"
-                                class="form-control"
-                                placeholder="dd/mm/aaaa"
-                                aria-label="Username"
-                                aria-describedby="basic-addon1"
-                                v-model="createUser.userBirthDate">
+                                    type="date"
+                                    class="form-control"
+                                    placeholder="dd/mm/aaaa"
+                                    aria-label="Username"
+                                    aria-describedby="basic-addon1"
+                                    v-model="createUser.userBirthDate">
                         </div>
                         <div class="col-lg-4 col-sm-12 my-2 mx-auto">
                             <small class="fw-bolder">Ingresar contraseña</small>
@@ -652,11 +652,11 @@
                                 </div>
                                 <div class="d-flex justify-content-center my-2 align-items-center">
                                     <button class="btn btn-sm btn-icon" v-on:click="deleteToUpdateItem(index)"><i
-                                            class="fa-solid fa-circle-xmark text-danger fs-5"></i></button>
+                                                class="fa-solid fa-circle-xmark text-danger fs-5"></i></button>
                                     <a class="mx-1 btn btn-sm btn-icon  btn-icon"
                                        :href="galleryItem.url"
                                        target="_blank"><i
-                                            class="fa-solid fa-eye text-primary  fs-5"></i></a>
+                                                class="fa-solid fa-eye text-primary  fs-5"></i></a>
                                 </div>
                             </div>
                         </template>
@@ -669,7 +669,7 @@
                             <div v-if="productsInfo[productsInfo.indexOf(currentProductType)].images.length === 0"
                                  class="w-100 text-center my-5">
                                 <span
-                                    class="fw-bolder fs-5 text-muted">AÚN NO HAS AGREGADO IMAGENES A ESTA GALERÍA</span>
+                                        class="fw-bolder fs-5 text-muted">AÚN NO HAS AGREGADO IMAGENES A ESTA GALERÍA</span>
                             </div>
                             <div v-for="galleryItem in productsInfo[productsInfo.indexOf(currentProductType)].images"
                                  class="mx-2 my-2">
@@ -686,7 +686,7 @@
                                     <a class="mx-1 btn btn-sm btn-icon  btn-icon"
                                        :href="galleryItem.product_image_url"
                                        target="_blank"><i
-                                            class="fa-solid fa-eye text-primary  fs-5"></i></a>
+                                                class="fa-solid fa-eye text-primary  fs-5"></i></a>
                                 </div>
                             </div>
                         </template>
@@ -697,7 +697,7 @@
                             Eliminar <span id="saveDeleteGallerySpinner" class="spinner-border spinner-border-sm d-none"
                                            aria-hidden="true"></span>
                         </button>
-                        <button v-on:click="createGalleryItems()"
+                        <button v-on:click="createBlobToSend()"
                                 :class="((galleryToAdd.length > 0)? 'btn btn-sm btn-success mx-1' : 'd-none' )">
                             Guardar <span id="saveAddGallerySpinner" class="spinner-border spinner-border-sm d-none"
                                           aria-hidden="true"></span>
@@ -1207,29 +1207,19 @@
                     toastr.error(error.message);
                 }.bind(this))
             },
-            createFormDataToAdd: function () {
-                return new Promise((resolve, reject)=>{
-                    let formData = new FormData;
-                    formData.append('productId', this.currentProductType.product_id);
-                    let count = 0;
-                    const myCanvas = document.getElementById('canvas' + count)
-                    let realCount = parseInt(count.toString())
-                    let context = {realCount: realCount, this:this}
-                    while (count < this.galleryToAdd.length) {
-                        myCanvas.toBlob(function(blob) {
-                            formData.append('image' + context.realCount, context.this.galleryToAdd[context.realCount].file);
-                            if(context.realCount === context.this.galleryToAdd.length - 1){
-                                resolve(formData);
-                            }
-                        }.bind(context))
-                        count++
-                    }
+            createFormDataToAdd: function (blobArray) {
+                let formData = new FormData;
+
+                blobArray.forEach(function (blob, index) {
+                    formData.append('image' + index, blob);
                 });
+
+                formData.append('productId', this.currentProductType.product_id);
+                this.createGalleryItems(formData);
             },
-            createGalleryItems: async function () {
+            createGalleryItems: function (formData) {
                 this.showHideSpinner('saveAddGallerySpinner', 'show');
-                let data = await this.createFormDataToAdd()
-                axios.post(this.urls.galleryCreate, data)
+                axios.post(this.urls.galleryCreate, formData)
                     .then(function (response) {
                         this.showHideSpinner('saveAddGallerySpinner', 'hide');
 
@@ -1262,7 +1252,7 @@
                 let count = 0;
 
                 while (count < files.length) {
-                    this.getCanvas(URL.createObjectURL(files[count]), window.location.origin + '/img/waterMark/watermark.jpeg', 'canvas'+count)
+                    this.getCanvas(URL.createObjectURL(files[count]), window.location.origin + '/img/waterMark/watermark.jpeg', 'canvas' + count)
                     const myCanvas = document.getElementById('canvas' + count)
                     this.galleryToAdd.push({
                         'file': files[count],
@@ -1274,6 +1264,24 @@
             },
             deleteToUpdateItem: function (index) {
                 this.galleryToAdd.splice(index, 1);
+            },
+            createBlobToSend: function () {
+                let count = 0;
+                let allPromises = [];
+
+                while (count < this.galleryToAdd.length) {
+                    const myCanvas = document.getElementById('canvas' + count);
+                    allPromises.push(new Promise(function (resolve, reject) {
+                        myCanvas.toBlob(function (blob) {
+                            resolve(blob);
+                        });
+                    }));
+                    count++;
+                }
+
+                Promise.all(allPromises).then(function (response) {
+                    this.createFormDataToAdd(response);
+                }.bind(this));
             }
         },
         watch: {},
