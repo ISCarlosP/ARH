@@ -1190,13 +1190,12 @@
 
                 myImg1.onload = () => {
                     ctx.drawImage(myImg1, 0, 0, 800, 800);
+                }
 
-                    myImg2.onload = () => {
-                        ctx.globalAlpha = .5;
-                        ctx.drawImage(myImg2, 300, 360, 200, 80);
-                        ctx.globalAlpha = 1;
-                    }
 
+                myImg2.onload = () => {
+                    ctx.globalAlpha = .5;
+                    ctx.drawImage(myImg2, 300, 360, 200, 80);
                 }
             },
             deleteGalleryItems: function () {
