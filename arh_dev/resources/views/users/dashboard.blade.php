@@ -1107,7 +1107,10 @@
             },
             getProductUpdatedData: function (productId) {
                 const file = document.getElementById('productInput' + productId).files[0] ?? null;
-                this.getCanvas(URL.createObjectURL(file), window.location.origin + '/img/waterMark/watermark.jpeg')
+
+                if (file !== null) {
+                    this.getCanvas(URL.createObjectURL(file), window.location.origin + '/img/waterMark/watermark.jpeg');
+                }
 
                 if (!file) {
                     document.getElementById('saveProductDiv' + productId).classList.add('d-none');
@@ -1172,26 +1175,28 @@
                 }
             },
             getCanvas: function (img, logo) {
-                const myImg1 = new Image()
-                const myImg2 = new Image()
-                myImg1.src = img
-                myImg2.src = logo
-                const mainContainer = document.getElementById('main_container')
-                const myCanvas = document.createElement('canvas')
+                const myImg1 = new Image();
+                const myImg2 = new Image();
+                myImg1.src = img;
+                myImg2.src = logo;
+                const mainContainer = document.getElementById('main_container');
+                const myCanvas = document.createElement('canvas');
                 myCanvas.setAttribute('id', 'canvas' + this.getAvailableId());
-                myCanvas.width = '300'
-                myCanvas.height = '300'
+                myCanvas.width = '800';
+                myCanvas.height = '800';
 
-                mainContainer.appendChild(myCanvas)
-                const ctx = myCanvas.getContext('2d')
+                mainContainer.appendChild(myCanvas);
+                const ctx = myCanvas.getContext('2d');
 
                 myImg1.onload = () => {
-                    ctx.drawImage(myImg1, 0, 0, 300, 300)
-                    //ctx.fillStyle = "rgba(255, 255, 255, .3)";
-                }
-                myImg2.onload = () => {
-                    ctx.globalAlpha = .5
-                    ctx.drawImage(myImg2, 50, 110, 200, 80)
+                    ctx.drawImage(myImg1, 0, 0, 800, 800);
+
+                    myImg2.onload = () => {
+                        ctx.globalAlpha = .5;
+                        ctx.drawImage(myImg2, 300, 360, 200, 80);
+                        ctx.globalAlpha = 1;
+                    }
+
                 }
             },
             deleteGalleryItems: function () {
