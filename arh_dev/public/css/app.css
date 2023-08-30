@@ -13,6 +13,12 @@
 
 .banner-img{
     z-index: 6;
+    height: 200px;
+    & img{
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
 }
 
 .info-box{
@@ -259,6 +265,17 @@ footer > div > div > img{
 /* MEDIA QUERYS */
 
 @media (max-width: 415px) {
+
+    .banner-img{
+        z-index: 6;
+        height: 100px;
+        & img{
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+        }
+    }
+
 
     .dark-background-pattern{
         /*background-image: url(img/bg_dark_ultra-height.svg);*/

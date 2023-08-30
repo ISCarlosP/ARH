@@ -242,6 +242,47 @@
                                         </div>
                                     </div>
                                     <div id="main_container" style="width: auto; height: auto; display: none;"></div>
+                                    <div class="row">
+                                        <div class="col-4 mx-auto d-flex justify-content-center">
+                                            <div class="px-1">
+                                                <label class="btn btn-sm btn-warning btn-icon fw-bolder" type="button">
+                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                    <input
+                                                        id="inputBanner"
+                                                        type="file"
+                                                        style="display: none;"
+                                                        v-on:change="getBannerUpdatedData()">
+                                                </label>
+                                            </div>
+                                            <div class="px-1">
+                                                <a id="seeCurrentBanner"
+                                                   type="button"
+                                                   cursor="pointer"
+                                                   class="btn btn-sm btn-icon bg-primary"
+                                                   :href="bannerInfo.url"
+                                                   target="_blank">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </a>
+                                            </div>
+                                            <div id="saveBannerButton" class="px-1 d-none">
+                                                <button id="saveBannerButtonOriginal"
+                                                        class="btn btn-sm btn-icon bg-success"
+                                                        v-on:click="saveEditBanner()">
+                                                    <i id="saveBannerButtonIcon" class="fa-solid fa-floppy-disk"></i>
+                                                    <span id="saveBannerSpinner"
+                                                          class="spinner-border spinner-border-sm  d-none"
+                                                          aria-hidden="true"></span>
+                                                </button>
+                                            </div>
+                                            <div id="deleteBannerChanges" class="px-1 d-none">
+                                                <button id="cancelBannerChangesButton"
+                                                        class="btn btn-sm btn-icon bg-danger"
+                                                        v-on:click="cancelBannerChanges()">
+                                                    <i class="fa-solid fa-xmark text-white"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center my-2">
@@ -1174,29 +1215,6 @@
                     count++
                 }
             },
-            // getCanvas: function (img, logo) {
-            //     const myImg1 = new Image();
-            //     const myImg2 = new Image();
-            //     myImg1.src = img;
-            //     myImg2.src = logo;
-            //     const mainContainer = document.getElementById('main_container');
-            //     const myCanvas = document.createElement('canvas');
-            //     myCanvas.setAttribute('id', 'canvas' + this.getAvailableId());
-            //     myCanvas.width = '800';
-            //     myCanvas.height = '800';
-            //
-            //     mainContainer.appendChild(myCanvas);
-            //     const ctx = myCanvas.getContext('2d');
-            //
-            //     myImg1.onload = () => {
-            //         ctx.drawImage(myImg1, 0, 0, 800, 800);
-            //     }
-            //
-            //     myImg2.onload = () => {
-            //         ctx.globalAlpha = .5;
-            //         ctx.drawImage(myImg2, 300, 360, 200, 80);
-            //     }
-            // },
             getCanvas: function (img, logo) {
                 const mainContainer = document.getElementById('main_container');
                 const myCanvas = document.createElement('canvas');
