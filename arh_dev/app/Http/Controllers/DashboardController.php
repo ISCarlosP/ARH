@@ -210,7 +210,7 @@ class DashboardController extends Controller
                 'first_name' => $user['first_name'],
                 'last_name' => $user['last_name'],
                 'birth_date' => Carbon::parse($user['user_birth_date'])->format('Y-m-d'),
-                'created_at' => Carbon::parse($user['created_at'])->format('Y-m-d h:i:s a'),
+                'created_at' => Carbon::parse($user['created_at'])->format('Y-m-d'),
                 'email' => $user['email'],
             ];
         }

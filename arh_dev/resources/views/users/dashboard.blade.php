@@ -105,6 +105,9 @@
                          role="tabpanel">
                         <div class="w-100 text-center">
                             <div class="row my-3">
+                                <div class="(messages.length > 0)? 'd-none' : 'col-lg-3 col-sm-12 mx-auto mt-5'">
+                                    <span class="text-muted fs-1 fw-bolder">NO TIENES MENSAJES NUEVOS</span>
+                                </div>
                                 <div class="col-lg-3 my-2 mx-auto"
                                      v-for="message in messages">
                                     <div class="card shadow h-100">
@@ -185,28 +188,24 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive w-100">
-                                            <table class="table table-striped">
+                                            <table class="table ">
                                                 <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
-                                                    <th scope="col">Nombre completo</th>
                                                     <th scope="col">Usuario</th>
-                                                    <th scope="col">Fecha de cumpleaños</th>
-                                                    <th scope="col">Fecha de creación</th>
+                                                    <th scope="col">Creado</th>
                                                     <th scope="col">Opciones</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 <tr v-for="(user, index) in users">
                                                     <th scope="row" v-text="index + 1"></th>
-                                                    <td v-text="user.first_name + ' ' + user.last_name"></td>
                                                     <td v-text="user.email"></td>
-                                                    <td v-text="user.birth_date"></td>
                                                     <td v-text="user.created_at"></td>
                                                     <td class="d-flex justify-content-center">
                                                         <button class="btn btn-sm btn-icon btn-warning mx-2"
                                                                 v-on:click="getCurrentEditUser(user, index)"><i
-                                                                    class="fa-solid fa-pen-to-square"></i></button>
+                                                                class="fa-solid fa-pen-to-square"></i></button>
                                                         <button class="btn btn-sm btn-icon btn-danger mx2"
                                                                 v-on:click="destroyUser(user.id, index)">
                                                             <i :id="'deleteUserIconSpinner' + index"
@@ -345,9 +344,9 @@
                                                          class="bg-dark rounded-3"
                                                          v-on:click="openEditProductGallery(product)">
                                                         <span
-                                                                class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"
-                                                                style="min-height: 3.0rem"
-                                                                v-text="(product.product_name).toUpperCase()"></span>
+                                                            class="fw-bolder text-white text-center d-flex justify-content-center align-items-center"
+                                                            style="min-height: 3.0rem"
+                                                            v-text="(product.product_name).toUpperCase()"></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -498,12 +497,12 @@
                         <div class="col-lg-4 col-sm-12 my-2 mx-auto">
                             <small class="fw-bolder">Fecha de nacimiento</small>
                             <input
-                                    type="date"
-                                    class="form-control"
-                                    placeholder="dd/mm/aaaa"
-                                    aria-label="Username"
-                                    aria-describedby="basic-addon1"
-                                    v-model="editUser.userBirthDate">
+                                type="date"
+                                class="form-control"
+                                placeholder="dd/mm/aaaa"
+                                aria-label="Username"
+                                aria-describedby="basic-addon1"
+                                v-model="editUser.userBirthDate">
                         </div>
                         <div class="col-lg-4 col-sm-12 my-2 mx-auto">
                             <small class="fw-bolder">Editar contraseña</small>
@@ -601,12 +600,12 @@
                         <div class="col-lg-4 col-sm-12 my-2 mx-auto">
                             <small class="fw-bolder">Fecha de nacimiento</small>
                             <input
-                                    type="date"
-                                    class="form-control"
-                                    placeholder="dd/mm/aaaa"
-                                    aria-label="Username"
-                                    aria-describedby="basic-addon1"
-                                    v-model="createUser.userBirthDate">
+                                type="date"
+                                class="form-control"
+                                placeholder="dd/mm/aaaa"
+                                aria-label="Username"
+                                aria-describedby="basic-addon1"
+                                v-model="createUser.userBirthDate">
                         </div>
                         <div class="col-lg-4 col-sm-12 my-2 mx-auto">
                             <small class="fw-bolder">Ingresar contraseña</small>
@@ -693,11 +692,11 @@
                                 </div>
                                 <div class="d-flex justify-content-center my-2 align-items-center">
                                     <button class="btn btn-sm btn-icon" v-on:click="deleteToUpdateItem(index)"><i
-                                                class="fa-solid fa-circle-xmark text-danger fs-5"></i></button>
+                                            class="fa-solid fa-circle-xmark text-danger fs-5"></i></button>
                                     <a class="mx-1 btn btn-sm btn-icon  btn-icon"
                                        :href="galleryItem.url"
                                        target="_blank"><i
-                                                class="fa-solid fa-eye text-primary  fs-5"></i></a>
+                                            class="fa-solid fa-eye text-primary  fs-5"></i></a>
                                 </div>
                             </div>
                         </template>
@@ -710,7 +709,7 @@
                             <div v-if="productsInfo[productsInfo.indexOf(currentProductType)].images.length === 0"
                                  class="w-100 text-center my-5">
                                 <span
-                                        class="fw-bolder fs-5 text-muted">AÚN NO HAS AGREGADO IMAGENES A ESTA GALERÍA</span>
+                                    class="fw-bolder fs-5 text-muted">AÚN NO HAS AGREGADO IMAGENES A ESTA GALERÍA</span>
                             </div>
                             <div v-for="galleryItem in productsInfo[productsInfo.indexOf(currentProductType)].images"
                                  class="mx-2 my-2">
@@ -727,7 +726,7 @@
                                     <a class="mx-1 btn btn-sm btn-icon  btn-icon"
                                        :href="galleryItem.product_image_url"
                                        target="_blank"><i
-                                                class="fa-solid fa-eye text-primary  fs-5"></i></a>
+                                            class="fa-solid fa-eye text-primary  fs-5"></i></a>
                                 </div>
                             </div>
                         </template>
@@ -885,7 +884,7 @@
                         curve: 'straight'
                     },
                     title: {
-                        text: 'REPORTE DE VISITAS DE LA SEMANA 10/07/2023 - 16/07/2023',
+                        text: 'REPORTE DE VISITAS DE LA SEMANA ACTUAL',
                         align: 'left'
                     },
                     grid: {
