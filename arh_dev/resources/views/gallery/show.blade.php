@@ -24,7 +24,7 @@
                 <h2 class="fw-bolder text-white">ENCUENTRA EL DISEÑO DE TUS SUEÑOS</h2>
                 <strong class="mt-3" style="color: gray;">Explora nuestro catalogo.</strong>
                 <span class="mt-2" style="color: white;">Tu satisfacción es nuestra prioridad, y nuestro equipo de expertos estará encantado de asesorarte en cada paso del camino, asegurándose de que encuentres el diseño que se adapte perfectamente a tu estilo.</span>
-                <a href="/" class="btn btn-sm btn-primary mt-5 w-25">volver al inicio</a>
+                <a href="/" class="btn btn-sm btn-primary mt-5 w-25">Regresar</a>
                 <button class="btn btn-sm mt-3 show-galery" v-on:click="hideInfo">Ver Galeria</button>
             </div>
             <div class="col-lg-7 p-5 pt-4" style="height: 100vh;" id="galery_images">
