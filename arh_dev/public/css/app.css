@@ -303,10 +303,11 @@ footer > div > div > img{
 
     #content-inicio-info{
         justify-content: center !important;
-        & div{
-            width: 100% !important;
-            align-items: center !important;
-        }
+    }
+
+    #content-inicio-info div{
+        width: 100% !important;
+        align-items: center !important;
     }
 
     .menu-fixed{
