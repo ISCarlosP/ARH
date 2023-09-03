@@ -38,7 +38,10 @@
                                 </div>
                             </div>
                         </template>
+                    <div v-if="productImages.length === 0" class="d-flex justify-content-center align-items-center">
+                        <strong style="font-size: 40px; text-align: center">No hay imagenes para mostrar</strong>
                     </div>
+                </div>
                 </div>
             </div>
             <div class="fullScreen d-none d-flex flex-column justify-content-center align-items-center">
