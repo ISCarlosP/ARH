@@ -60,16 +60,19 @@ class DashboardController extends Controller
 
     public function getCardsValues()
     {
+        Carbon::setLocale('es');
+        (new \Carbon\Carbon)->setTimezone('America/Mexico_City');
+
         $todayVisits = Site_visits::query()
-            ->whereBetween('created_at', [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])
+            ->whereBetween('created_at', [Carbon::now()->startOfDay()->subHours(6), Carbon::now()->endOfDay()->subHours(6)])
             ->count();
 
         $weekVisits = Site_visits::query()
-            ->whereBetween('created_at', [Carbon::now()->subDays(8), Carbon::now()->endOfDay()])
+            ->whereBetween('created_at', [Carbon::now()->subDays(8)->subHours(6), Carbon::now()->endOfDay()->subHours(6)])
             ->count();
 
         $monthVisits = Site_visits::query()
-            ->whereBetween('created_at', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])
+            ->whereBetween('created_at', [Carbon::now()->startOfMonth()->subHours(6), Carbon::now()->endOfMonth()->subHours(6)])
             ->count();
 
         $activeUsers = Users::query()
@@ -119,14 +122,14 @@ class DashboardController extends Controller
         ];
 
         while ($count < 7) {
-            $start = Carbon::now()->setTimezone('America/Belize')->startOfDay()->subDays($count);
-            $end = Carbon::now()->setTimezone('America/Belize')->endOfDay()->subDays($count);
+            $start = Carbon::now()->startOfDay()->subDays($count)->subHours(6);
+            $end = Carbon::now()->endOfDay()->subDays($count)->subHours(6);
 
             $visitsCount = Site_visits::query()
                 ->whereBetween('created_at', [$start, $end])
                 ->count();
 
-            $weekVisitsDetail['days'][] = strtoupper(Carbon::now()->setTimezone('America/Belize')->subDays($count)->locale('es')->isoFormat('ddd'));
+            $weekVisitsDetail['days'][] = strtoupper(Carbon::now()->subDays($count)->subHours(6)->locale('es')->isoFormat('ddd'));
             $weekVisitsDetail['data'][] = $visitsCount;
             $count++;
         }
@@ -134,14 +137,14 @@ class DashboardController extends Controller
         $count = 0;
 
         while ($count < 30) {
-            $start = Carbon::now()->setTimezone('America/Belize')->startOfDay()->subDays($count);
-            $end = Carbon::now()->setTimezone('America/Belize')->endOfDay()->subDays($count);
+            $start = Carbon::now()->startOfDay()->subDays($count)->subHours(6);
+            $end = Carbon::now()->endOfDay()->subDays($count)->subHours(6);
 
             $visitsCount = Site_visits::query()
                 ->whereBetween('created_at', [$start, $end])
                 ->count();
 
-            $monthVisitsDetail['days'][] = strtoupper(Carbon::now()->setTimezone('America/Belize')->subDays($count)->locale('es')->isoFormat('D/M/Y'));
+            $monthVisitsDetail['days'][] = strtoupper(Carbon::now()->subDays($count)->subHours(6)->locale('es')->isoFormat('D/M/Y'));
             $monthVisitsDetail['data'][] = $visitsCount;
             $count++;
         }
