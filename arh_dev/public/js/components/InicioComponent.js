@@ -11,7 +11,7 @@ const IncioComponent = {
                         <h2 style="font-size: 90px;" class="p-0 m-0">Acero</h2>
                         <h3 style="font-size: 70px;" class="p-0 m-0">inoxidable</h3>
                         <strong class="bg-primary text-white text-center p-5 pt-1 pb-1 w-100" style="display: inline-block; margin: 0px auto;">ESPECIALISTAS EN ACERO</strong>
-                        <p class="pt-3 text-justify text-white" style="text-shadow: 3px 3px 3px black; font-size: 18px;">Nos dedicamos a la fabricación de barandales y pasamanos de acero inoxidable, y/o con cristal templado, barandales curvos, barandales de  escalera y para balcones...</p>
+                        <p class="pt-3 text-white" style="text-shadow: 3px 3px 3px black; font-size: 18px;">Nos dedicamos a la fabricación de barandales y pasamanos de acero inoxidable, y/o con cristal templado, barandales curvos, barandales de  escalera y para balcones...</p>
                     </div>
                 </div>
             </div>

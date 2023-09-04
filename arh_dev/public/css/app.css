@@ -32,6 +32,10 @@
     align-items: end;
 }
 
+.info-box p{
+    text-align: justify;
+}
+
 .menu-fixed {
     position: sticky !important;
     top: 0;
@@ -276,13 +280,6 @@ footer > div > div > img{
         }
     }
 
-
-    .dark-background-pattern{
-        /*background-image: url(img/bg_dark_ultra-height.svg);*/
-        /*background-size: 100%;*/
-        /*background-repeat: repeat;*/
-    }
-
     .carousel-item{
         overflow: hidden !important;
         height: 150px !important;
@@ -310,7 +307,12 @@ footer > div > div > img{
         align-items: center !important;
     }
 
-    .menu-fixed{
+    .info-box p{
+        text-align: justify;
+        padding: 40px;
+    }
+
+    .menu-fixed {
         justify-content: space-between !important;
         padding-left: 0px !important;
         width: 100%;
@@ -318,43 +320,44 @@ footer > div > div > img{
         grid-template-rows: repeat(2, 1fr);
         grid-template-columns: 1fr;
         position: relative;
-        & .menu_hamburguer_box{
+    }
+    .menu-fixed .menu_hamburguer_box{
             width: 100% !important;
             height: 20px;
             display: flex;
             justify-content: end;
-        }
-        & #navbarNav{
-            width: 100%;
-            position: absolute;
-            background: #0d6efd;
-            top: 50px;
-            transform: translateX(-100%);
-            transition: transform 300ms;
-            &  ul{
-                list-style: none;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                & li{
-                    display: flex;
-                    justify-content: center;
-                    & a{
-                        color: white;
-                        text-decoration: none;
-                        padding:5px 150px;
-                    }
-                    & button{
-                        padding: 5px 130px;
-                        margin-bottom: 5px;
-                    }
-                }
-            }
-        }
+    }
+    .menu-fixed #navbarNav {
+        width: 100%;
+        position: absolute;
+        background: #0d6efd;
+        top: 50px;
+        transform: translateX(-100%);
+        transition: transform 300ms;
+    }
+    .menu-fixed #navbarNav ul {
+        list-style: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .menu-fixed #navbarNav ul li {
+        display: flex;
+        justify-content: center;
+    }
+    .menu-fixed #navbarNav ul li a {
+        color: white;
+        text-decoration: none;
+        padding: 5px 150px;
+    }
+    .menu-fixed #navbarNav ul li button {
+        padding: 5px 130px;
+        margin-bottom: 5px;
     }
 
     #floatNav{
         top: 280px !important;
+        right: 0;
     }
 
     .menu_hamburguer{
