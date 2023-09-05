@@ -31,7 +31,7 @@ class SiteVisitsController extends Controller
         if(!$cookies->validateCookieExist($request)){
             try{
                 $token = Str::random(25);
-                $date = Carbon::now();
+                $date = Carbon::now('America/Mexico_City');
                 $timeStamp = $date->timestamp;
 
                 $cookie = $cookies->createCookie([
