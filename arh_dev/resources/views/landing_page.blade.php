@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nos dedicamos a la fabricación de barandales y pasamanos de acero inoxidable, y/o con cristal templado, barandales curvos, barandales de escalera y para balcones. Mejoramos cualquier presupuesto, incluso el nuestro">
     <link rel="icon" type="image/png" href="img/arh_icon_final.png">
-    <title>Brandales ARH</title>
+    <title>Brandales ARH - Expertos en barandales de acero inoxidable</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
@@ -34,8 +35,8 @@
         <span></span>
     </div>
     <div id="app" class="w-100 d-none dark-background-pattern">
-        <div class="w-100 banner-img">
-            <img src="img/gallery/banner_principal/banner_principal.png" alt="banner">
+        <div class="w-100">
+            <img src="img/gallery/banner_principal/banner_principal.png" style="heigth: auto; width: 100%" alt="banner">
         </div>
         <nav class="menu-fixed p-2">
             <!-- <div class="row w-100 m-0">
