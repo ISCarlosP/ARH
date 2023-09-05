@@ -33,18 +33,18 @@ const ServicesComponent = {
                       <div class="carousel-inner">
                         <div class="carousel-item active">
                            <div class="d-flex justify-content-between img-carousel" style="height: 300px;">
-                               <img class="rounded-2 d-block" src="img/img1.jpg" alt="img" style="width: 22%">
-                                <img class="rounded-2 d-block" src="img/img2.jpg" alt="img" style="width: 22%;">
-                                <img class="rounded-2 d-block" src="img/img4.jpg" alt="img" style="width: 22%;">
-                                <img class="rounded-2 d-block" src="img/img3.jpg" alt="img" style="width: 22%;" v-if="userDevice.mobile() === null">
+                               <img class="rounded-2 d-block mx-auto" src="img/img1.jpg" alt="img" :style="userDevice.mobile() === null ? 'width: 22%;' : 'width: 45%;'">
+                               <img class="rounded-2 d-block mx-auto" src="img/img2.jpg" alt="img" :style="userDevice.mobile() === null ? 'width: 22%;' : 'width: 45%;'">
+                               <img class="rounded-2 d-block mx-auto" src="img/img4.jpg" alt="img" :style="userDevice.mobile() === null ? 'width: 22%;' : 'width: 45%;'" v-if="userDevice.mobile() === null">
+                               <img class="rounded-2 d-block mx-auto" src="img/img3.jpg" alt="img" :style="userDevice.mobile() === null ? 'width: 22%;' : 'width: 45%;'" v-if="userDevice.mobile() === null">
                             </div>
                         </div>
                         <div class="carousel-item">
                           <div class="d-flex justify-content-between img-carousel" style="height: 300px;">
-                               <img class="rounded-2 d-block" src="img/img-1.jpeg" alt="img" style="width: 22%">
-                                <img class="rounded-2 d-block" src="img/img-2.jpeg" alt="img" style="width: 22%;">
-                                <img class="rounded-2 d-block" src="img/img-4.jpeg" alt="img" style="width: 22%;">
-                                <img class="rounded-2 d-block" src="img/img-3.jpeg" alt="img" style="width: 22%;" v-if="userDevice.mobile() === null">
+                               <img class="rounded-2 d-block mx-auto" src="img/img-1.jpeg" alt="img" :style="userDevice.mobile() === null ? 'width: 22%;' : 'width: 45%;'">
+                               <img class="rounded-2 d-block mx-auto" src="img/img-2.jpeg" alt="img" :style="userDevice.mobile() === null ? 'width: 22%;' : 'width: 45%;'">
+                               <img class="rounded-2 d-block mx-auto" src="img/img-4.jpeg" alt="img" :style="userDevice.mobile() === null ? 'width: 22%;' : 'width: 45%;'" v-if="userDevice.mobile() === null">
+                               <img class="rounded-2 d-block mx-auto" src="img/img-3.jpeg" alt="img" :style="userDevice.mobile() === null ? 'width: 22%;' : 'width: 45%;'" v-if="userDevice.mobile() === null">
                             </div>
                         </div>
                       </div>
@@ -84,7 +84,7 @@ const ServicesComponent = {
 
             this.route = joinRoute
         }
-    }
+    },
 }
 
 export default ServicesComponent;

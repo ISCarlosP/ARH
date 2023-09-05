@@ -116,12 +116,12 @@
                     this.currentImg = (this.currentImg - 1 + this.productImages.length) % this.productImages.length;
                     this.updateFullScreenImage();
                 },
-                hideInfo: function(){
-                    const galeryInfo = document.querySelector('#galery_info')
-                    const galeryImages = document.querySelector('#galery_images')
-                    galeryInfo.classList.add('d-none')
-                    galeryImages.style.display = 'block'
-                }
+                // hideInfo: function(){
+                //     const galeryInfo = document.querySelector('#galery_info')
+                //     const galeryImages = document.querySelector('#galery_images')
+                //     galeryInfo.classList.add('d-none')
+                //     galeryImages.style.display = 'block'
+                // }
             },
         })
 

@@ -269,7 +269,6 @@ footer > div > div > img{
 /* MEDIA QUERYS */
 
 @media (max-width: 415px) {
-
     .banner-img{
         z-index: 6;
         height: 80px;
@@ -279,7 +278,6 @@ footer > div > div > img{
             object-fit: fill;
         }
     }
-
     .carousel-item{
         overflow: hidden !important;
         height: 150px !important;
@@ -288,30 +286,24 @@ footer > div > div > img{
             width: 32% !important;
         }
     }
-
     carouselExampleAutoplaying{
         width: 100%;
         height: auto;
     }
-
     .services-container h2{
         margin-top: 0 !important;
     }
-
     #content-inicio-info{
         justify-content: center !important;
     }
-
     #content-inicio-info div{
         width: 100% !important;
         align-items: center !important;
     }
-
     .info-box p{
         text-align: justify;
         padding: 40px;
     }
-
     .menu-fixed {
         justify-content: space-between !important;
         padding-left: 0px !important;
@@ -354,58 +346,45 @@ footer > div > div > img{
         padding: 5px 130px;
         margin-bottom: 5px;
     }
-
     #floatNav{
         top: 280px !important;
         right: 0;
     }
-
     .menu_hamburguer{
         display: block;
     }
-
-    #inicio{
-        background-image: none;
-    }
-
     #title-h1{
         font-size: 45px;
         text-align: center;
     }
-
     #floatNav{
         top: 260px;
     }
-
     #inicio{
         height: auto;
     }
-
-    #inicio img{
-        height: 250px;
-        width: 100%;
+    #inicio{
+        background-image: url("../img/portada-img.jpg");
+        /*background-attachment: fixed;*/
+        /*background-repeat: no-repeat;*/
+        /*background-size: 100%;*/
     }
-
     #servicios{
         height: auto;
         padding-top: 0px;
     }
-
     #nosotros{
         padding-top: 30px;
     }
-
     #form-contact{
         width: 100% !important;
     }
-
     #imgUs{
         margin-right: 10px;
     }
     #formNosotros input[type="text"], input[type="submit"]{
         width: 100%;
     }
-
     #formNosotros textarea{
         width: 100%;
     }
@@ -414,7 +393,6 @@ footer > div > div > img{
             justify-content: center !important;
             padding: 0px !important;
         }
-
         footer > div > div > img{
             width: 150px;
             margin-bottom: 10px;
@@ -433,14 +411,6 @@ footer > div > div > img{
             object-fit: fill;
         }
     }
-
-
-    .dark-background-pattern{
-        /*background-image: url(img/bg_dark_ultra-height.svg);*/
-        /*background-size: 100%;*/
-        /*background-repeat: repeat;*/
-    }
-
     .carousel-item{
         overflow: hidden !important;
         height: 150px !important;
@@ -449,25 +419,25 @@ footer > div > div > img{
             width: 32% !important;
         }
     }
-
     carouselExampleAutoplaying{
         width: 100%;
         height: auto;
     }
-
     .services-container h2{
         margin-top: 0 !important;
     }
-
     #content-inicio-info{
         justify-content: center !important;
-        & div{
-            width: 100% !important;
-            align-items: center !important;
-        }
     }
-
-    .menu-fixed{
+    #content-inicio-info div{
+        width: 100% !important;
+        align-items: center !important;
+    }
+    .info-box p{
+        text-align: justify;
+        padding: 40px;
+    }
+    .menu-fixed {
         justify-content: space-between !important;
         padding-left: 0px !important;
         width: 100%;
@@ -475,91 +445,79 @@ footer > div > div > img{
         grid-template-rows: repeat(2, 1fr);
         grid-template-columns: 1fr;
         position: relative;
-        & .menu_hamburguer_box{
-            width: 100% !important;
-            height: 20px;
-            display: flex;
-            justify-content: end;
-        }
-        & #navbarNav{
-            width: 100%;
-            position: absolute;
-            background: #0d6efd;
-            top: 50px;
-            transform: translateX(-100%);
-            transition: transform 300ms;
-            &  ul{
-                list-style: none;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                & li{
-                    display: flex;
-                    justify-content: center;
-                    & a{
-                        color: white;
-                        text-decoration: none;
-                        padding:5px 150px;
-                    }
-                    & button{
-                        padding: 5px 130px;
-                        margin-bottom: 5px;
-                    }
-                }
-            }
-        }
     }
-
+    .menu-fixed .menu_hamburguer_box{
+        width: 100% !important;
+        height: 20px;
+        display: flex;
+        justify-content: end;
+    }
+    .menu-fixed #navbarNav {
+        width: 100%;
+        position: absolute;
+        background: #0d6efd;
+        top: 50px;
+        transform: translateX(-100%);
+        transition: transform 300ms;
+    }
+    .menu-fixed #navbarNav ul {
+        list-style: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .menu-fixed #navbarNav ul li {
+        display: flex;
+        justify-content: center;
+    }
+    .menu-fixed #navbarNav ul li a {
+        color: white;
+        text-decoration: none;
+        padding: 5px 150px;
+    }
+    .menu-fixed #navbarNav ul li button {
+        padding: 5px 130px;
+        margin-bottom: 5px;
+    }
     #floatNav{
         top: 280px !important;
+        right: 0;
     }
-
     .menu_hamburguer{
         display: block;
     }
-
-    #inicio{
-        background-image: none;
-    }
-
     #title-h1{
         font-size: 45px;
         text-align: center;
     }
-
     #floatNav{
         top: 260px;
     }
-
     #inicio{
         height: auto;
     }
-
-    #inicio img{
-        height: 250px;
-        width: 100%;
+    #inicio{
+        background-image: url("../img/portada-img.jpg");
+        /*background-attachment: fixed;*/
+        /*background-repeat: no-repeat;*/
+        /*background-size: 100%;*/
     }
-
     #servicios{
         height: auto;
         padding-top: 0px;
     }
-
     #nosotros{
         padding-top: 30px;
     }
-
     #form-contact{
         width: 100% !important;
     }
-
     #imgUs{
         margin-right: 10px;
     }
     #formNosotros input[type="text"], input[type="submit"]{
         width: 100%;
     }
-
     #formNosotros textarea{
         width: 100%;
     }
@@ -568,7 +526,6 @@ footer > div > div > img{
         justify-content: center !important;
         padding: 0px !important;
     }
-
     footer > div > div > img{
         width: 150px;
         margin-bottom: 10px;
@@ -587,14 +544,6 @@ footer > div > div > img{
             object-fit: fill;
         }
     }
-
-
-    .dark-background-pattern{
-        /*background-image: url(img/bg_dark_ultra-height.svg);*/
-        /*background-size: 100%;*/
-        /*background-repeat: repeat;*/
-    }
-
     .carousel-item{
         overflow: hidden !important;
         height: 150px !important;
@@ -603,25 +552,25 @@ footer > div > div > img{
             width: 32% !important;
         }
     }
-
     carouselExampleAutoplaying{
         width: 100%;
         height: auto;
     }
-
     .services-container h2{
         margin-top: 0 !important;
     }
-
     #content-inicio-info{
         justify-content: center !important;
-        & div{
-            width: 100% !important;
-            align-items: center !important;
-        }
     }
-
-    .menu-fixed{
+    #content-inicio-info div{
+        width: 100% !important;
+        align-items: center !important;
+    }
+    .info-box p{
+        text-align: justify;
+        padding: 40px;
+    }
+    .menu-fixed {
         justify-content: space-between !important;
         padding-left: 0px !important;
         width: 100%;
@@ -629,91 +578,79 @@ footer > div > div > img{
         grid-template-rows: repeat(2, 1fr);
         grid-template-columns: 1fr;
         position: relative;
-        & .menu_hamburguer_box{
-            width: 100% !important;
-            height: 20px;
-            display: flex;
-            justify-content: end;
-        }
-        & #navbarNav{
-            width: 100%;
-            position: absolute;
-            background: #0d6efd;
-            top: 50px;
-            transform: translateX(-100%);
-            transition: transform 300ms;
-            &  ul{
-                list-style: none;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                & li{
-                    display: flex;
-                    justify-content: center;
-                    & a{
-                        color: white;
-                        text-decoration: none;
-                        padding:5px 150px;
-                    }
-                    & button{
-                        padding: 5px 130px;
-                        margin-bottom: 5px;
-                    }
-                }
-            }
-        }
     }
-
+    .menu-fixed .menu_hamburguer_box{
+        width: 100% !important;
+        height: 20px;
+        display: flex;
+        justify-content: end;
+    }
+    .menu-fixed #navbarNav {
+        width: 100%;
+        position: absolute;
+        background: #0d6efd;
+        top: 50px;
+        transform: translateX(-100%);
+        transition: transform 300ms;
+    }
+    .menu-fixed #navbarNav ul {
+        list-style: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .menu-fixed #navbarNav ul li {
+        display: flex;
+        justify-content: center;
+    }
+    .menu-fixed #navbarNav ul li a {
+        color: white;
+        text-decoration: none;
+        padding: 5px 150px;
+    }
+    .menu-fixed #navbarNav ul li button {
+        padding: 5px 130px;
+        margin-bottom: 5px;
+    }
     #floatNav{
         top: 280px !important;
+        right: 0;
     }
-
     .menu_hamburguer{
         display: block;
     }
-
-    #inicio{
-        background-image: none;
-    }
-
     #title-h1{
         font-size: 45px;
         text-align: center;
     }
-
     #floatNav{
         top: 260px;
     }
-
     #inicio{
         height: auto;
     }
-
-    #inicio img{
-        height: 250px;
-        width: 100%;
+    #inicio{
+        background-image: url("../img/portada-img.jpg");
+        /*background-attachment: fixed;*/
+        /*background-repeat: no-repeat;*/
+        /*background-size: 100%;*/
     }
-
     #servicios{
         height: auto;
         padding-top: 0px;
     }
-
     #nosotros{
         padding-top: 30px;
     }
-
     #form-contact{
         width: 100% !important;
     }
-
     #imgUs{
         margin-right: 10px;
     }
     #formNosotros input[type="text"], input[type="submit"]{
         width: 100%;
     }
-
     #formNosotros textarea{
         width: 100%;
     }
@@ -722,7 +659,6 @@ footer > div > div > img{
         justify-content: center !important;
         padding: 0px !important;
     }
-
     footer > div > div > img{
         width: 150px;
         margin-bottom: 10px;

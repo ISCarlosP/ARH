@@ -116,6 +116,7 @@
 
     #galery_info{
         text-align: start;
+        display: none !important;
     }
 
     #galery_info a{
@@ -131,7 +132,7 @@
     }
 
     #galery_images{
-        display: none;
+        display: block;
     }
 
     #galery_images a{
