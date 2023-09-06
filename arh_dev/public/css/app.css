@@ -348,7 +348,10 @@ footer > div > div > img{
     }
     #floatNav{
         top: 280px !important;
-        right: 0;
+    }
+    #floatNav div a{
+        position: absolute;
+        opacity: 0;
     }
     .menu_hamburguer{
         display: block;
@@ -357,17 +360,12 @@ footer > div > div > img{
         font-size: 45px;
         text-align: center;
     }
-    #floatNav{
-        top: 260px;
-    }
     #inicio{
         height: auto;
     }
     #inicio{
         background-image: url("../img/portada-img.jpg");
-        /*background-attachment: fixed;*/
-        /*background-repeat: no-repeat;*/
-        /*background-size: 100%;*/
+        background-attachment: inherit;
     }
     #servicios{
         height: auto;
@@ -480,6 +478,7 @@ footer > div > div > img{
         margin-bottom: 5px;
     }
     #floatNav{
+        position: absolute;
         top: 280px !important;
         right: 0;
     }
@@ -614,7 +613,6 @@ footer > div > div > img{
     }
     #floatNav{
         top: 280px !important;
-        right: 0;
     }
     .menu_hamburguer{
         display: block;
