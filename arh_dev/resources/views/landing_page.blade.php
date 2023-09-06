@@ -74,7 +74,7 @@
         <div class="d-flex flex-column justify-content-evenly mt-3" id="floatNav" style="position: fixed; z-index: 5;">
             <div class="mt-1 p-2 d-flex align-items-center justify-content-center rounded-2 " style="background: #2AB824;">
                 <i class="fab fa-whatsapp text-white fs-3"></i>
-                <a href="https://api.whatsapp.com/send?phone=5565081247" target="_blank" class="ps-2">Whatsapp</a>
+                <a href="https://api.whatsapp.com/send?phone=5519319856" target="_blank" class="ps-2">Whatsapp</a>
             </div>
             <div class="mt-1 p-2 d-flex align-items-center justify-content-center rounded-2" style="background: #1F65C4;">
                 <i class="fab fa-facebook-f text-white fs-3"></i>
@@ -86,7 +86,7 @@
             </div>
             <div class="mt-1 p-2 d-flex align-items-center justify-content-center rounded-2" style="background: #8736C7;">
                 <i class="fa-solid fa-phone text-white fs-3"></i>
-                <a href="tel:5565081247" target="_blank" class="ps-2">55 0834 5632</a>
+                <a href="tel:5519319856" target="_blank" class="ps-2">5519319856</a>
             </div>
         </div>
 
