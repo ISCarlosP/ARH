@@ -1,8 +1,9 @@
-
 const IncioComponent = {
 
     template: `
-        <div class="w-100 m-0 pb-5" style="height: auto;" id="inicio">
+        <div class="w-100 m-0 pb-1"
+        :style="(userDevice.mobile() === null)? 'background-size: 100%; height: auto;' : 'background-size: 150%; height: auto;'"
+        id="inicio">
             <div class="d-flex flex-column align-items-center justify-content-center" style="padding-top: 20px; height: 100%;">
                 <div class="d-flex justify-content-end" style="width: 95%;" id="content-inicio-info">
                     <div class="info-box d-flex flex-column align-items-start" style="width: 30%;">
@@ -17,9 +18,9 @@ const IncioComponent = {
             </div>
         </div>
     `,
-    data(){
-        return{
-
+    data() {
+        return {
+            userDevice: new MobileDetect(window.navigator.userAgent),
         }
     }
 }

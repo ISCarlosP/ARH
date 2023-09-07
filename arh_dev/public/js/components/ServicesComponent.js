@@ -1,13 +1,10 @@
-
 const ServicesComponent = {
     props: {
         products: {
-            type: Array,
-            required: true
+            type: Array, required: true
         }
-    },
-    template: `
-        <div class="video-info d-flex align-items-center justify-content-center bg-transparent"
+    }, template: `
+        <div class="d-flex align-items-center justify-content-center bg-transparent"
         id="servicios">
             <div class="container p-3">
                 <div class="row">
@@ -31,22 +28,29 @@ const ServicesComponent = {
                 </div>
                 <div id="carouselExampleAutoplaying" class="carousel slide mt-5" data-bs-ride="carousel">
                       <div class="carousel-inner">
-                        <div class="carousel-item active">
-                           <div class="d-flex justify-content-between img-carousel" style="height: 300px;">
-                               <img class="rounded-2 d-block mx-auto" src="img/img1.jpg" alt="img" :style="userDevice.mobile() === null ? 'width: 22%;' : 'width: 45%;'">
-                               <img class="rounded-2 d-block mx-auto" src="img/img2.jpg" alt="img" :style="userDevice.mobile() === null ? 'width: 22%;' : 'width: 45%;'">
-                               <img class="rounded-2 d-block mx-auto" src="img/img4.jpg" alt="img" :style="userDevice.mobile() === null ? 'width: 22%;' : 'width: 45%;'" v-if="userDevice.mobile() === null">
-                               <img class="rounded-2 d-block mx-auto" src="img/img3.jpg" alt="img" :style="userDevice.mobile() === null ? 'width: 22%;' : 'width: 45%;'" v-if="userDevice.mobile() === null">
-                            </div>
+                        <div v-if="userDevice.mobile() === null"
+                        class="carousel-item active">
+                          <div class="row row-cols-4">
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-1.jpeg" alt="img"></div>
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-2.jpeg" alt="img"></div>
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-3.jpeg" alt="img"></div>
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-4.jpeg" alt="img"></div>
+                        </div>
+                        </div>
+                        <template v-if="userDevice.mobile() !== null">
+                                   <div class="carousel-item active">
+                          <div class="row row-cols-2">
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-1.jpeg" alt="img"></div>
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-2.jpeg" alt="img"></div>
+                        </div>
                         </div>
                         <div class="carousel-item">
-                          <div class="d-flex justify-content-between img-carousel" style="height: 300px;">
-                               <img class="rounded-2 d-block mx-auto" src="img/img-1.jpeg" alt="img" :style="userDevice.mobile() === null ? 'width: 22%;' : 'width: 45%;'">
-                               <img class="rounded-2 d-block mx-auto" src="img/img-2.jpeg" alt="img" :style="userDevice.mobile() === null ? 'width: 22%;' : 'width: 45%;'">
-                               <img class="rounded-2 d-block mx-auto" src="img/img-4.jpeg" alt="img" :style="userDevice.mobile() === null ? 'width: 22%;' : 'width: 45%;'" v-if="userDevice.mobile() === null">
-                               <img class="rounded-2 d-block mx-auto" src="img/img-3.jpeg" alt="img" :style="userDevice.mobile() === null ? 'width: 22%;' : 'width: 45%;'" v-if="userDevice.mobile() === null">
-                            </div>
+                          <div class="row row-cols-2">
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-3.jpeg" alt="img"></div>
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-4.jpeg" alt="img"></div>
                         </div>
+                        </div>
+</template>
                       </div>
                     </div>
                 <div class="container mt-5 services-container">
@@ -70,15 +74,13 @@ const ServicesComponent = {
                 </div>
             </div>
         </div>
-    `,
-    data(){
-        return{
+    `, data() {
+        return {
             route: '',
             userDevice: new MobileDetect(window.navigator.userAgent),
         }
-    },
-    methods: {
-        getRoute: function(data){
+    }, methods: {
+        getRoute: function (data) {
             let myRoute = data.split(' ')
             let joinRoute = myRoute.join('_')
 

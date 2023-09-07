@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Nos dedicamos a la fabricación de barandales y pasamanos de acero inoxidable, y/o con cristal templado, barandales curvos, barandales de escalera y para balcones. Mejoramos cualquier presupuesto, incluso el nuestro">
+    <meta name="description"
+          content="Nos dedicamos a la fabricación de barandales y pasamanos de acero inoxidable, y/o con cristal templado, barandales curvos, barandales de escalera y para balcones. Mejoramos cualquier presupuesto, incluso el nuestro">
     <link rel="icon" type="image/png" href="img/arh_icon_final.png">
     <title>Brandales ARH - Expertos en barandales de acero inoxidable</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -15,8 +16,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
@@ -72,19 +75,25 @@
         </div> -->
         </nav>
         <div class="d-flex flex-column justify-content-evenly mt-3" id="floatNav" style="position: fixed; z-index: 5;">
-            <div class="mt-1 p-2 d-flex align-items-center justify-content-center rounded-2 " style="background: #2AB824;">
+            <div class="mt-1 p-2 d-flex align-items-center justify-content-center rounded-2 "
+                 style="background: #2AB824;">
                 <i class="fab fa-whatsapp text-white fs-3"></i>
                 <a href="https://api.whatsapp.com/send?phone=5519319856" target="_blank" class="ps-2">Whatsapp</a>
             </div>
-            <div class="mt-1 p-2 d-flex align-items-center justify-content-center rounded-2" style="background: #1F65C4;">
+            <div class="mt-1 p-2 d-flex align-items-center justify-content-center rounded-2"
+                 style="background: #1F65C4;">
                 <i class="fab fa-facebook-f text-white fs-3"></i>
-                <a href="https://www.facebook.com/ARH.acero.inoxidable.y.cristal.templado/?locale=es_LA" target="_blank" class="ps-2">Facebook</a>
+                <a href="https://www.facebook.com/ARH.acero.inoxidable.y.cristal.templado/?locale=es_LA" target="_blank"
+                   class="ps-2">Facebook</a>
             </div>
-            <div class="mt-1 p-2 d-flex align-items-center justify-content-center rounded-2" style="background: #EC3315;">
+            <div class="mt-1 p-2 d-flex align-items-center justify-content-center rounded-2"
+                 style="background: #EC3315;">
                 <i class="fab fa-youtube text-white fs-3"></i>
-                <a href="https://www.youtube.com/@barandalesdeaceroinoxidabl3095" target="_blank" class="ps-2">Youtube</a>
+                <a href="https://www.youtube.com/@barandalesdeaceroinoxidabl3095" target="_blank"
+                   class="ps-2">Youtube</a>
             </div>
-            <div class="mt-1 p-2 d-flex align-items-center justify-content-center rounded-2" style="background: #8736C7;">
+            <div class="mt-1 p-2 d-flex align-items-center justify-content-center rounded-2"
+                 style="background: #8736C7;">
                 <i class="fa-solid fa-phone text-white fs-3"></i>
                 <a href="tel:5519319856" target="_blank" class="ps-2">5519319856</a>
             </div>
@@ -115,7 +124,8 @@
                         <div class="row">
                             <div class="col-lg-10 col-sm-12 mx-auto">
                                 <div class="input-group mb-3">
-                                    <div class="input-group-text" id="spanInputUser"><i class="bi bi-person-circle"></i></div>
+                                    <div class="input-group-text" id="spanInputUser"><i class="bi bi-person-circle"></i>
+                                    </div>
                                     <input id="inputUser"
                                            name="inputUser"
                                            v-model="user.email"
@@ -133,7 +143,8 @@
                                            class="form-control" placeholder="Contraseña"
                                            aria-label="Username"
                                            aria-describedby="basic-addon1">
-                                    <button type="button" class="input-group-text" onclick="toggleSeePassword()"><i id="iconSeePassword" class="bi bi-eye-fill"></i></button>
+                                    <button type="button" class="input-group-text" onclick="toggleSeePassword()"><i
+                                            id="iconSeePassword" class="bi bi-eye-fill"></i></button>
                                 </div>
                                 <div>
                                     <a href="#" class="fs-6">¿Olvidaste tu contraseña?</a>
@@ -145,7 +156,8 @@
                         <button type="submit" class="btn btn-sm btn-primary"
                                 v-on:click="logInSession()">
                             <span id="loginButtonText"> Ingresar</span>
-                            <span id="loginButtonSpinner" class="spinner-border spinner-border-sm d-none mx-1" role="status" aria-hidden="true"></span>
+                            <span id="loginButtonSpinner" class="spinner-border spinner-border-sm d-none mx-1"
+                                  role="status" aria-hidden="true"></span>
                         </button>
                     </div>
                 </div>
@@ -153,11 +165,11 @@
         </div>
         <footer class="pb-3 pt-3 dark-background-pattern d-flex flex-column align-items-center justify-content-center">
             <div class="row w-100">
-                <div class="col-lg-6 col-sm-12 d-flex justify-content-start align-items-center ps-5 img-div">
+                <div class="col-lg-6 col-sm-12 d-flex justify-content-center align-items-center">
                     <img src="img/logoARH.jpeg" alt="LOGO ARH">
                 </div>
-                <div class="col-lg-6 col-sm-12 d-flex justify-content-end align-items-center pe-5">
-                    <strong class="text-white pe-4">Todos los derechos reservados &copy; 2023 </strong>
+                <div class="col-lg-6 col-sm-12 d-flex justify-content-center align-items-end text-center">
+                    <strong class="text-white">Powered by KIBY &copy; 2023 </strong>
                 </div>
             </div>
         </footer>
@@ -178,7 +190,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.5/mobile-detect.min.js"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 <script type="module">
-    import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+    import {createApp} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
     import ContactComponent from "/js/components/ContactComponent.js"
     import AboutusComponent from "/js/components/AboutusComponent.js"
     import ServicesComponent from "/js/components/ServicesComponent.js"
@@ -199,17 +211,17 @@
             }
         },
         methods: {
-            logInSession: function(){
-                const { email, password } = this.user
+            logInSession: function () {
+                const {email, password} = this.user
                 document.getElementById('loginButtonSpinner').classList.remove('d-none');
-                axios.post(this.routes.authenticate , { email, password })
+                axios.post(this.routes.authenticate, {email, password})
                     .then(response => {
-                        if(response.data === 'sesion_iniciada'){
+                        if (response.data === 'sesion_iniciada') {
                             location.replace(window.location.origin + '/dashboard');
                             return
                         }
                         document.getElementById('loginButtonSpinner').classList.add('d-none');
-                        response.data.exception.forEach(function(error){
+                        response.data.exception.forEach(function (error) {
                             toastr.warning(error);
                         })
                         console.warn('Usuario o contraseña incorrectos');
@@ -219,7 +231,7 @@
                         document.getElementById('loginButtonSpinner').classList.add('d-none');
                     })
             },
-            socialMedia: function (){
+            socialMedia: function () {
                 const floatNav = document.querySelector('#floatNav')
 
                 floatNav.children[0].addEventListener('mouseover', () => {
@@ -280,23 +292,23 @@
                 })
 
             },
-            showMenu: function (){
+            showMenu: function () {
                 let showMenu = document.querySelector('#navbarNav')
                 showMenu.style.transform = 'translateX(0%)'
                 this.showMenuButton = false
                 this.hideMenuButton = true
             },
-            hideMenu: function (){
+            hideMenu: function () {
                 let showMenu = document.querySelector('#navbarNav')
                 showMenu.style.transform = 'translateX(-100%)'
                 this.showMenuButton = true
                 this.hideMenuButton = false
             }
         },
-        mounted(){
-           setTimeout(() => {
-               this.socialMedia()
-           },500)
+        mounted() {
+            setTimeout(() => {
+                this.socialMedia()
+            }, 500)
         }
     });
 

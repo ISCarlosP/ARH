@@ -117,7 +117,6 @@ li a:hover, button:hover{
     background-image: url("../img/portada-img.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size: 100%;
 }
 
 #inicio img{
@@ -132,8 +131,6 @@ li a:hover, button:hover{
 .video-info{
     width: 100%;
     height: auto;
-    padding-top: 70px;
-    padding-bottom: 50px;
 }
 
 #nosotros{
@@ -667,6 +664,5 @@ footer > div > div > img{
 
      #servicios{
         height: auto;
-        padding-top: 100px;
     }
 }
