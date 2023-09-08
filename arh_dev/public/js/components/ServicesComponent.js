@@ -28,26 +28,88 @@ const ServicesComponent = {
                 </div>
                 <div id="carouselExampleAutoplaying" class="carousel slide mt-5" data-bs-ride="carousel">
                       <div class="carousel-inner">
-                        <div v-if="userDevice.mobile() === null"
-                        class="carousel-item active">
-                          <div class="row row-cols-4">
-                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-1.jpeg" alt="img"></div>
-                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-2.jpeg" alt="img"></div>
-                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-3.jpeg" alt="img"></div>
-                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-4.jpeg" alt="img"></div>
+                      <template  v-if="userDevice.mobile() === null">
+                                   <div class="carousel-item active">
+                          <div class="row row-cols-4" style="min-height: 20rem">
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-1.jpg" alt="img"></div>
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-2.jpg" alt="img"></div>
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-3.jpg" alt="img"></div>
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-4.jpg" alt="img"></div>
                         </div>
                         </div>
+                                   <div class="carousel-item">
+                          <div class="row row-cols-4" style="max-height: 20rem">
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-5.jpg" alt="img"></div>
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-6.jpg" alt="img"></div>
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-7.jpg" alt="img"></div>
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-8.jpg" alt="img"></div>
+                        </div>
+                        </div>
+                                   <div class="carousel-item">
+                          <div class="row row-cols-4" style="min-height: 20rem">
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-9.jpg" alt="img"></div>
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-10.jpg" alt="img"></div>
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-11.jpg" alt="img"></div>
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-12.jpg" alt="img"></div>
+                        </div>
+                        </div>
+                                   <div class="carousel-item">
+                          <div class="row row-cols-4" style="min-height: 20rem">
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-13.jpg" alt="img"></div>
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-14.jpg" alt="img"></div>
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-15.jpg" alt="img"></div>
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-16.jpg" alt="img"></div>
+                        </div>
+                        </div>
+
+</template>
                         <template v-if="userDevice.mobile() !== null">
                                    <div class="carousel-item active">
-                          <div class="row row-cols-2">
-                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-1.jpeg" alt="img"></div>
-                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-2.jpeg" alt="img"></div>
+                          <div class="row row-cols-2 h-100" >
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-1.jpg" alt="img"></div>
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-2.jpg" alt="img"></div>
                         </div>
                         </div>
                         <div class="carousel-item">
-                          <div class="row row-cols-2">
-                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-3.jpeg" alt="img"></div>
-                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-4.jpeg" alt="img"></div>
+                          <div class="row row-cols-2 h-100">
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-3.jpg" alt="img"></div>
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-4.jpg" alt="img"></div>
+                        </div>
+                        </div>
+                        <div class="carousel-item">
+                          <div class="row row-cols-2 h-100">
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-5.jpg" alt="img"></div>
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-6.jpg" alt="img"></div>
+                        </div>
+                        </div>
+                        <div class="carousel-item">
+                          <div class="row row-cols-2 h-100">
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-7.jpg" alt="img"></div>
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-8.jpg" alt="img"></div>
+                        </div>
+                        </div>
+                        <div class="carousel-item">
+                          <div class="row row-cols-2 h-100">
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-9.jpg" alt="img"></div>
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-10.jpg" alt="img"></div>
+                        </div>
+                        </div>
+                        <div class="carousel-item">
+                          <div class="row row-cols-2 h-100">
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-11.jpg" alt="img"></div>
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-12.jpg" alt="img"></div>
+                        </div>
+                        </div>
+                        <div class="carousel-item">
+                          <div class="row row-cols-2 h-100">
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-13.jpg" alt="img"></div>
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-14.jpg" alt="img"></div>
+                        </div>
+                        </div>
+                        <div class="carousel-item">
+                          <div class="row row-cols-2 h-100">
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-15.jpg" alt="img"></div>
+                          <div class="col"><img class="rounded px-2 w-100 h-100" src="img/img-16.jpg" alt="img"></div>
                         </div>
                         </div>
 </template>
