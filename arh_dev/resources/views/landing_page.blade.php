@@ -26,18 +26,18 @@
     <!-- Estilos para componentes -->
     <link rel="stylesheet" href="{{asset('css/servicios.css')}}"/>
 </head>
-<body onload="toggleLoader()">
+<body >
 <div id="content"
      style="min-height: 40rem"
      class="d-flex justify-content-center align-items-center">
-    <div id="loader"
-         class="loader">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    <div id="app" class="w-100 d-none dark-background-pattern">
+{{--    <div id="loader"--}}
+{{--         class="loader">--}}
+{{--        <span></span>--}}
+{{--        <span></span>--}}
+{{--        <span></span>--}}
+{{--        <span></span>--}}
+{{--    </div>--}}
+    <div id="app" class="w-100 dark-background-pattern">
         <div class="w-100">
             <img src="img/gallery/banner_principal/banner_principal.png" style="heigth: auto; width: 100%" alt="banner">
         </div>
@@ -188,7 +188,6 @@
 <script src="{{asset('js/barandalesArh.js')}}"></script>
 <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.5/mobile-detect.min.js"></script>
-<script src="{{ asset('js/app.js') }}"></script>
 <script type="module">
     import {createApp} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
     import ContactComponent from "/js/components/ContactComponent.js"
