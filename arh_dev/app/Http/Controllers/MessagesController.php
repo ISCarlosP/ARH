@@ -39,7 +39,7 @@ class MessagesController extends Controller
                 'message_status_id' => 1
             ]);
 
-            $mailSended = $this->sendMailMessage($messageData);
+            $this->sendMailMessage($messageData);
 
         } catch (CustomException $error) {
             $response['response'] = false;
@@ -142,7 +142,29 @@ class MessagesController extends Controller
 
     public function sendMailMessage($messageData)
     {
-        $message = 'Has recibido un nuevo mensaje de :\n' . $messageData['name'] . ' \n Celular: ' . $messageData['phone'] . '\n Correo: ' . $messageData['email'] .  '\n Detalles:\n' . $messageData['message'];
-        mail('carlosp.nu22@gmail.com', 'SOLICITUD DE PRESUPUESTO', $message, '');
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        $headers .= 'From: remitente@example.com' . "\r\n";
+        $message = '<div style="display: flex; justify-content: center; width: auto">
+<div style="font-size: 30rem; font-weight: bolder">SOLICITUD DE PRESUPUESTO</div>
+</div>
+<br>
+<div style="display: flex; justify-content: center; width: auto">
+<div>Has recibido el siguiente mensaje de :</div>
+ <div><b>'. $messageData['name'] .'</b></div>
+  <div>Celular: <b>'. $messageData['phone'] .'</b></div> <div>e-mail: <b> '  . $messageData['email'] . '</b></div>
+  <br>
+  <div style="font-weight: bolder;"> MENSAJE: </div>
+  <div>' . $messageData['message'] . '</div>
+</div>
+<br>
+<div style="font-weight: bolder"> CONTACTO</div>
+<div>Aquí tienes las opciones para contactar a tu cliente: <a href="tel:' . $messageData['phone'] . '">Llamar</a> --- <a href="https://wa.me/' . $messageData['phone'] . '">Whatsapp</a> --- <a href="mailto:' . $messageData['email'] . '">Envía un correo</a></div>
+<br>
+<div style="font-weight: bolder">Recuerda que puedes visualizar este mensaje y todos los demas en tu página web: <a href="https://www.barandalesarh.com.mx">Barandales ARH</a></div>
+
+';
+
+        mail('carlosp.nu22@gmail.com', 'SOLICITUD DE PRESUPUESTO', $message, $headers);
     }
 }
