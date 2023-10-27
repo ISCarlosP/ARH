@@ -144,12 +144,12 @@ class MessagesController extends Controller
     {
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-        $headers .= 'From: remitente@example.com' . "\r\n";
+        $headers .= 'From: arhpresupuestos@example.com' . "\r\n";
         $message = '<div style="display: flex; justify-content: center; width: auto">
-<div style="font-size: 30rem; font-weight: bolder">SOLICITUD DE PRESUPUESTO</div>
+<div style=" font-weight: bolder">SOLICITUD DE PRESUPUESTO</div>
 </div>
 <br>
-<div style="display: flex; justify-content: center; width: auto">
+<div>
 <div>Has recibido el siguiente mensaje de :</div>
  <div><b>'. $messageData['name'] .'</b></div>
   <div>Celular: <b>'. $messageData['phone'] .'</b></div> <div>e-mail: <b> '  . $messageData['email'] . '</b></div>
@@ -159,12 +159,16 @@ class MessagesController extends Controller
 </div>
 <br>
 <div style="font-weight: bolder"> CONTACTO</div>
-<div>Aquí tienes las opciones para contactar a tu cliente: <a href="tel:' . $messageData['phone'] . '">Llamar</a> --- <a href="https://wa.me/' . $messageData['phone'] . '">Whatsapp</a> --- <a href="mailto:' . $messageData['email'] . '">Envía un correo</a></div>
+<div>Aquí tienes las opciones para contactar a tu cliente: <a href="tel:' . $messageData['phone'] . '"> <br>Llamar</a> --- <a href="https://wa.me/' . $messageData['phone'] . '">Whatsapp</a> --- <a href="mailto:' . $messageData['email'] . '">Envía un correo</a></div>
 <br>
 <div style="font-weight: bolder">Recuerda que puedes visualizar este mensaje y todos los demas en tu página web: <a href="https://www.barandalesarh.com.mx">Barandales ARH</a></div>
 
 ';
 
-        mail('carlosp.nu22@gmail.com', 'SOLICITUD DE PRESUPUESTO', $message, $headers);
+        try {
+            mail('barandalesarh79@gmail.com', 'SOLICITUD DE PRESUPUESTO', $message, $headers);
+        }catch (CustomException $error){
+            echo $error;
+        }
     }
 }
