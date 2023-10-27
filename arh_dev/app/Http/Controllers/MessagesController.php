@@ -22,7 +22,8 @@ class MessagesController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create($messageData){
+    public function create($messageData)
+    {
 
         $response = [
             'message' => 'Su solicitud fue enviada exitosamente, en breve te contactaremos',
@@ -38,7 +39,9 @@ class MessagesController extends Controller
                 'message_status_id' => 1
             ]);
 
-        }catch ( CustomException $error){
+            $mailSended = $this->sendMailMessage($messageData);
+
+        } catch (CustomException $error) {
             $response['response'] = false;
             $response['message'] = 'Hubo un error al crear la solicitud, reintente';
         }
@@ -86,7 +89,8 @@ class MessagesController extends Controller
         //
     }
 
-    public function validateMessageRequest(Request $request){
+    public function validateMessageRequest(Request $request)
+    {
         $response = [
             'message' => 'Su solicitud fue enviada exitosamente',
             'response' => true,
@@ -102,37 +106,43 @@ class MessagesController extends Controller
             ->orWhere('message_user_phone', $requestData['phone'])
             ->exists();
 
-        if($exist){
+        if ($exist) {
             $response['response'] = false;
             $response['message'] = 'Ya hay un registro con el número de telefono o con la dirección de correo electrónico, en breve te contactaremos';
             return $response;
         }
 
-        if(!$utilities->validateEmail($requestData['email'])){
+        if (!$utilities->validateEmail($requestData['email'])) {
             $response['response'] = false;
             $errors[] = 'Ingresa una dirección de correo valida';
         }
 
-        if(strlen($requestData['name']) == 0){
+        if (strlen($requestData['name']) == 0) {
             $response['response'] = false;
             $errors[] = 'Envía tu nombre para continuar';
         }
 
-        if(strlen($requestData['phone']) < 10){
+        if (strlen($requestData['phone']) < 10) {
             $response['response'] = false;
             $errors[] = 'Ingresa un numero de telefono valido';
         }
 
-        if(strlen($requestData['message']) < 20){
+        if (strlen($requestData['message']) < 20) {
             $response['response'] = false;
             $errors[] = 'Debes ingresar un mensaje más largo';
         }
 
-        if (!$response['response']){
+        if (!$response['response']) {
             $response['errors'] = $errors;
             return $response;
         }
 
         return $this->create($requestData);
+    }
+
+    public function sendMailMessage($messageData)
+    {
+        $message = 'Has recibido un nuevo mensaje de :\n' . $messageData['name'] . ' \n Celular: ' . $messageData['phone'] . '\n Correo: ' . $messageData['email'] .  '\n Detalles:\n' . $messageData['message'];
+        mail('carlosp.nu22@gmail.com', 'SOLICITUD DE PRESUPUESTO', $message, '');
     }
 }
