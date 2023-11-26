@@ -170,8 +170,14 @@
                 <div class="col-lg-6 col-sm-12 d-flex justify-content-center align-items-center">
                     <img src="img/logoARH.jpeg" alt="LOGO ARH">
                 </div>
-                <div class="col-lg-6 col-sm-12 d-flex justify-content-center align-items-end text-center">
-                    <strong class="text-white">Powered by KIBY &copy; 2023 </strong>
+                <div class="col-lg-6 col-sm-12 d-flex justify-content-center align-items-center text-center">
+                    <a href="https://www.facebook.com/kybidev"
+                       target="_blank">
+                        <strong class="text-white">Powered by KYBI Dev &copy; 2023 </strong>
+                    </a>
+                    <img class="img-fluid"
+                         alt="Kybi-logo"
+                         src="../../img/KYBI/KYBI-DARK-BG.png">
                 </div>
             </div>
         </footer>
