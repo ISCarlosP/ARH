@@ -6,7 +6,7 @@
     <meta name="description"
           content="Nos dedicamos a la fabricación de barandales y pasamanos de acero inoxidable, y/o con cristal templado, barandales curvos, barandales de escalera y para balcones. Mejoramos cualquier presupuesto, incluso el nuestro">
     <link rel="icon" type="image/png" href="img/arh_icon_final.png">
-    <title>Brandales ARH - Expertos en barandales de acero inoxidable</title>
+    <title>Barandales ARH - Expertos en barandales de acero inoxidable</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
@@ -26,17 +26,17 @@
     <!-- Estilos para componentes -->
     <link rel="stylesheet" href="{{asset('css/servicios.css')}}"/>
 </head>
-<body >
+<body>
 <div id="content"
      style="min-height: 40rem"
      class="d-flex justify-content-center align-items-center">
-{{--    <div id="loader"--}}
-{{--         class="loader">--}}
-{{--        <span></span>--}}
-{{--        <span></span>--}}
-{{--        <span></span>--}}
-{{--        <span></span>--}}
-{{--    </div>--}}
+    {{--    <div id="loader"--}}
+    {{--         class="loader">--}}
+    {{--        <span></span>--}}
+    {{--        <span></span>--}}
+    {{--        <span></span>--}}
+    {{--        <span></span>--}}
+    {{--    </div>--}}
     <div id="app" class="w-100 dark-background-pattern">
         <div class="w-100">
             <img src="img/gallery/banner_principal/banner_principal.png" style="heigth: auto; width: 100%" alt="banner">
@@ -132,7 +132,8 @@
                                            type="text" class="form-control"
                                            placeholder="Usuario"
                                            aria-label="Username"
-                                           aria-describedby="basic-addon1">
+                                           aria-describedby="basic-addon1"
+                                           @keyup.enter="logInSession()">
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="spanInputPassword"><i class="bi bi-key-fill"></i></span>
@@ -142,7 +143,8 @@
                                            type="password"
                                            class="form-control" placeholder="Contraseña"
                                            aria-label="Username"
-                                           aria-describedby="basic-addon1">
+                                           aria-describedby="basic-addon1"
+                                           @keyup.enter="logInSession()">
                                     <button type="button" class="input-group-text" onclick="toggleSeePassword()"><i
                                             id="iconSeePassword" class="bi bi-eye-fill"></i></button>
                                 </div>
