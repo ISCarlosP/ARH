@@ -162,7 +162,6 @@ class DashboardController extends Controller
             $messages[$count]['created_at'] = Carbon::parse($messages[$count]['created_at'])->format('Y-m-d h:i A');
             $count++;
         }
-
         return ($messages);
     }
 
