@@ -105,7 +105,7 @@
                          role="tabpanel">
                         <div class="w-100 text-center">
                             <div class="row my-3">
-                                <div class="(messages.length > 0)? 'd-none' : 'col-lg-3 col-sm-12 mx-auto mt-5'">
+                                <div :class="(messages.length > 0)? 'd-none' : 'col-lg-3 col-sm-12 mx-auto mt-5'">
                                     <span class="text-muted fs-1 fw-bolder">NO TIENES MENSAJES NUEVOS</span>
                                 </div>
                                 <div class="col-lg-3 my-2 mx-auto"
@@ -116,9 +116,19 @@
                                                   v-text="'Mensaje: #' + message.message_id"></span>
                                         </div>
                                         <div class="card-body">
-                                            <div class="d-flex justify-content-lg-center">
-                                                <div class="w-100">
-                                                    <div class="d-flex justify-content-center align-items-center">
+                                            <div class="d-flex justify-content-center">
+                                                <div>
+                                                    <div>
+                                                        <span class="fw-bolder text-secondary">FECHA:</span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="fw-bold" v-text="message.created_at"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <div>
+                                                    <div>
                                                         <span class="fw-bolder text-secondary">NOMBRE:</span>
                                                     </div>
                                                     <div>
@@ -126,10 +136,10 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="d-flex justify-content-lg-center">
+                                            <div class="d-flex justify-content-center">
                                                 <div>
                                                     <div>
-                                                        <span class="fw-bolder text-secondary">MENSAJE:</span>
+                                                        <span class="fw-bolder text-secondary">MENSAJE :</span>
                                                     </div>
                                                     <div>
                                                         <span class="fw-bold" v-text="message.message_text"></span>
