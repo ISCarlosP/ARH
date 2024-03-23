@@ -156,6 +156,12 @@ class DashboardController extends Controller
             ->where('message_status_id', 1)
             ->get()
             ->toArray();
+        $count = 0;
+
+        while ($count < count($messages)) {
+            $messages[$count]['created_at'] = Carbon::parse($messages[$count]['created_at'])->format('Y-m-d h:i A');
+            $count++;
+        }
 
         return ($messages);
     }
