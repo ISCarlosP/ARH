@@ -119,7 +119,7 @@
                                             <div class="d-flex justify-content-center">
                                                 <div>
                                                     <div>
-                                                        <span class="fw-bolder text-secondary">FECHA:</span>
+                                                        create    <span class="fw-bolder text-secondary">FECHA:</span>
                                                     </div>
                                                     <div>
                                                         <span class="fw-bold" v-text="message.created_at"></span>
@@ -208,23 +208,27 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr v-for="(user, index) in users">
-                                                    <th scope="row" v-text="index + 1"></th>
-                                                    <td v-text="user.email"></td>
-                                                    <td v-text="user.created_at"></td>
-                                                    <td class="d-flex justify-content-center">
-                                                        <button class="btn btn-sm btn-icon btn-warning mx-2"
-                                                                v-on:click="getCurrentEditUser(user, index)"><i
-                                                                class="fa-solid fa-pen-to-square"></i></button>
-                                                        <button class="btn btn-sm btn-icon btn-danger mx2"
-                                                                v-on:click="destroyUser(user.id, index)">
-                                                            <i :id="'deleteUserIconSpinner' + index"
-                                                               class="fa-solid fa-trash"></i>
-                                                            <span :id="'deleteUserSpinner' + index"
-                                                                  class="spinner-border spinner-border-sm d-none"
-                                                                  aria-hidden="true"></span></button>
-                                                    </td>
-                                                </tr>
+                                                <template v-for="(currentUser, index) in users">
+                                                    <tr
+                                                        v-if="currentUser.show === true">
+                                                        <th scope="row" v-text="index + 1"></th>
+                                                        <td v-text="currentUser.email"></td>
+                                                        <td v-text="currentUser.created_at"></td>
+                                                        <td class="d-flex justify-content-center">
+                                                            <button class="btn btn-sm btn-icon btn-warning mx-2"
+                                                                    v-on:click="getCurrentEditUser(currentUser, index)">
+                                                                <i
+                                                                    class="fa-solid fa-pen-to-square"></i></button>
+                                                            <button class="btn btn-sm btn-icon btn-danger mx2"
+                                                                    v-on:click="destroyUser(user.id, index)">
+                                                                <i :id="'deleteUserIconSpinner' + index"
+                                                                   class="fa-solid fa-trash"></i>
+                                                                <span :id="'deleteUserSpinner' + index"
+                                                                      class="spinner-border spinner-border-sm d-none"
+                                                                      aria-hidden="true"></span></button>
+                                                        </td>
+                                                    </tr>
+                                                </template>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -771,6 +775,7 @@
 <script src="js/dashboard.js"></script>
 <script type="module">
     import {createApp} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+    //import {createApp} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js'
 
     createApp({
         data() {
@@ -806,6 +811,29 @@
             }
         },
         methods: {
+            showAdmin: function () {
+                this.users.forEach(function (currentUser) {
+                    switch (this.user.id) {
+                        case(2):
+                        case(3):
+                        case(4):
+                            currentUser['show'] = true;
+                            break;
+                        default:
+                            switch (currentUser.id) {
+                                case 2:
+                                case 3:
+                                case 4:
+                                    currentUser['show'] = false;
+                                    break;
+                                default:
+                                    currentUser['show'] = true;
+                                    break;
+                            }
+                            break;
+                    }
+                }.bind(this));
+            },
             seePassword: function (id) {
                 let passwordInput = document.getElementById(id);
                 let passwordIcon = document.getElementById(id + 'Icon');
@@ -986,7 +1014,7 @@
             loggout: function () {
                 document.getElementById('loggoutSpinner').classList.remove('d-none');
                 axios.get(this.urls.loggout).then(function (response) {
-                    if (response.request.statusText === 'OK') {
+                    if (response.request.status === 200) {
                         location.reload();
                         return
                     }
@@ -1371,6 +1399,7 @@
         mounted() {
             this.initAllCharts();
             this.getOriginalUrl();
+            this.showAdmin();
         }
     }).mount('#app')
 </script>
