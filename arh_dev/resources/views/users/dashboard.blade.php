@@ -188,7 +188,7 @@
                         <div class="w-100 text-center">
                             <div class="d-flex justify-content-end my-3">
                                 <button class="btn btn-sm btn-success"
-                                        v-on:click="openCreateUsers()">Agregar usuarios
+                                        v-on:click="toggleCreateUsers('show')">Agregar usuarios
                                 </button>
                             </div>
                             <div class="row px-2">
@@ -870,10 +870,11 @@
                         document.getElementById('saveUserSpinner').classList.add('d-none');
                         return
                     }
+                    this.toggleCreateUsers('hide');
                     document.getElementById('saveUserSpinner').classList.add('d-none');
                     toastr.success(response.data.message);
                     this.users = response.data.values;
-                    this.users = response.data.values;
+                    this.showAdmin();
 
                     this.createUser = {
                         userName: '',
@@ -991,8 +992,8 @@
 
                 document.getElementById('loadingVisitData').classList.add('d-none');
             },
-            openCreateUsers: function () {
-                $('#createUserModal').modal('show');
+            toggleCreateUsers: function (action) {
+                $('#createUserModal').modal(action);
             },
             checkCurrentMessage: function (messageId) {
                 document.getElementById('checkMessageLoading' + messageId).classList.remove('d-none');
