@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\site_visits;
+use App\Models\Site_visits;
 use App\Http\Requests\Storesite_visitsRequest;
 use App\Http\Requests\Updatesite_visitsRequest;
 use Carbon\Carbon;
