@@ -132,6 +132,7 @@ class UsersController extends Controller
 
         $allUsers = $dashboard->getActiveUsers();
         $response['values'] = $allUsers;
+        $response['message'] = 'Se eliminó el usuario éxitosamente';
 
         return $response;
     }

@@ -220,7 +220,7 @@
                                                                 <i
                                                                     class="fa-solid fa-pen-to-square"></i></button>
                                                             <button class="btn btn-sm btn-icon btn-danger mx2"
-                                                                    v-on:click="destroyUser(user.id, index)">
+                                                                    v-on:click="destroyUser(currentUser.id, index)">
                                                                 <i :id="'deleteUserIconSpinner' + index"
                                                                    class="fa-solid fa-trash"></i>
                                                                 <span :id="'deleteUserSpinner' + index"
@@ -1039,6 +1039,7 @@
                     }
                     toastr.success(response.data.message);
                     this.users = response.data.values;
+                    this.showAdmin();
                 }.bind(this)).catch(function (error) {
                     toastr.error(error.message);
                     this.showHideSpinner('deleteUserSpinner' + index, 'hide');
