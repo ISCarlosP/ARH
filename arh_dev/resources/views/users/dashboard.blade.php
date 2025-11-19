@@ -1072,6 +1072,7 @@
                 editUser['email'] = this.editUserCodeName;
                 this.showHideSpinner('saveEditUserSpinner', 'show');
                 axios.post(this.urls.updateUser, editUser).then(function (response) {
+                    debugger
                     this.showHideSpinner('saveEditUserSpinner', 'hide');
                     if (!response.data.response) {
                         toastr.error(response.data.message);
@@ -1080,6 +1081,7 @@
                     this.showHideSpinner('saveEditUserSpinner', 'hide');
                     toastr.success(response.data.message);
                     this.users = response.data.values;
+                    this.showAdmin();
                     $('#editUserModal').modal('hide');
 
                 }.bind(this)).catch(function (error) {

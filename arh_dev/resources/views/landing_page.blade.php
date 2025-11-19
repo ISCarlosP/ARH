@@ -93,6 +93,12 @@
                    class="ps-2">Youtube</a>
             </div>
             <div class="mt-1 p-2 d-flex align-items-center justify-content-center rounded-2"
+                 style="background: #000000ff;">
+                <i class="fab fa-tiktok text-white fs-3"></i>
+                <a href="https://www.tiktok.com/@barandales.arh" target="_blank"
+                   class="ps-2">TikTok</a>
+            </div>
+            <div class="mt-1 p-2 d-flex align-items-center justify-content-center rounded-2"
                  style="background: #8736C7;">
                 <i class="fa-solid fa-phone text-white fs-3"></i>
                 <a href="tel:5519319856" target="_blank" class="ps-2">5519319856</a>
@@ -181,6 +187,9 @@
                 </div>
             </div>
         </footer>
+        <div v-if="connectionLost" class="w-100 fixed fixed-bottom text-center" style="background-color:red">
+            <span class="fw-bold text-white">Sin conexión</span>
+        </div>
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -196,6 +205,7 @@
 <script src="{{asset('js/barandalesArh.js')}}"></script>
 <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.5/mobile-detect.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="module">
     import {createApp} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
     import ContactComponent from "/js/components/ContactComponent.js"
@@ -214,13 +224,15 @@
                     password: ''
                 },
                 showMenuButton: true,
-                hideMenuButton: false
+                hideMenuButton: false,
+                connectionLost: false,
             }
         },
         methods: {
             logInSession: function () {
                 const {email, password} = this.user
                 document.getElementById('loginButtonSpinner').classList.remove('d-none');
+                debugger
                 axios.post(this.routes.authenticate, {email, password})
                     .then(response => {
                         if (response.data === 'sesion_iniciada') {
@@ -310,12 +322,19 @@
                 showMenu.style.transform = 'translateX(-100%)'
                 this.showMenuButton = true
                 this.hideMenuButton = false
+            },
+            defineConnectionReviewer: function () {
+                this.connectionLost = !window.navigator.onLine        
             }
         },
         mounted() {
             setTimeout(() => {
                 this.socialMedia()
             }, 500)
+
+            setInterval(() => {
+                this.defineConnectionReviewer();
+            }, 1000);
         }
     });
 

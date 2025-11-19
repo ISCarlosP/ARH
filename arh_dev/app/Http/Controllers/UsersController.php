@@ -29,7 +29,7 @@ class UsersController extends Controller
         Users::create([
             'first_name' => $request->userName,
             'last_name' => $request->userLastName.' '.$request->userLastName1,
-            'user_birth_date' => Carbon::parse($request->birthDate)->timestamp,
+            'birth_date' => Carbon::parse($request->birthDate),
             'email' => $request->createUserCodeName,
             'password' => Hash::make($request->userPassword),
             'status' => 1
@@ -96,7 +96,7 @@ class UsersController extends Controller
         $editUser->first_name = $request->userName;
         $editUser->email = $request->email;
         $editUser->last_name = $request->userLastName . ' ' . $request->userLastName1;
-        $editUser->user_birth_date = Carbon::parse($request->userBirthDate);
+        $editUser->birth_date = Carbon::parse($request->userBirthDate);
 
         if($request->userPassword !== '' &&  $request->userPassword !== null){
             $editUser->password = Hash::make($request->userPassword);

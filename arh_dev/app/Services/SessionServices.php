@@ -65,7 +65,7 @@ class SessionServices
     public function getLoggedUser(){
         $sessionToken = Cookie::get('session_token');
         return           Users::query()
-            ->select('id', 'first_name', 'last_name', 'user_birth_date', 'email', 'created_at', 'updated_at')
+            ->select('id', 'first_name', 'last_name', 'birth_date', 'email', 'created_at', 'updated_at')
             ->where('id', Session::query()
                 ->where('session_token', $sessionToken)
                 ->value('user_id'))

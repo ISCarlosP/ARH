@@ -203,7 +203,7 @@ class DashboardController extends Controller
     public function getActiveUsers()
     {
         $allUsers = User::query()
-            ->select('id', 'first_name', 'last_name', 'user_birth_date', 'email', 'created_at')
+            ->select('id', 'first_name', 'last_name', 'birth_date', 'email', 'created_at')
             ->where('status', 1)
             ->get()
             ->toArray();
@@ -214,7 +214,7 @@ class DashboardController extends Controller
                 'id' => $user['id'],
                 'first_name' => $user['first_name'],
                 'last_name' => $user['last_name'],
-                'birth_date' => Carbon::parse($user['user_birth_date'])->format('Y-m-d'),
+                'birth_date' => Carbon::parse($user['birth_date'])->format('Y-m-d'),
                 'created_at' => Carbon::parse($user['created_at'])->format('Y-m-d'),
                 'email' => $user['email'],
             ];

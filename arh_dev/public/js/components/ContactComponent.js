@@ -1,5 +1,3 @@
-
-
 const ContactComponent = {
     props: {
         routes: {
@@ -55,7 +53,8 @@ const ContactComponent = {
                 email: '',
                 phone: '',
                 message: ''
-            }
+            },
+            retries : 0
         }
     },
     methods: {
@@ -72,7 +71,6 @@ const ContactComponent = {
             },10000)
         },
         sendData: function(){
-            document.getElementById('formSpinner').classList.remove('d-none');
             const { name, email, phone, message} = this.sendMessage
 
             // Validación del correo electrónico utilizando una expresión regular
@@ -96,16 +94,14 @@ const ContactComponent = {
                 this.showTimeOut()
                 return
             }
-
+            
+            this.showLoader();
             axios.post(this.routes.send_message, { name, email, phone, message })
                 .then(response => {
-                    document.getElementById('formSpinner').classList.add('d-none');
-                    toastr.success(response.data.message);
-                    this.cleanFormValues();
-                }).catch(function(error){
-                document.getElementById('formSpinner').classList.remove('d-none');
-                toastr.error(error);
-            })
+                    this.handleRequestSuccess(response);
+                }).catch(error => {
+                    this.handleRequestError(error);
+                });
         },
         cleanFormValues: function(){
             this.sendMessage = {
@@ -114,8 +110,69 @@ const ContactComponent = {
                 phone: '',
                 message: ''
             }
+            localStorage.removeItem('formData');
         },
+        showLoader: function(){
+            Swal.fire({
+                allowOutsideClick: false,
+                background: 'rgba(0,0,0,0)',
+                backdrop: 'rgba(255,255,255,.85)',
+                showConfirmButton: false,
+                title:`<div class="w-100 d-flex justify-content-center"><div class="loader-spinner"></div></div>`,
+            });
+        },
+        hideLoader: function(){
+            Swal.close();
+        },
+        handleRequestError: function(){
+            Swal.close();
+            this.retries += 1;
+            if( this.retries === 3){
+                Swal.fire({
+                    title: 'No fue posible enviar tu información',
+                    text: 'Hubo un error al procesar tu solicitud, la página se recargará para restablecer la conexión.',
+                    icon: 'error',
+                    confirmButtonText: 'Recargar',
+                    allowOutsideClick: false,
+                    confirmButtonColor: '#003380'
+                }).then(result => {
+                    if(result.isConfirmed) this.saveOnLocalStorage(); window.location.reload();
+                })
+                return;
+            }
+            Swal.fire({
+                title: 'Revisa tu conexión',
+                text: 'Verifica que tengas conexión a internet y reintenta tu solicitud.',
+                icon: 'error',
+                confirmButtonText: 'Reintentar',
+                confirmButtonColor: '#003380'
+            }).then(result => {
+                if(result.isConfirmed) this.sendData();
+            });
+        },
+        handleRequestSuccess: function(response){
+            Swal.close();
+            this.retires = 0;
+            Swal.fire({
+                text: response.data.message,
+                icon: 'success',
+                confirmButtonColor: '#003380'
+            });
+            this.cleanFormValues();
+        },
+        saveOnLocalStorage: function(){
+            localStorage.setItem('formData', JSON.stringify(this.sendMessage));
+        },
+        getFromLocalStorage: function(){
+            const formFromStorage = JSON.parse(localStorage.getItem('formData'));
+            if(!formFromStorage) return;
+            this.sendMessage = formFromStorage;
+        } 
     },
+
+    mounted(){
+        this.getFromLocalStorage();
+    }
 }
 
 export default ContactComponent;

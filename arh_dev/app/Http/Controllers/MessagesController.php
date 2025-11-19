@@ -161,12 +161,12 @@ class MessagesController extends Controller
 <div style="font-weight: bolder"> CONTACTO</div>
 <div>Aquí tienes las opciones para contactar a tu cliente: <a href="tel:' . $messageData['phone'] . '"> <br>Llamar</a> --- <a href="https://wa.me/' . $messageData['phone'] . '">Whatsapp</a> --- <a href="mailto:' . $messageData['email'] . '">Envía un correo</a></div>
 <br>
-<div style="font-weight: bolder">Recuerda que puedes visualizar este mensaje y todos los demas en tu página web: <a href="https://www.barandalesarh.com.mx">Barandales ARH</a></div>
+<div style="font-weight: bolder">Recuerda que puedes visualizar este mensaje y todos los demas en tu página web: <a href="https://www.barandalesarh.com">Barandales ARH</a></div>
 
 ';
 
         try {
-            mail('barandalesarh79@gmail.com', 'SOLICITUD DE PRESUPUESTO', $message, $headers);
+            mail('carlosp.nu22@gmail.com', 'SOLICITUD DE PRESUPUESTO', $message, $headers);
         }catch (CustomException $error){
             echo $error;
         }
