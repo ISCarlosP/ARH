@@ -26,7 +26,7 @@ CREATE TABLE `users` (
   `user_id` bigint NOT NULL AUTO_INCREMENT,
   `user_first_name` varchar(255) NOT NULL,
   `user_last_name` varchar(255) NOT NULL,
-  `user_birth_date` timestamp NOT NULL,
+  `birth_date` timestamp NOT NULL,
   `user_screen_name` varchar(255) DEFAULT NULL,
   `user_password` varchar(255) NOT NULL,
   `user_created_at` timestamp NOT NULL,
